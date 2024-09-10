@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     private float timeStart;
     private float timeUpdate;
 
+    public float mouseSensitvity = 100f;
+
+
     public Transform targets;
 
     // Start is called before the first frame update
@@ -107,14 +110,14 @@ public class PlayerController : MonoBehaviour
         isTurretMounted = true;
 
     }
-    private void TimerUpdate()
+    private void RotateBasedOnMouse()
     {
-        timeUpdate += Time.deltaTime;
-    }
-    private void TimerStart()
-    {
-        timeUpdate += timeStart;
-    }
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            Vector2 direction = mousePosition - transform.position;
+            float angle = Vector2.SignedAngle(Vector2.right, direction);
+            transform.eulerAngles = new Vector3(0, 0, angle);
+}
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -122,10 +125,12 @@ public class PlayerController : MonoBehaviour
         if (isPlayerMoving)
         {
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed * moveDirection);
+
         }
         else if (isPlayerMovingSide)
         {
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(-speedX * moveDirection, 0);
+           
         }else
         {
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -140,6 +145,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        RotateBasedOnMouse();
         if (isPlayerMoving)
         {
             moveDirection = upDown.ReadValue<float>();
@@ -156,6 +162,6 @@ public class PlayerController : MonoBehaviour
         else{
             TurretNotMounted();
         }
-        TimerUpdate();
+      
     }
 }

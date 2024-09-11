@@ -8,7 +8,7 @@ public class ShopController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shop.SetActive(false);
+        
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

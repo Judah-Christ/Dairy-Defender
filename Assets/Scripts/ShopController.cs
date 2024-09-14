@@ -25,6 +25,7 @@ public class ShopController : MonoBehaviour
         shop.SetActive(false);
     }
 
+    
 
     // Update is called once per frame
     void Update()

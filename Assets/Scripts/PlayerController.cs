@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private InputAction upDown;
     private InputAction rightLeft;
     private InputAction interact;
+    private InputAction shooting;
+    private Coroutine shoot;
+    [SerializeField] private GameObject bullet;
 
     public GameObject player;
     private bool isPlayerMoving;
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool isPlayerTouching;
     private bool isPlayerInteract;
     private bool isTurretMounted;
+    private bool isPlayerShooting;
     public float speed = 10;
     private float moveDirection;
     public float speedX = 10;
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
         upDown = PlayerControls.currentActionMap.FindAction("UpDown");
         rightLeft = PlayerControls.currentActionMap.FindAction("RightLeft");
         interact = PlayerControls.currentActionMap.FindAction("Interact");
+        shooting = PlayerControls.currentActionMap.FindAction("SHooting");
 
         upDown.started += UpDown_started;
         upDown.canceled += UpDown_canceled;
@@ -45,12 +50,25 @@ public class PlayerController : MonoBehaviour
         rightLeft.canceled += RightLeft_canceled;
         interact.started += Interact_started;
         interact.canceled += Interact_canceled;
+        shooting.canceled += Shooting_canceled;
+        shooting.started += Shooting_started;
 
         isPlayerMoving = false;
         isPlayerMovingSide = false;
+        isPlayerShooting = false;
         isPlayerTouching = false;
         isPlayerInteract = false;   
         isTurretMounted = false;    
+    }
+
+    private void Shooting_started(InputAction.CallbackContext context)
+    {
+        isPlayerShooting = true;
+    }
+
+    private void Shooting_canceled(InputAction.CallbackContext context)
+    {
+        isPlayerShooting = false;
     }
 
     private void UpDown_canceled(InputAction.CallbackContext context)
@@ -118,6 +136,33 @@ public class PlayerController : MonoBehaviour
             float angle = Vector2.SignedAngle(Vector2.right, direction);
             transform.eulerAngles = new Vector3(0, 0, angle);
 }
+    private Coroutine StopAllCoroutines(Func<IEnumerator> createTheBullet) => shoot = null;
+
+    IEnumerator CreateTheBullet()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            Vector2 bulletPos = new Vector2(transform.position.x + -.5f, transform.position.y + .4f);  //random pos
+            bullet.transform.GetComponent<SpriteRenderer>().color = Color.black; //random color
+            Instantiate(bullet, bulletPos, Quaternion.identity);
+
+            yield return new WaitForSeconds(4f);
+        }
+        //   shoot = null;
+    }
+
+    private void Shooting()
+    {
+        if (isPlayerShooting)
+        {
+            shoot = StartCoroutine(CreateTheBullet());
+        }
+        else { 
+
+            shoot = StopAllCoroutines(CreateTheBullet);
+
+        }
+    }
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -158,6 +203,7 @@ public class PlayerController : MonoBehaviour
         {
            
             TurretMounted();
+            Shooting();
         }
         else{
             TurretNotMounted();

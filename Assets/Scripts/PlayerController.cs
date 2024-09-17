@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private InputAction shooting;
     private Coroutine shoot;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform firingPoint;
+    [Range(0.1f, 2f)]
+    [SerializeField] private float firingSpeed = 0.5f;
+    private float fireTimer;
 
     public GameObject player;
     private bool isPlayerMoving;
@@ -64,6 +68,9 @@ public class PlayerController : MonoBehaviour
     private void Shooting_started(InputAction.CallbackContext context)
     {
         isPlayerShooting = true;
+       
+       
+       
     }
 
     private void Shooting_canceled(InputAction.CallbackContext context)
@@ -119,6 +126,16 @@ public class PlayerController : MonoBehaviour
                 player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 Vector3 newpos = new Vector3(targets.position.x, targets.position.y, +10);
                 transform.position = newpos;
+                if (isPlayerShooting == true && fireTimer <= 0f)
+                {
+                    Shooting();
+                    fireTimer = firingSpeed;
+                }
+                else
+                {
+                    fireTimer -= Time.deltaTime;
+                }
+
             }
         }
     }
@@ -135,34 +152,18 @@ public class PlayerController : MonoBehaviour
             Vector2 direction = mousePosition - transform.position;
             float angle = Vector2.SignedAngle(Vector2.right, direction);
             transform.eulerAngles = new Vector3(0, 0, angle);
-}
-    private Coroutine StopAllCoroutines(Func<IEnumerator> createTheBullet) => shoot = null;
-
-    IEnumerator CreateTheBullet()
-    {
-        for (int i = 0; i < 1; i++)
-        {
-            Vector2 bulletPos = new Vector2(transform.position.x + -.5f, transform.position.y + .4f);  //random pos
-            bullet.transform.GetComponent<SpriteRenderer>().color = Color.black; //random color
-            Instantiate(bullet, bulletPos, Quaternion.identity);
-
-            yield return new WaitForSeconds(4f);
-        }
-        //   shoot = null;
+       
+        
     }
 
     private void Shooting()
     {
-        if (isPlayerShooting)
+        if (isPlayerShooting )
         {
-            shoot = StartCoroutine(CreateTheBullet());
-        }
-        else { 
-
-            shoot = StopAllCoroutines(CreateTheBullet);
-
+            Instantiate(bullet, firingPoint.position, firingPoint.rotation);
         }
     }
+       
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -203,7 +204,8 @@ public class PlayerController : MonoBehaviour
         {
            
             TurretMounted();
-            Shooting();
+           
+
         }
         else{
             TurretNotMounted();

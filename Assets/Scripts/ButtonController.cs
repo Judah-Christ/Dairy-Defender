@@ -5,13 +5,28 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
     public int buttons;
+    public GameObject towerMenu;
+    public GameObject upgradeMenu;
+    public GameObject shop;
     // Start is called before the first frame update
     void Start()
     {
         buttons = 100;
     }
 
-    public void PurchaseOne()
+    private void TowerMenu()
+    {
+        shop.SetActive(false);
+        towerMenu.SetActive(true);
+    }
+
+    private void UpgradeMenu()
+    {
+        shop.SetActive(false);
+        upgradeMenu.SetActive(true);
+    }
+
+    private void PurchaseOne()
     {
         if (buttons >= 4)
         {
@@ -20,7 +35,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    public void PurchaseTwo()
+    private void PurchaseTwo()
     {
         if (buttons >= 7)
         {
@@ -29,7 +44,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    public void PurchaseThree()
+    private void PurchaseThree()
     {
         if (buttons >= 7)
         {
@@ -38,7 +53,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    public void PurchaseFour()
+    private void PurchaseFour()
     {
         if (buttons >= 10)
         {
@@ -47,7 +62,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    public void AmmoOne()
+    private void AmmoOne()
     {
         if (buttons >= 3)
         {
@@ -56,7 +71,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    public void AmmoTwo()
+    private void AmmoTwo()
     {
         if (buttons >= 2)
         {
@@ -64,8 +79,8 @@ public class ButtonController : MonoBehaviour
             buttons -= 2;
         }
     }
-    
-    public void AmmoThree()
+
+    private void AmmoThree()
     {
         if (buttons >= 1)
         {

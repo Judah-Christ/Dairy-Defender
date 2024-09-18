@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopController : MonoBehaviour
 {
     public GameObject shop;
+    public ButtonController buttonController;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class ShopController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             shop.SetActive(true);
+            
         }
         
     }
@@ -23,6 +25,8 @@ public class ShopController : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         shop.SetActive(false);
+        buttonController.towerMenu.SetActive(false);
+        buttonController.upgradeMenu.SetActive(false);
     }
 
     

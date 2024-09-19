@@ -7,10 +7,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform target;
 
+
     NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
+        target = FindAnyObjectByType<ObjectiveManager>().transform;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;

@@ -575,13 +575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f61a6986618c43a4d15a4b51a47d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameOne: Tower One
-  itemNameTwo: Tower Two
-  itemNameThree: Tower Three
-  quantity: 1
-  itemSpriteOne: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteTwo: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteThree: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isFull: 0
 --- !u!1 &94330869
 GameObject:
@@ -696,13 +689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f61a6986618c43a4d15a4b51a47d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameOne: Tower One
-  itemNameTwo: Tower Two
-  itemNameThree: Tower Three
-  quantity: 1
-  itemSpriteOne: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteTwo: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteThree: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isFull: 0
 --- !u!1 &157894176
 GameObject:
@@ -817,13 +803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f61a6986618c43a4d15a4b51a47d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameOne: Tower One
-  itemNameTwo: Tower Two
-  itemNameThree: Tower Three
-  quantity: 1
-  itemSpriteOne: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteTwo: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteThree: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isFull: 0
 --- !u!1 &162443084
 GameObject:
@@ -1773,6 +1752,56 @@ MonoBehaviour:
   target: {fileID: 375736112}
   yOffset: 1.5
   xOffset: 2
+--- !u!1 &576009401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576009403}
+  - component: {fileID: 576009402}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &576009402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576009401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77adebfcc20589744ae59b73c6ff959c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Towers:
+  - {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
+  - {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
+  - {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
+  - {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
+  Ammo: []
+--- !u!4 &576009403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576009401}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8383851, y: 2.1879427, z: -0.067115754}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598631804
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,13 +3419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f61a6986618c43a4d15a4b51a47d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameOne: Tower One
-  itemNameTwo: Tower Two
-  itemNameThree: Tower Three
-  quantity: 1
-  itemSpriteOne: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteTwo: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteThree: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isFull: 0
 --- !u!1 &1196165316
 GameObject:
@@ -3511,13 +3533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f61a6986618c43a4d15a4b51a47d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameOne: Tower One
-  itemNameTwo: Tower Two
-  itemNameThree: Tower Three
-  quantity: 1
-  itemSpriteOne: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteTwo: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteThree: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isFull: 0
 --- !u!1 &1198636353
 GameObject:
@@ -3632,13 +3647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f61a6986618c43a4d15a4b51a47d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameOne: Tower One
-  itemNameTwo: Tower Two
-  itemNameThree: Tower Three
-  quantity: 1
-  itemSpriteOne: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteTwo: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteThree: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isFull: 0
 --- !u!1 &1203188969
 GameObject:
@@ -4067,13 +4075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f61a6986618c43a4d15a4b51a47d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameOne: Tower One
-  itemNameTwo: Tower Two
-  itemNameThree: Tower Three
-  quantity: 1
-  itemSpriteOne: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteTwo: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteThree: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   isFull: 0
 --- !u!1 &1330913329
 GameObject:
@@ -5537,13 +5538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524f61a6986618c43a4d15a4b51a47d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameOne: Tower One
-  itemNameTwo: Tower Two
-  itemNameThree: Tower Three
-  quantity: 1
-  itemSpriteOne: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteTwo: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  itemSpriteThree: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   isFull: 0
 --- !u!1 &2071434304
 GameObject:
@@ -6267,3 +6261,4 @@ SceneRoots:
   - {fileID: 473327968}
   - {fileID: 2472018919773163755}
   - {fileID: 4673938951072540380}
+  - {fileID: 576009403}

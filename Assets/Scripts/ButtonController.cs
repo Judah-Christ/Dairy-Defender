@@ -10,19 +10,15 @@ public class ButtonController : MonoBehaviour
     public GameObject upgradeMenu;
     public GameObject shop;
     public SlotController[] slotController;
-    private Dictionary<string, TowerInfo> towerTypes;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        buttons = 100;
+
+
     }
 
-    public class TowerInfo
-    {
-        GameObject tower;
-        int towerCost;
-    }
 
 
     private void TowerMenu()
@@ -37,20 +33,9 @@ public class ButtonController : MonoBehaviour
         upgradeMenu.SetActive(true);
     }
 
-    public void PurchaseOne()//string itemName, int quantity, Sprite itemSprite)
+    public void PurchaseOne()
     {
-        if (buttons >= 4)
-        {
-            //for (int i = 0; i < slotController.Length; i++)
-            //{
-            //    if (slotController[i].isFull == false)
-            //    {
-            //        slotController[i].AddItem1(itemName, quantity, itemSprite);
-            //        return;
-            //    }
-            //}
-            buttons -= 4;
-        }
+        
     }
 
     public void PurchaseTwo()
@@ -106,9 +91,6 @@ public class ButtonController : MonoBehaviour
             buttons -= 1;
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
+       
 }

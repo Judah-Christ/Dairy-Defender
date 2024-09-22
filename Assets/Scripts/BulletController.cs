@@ -5,8 +5,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
 
-    [Range(1, 10)]
-    [SerializeField] private float speed = 10f;
+    [Range(1, 25)]
+    [SerializeField] private float speed = 25f;
 
     [Range(1, 10)]
     [SerializeField] private float lifetime = 3f;

@@ -7,7 +7,7 @@ public class Scan : MonoBehaviour
     private bool leftToRight;
     Quaternion angle;
     float zAngle;
-    float speed;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,14 @@ public class Scan : MonoBehaviour
         zAngle = 0;
         speed = 100;
 
+    }
+    public void SpeedStop()
+    {
+        speed = 0;
+    }
+    public void SpeedStart()
+    {
+        speed = 100;
     }
 
     // Update is called once per frame

@@ -116,13 +116,15 @@ public class PlayerController : MonoBehaviour
             
        // }
     }
-    private void TurretMounted()
+    public void TurretMounted()
+
     {
+       
         if (isPlayerTouching)
         {
             if (isPlayerInteract)
             {
-              
+                RotateBasedOnMouse();
                 player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 Vector3 newpos = new Vector3(targets.position.x, targets.position.y, +10);
                 transform.position = newpos;
@@ -151,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
             Vector2 direction = mousePosition - transform.position;
             float angle = Vector2.SignedAngle(Vector2.right, direction);
-            transform.eulerAngles = new Vector3(0, 0, angle);
+            transform.eulerAngles = new Vector3(0, 0, angle - 90);
        
         
     }
@@ -187,11 +189,12 @@ public class PlayerController : MonoBehaviour
     {
         isPlayerTouching = true;
        
+       
     }
 
     void Update()
     {
-        RotateBasedOnMouse();
+        
         if (isPlayerMoving)
         {
             moveDirection = upDown.ReadValue<float>();
@@ -205,10 +208,12 @@ public class PlayerController : MonoBehaviour
            
             TurretMounted();
            
+           
 
         }
         else{
             TurretNotMounted();
+           
         }
       
     }

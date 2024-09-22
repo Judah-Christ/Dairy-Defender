@@ -19,13 +19,19 @@ public class PlayerTurret : MonoBehaviour
     [SerializeField] private float firingSpeed = 0.5f;
     private float fireTimer;
     private float sighted = 8f;
+    public LayerMask raycastMask;
+    Scan scansScript;
+    
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
+       
         isTurretMounted = false;
         enemy = GameObject.FindGameObjectWithTag("Enemy");
+        scansScript = GameObject.FindGameObjectWithTag("Turret").GetComponent<Scan>();
     }
    
     private void RotateBasedOnMouse()
@@ -34,19 +40,15 @@ public class PlayerTurret : MonoBehaviour
 
         Vector2 direction = mousePosition - transform.position;
         float angle = Vector2.SignedAngle(Vector2.right, direction);
-        transform.eulerAngles = new Vector3(0, 0, angle);
+        transform.eulerAngles = new Vector3(0, 0, angle-  90);
     }
-    private void TargetedSighted()
-    {
-        if (!isTurretMounted)
-        {
-            
-        }
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (targets.position.x <= playerTurret.GetComponent<Rigidbody2D>().position.x) {
-            isTurretMounted = true;
+           isTurretMounted = true;
+            
+
         }
 
     }
@@ -56,14 +58,18 @@ public class PlayerTurret : MonoBehaviour
 
         if (targets.position.x >= playerTurret.GetComponent<Rigidbody2D>().position.x)
         {
-            isTurretMounted = false;
+            
+            scansScript.SpeedStart();
+            
         }
     }
     private void Shoot()
     {
+      
         Debug.DrawRay(firingPoint.position, firingPoint.up * sighted, Color.green);
         Ray ray = new Ray(firingPoint.position, firingPoint.up);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, sighted);
+        RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.up, sighted,raycastMask);
+        //print(hit.transform.name);
         if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
         {
             Debug.Log("hitttt");
@@ -76,14 +82,18 @@ public class PlayerTurret : MonoBehaviour
     void Update()
     {
        
-        if (isTurretMounted)
+        if (!isTurretMounted)
         {
-            RotateBasedOnMouse();
-
-        }
-        else
-        {
+            scansScript.SpeedStart();
             Shoot();
+            
+           
+        }
+        else if (isTurretMounted)
+        {
+           RotateBasedOnMouse();
+            scansScript.SpeedStop();
+
         }
     }
 

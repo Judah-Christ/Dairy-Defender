@@ -14,13 +14,13 @@ public class ShopController : MonoBehaviour
 
     
 
-    private List<ScriptableObject> shopItems;
+    public List<GameItem> ShopItems;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        shopItems = new List<ScriptableObject>();
+        ShopItems = new List<GameItem>();
         RollShop();
     }
 
@@ -51,7 +51,7 @@ public class ShopController : MonoBehaviour
 
     public void RollShop()
     {
-        if (shopItems.Count >= 4)
+        if (ShopItems.Count > 4)
         {
             isShopFull = true;
             return;
@@ -63,15 +63,15 @@ public class ShopController : MonoBehaviour
         }
     }
 
-    public void CheckForCopy(ScriptableObject currentItem)
+    public void CheckForCopy(GameItem currentItem)
     {
         bool isCopy = false;
-        foreach (var item in shopItems)
+        foreach (var item in ShopItems)
         {
             if (currentItem.Equals(item))
             {
                 isCopy = true;
-                return;
+                break;
             }
         }
         if (isCopy == true)
@@ -80,7 +80,7 @@ public class ShopController : MonoBehaviour
         }
         else
         {
-            shopItems.Add(currentItem);
+            ShopItems.Add(currentItem);
             RollShop();
         }
     }

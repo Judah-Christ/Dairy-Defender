@@ -9,7 +9,8 @@ public class ButtonController : MonoBehaviour
     public GameObject towerMenu;
     public GameObject upgradeMenu;
     public GameObject shop;
-    public SlotController[] slotController;
+
+    
 
 
     // Start is called before the first frame update

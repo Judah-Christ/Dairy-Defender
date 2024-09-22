@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fe80d21f50c5c54594bd5d74c7e39b7, type: 3}
-  m_Name: HotsaucePacket
+  m_Name: TrapTower
   m_EditorClassIdentifier: 
-  itemName: Hotsauce
+  itemName: TrapTower
   itemObject: {fileID: 0}
-  itemCost: 3
-  itemType: 1
-  Health: 0
+  itemCost: 4
+  itemType: 0
+  Health: 10

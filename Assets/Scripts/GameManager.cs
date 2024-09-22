@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public List<ScriptableObject> Towers;
-    public List<ScriptableObject> Ammo;
+    public List<GameItem> Towers;
+    public List<GameItem> Ammo;
     // Start is called before the first frame update
     void Start()
     {

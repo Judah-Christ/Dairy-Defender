@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ButtonController : MonoBehaviour
 {
@@ -8,11 +9,21 @@ public class ButtonController : MonoBehaviour
     public GameObject towerMenu;
     public GameObject upgradeMenu;
     public GameObject shop;
+    public SlotController[] slotController;
+    private Dictionary<string, TowerInfo> towerTypes;
+
     // Start is called before the first frame update
     void Start()
     {
         buttons = 100;
     }
+
+    public class TowerInfo
+    {
+        GameObject tower;
+        int towerCost;
+    }
+
 
     private void TowerMenu()
     {
@@ -26,16 +37,23 @@ public class ButtonController : MonoBehaviour
         upgradeMenu.SetActive(true);
     }
 
-    private void PurchaseOne()
+    public void PurchaseOne()//string itemName, int quantity, Sprite itemSprite)
     {
         if (buttons >= 4)
         {
-            
+            //for (int i = 0; i < slotController.Length; i++)
+            //{
+            //    if (slotController[i].isFull == false)
+            //    {
+            //        slotController[i].AddItem1(itemName, quantity, itemSprite);
+            //        return;
+            //    }
+            //}
             buttons -= 4;
         }
     }
 
-    private void PurchaseTwo()
+    public void PurchaseTwo()
     {
         if (buttons >= 7)
         {
@@ -44,7 +62,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    private void PurchaseThree()
+    public void PurchaseThree()
     {
         if (buttons >= 7)
         {
@@ -53,7 +71,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    private void PurchaseFour()
+    public void PurchaseFour()
     {
         if (buttons >= 10)
         {
@@ -62,7 +80,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    private void AmmoOne()
+    public void AmmoOne()
     {
         if (buttons >= 3)
         {
@@ -71,7 +89,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    private void AmmoTwo()
+    public void AmmoTwo()
     {
         if (buttons >= 2)
         {
@@ -80,7 +98,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    private void AmmoThree()
+    public void AmmoThree()
     {
         if (buttons >= 1)
         {

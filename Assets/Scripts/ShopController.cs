@@ -24,9 +24,17 @@ public class ShopController : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        shop.SetActive(false);
-        buttonController.towerMenu.SetActive(false);
-        buttonController.upgradeMenu.SetActive(false);
+        if (shop == null)
+        {
+            buttonController.towerMenu.SetActive(false);
+            buttonController.upgradeMenu.SetActive(false);
+        }
+        else
+        {
+            shop.SetActive(false);
+            buttonController.towerMenu.SetActive(false);
+            buttonController.upgradeMenu.SetActive(false);
+        }
     }
 
     

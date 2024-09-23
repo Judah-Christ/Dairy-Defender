@@ -7,7 +7,6 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerTurret : MonoBehaviour
 {
 
-    private bool isTurretMounted;
     public Transform targets;
     public GameObject playerTurret;
     private GameObject enemy;
@@ -17,10 +16,13 @@ public class PlayerTurret : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [Range(0.1f, 2f)]
     [SerializeField] private float firingSpeed = 0.5f;
-    private float fireTimer;
+    [SerializeField] private float _fireTimer;
+    private float fireTimerOrig;
     private float sighted = 8f;
     public LayerMask raycastMask;
     Scan scansScript;
+    private PlayerController PC;
+    private bool isShootOnCD;
     
     
 
@@ -28,10 +30,10 @@ public class PlayerTurret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-        isTurretMounted = false;
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         scansScript = GameObject.FindGameObjectWithTag("Turret").GetComponent<Scan>();
+        PC = GameObject.Find("Player").GetComponent<PlayerController>();
+        fireTimerOrig = _fireTimer;
     }
    
     private void RotateBasedOnMouse()
@@ -43,37 +45,18 @@ public class PlayerTurret : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, angle-  90);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (targets.position.x <= playerTurret.GetComponent<Rigidbody2D>().position.x) {
-           isTurretMounted = true;
-            
-
-        }
-
-    }
-    
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-
-        if (targets.position.x >= playerTurret.GetComponent<Rigidbody2D>().position.x)
-        {
-            
-            scansScript.SpeedStart();
-            
-        }
-    }
     private void Shoot()
     {
-      
         Debug.DrawRay(firingPoint.position, firingPoint.up * sighted, Color.green);
         Ray ray = new Ray(firingPoint.position, firingPoint.up);
         RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.up, sighted,raycastMask);
-        //print(hit.transform.name);
-        if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
+        if (hit.collider != null && hit.transform.tag == "Enemy")
         {
-            Debug.Log("hitttt");
-            Instantiate(bullet, firingPoint.position, firingPoint.rotation);
+            if (isShootOnCD == false)
+            {
+                Instantiate(bullet, firingPoint.position, firingPoint.rotation);
+                isShootOnCD = true;
+            }
         }
     }
     
@@ -81,19 +64,34 @@ public class PlayerTurret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if (!isTurretMounted)
+        if (!PC.isTurretMounted)
         {
             scansScript.SpeedStart();
             Shoot();
-            
-           
         }
-        else if (isTurretMounted)
+        if (PC.isTurretMounted)
         {
            RotateBasedOnMouse();
-            scansScript.SpeedStop();
+           scansScript.SpeedStop();
 
+        }
+
+        if(isShootOnCD)
+        {
+            ShootCD();
+        }
+    }
+
+    private void ShootCD()
+    {
+        if (isShootOnCD == true && _fireTimer <= 0f)
+        {
+            _fireTimer = fireTimerOrig;
+            isShootOnCD = false;
+        }
+        else
+        {
+            _fireTimer -= Time.deltaTime;
         }
     }
 

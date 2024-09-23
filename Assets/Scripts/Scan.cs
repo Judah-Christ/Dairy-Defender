@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Scan : MonoBehaviour
 {
+    private bool isActive;
     private bool leftToRight;
     Quaternion angle;
     float zAngle;
@@ -18,34 +20,37 @@ public class Scan : MonoBehaviour
     }
     public void SpeedStop()
     {
-        speed = 0;
+        isActive = false;
     }
     public void SpeedStart()
     {
-        speed = 100;
+        isActive = true;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.rotation = angle;
-        if (leftToRight)
+        if (isActive)
         {
-            zAngle -= Time.deltaTime * speed;
-            angle = Quaternion.Euler(0,0,zAngle);
-            if(zAngle <= -90)
+            transform.rotation = angle;
+            if (leftToRight)
             {
-                leftToRight = !leftToRight;
+                zAngle -= Time.deltaTime * speed;
+                angle = Quaternion.Euler(0, 0, zAngle);
+                if (zAngle <= -90)
+                {
+                    leftToRight = !leftToRight;
+                }
             }
-        }else
-        {
-            zAngle += Time.deltaTime * speed;
-            angle = Quaternion.Euler(0,0,zAngle) ;
-            if(zAngle >= 90)
+            else
             {
-                leftToRight = !leftToRight;
+                zAngle += Time.deltaTime * speed;
+                angle = Quaternion.Euler(0, 0, zAngle);
+                if (zAngle >= 90)
+                {
+                    leftToRight = !leftToRight;
+                }
             }
         }
-
     }
 }

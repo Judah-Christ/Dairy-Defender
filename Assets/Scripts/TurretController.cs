@@ -8,7 +8,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firingPoint;
     [Range(0.1f, 2f)]
-    [SerializeField] private float firingSpeed = 0.5f;
+    [SerializeField] private float firingSpeed = .5f;
     private float fireTimer;
     private float sighted = 4f;
     public LayerMask raycastMask;
@@ -22,14 +22,28 @@ public class TurretController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Shoot();
+        Tracked();
+        if (fireTimer <= 0f)
+        {
+            Shoot();
+            fireTimer = firingSpeed;
+        }
+        else
+        {
+            fireTimer -= Time.deltaTime;
+        }
+
+    }
+   public void Tracked()
+    {
+        Debug.DrawRay(firingPoint.position, firingPoint.up * sighted, Color.green);
+        Ray ray = new Ray(firingPoint.position, firingPoint.up);
+       
     }
     private void Shoot()
     {
 
-        Debug.DrawRay(firingPoint.position, firingPoint.right * sighted, Color.green);
-        Ray ray = new Ray(firingPoint.position, firingPoint.right);
-        RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.right, sighted, raycastMask);
+        RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.up, sighted, raycastMask);
         //print(hit.transform.name);
         if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
         {

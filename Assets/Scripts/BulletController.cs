@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
 
-    [Range(1, 25)]
+    [Range(0, 25)]
     [SerializeField] private float speed = 25f;
 
     [Range(1, 10)]
@@ -25,12 +25,15 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+     
+       
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = transform.up*speed;
+        
+            rb.velocity = transform.up * speed;
+      
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -8,12 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class ObjectiveManager : MonoBehaviour
 {
-    [SerializeField] int currentHealth;
+    private int currentHealth;
     [SerializeField] int maxHealth = 1000;
+    private GameManager GM;
 
     // Start is called before the first frame update
     void Start()
     {
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
     }
     private void Update()
@@ -23,10 +25,11 @@ public class ObjectiveManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        
 
-        if(currentHealth < 0)
+        if(currentHealth <= 0)
         {
-           
+            GM.ObjectiveFailed();
             Destroy(gameObject);
         }
     }
@@ -35,6 +38,7 @@ public class ObjectiveManager : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             TakeDamage(100);
+            collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
 
         }
     }

@@ -38,11 +38,12 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<EnemyManager>(out EnemyManager enemyComponent))
+        if (collision.transform.tag == "Enemy")
         {
+            EnemyManager enemyComponent = collision.gameObject.GetComponent<EnemyManager>();
             enemyComponent.TakeDamage(100);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
 

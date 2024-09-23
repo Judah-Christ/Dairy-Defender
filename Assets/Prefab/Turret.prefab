@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -272,11 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0720ad26833e5cc408ed8b468bc5ba59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets: {fileID: 4291900789361448924, guid: da8b7fad5f4f0bb468f9d8a1346ae3cd, type: 3}
-  playerTurret: {fileID: 8710466546614467251}
   speed: 0
   bullet: {fileID: 4116811335257806855, guid: 24ee3b4877453464e9b92dfdf4fa62a5, type: 3}
-  firingPoint: {fileID: 3978161633198252724}
   firingSpeed: 0.5
   _fireTimer: 1
   raycastMask:

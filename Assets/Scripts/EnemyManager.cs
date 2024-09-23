@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] int currenthealth;
+    private int currenthealth;
     [SerializeField] int maxHealth = 100;
-    [SerializeField] bool isflyEnemy = false;
+
     ObjectiveManager objectmanager;
+    
 
     public GameObject lootDrop;
     // Start is called before the first frame update
@@ -27,8 +28,8 @@ public class EnemyManager : MonoBehaviour
 
         if (currenthealth <= 0) 
         { 
-        Destroy(gameObject);
-        
+            CheckDeath();
+            Destroy(gameObject);
         }
     }
 

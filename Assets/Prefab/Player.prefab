@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8875696057037072364}
   - component: {fileID: 4613491888803739406}
   - component: {fileID: 6691187061769845017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SC_Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: -7201204705134459037}
   - component: {fileID: 8822181860427174281}
   - component: {fileID: 733463404994847924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -223,7 +223,6 @@ MonoBehaviour:
   speed: 10
   speedX: 10
   mouseSensitvity: 100
-  targets: {fileID: 0}
 --- !u!61 &8822181860427174281
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -6,17 +6,18 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float spawnRate = 1f;
     [SerializeField] private GameObject[] enemyPrefabs;
-    [SerializeField] private bool canSpawn = true;
+    private GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         StartCoroutine(Spawner());
     }
 
     private IEnumerator Spawner()
     {
         WaitForSeconds wait = new WaitForSeconds(spawnRate);
-        while (canSpawn)
+        while (!GM.isGamePaused)
         {
             yield return wait;
             int rand = Random.Range(0,enemyPrefabs.Length);

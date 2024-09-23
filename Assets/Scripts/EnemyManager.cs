@@ -4,24 +4,44 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] float health = 100f;
-    [SerializeField] bool isflyEnemy = false;
+    private int currenthealth;
+    [SerializeField] int maxHealth = 100;
+
+    ObjectiveManager objectmanager;
+    
+
+    public GameObject lootDrop;
     // Start is called before the first frame update
     void Start()
     {
-        
+        currenthealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void TakeDamage(int damageAmount)
     {
-        if (collision.gameObject.tag == "Objective")
-        {
+        currenthealth -= damageAmount;
+
+        if (currenthealth <= 0) 
+        { 
+            CheckDeath();
             Destroy(gameObject);
         }
-
     }
+
+    private void CheckDeath()
+    {
+        if(currenthealth <= 0)
+        {
+            
+            Instantiate(lootDrop,transform.position, Quaternion.identity);
+        }
+    }
+   
+   
+
 }

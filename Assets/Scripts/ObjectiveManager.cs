@@ -1,32 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Security.Cryptography;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ObjectiveManager : MonoBehaviour
 {
-    [SerializeField] float health = 1000f;
+    private int currentHealth;
+    [SerializeField] int maxHealth = 1000;
+    private GameManager GM;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        currentHealth = maxHealth;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (health <= 0)
+        //Debug.Log(currentHealth);
+    }
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        
+
+        if(currentHealth <= 0)
         {
-            SceneManager.LoadScene(0);
+            GM.ObjectiveFailed();
+            Destroy(gameObject);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            health = health -100;
-        }
+            TakeDamage(100);
+            collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
 
+        }
     }
+
 }

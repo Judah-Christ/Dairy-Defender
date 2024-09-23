@@ -5,16 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Objective
   - Turret
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Towers
+  - Enemy
   - Water
   - UI
-  - Enemy
+  - 
   - 
   - 
   - 

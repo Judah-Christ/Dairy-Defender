@@ -922,6 +922,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 664803142}
+  slotController: {fileID: 1196165321}
+  imageLocation: {fileID: 664803139}
+  towerObject: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &670355972 stripped
 MonoBehaviour:
@@ -1062,6 +1065,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 733861981}
+  slotController: {fileID: 2068351432}
+  imageLocation: {fileID: 733861978}
+  towerObject: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!1 &767856496 stripped
 GameObject:
@@ -1298,6 +1304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1082339776}
+  slotController: {fileID: 72818256}
+  imageLocation: {fileID: 1082339773}
+  towerObject: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!1 &1176097381
 GameObject:
@@ -1880,6 +1889,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1207248229}
+  slotController: {fileID: 1176097386}
+  imageLocation: {fileID: 1207248226}
+  towerObject: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &1230676745 stripped
 MonoBehaviour:
@@ -2020,6 +2032,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1234238784}
+  slotController: {fileID: 1330536887}
+  imageLocation: {fileID: 1234238781}
+  towerObject: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!1 &1330536882
 GameObject:
@@ -2694,6 +2709,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1703590163}
+  slotController: {fileID: 1198636358}
+  imageLocation: {fileID: 1703590160}
+  towerObject: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!1 &1991486673
 GameObject:
@@ -2823,6 +2841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1991486677}
+  slotController: {fileID: 94330874}
+  imageLocation: {fileID: 1991486674}
+  towerObject: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &2016423252 stripped
 MonoBehaviour:
@@ -3078,6 +3099,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2079557360}
+  slotController: {fileID: 157894181}
+  imageLocation: {fileID: 2079557357}
+  towerObject: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!1001 &2111670838
 PrefabInstance:

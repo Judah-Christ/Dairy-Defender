@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8569631204761476024}
   - component: {fileID: 4274231462032611239}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,11 +94,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3347913444796447517}
   - component: {fileID: 1966314788472586394}
-  - component: {fileID: 5513810145718482883}
   - component: {fileID: 7198220212494139027}
   - component: {fileID: 6284914069362963847}
   - component: {fileID: 6822307172226269722}
-  m_Layer: 3
+  - component: {fileID: 6014198085192167611}
+  m_Layer: 0
   m_Name: SodaTower
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6773195374952635329}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.09590862, y: 0.0006379919, z: -0.006621267, w: 0.99536794}
+  m_LocalRotation: {x: -0.09591291, y: 0.0006352957, z: -0.006625455, w: 0.99536747}
   m_LocalPosition: {x: 5.72, y: -3.17, z: 1.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -173,19 +173,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5513810145718482883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6773195374952635329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441fd3032834d1045ab7a9808b09bdf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
 --- !u!114 &7198220212494139027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,11 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1232455493097164920, guid: d803929902c716849924772e8cceef76, type: 3}
-  firingPoint: {fileID: 8569631204761476024}
   firingSpeed: 1
   raycastMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
 --- !u!50 &6284914069362963847
 Rigidbody2D:
   serializedVersion: 4
@@ -282,3 +268,16 @@ PolygonCollider2D:
       - {x: 0.43359375, y: 0.25}
       - {x: 0, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &6014198085192167611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6773195374952635329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441fd3032834d1045ab7a9808b09bdf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0

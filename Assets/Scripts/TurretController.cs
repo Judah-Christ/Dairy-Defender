@@ -6,7 +6,7 @@ public class TurretController : MonoBehaviour
 {
     private Coroutine shoot;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform firingPoint;
+     private Transform firingPoint;
     [Range(0.1f, 2f)]
     [SerializeField] private float firingSpeed = .5f;
     private float fireTimer;
@@ -17,6 +17,7 @@ public class TurretController : MonoBehaviour
     void Start()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
+        firingPoint = gameObject.GetComponentInChildren<Transform>();
     }
 
     // Update is called once per frame
@@ -47,7 +48,7 @@ public class TurretController : MonoBehaviour
         //print(hit.transform.name);
         if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
         {
-            Debug.Log("hitttt");
+            Debug.Log("help");
             Instantiate(bullet, firingPoint.position, firingPoint.rotation);
         }
     }

@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2327225535048794510}
   m_Layer: 0
   m_Name: Hexagon Flat-Top
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,9 +278,10 @@ MonoBehaviour:
   bullet: {fileID: 4116811335257806855, guid: 24ee3b4877453464e9b92dfdf4fa62a5, type: 3}
   firingPoint: {fileID: 3978161633198252724}
   firingSpeed: 0.5
+  _fireTimer: 1
   raycastMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!50 &673118385377826809
 Rigidbody2D:
   serializedVersion: 4

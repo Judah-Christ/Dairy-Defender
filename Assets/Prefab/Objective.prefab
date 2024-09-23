@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1456645030521396675}
   - component: {fileID: 1760612585243405132}
   - component: {fileID: 3606665351631709285}
-  - component: {fileID: 1577930982116735375}
+  - component: {fileID: 2146880626585665769}
   m_Layer: 0
   m_Name: Objective
   m_TagString: Objective
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4151b057619c1eb41bfbbe1ca0fda5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
---- !u!60 &1577930982116735375
+  maxHealth: 1000
+--- !u!60 &2146880626585665769
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,7 +111,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

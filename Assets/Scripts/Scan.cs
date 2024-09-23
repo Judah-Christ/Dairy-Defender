@@ -15,7 +15,7 @@ public class Scan : MonoBehaviour
     {
         leftToRight = true;
         zAngle = 0;
-        speed = 100;
+        speed = 50;
 
     }
     public void SpeedStop()

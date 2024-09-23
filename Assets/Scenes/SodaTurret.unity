@@ -577,6 +577,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1012845178237616857, guid: 3843fc06715e3f94f90bf20b8a75d7c2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3347913444796447517, guid: 3843fc06715e3f94f90bf20b8a75d7c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.246339
@@ -620,6 +624,10 @@ PrefabInstance:
     - target: {fileID: 6773195374952635329, guid: 3843fc06715e3f94f90bf20b8a75d7c2, type: 3}
       propertyPath: m_Name
       value: SodaTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773195374952635329, guid: 3843fc06715e3f94f90bf20b8a75d7c2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

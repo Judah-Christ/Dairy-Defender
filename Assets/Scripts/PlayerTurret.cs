@@ -64,6 +64,7 @@ public class PlayerTurret : MonoBehaviour
             {
                 Instantiate(bullet, firingPoint.position, firingPoint.rotation);
                 isShootOnCD = true;
+                Debug.Log("SHoooootttting");
             }
         }
     }

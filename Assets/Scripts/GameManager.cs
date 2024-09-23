@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public List<GameItem> Towers;
     public List<GameItem> Ammo;
+
+    public static GameManager gameManager;
+    [SerializeField] public int coins;
+    [SerializeField] public int tower;
     // Start is called before the first frame update
     void Start()
     {

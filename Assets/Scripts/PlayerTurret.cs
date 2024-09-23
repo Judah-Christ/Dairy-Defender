@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.GraphicsBuffer;
@@ -7,13 +8,14 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerTurret : MonoBehaviour
 {
 
-    public Transform targets;
-    public GameObject playerTurret;
-    private GameObject enemy;
+    //public Transform targets;
+    //public GameObject playerTurret;
+    //private GameObject enemy;
+    private GameObject player;
     public float speed;
-    private Coroutine shoot;
+    //private Coroutine shoot;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform firingPoint;
+    private Transform firingPoint;
     [Range(0.1f, 2f)]
     [SerializeField] private float firingSpeed = 0.5f;
     [SerializeField] private float _fireTimer;
@@ -23,6 +25,9 @@ public class PlayerTurret : MonoBehaviour
     Scan scansScript;
     private PlayerController PC;
     private bool isShootOnCD;
+    private bool isPlayerNear;
+    private float _maxRange;
+
     
     
 
@@ -30,10 +35,13 @@ public class PlayerTurret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
-        scansScript = GameObject.FindGameObjectWithTag("Turret").GetComponent<Scan>();
-        PC = GameObject.Find("Player").GetComponent<PlayerController>();
+        //enemy = GameObject.FindGameObjectWithTag("Enemy");
+        scansScript = gameObject.GetComponent<Scan>();
+        player = GameObject.Find("Player");
+        PC = player.GetComponent<PlayerController>();
         fireTimerOrig = _fireTimer;
+        firingPoint = gameObject.GetComponentInChildren<Transform>();
+
     }
    
     private void RotateBasedOnMouse()
@@ -64,15 +72,15 @@ public class PlayerTurret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PC.isTurretMounted)
+        if (!PC.isTurretMounted || !isPlayerNear)
         {
-            scansScript.SpeedStart();
+            this.scansScript.SpeedStart();
             Shoot();
         }
-        if (PC.isTurretMounted)
+        if (PC.isTurretMounted && isPlayerNear)
         {
            RotateBasedOnMouse();
-           scansScript.SpeedStop();
+           this.scansScript.SpeedStop();
 
         }
 
@@ -80,6 +88,8 @@ public class PlayerTurret : MonoBehaviour
         {
             ShootCD();
         }
+
+        CheckPlayerDistance();
     }
 
     private void ShootCD()
@@ -92,6 +102,21 @@ public class PlayerTurret : MonoBehaviour
         else
         {
             _fireTimer -= Time.deltaTime;
+        }
+    }
+
+    private void CheckPlayerDistance()
+    {
+        Vector2 playerPos = player.transform.position;
+        Vector2 turretPos = gameObject.transform.position;
+        Vector2 distance = playerPos - turretPos;
+        if (distance.x <= _maxRange && distance.y <= _maxRange)
+        {
+            isPlayerNear = true;
+        }
+        else
+        {
+            isPlayerNear = false;
         }
     }
 

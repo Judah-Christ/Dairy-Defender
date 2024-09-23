@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitvity = 100f;
 
 
-    public Transform targets;
+    private Transform targets;
 
 
     // Start is called before the first frame update
@@ -224,6 +224,7 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == ("Turret"))
         {
             isPlayerTouching = true;
+            targets = collision.gameObject.transform;
         }
     }
 }

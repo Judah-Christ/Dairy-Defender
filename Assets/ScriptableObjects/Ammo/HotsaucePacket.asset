@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Hotsauce
   itemObject: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: efeac3eaf7d28e24e806f895730df8d6, type: 3}
+  itemImage: {fileID: 7039893139162100935, guid: c58c4ecf6351c5b4ebcd4a947ebe6a1d, type: 3}
   itemCost: 3
   itemType: 1
   Health: 0

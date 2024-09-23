@@ -4,17 +4,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.Composites;
 using TMPro;
+using UnityEngine.UI;
 
 public class ShopButtonController : MonoBehaviour
 {
     private ShopController SC;
     [SerializeField]
     private ButtonSlot _buttonSlot;
-
+    
     private GameItem shopItem;
 
     private string itemName;
-    private GameObject itemObj;
+    
+    
     private int itemCost;
 
     [SerializeField]
@@ -23,6 +25,29 @@ public class ShopButtonController : MonoBehaviour
     [SerializeField]
     private TMP_Text _shopCost;
 
+    public GameObject[] inventory = new GameObject[8];
+    bool itemAdded = false;
+
+    public void AddTower()
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i].GetComponent<SlotController>().isFull == false)
+            {
+                Debug.Log(inventory[i]);
+                inventory[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
+                inventory[i].GetComponent<SlotController>().isFull = true;
+                itemAdded = true;
+                break;
+            }
+
+        }
+
+        if (!itemAdded)
+        {
+            Debug.Log("Inventory full - item not added");
+        }
+    }
 
     void Start()
     {
@@ -54,6 +79,27 @@ public class ShopButtonController : MonoBehaviour
         }
     }
 
+    public void ButtonPress()
+    {
+        switch( _buttonSlot)
+        {
+            case ButtonSlot.ONE:
+                AddTower();
+                break;
+            case ButtonSlot.TWO:
+                AddTower();
+                break;
+            case ButtonSlot.THREE:
+                AddTower();
+                break;
+            case ButtonSlot.FOUR:
+                AddTower();
+                break;
+
+        }
+    }
+
+
     public enum ButtonSlot
     {
         ONE,
@@ -65,8 +111,10 @@ public class ShopButtonController : MonoBehaviour
     private void UISetup()
     {
         this.itemCost = shopItem.itemCost;
-        itemObj = shopItem.itemObject;
+        //itemIm = shopItem.itemImage;
+        //itemSpri = shopItem.itemSprite;
         itemName = shopItem.itemName;
+
 
         _buttonText.text = itemName;
         _shopCost.text = this.itemCost.ToString();

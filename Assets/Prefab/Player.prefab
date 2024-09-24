@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: -7201204705134459037}
   - component: {fileID: 8822181860427174281}
   - component: {fileID: 733463404994847924}
+  - component: {fileID: -6179449652804179653}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -313,3 +314,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-6179449652804179653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341792325361069525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0125a4be0001794fa79e62e144570d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerControls: {fileID: 0}
+  _restart:
+    m_Name: Restart
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 180c264a-5d4b-43d9-ada4-1cfb73c43f88
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _Quit:
+    m_Name: Quit
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0cf2b89f-f3c8-4c3a-a60a-1adc4394f1e5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0

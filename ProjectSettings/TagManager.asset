@@ -45,3 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: AbovePlayer
+    uniqueID: 380956431
+    locked: 0
+  - name: Player
+    uniqueID: 1361098101
+    locked: 0
+  - name: Bridges
+    uniqueID: 990900047
+    locked: 0

@@ -12,6 +12,7 @@ public class GameItem : ScriptableObject
     public int itemCost;
     public ItemType itemType;
     public int Health;
+    public Transform itemTransform;
 
 }
 

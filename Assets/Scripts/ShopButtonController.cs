@@ -37,6 +37,8 @@ public class ShopButtonController : MonoBehaviour
                 Debug.Log(inventory[i]);
                 inventory[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
                 inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = shopItem.itemObject;
+                inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject.transform.position = 
+                    inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().imageLocation.transform.position;
                 inventory[i].GetComponent<SlotController>().isFull = true;
                 itemAdded = true;
                 break;

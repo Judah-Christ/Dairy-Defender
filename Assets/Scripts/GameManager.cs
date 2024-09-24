@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -64,12 +65,14 @@ public class GameManager : MonoBehaviour
     public void ObjectiveComplete()
     {
         EndWaves();
+        SceneManager.LoadScene(1);
         Debug.Log("Objective Complete!");
     }
 
     public void ObjectiveFailed()
     {
         EndWaves();
+        SceneManager.LoadScene(2);
         Debug.Log("Objective Failed!");
     }
 

@@ -17,6 +17,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Transform imageLocation;
     public GameObject towerObject;
     public Transform towerLocation;
+    public GameObject towerLocationObject;
     public Vector3 offsetTower;
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 mousePosition;
@@ -48,17 +49,18 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
-        if(isTowerPlaced == true)
+        if (isTowerPlaced == true)
         {
             Time.timeScale = 0;
             isTowerPlaced = false;
             GetComponent<UnityEngine.UI.Image>().sprite = null;
             UpdateTransform();
-            var createImage = Instantiate(towerObject, imageLocation) as GameObject;
+            var createImage = Instantiate(towerObject, imageLocation.transform) as GameObject;
             Time.timeScale = 1;
         }
 
     }
+
 
     private void UpdateTransform()
     {
@@ -78,7 +80,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         inventory[6] = GameObject.Find("InventorySlot7");
         inventory[7] = GameObject.Find("InventorySlot8");
     }
-
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("NoSpawn") == collision.towerLocationObject)
+    //    {
+    //        isTowerPlaced = false;
+    //        slotController.isFull = true;
+    //    }
+    //}
     // Update is called once per frame
     void Update()
     {
@@ -86,6 +95,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             spawnPoint.transform.DetachChildren();
         }
+
         if (Input.GetMouseButton(0))
         {
             mousePosition = Input.mousePosition;

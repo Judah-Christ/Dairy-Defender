@@ -1350,7 +1350,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ShopButtonController: {fileID: 0}
   _buttonSlot: 1
   Towers:
   - {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
@@ -1388,7 +1387,7 @@ Transform:
   m_GameObject: {fileID: 6773195374952635329}
   serializedVersion: 2
   m_LocalRotation: {x: -0.09591291, y: 0.0006352957, z: -0.006625455, w: 0.99536747}
-  m_LocalPosition: {x: -6.1045628, y: 3.7244916, z: 0}
+  m_LocalPosition: {x: 23.395027, y: -5.7430058, z: 0}
   m_LocalScale: {x: 0.57574, y: 0.57574, z: 0.57574}
   m_ConstrainProportionsScale: 0
   m_Children:

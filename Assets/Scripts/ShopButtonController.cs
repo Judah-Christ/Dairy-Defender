@@ -59,6 +59,7 @@ public class ShopButtonController : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         SC = GetComponentInParent<ShopController>();
         ItemSetup();
         inventory[0] = GameObject.Find("InventorySlot1");

@@ -8,6 +8,7 @@ TagManager:
   - Turret
   - Objective
   - Soda
+  - NoSpawn
   layers:
   - Default
   - TransparentFX

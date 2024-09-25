@@ -15,7 +15,6 @@ public class UpgradeController : MonoBehaviour
 
     public GameObject upgradePanel;
     public GameObject[] inventory = new GameObject[8];
-    public ShopButtonController ShopButtonController;
     [SerializeField] private ButtonSlot _buttonSlot;
     public List<GameItem> Towers = new List<GameItem>();
     private PlayerTurret playerTurret;

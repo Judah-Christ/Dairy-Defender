@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using Unity.Services.Analytics.Internal;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Transform parentAfterDrag;
     private Vector3 mousePosition;
     [SerializeField] private GameObject spawnPoint;
+    public GameObject[] inventory = new GameObject[8];
 
 
 
@@ -40,9 +42,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
-        //imageLocation.transform.position = Input.mousePosition;
-       
-        
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -70,8 +69,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     // Start is called before the first frame update
     void Start()
     {
-        
-        //imageRectTransform.
+        inventory[0] = GameObject.Find("InventorySlot1");
+        inventory[1] = GameObject.Find("InventorySlot2");
+        inventory[2] = GameObject.Find("InventorySlot3");
+        inventory[3] = GameObject.Find("InventorySlot4");
+        inventory[4] = GameObject.Find("InventorySlot5");
+        inventory[5] = GameObject.Find("InventorySlot6");
+        inventory[6] = GameObject.Find("InventorySlot7");
+        inventory[7] = GameObject.Find("InventorySlot8");
     }
 
     // Update is called once per frame
@@ -86,8 +91,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             mousePosition = Input.mousePosition;
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             imageLocation.transform.position = Vector2.Lerp(transform.position, mousePosition, 10f);
-            
-            //transform.position = Vector2.Lerp(transform.position, mousePosition);
         }
     }
 }

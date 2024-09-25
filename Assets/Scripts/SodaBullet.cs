@@ -5,19 +5,20 @@ using UnityEngine;
 public class SodaBullet : MonoBehaviour
 {
 
-    public Transform targets;
-    [Range(1, 10)]
-    [SerializeField] private float lifetime = 10f;
+    //public Transform targets;
+    //[Range(1, 10)]
+    //[SerializeField] private float lifetime = 10f;
+    public GameObject upgradePanel;
 
     // Start is called before the first frame update
 
-    private Rigidbody2D rb;
-    public Vector2 move;
+    //private Rigidbody2D rb;
+    //public Vector2 move;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, lifetime);
+        //rb = GetComponent<Rigidbody2D>();
+        //Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame
@@ -27,19 +28,24 @@ public class SodaBullet : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
+    //private void FixedUpdate()
+    //{
        
-        rb.position = transform.up ;
+    //    rb.position = transform.up ;
 
-    }
+    //}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            //Destroy(gameObject);
-
-        }
+        upgradePanel.SetActive(true);
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Enemy")
+    //    {
+    //        //Destroy(gameObject);
+
+    //    }
+    //}
 }

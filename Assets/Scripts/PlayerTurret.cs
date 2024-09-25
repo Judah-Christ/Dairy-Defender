@@ -16,7 +16,7 @@ public class PlayerTurret : MonoBehaviour
     [SerializeField] private GameObject bullet;
     private Transform firingPoint;
     [Range(0.1f, 2f)]
-    [SerializeField] private float firingSpeed = 0.5f;
+    [SerializeField] public float firingSpeed = 0.5f;
     [SerializeField] private float _fireTimer;
     private float fireTimerOrig;
     private float sighted = 8f;
@@ -26,6 +26,7 @@ public class PlayerTurret : MonoBehaviour
     private bool isShootOnCD;
     private bool isPlayerNear;
     private float _maxRange;
+    public GameObject upgardePanel;
 
     
     
@@ -42,7 +43,15 @@ public class PlayerTurret : MonoBehaviour
         firingPoint = gameObject.GetComponentInChildren<Transform>();
 
     }
-   
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            upgardePanel.SetActive(true);
+        }
+    }
+
     private void RotateBasedOnMouse()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

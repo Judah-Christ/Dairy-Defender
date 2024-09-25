@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Composites;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class ShopButtonController : MonoBehaviour
 {
@@ -27,12 +28,16 @@ public class ShopButtonController : MonoBehaviour
 
     public GameObject[] inventory = new GameObject[8];
     bool itemAdded = false;
+    public bool isPickUp = false;
+    [SerializeField] private GameManager gameManager;
+
+
 
     public void AddTower()
     {
         for (int i = 0; i < inventory.Length; i++)
         {
-            if (inventory[i].GetComponent<SlotController>().isFull == false)
+            if (inventory[i].GetComponent<SlotController>().isFull == false && isPickUp == false)
             {
                 Debug.Log(inventory[i]);
                 inventory[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
@@ -43,7 +48,7 @@ public class ShopButtonController : MonoBehaviour
                 itemAdded = true;
                 break;
             }
-
+            
         }
 
         if (!itemAdded)
@@ -56,7 +61,14 @@ public class ShopButtonController : MonoBehaviour
     {
         SC = GetComponentInParent<ShopController>();
         ItemSetup();
-
+        inventory[0] = GameObject.Find("InventorySlot1");
+        inventory[1] = GameObject.Find("InventorySlot2");
+        inventory[2] = GameObject.Find("InventorySlot3");
+        inventory[3] = GameObject.Find("InventorySlot4");
+        inventory[4] = GameObject.Find("InventorySlot5");
+        inventory[5] = GameObject.Find("InventorySlot6");
+        inventory[6] = GameObject.Find("InventorySlot7");
+        inventory[7] = GameObject.Find("InventorySlot8");
     }
 
     private void ItemSetup()
@@ -87,27 +99,41 @@ public class ShopButtonController : MonoBehaviour
         switch( _buttonSlot)
         {
             case ButtonSlot.ONE:
-                AddTower();
+                if(shopItem.itemCost <= gameManager.Coins)
+                {
+                    gameManager.Coins -= shopItem.itemCost;
+                    AddTower();
+                    Debug.Log("purchased");
+                }
                 break;
             case ButtonSlot.TWO:
-                AddTower();
+                if(shopItem.itemCost <= gameManager.Coins)
+                {
+                    gameManager.Coins -= shopItem.itemCost;
+                    AddTower();
+                    Debug.Log("purchased");
+                }
                 break;
             case ButtonSlot.THREE:
-                AddTower();
+                if(shopItem.itemCost <= gameManager.Coins)
+                {
+                    gameManager.Coins -= shopItem.itemCost;
+                    AddTower();
+                    Debug.Log("purchased");
+                }
                 break;
             case ButtonSlot.FOUR:
-                AddTower();
+                if(shopItem.itemCost <= gameManager.Coins)
+                {
+                    gameManager.Coins -= shopItem.itemCost;
+                    AddTower();
+                    Debug.Log("purchased");
+                }
                 break;
 
         }
 
     }
-
-    public void PlaceTower()
-    {
-        
-    }
-
 
     public enum ButtonSlot
     {

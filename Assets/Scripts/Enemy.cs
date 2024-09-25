@@ -44,6 +44,10 @@ public class Enemy : MonoBehaviour
         if (collision.transform.tag == "Soda" && !isflyEnemy)
         {
             agent.speed /= 2;
+            if(collision.GetComponent<UpgradeController>().isUpgraded == true)
+            {
+                agent.speed /= 4;
+            }
         }
     }
 

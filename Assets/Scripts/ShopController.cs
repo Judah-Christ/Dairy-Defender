@@ -39,19 +39,19 @@ public class ShopController : MonoBehaviour
         if (shop == null)
         {
             buttonController.towerMenu.SetActive(false);
-            buttonController.upgradeMenu.SetActive(false);
+            //buttonController.upgradeMenu.SetActive(false);
         }
         else
         {
             shop.SetActive(false);
             buttonController.towerMenu.SetActive(false);
-            buttonController.upgradeMenu.SetActive(false);
+            //buttonController.upgradeMenu.SetActive(false);
         }
     }
 
     public void RollShop()
     {
-        if (ShopItems.Count > 4)
+        if (ShopItems.Count > 3)
         {
             isShopFull = true;
             return;

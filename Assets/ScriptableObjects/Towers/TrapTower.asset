@@ -16,6 +16,8 @@ MonoBehaviour:
   itemObject: {fileID: 9009953485304840891, guid: 55232a4ce6cee334a93ab27e7d53b96d, type: 3}
   itemSprite: {fileID: 21300000, guid: 7468923b7bdcc944282c0abaa4ee5cc0, type: 3}
   itemImage: {fileID: 192147441556971294, guid: ce678d5490ad0da40814511ae4334138, type: 3}
-  itemCost: 4
+  itemCost: 8
   itemType: 0
   Health: 10
+  itemTransform: {fileID: 0}
+  itemUpgradeCost: 4

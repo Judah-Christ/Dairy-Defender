@@ -13,7 +13,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public UnityEngine.UI.Image image;
     public SlotController slotController;
     private bool isTowerPlaced = false;
-    public RectInspector imageRectTransform;
     public Transform imageLocation;
     public GameObject towerObject;
     public Transform towerLocation;

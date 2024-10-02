@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tower: {fileID: 6773195374952635329}
   image: {fileID: 0}
-  addItem: {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
+  addItem: {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
   upgradePanel: {fileID: 1912986879507551760}
   inventory:
   - {fileID: 0}
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _buttonSlot: 1
+  upgradeSlot: 1
   Towers:
   - {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
   - {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 6014198085192167611}
   m_Layer: 0
   m_Name: SodaTower
-  m_TagString: Turret
+  m_TagString: Soda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1387,7 +1387,7 @@ Transform:
   m_GameObject: {fileID: 6773195374952635329}
   serializedVersion: 2
   m_LocalRotation: {x: -0.09591291, y: 0.0006352957, z: -0.006625455, w: 0.99536747}
-  m_LocalPosition: {x: 23.395027, y: -5.7430058, z: 0}
+  m_LocalPosition: {x: 53.93123, y: -6.4619384, z: 0}
   m_LocalScale: {x: 0.57574, y: 0.57574, z: 0.57574}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -12,10 +12,11 @@ public class UpgradeController : MonoBehaviour
     public GameObject tower;
     public Sprite image;
     [SerializeField] private GameItem addItem;
+    private GameObject addTowerItem;
 
     public GameObject upgradePanel;
     public GameObject[] inventory = new GameObject[8];
-    [SerializeField] private ButtonSlot _buttonSlot;
+    [SerializeField] private UpgradeSlot upgradeSlot;
     public List<GameItem> Towers = new List<GameItem>();
     private PlayerTurret playerTurret;
     private SodaBullet sodaBullet;
@@ -36,17 +37,15 @@ public class UpgradeController : MonoBehaviour
         inventory[7] = GameObject.Find("InventorySlot8");
     }
 
-    public void AddTowerAgain()
+    public void AddTowerAgain1()
     {
         for (int i = 0; i < inventory.Length; i++)
         {
             if (inventory[i].GetComponent<SlotController>().isFull == false)
             {
                 Debug.Log(inventory[i]);
-                inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = addItem.itemSprite;
-                inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = addItem.itemObject;
-                inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject.transform.position =
-                    inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().imageLocation.transform.position;
+                inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = Towers[0].itemSprite;
+                inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = Towers[0].itemObject;
                 inventory[i].GetComponent<SlotController>().isFull = true;
                 break;
             }
@@ -57,40 +56,48 @@ public class UpgradeController : MonoBehaviour
 
     }
 
+    public void AddTowerAgain2()
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i].GetComponent<SlotController>().isFull == false)
+            {
+                Debug.Log(inventory[i]);
+                inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = addItem.itemSprite;
+                inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = addItem.itemObject;
+                inventory[i].GetComponent<SlotController>().isFull = true;
+                break;
+            }
+        }
+        Destroy(tower);
+        Destroy(upgradePanel);
+
+
+    }
+
     public void ButtonPress()
     {
-        switch (_buttonSlot)
+        switch (upgradeSlot)
         {
-            case ButtonSlot.ONE:
-                addItem.itemSprite = Towers[0].itemSprite;
-                addItem.itemObject = Towers[0].itemObject;
-                AddTowerAgain();
-                if(addItem.itemObject == tower)
-                {
-                    Destroy(tower);
-                    Destroy(upgradePanel);
-                }
-                
+            case UpgradeSlot.ONE:
+                Debug.Log("Only one");
+                AddTowerAgain1();
+                Destroy(tower);
+                Destroy(upgradePanel);                
                 break;
-            case ButtonSlot.TWO:
-                addItem.itemObject = Towers[1].itemObject;
-                addItem.itemSprite = Towers[1].itemSprite;
-                if (addItem.itemObject == tower)
-                {
-                    Destroy(tower);
-                    Destroy(upgradePanel);
-                }
-                AddTowerAgain();
+            case UpgradeSlot.TWO:
+                AddTowerAgain2();
+                Destroy(tower);
                 break;
-            case ButtonSlot.THREE:
+            case UpgradeSlot.THREE:
                 addItem.itemObject = Towers[2].itemObject;
                 addItem.itemSprite = Towers[2].itemSprite;
-                AddTowerAgain();
+                //AddTowerAgain();
                 break;
-            case ButtonSlot.FOUR:
+            case UpgradeSlot.FOUR:
                 addItem.itemObject = Towers[3].itemObject;
                 addItem.itemSprite = Towers[3].itemSprite;
-                AddTowerAgain();
+                //AddTowerAgain();
                 break;
 
         }
@@ -98,9 +105,9 @@ public class UpgradeController : MonoBehaviour
 
     public void UpgradeButtonPress()
     {
-        switch (_buttonSlot)
+        switch (upgradeSlot)
         {
-            case ButtonSlot.ONE:
+            case UpgradeSlot.ONE:
                 addItem.itemUpgradeCost = Towers[0].itemUpgradeCost;
                 if (addItem.itemUpgradeCost < gameManager.Coins)
                 {
@@ -109,7 +116,7 @@ public class UpgradeController : MonoBehaviour
                 }
                 
                 break;
-            case ButtonSlot.TWO:
+            case UpgradeSlot.TWO:
                 addItem.itemUpgradeCost = Towers[1].itemUpgradeCost;
                 if (addItem.itemUpgradeCost < gameManager.Coins)
                 {
@@ -117,16 +124,16 @@ public class UpgradeController : MonoBehaviour
                     gameManager.RemoveCoin(addItem.itemUpgradeCost);
                 }
                 break;
-            case ButtonSlot.THREE:
+            case UpgradeSlot.THREE:
                 Debug.Log("NO UPGRADE YET!");
                 break;
-            case ButtonSlot.FOUR:
+            case UpgradeSlot.FOUR:
                 Debug.Log("NO UPGRADE YET!");
                 break;
 
         }
     }
-    public enum ButtonSlot
+    public enum UpgradeSlot
     {
         ONE,
         TWO,

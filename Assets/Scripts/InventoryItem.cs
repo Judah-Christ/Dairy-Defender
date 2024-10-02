@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -20,9 +21,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public GameObject towerLocationObject;
     public Vector3 offsetTower;
     [HideInInspector] public Transform parentAfterDrag;
-    private Vector3 mousePosition;
-    [SerializeField] private GameObject spawnPoint;
     public GameObject[] inventory = new GameObject[8];
+    [SerializeField] private ItemSpawnLocationController spawnLocationController;
+    [SerializeField] private PlayerInput playerInput;
+    private InputAction mousePosition;
+
 
 
 
@@ -32,39 +35,34 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
-        if (slotController.isFull == true)
-        {
-            slotController.isFull = false;
-            isTowerPlaced = true;
-        }
 
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        image.transform.position = mousePosition.ReadValue< Vector2>();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
-        if (isTowerPlaced == true)
+        isTowerPlaced = true;
+        if (spawnLocationController.canPlace == true)
         {
+            slotController.isFull = false;
             Time.timeScale = 0;
             isTowerPlaced = false;
-            GetComponent<UnityEngine.UI.Image>().sprite = null;
-            UpdateTransform();
-            var createImage = Instantiate(towerObject, imageLocation.transform) as GameObject;
+            var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
+                Quaternion.identity) as GameObject;
+            image.sprite = null;
             Time.timeScale = 1;
         }
+        else 
+        {
+            transform.SetParent(parentAfterDrag);
+        }
 
-    }
-
-
-    private void UpdateTransform()
-    {
-        imageLocation.transform.position += offsetTower;
     }
 
 
@@ -79,28 +77,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         inventory[5] = GameObject.Find("InventorySlot6");
         inventory[6] = GameObject.Find("InventorySlot7");
         inventory[7] = GameObject.Find("InventorySlot8");
+        playerInput.currentActionMap.Enable();
+        mousePosition = playerInput.currentActionMap.FindAction("MousePosition");
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("NoSpawn") == collision.towerLocationObject)
-    //    {
-    //        isTowerPlaced = false;
-    //        slotController.isFull = true;
-    //    }
-    //}
-    // Update is called once per frame
+
     void Update()
     {
-        if (spawnPoint.transform.childCount > 0)
-        {
-            spawnPoint.transform.DetachChildren();
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            mousePosition = Input.mousePosition;
-            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            imageLocation.transform.position = Vector2.Lerp(transform.position, mousePosition, 10f);
-        }
+        
     }
 }

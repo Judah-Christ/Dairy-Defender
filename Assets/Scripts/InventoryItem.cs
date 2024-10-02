@@ -25,6 +25,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField] private ItemSpawnLocationController spawnLocationController;
     [SerializeField] private PlayerInput playerInput;
     private InputAction mousePosition;
+    private bool isDragging = false;
 
 
 
@@ -40,12 +41,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        image.transform.position = mousePosition.ReadValue< Vector2>();
+        isDragging = true;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         image.raycastTarget = true;
+        isDragging = false;
         transform.SetParent(parentAfterDrag);
         isTowerPlaced = true;
         if (spawnLocationController.canPlace == true)
@@ -55,7 +57,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             isTowerPlaced = false;
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
-            image.sprite = null;
+            //image.sprite = null;
             Time.timeScale = 1;
         }
         else 
@@ -83,6 +85,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     void Update()
     {
-        
+        if(isDragging == true)
+        {
+            image.transform.position = mousePosition.ReadValue<Vector2>();
+        }
     }
 }

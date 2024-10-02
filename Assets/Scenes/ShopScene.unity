@@ -834,6 +834,10 @@ PrefabInstance:
       propertyPath: towerLocationObject
       value: 
       objectReference: {fileID: 1871029831}
+    - target: {fileID: 462070045438406160, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+      propertyPath: spawnLocationController
+      value: 
+      objectReference: {fileID: 1871029834}
     - target: {fileID: 1259237904130449300, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2956318

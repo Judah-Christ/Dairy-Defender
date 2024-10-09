@@ -21,8 +21,8 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return wait;
             int rand = Random.Range(0,enemyPrefabs.Length);
-            GameObject enemyToSpawn = enemyPrefabs[rand];
-            Instantiate(enemyToSpawn,transform.position,Quaternion.identity);
+            GameObject enemyToSpawn = Instantiate(enemyPrefabs[rand],transform.position,Quaternion.identity);
+            enemyToSpawn.layer = gameObject.layer;
         }
     }
 

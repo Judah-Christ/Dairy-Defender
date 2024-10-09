@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3766066238190316995}
   - component: {fileID: -7391489026083791062}
   - component: {fileID: -7852653258134223156}
+  - component: {fileID: 7913000739030278833}
   m_Layer: 3
   m_Name: FlyEnemy
   m_TagString: Enemy
@@ -214,3 +215,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7913000739030278833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6138737970285467288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbac5de109a2ad4586a5d61212da688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

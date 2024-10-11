@@ -6,12 +6,12 @@ using UnityEngine.AI;
 public class EnemyLevelChange : MonoBehaviour
 {
 
-    private UnityEngine.AI.NavMeshAgent agent;
+    private NavMeshAgent agent;
     private bool isUsingLadder = false;
 
     void Start()
     {
-        agent = GetComponent<NavMeshComponent>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
 

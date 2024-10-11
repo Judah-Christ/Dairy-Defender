@@ -43,15 +43,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Non-visible
+    uniqueID: 2813064229
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: AbovePlayer
+  - name: OnFloor
+    uniqueID: 2135862991
+    locked: 0
+  - name: AboveOnFloor
     uniqueID: 380956431
     locked: 0
-  - name: Player
+  - name: OnCounter
     uniqueID: 1361098101
     locked: 0
-  - name: Bridges
-    uniqueID: 990900047
+  - name: AboveOnCounter
+    uniqueID: 1728246671
     locked: 0

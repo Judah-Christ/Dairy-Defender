@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
     public float speed = 10;
     private float moveDirection;
     public float speedX = 10;
+    float moveInput;
+    [SerializeField] float jumpForce;
+    Rigidbody2D rb;
+    private bool isJumping = false;
+    private float jumpStartY;
 
     private float timeStart;
     private float timeUpdate;
@@ -42,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     private Transform targets;
 
+    public bool isGrounded = true;
+    [SerializeField] private float gravityScale = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +76,8 @@ public class PlayerController : MonoBehaviour
         isTurretMounted = false;
 
         fireTimerOrig = _fireTimer;
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -191,21 +200,40 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (isPlayerMoving)
+        moveInput = Input.GetAxis("Horizontal");
+        if(isJumping)
         {
-            moveDirection = upDown.ReadValue<float>();
-            player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed * moveDirection);
-
-        }
-        else if (isPlayerMovingSide)
-        {
-            moveDirection = rightLeft.ReadValue<float>();
-            player.GetComponent<Rigidbody2D>().velocity = new Vector2(-speedX * moveDirection, 0);
-           
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         }
         else
         {
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+            if(isGrounded)
+            {
+                rb.gravityScale = 0;
+            }
+            else
+            {
+                rb.gravityScale = 1f;
+            }
+            
+            if (isPlayerMoving)
+            {
+                moveDirection = upDown.ReadValue<float>();
+                player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed * moveDirection);
+
+            }
+            else if (isPlayerMovingSide)
+            {
+                moveDirection = rightLeft.ReadValue<float>();
+                player.GetComponent<Rigidbody2D>().velocity = new Vector2(-speedX * moveDirection, 0);
+           
+            }
+            else
+            {
+                player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            }
         }
 
         if (isTurretMounted)
@@ -219,6 +247,29 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        {
+            StartCoroutine(Jump());
+        }
+    }
+
+    private IEnumerator Jump()
+    {
+        isJumping = true;
+        jumpStartY = transform.position.y;
+        rb.velocity = Vector2.up * jumpForce;
+
+        while (rb.velocity.y > 0 || transform.position.y > jumpStartY)
+        {
+            yield return null;
+        }
+
+        isJumping = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == ("Turret"))

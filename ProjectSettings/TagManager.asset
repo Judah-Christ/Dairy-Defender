@@ -9,7 +9,9 @@ TagManager:
   - Objective
   - Soda
   - NoSpawn
+  - FloorBoundaries
   - FloorMask
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Floor
   - Links
   - FloorMask
-  - 
+  - OnLadder
   - 
   - 
   - 

@@ -33,10 +33,11 @@ public class PlayerController : MonoBehaviour
     public float speed = 10;
     private float moveDirection;
     public float speedX = 10;
-    float moveInput;
+    float horz;
+    float vert;
     [SerializeField] float jumpForce;
     Rigidbody2D rb;
-    private bool isJumping = false;
+    public bool isInAir = false;
     private float jumpStartY;
 
     private float timeStart;
@@ -46,9 +47,15 @@ public class PlayerController : MonoBehaviour
 
 
     private Transform targets;
-
-    public bool isGrounded = true;
-    [SerializeField] private float gravityScale = 1f;
+    private Transform layerSwitchTransform;
+    private SpriteRenderer sr;
+    public Vector3 origSize = Vector3.one;
+    public Vector3 smallSize = new Vector3(0.75f, 0.75f, 0.75f);
+    private float sizeChangeSpeed = 1.5f;
+    public bool isOnSurface = true;
+    private LadderClimb ladderClimb;
+    private float i = 0;
+    public float climbSpeed = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +85,10 @@ public class PlayerController : MonoBehaviour
         fireTimerOrig = _fireTimer;
 
         rb = GetComponent<Rigidbody2D>();
+
+        layerSwitchTransform = transform;
+        sr = GetComponentInChildren<SpriteRenderer>();
+        ladderClimb = GetComponent<LadderClimb>();
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -200,23 +211,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        if(isJumping)
+        horz = Input.GetAxis("Horizontal");
+        vert = Input.GetAxis("Vertical");
+        if (isInAir)
         {
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            rb.velocity = new Vector2(horz * speed, rb.velocity.y);
+            rb.gravityScale = 1f;
+        }
+        else if (ladderClimb.isClimbing)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, vert * climbSpeed);
+            rb.gravityScale = 0f;
         }
         else
         {
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-
-            if(isGrounded)
-            {
-                rb.gravityScale = 0;
-            }
-            else
-            {
-                rb.gravityScale = 1f;
-            }
+            rb.velocity = new Vector2(horz * speed, rb.velocity.y);
+            rb.gravityScale = 0f;
             
             if (isPlayerMoving)
             {
@@ -250,24 +260,94 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && !isInAir)
         {
+            isInAir = true;
             StartCoroutine(Jump());
         }
     }
 
     private IEnumerator Jump()
-    {
-        isJumping = true;
+    {   
         jumpStartY = transform.position.y;
         rb.velocity = Vector2.up * jumpForce;
+        Debug.Log("Jump Works");
 
-        while (rb.velocity.y > 0 || transform.position.y > jumpStartY)
+        yield return new WaitForFixedUpdate();
+
+        while (transform.position.y > jumpStartY)
+        {   
+            yield return null;
+            Debug.Log("While loop works.");
+        }
+
+        if (!isOnSurface && gameObject.layer == LayerMask.NameToLayer("Counter"))
         {
+            StartCoroutine(Fall());
+            Debug.Log("Fall registered");
+        }
+        else
+        {
+            isInAir = false;
+            Debug.Log("isInAir set to false by jump coroutine");
+            isOnSurface = true;
+        }
+    }
+
+    public IEnumerator Fall()
+    {
+        float startY = transform.position.y;
+        
+        if (gameObject.layer == LayerMask.NameToLayer("Counter"))
+        {
+        LayerSwitch();
+        }
+
+        while (transform.position.y > startY - 3 && transform.position.y >= -14.8f)
+        {
+            rb.gravityScale = 1;
+            rb.velocity = new Vector2(horz * speed, rb.velocity.y);
+
             yield return null;
         }
 
-        isJumping = false;
+        isInAir = false;
+        isOnSurface = true;
+    }
+
+    public void LayerSwitch()
+    {
+        bool movingToCounter = gameObject.layer == LayerMask.NameToLayer("Floor");
+
+        if (movingToCounter)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Counter");
+            sr.sortingLayerName = "OnCounter";
+            sr.sortingOrder = 5;
+            StartCoroutine(ChangeSize(origSize));
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Floor");
+            sr.sortingLayerName = "OnFloor";
+            sr.sortingOrder = 5;
+            StartCoroutine(ChangeSize(smallSize));
+        }
+    }
+
+    public IEnumerator ChangeSize(Vector3 targetSize)
+    {
+        Vector3 startSize = layerSwitchTransform.localScale;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 1f / sizeChangeSpeed)
+        {
+            elapsedTime += Time.deltaTime * sizeChangeSpeed;
+            layerSwitchTransform.localScale = Vector3.Lerp(startSize, targetSize, elapsedTime);
+            yield return null;
+        }
+
+        layerSwitchTransform.localScale = targetSize;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

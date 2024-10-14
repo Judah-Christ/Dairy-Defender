@@ -7,18 +7,18 @@ public class EnemyLevelChange : MonoBehaviour
 {
 
     private NavMeshAgent agent;
-    private Transform enemyTransform;
-    private SpriteRenderer spriteRenderer;
+    private Transform enemyUseLadder;
+    private SpriteRenderer sr;
     public Vector3 originalSize = Vector3.one;
     public Vector3 shrunkSize = new Vector3(0.75f, 0.75f, 0.75f);
-    private float sizeChangeSpeed = 2f;
+    private float sizeChangeSpeed = 1.5f;
     private bool isUsingLadder = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        enemyTransform = transform;
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        enemyUseLadder = transform;
+        sr = GetComponentInChildren<SpriteRenderer>();
     }
 
 
@@ -52,14 +52,14 @@ public class EnemyLevelChange : MonoBehaviour
         if (movingToCounter)
         {
             gameObject.layer = LayerMask.NameToLayer("Counter");
-            spriteRenderer.sortingLayerName = "OnCounter";
-            spriteRenderer.sortingOrder = 0;
+            sr.sortingLayerName = "OnCounter";
+            sr.sortingOrder = 0;
         }
         else
         {
             gameObject.layer = LayerMask.NameToLayer("Floor");
-            spriteRenderer.sortingLayerName = "OnFloor";
-            spriteRenderer.sortingOrder = 0;
+            sr.sortingLayerName = "OnFloor";
+            sr.sortingOrder = 0;
         }
 
         isUsingLadder = false;
@@ -67,16 +67,16 @@ public class EnemyLevelChange : MonoBehaviour
 
     private IEnumerator ChangeSize(Vector3 targetSize)
     {
-        Vector3 startSize = enemyTransform.localScale;
+        Vector3 startSize = enemyUseLadder.localScale;
         float elapsedTime = 0f;
 
         while (elapsedTime < 1f / sizeChangeSpeed)
         {
             elapsedTime += Time.deltaTime * sizeChangeSpeed;
-            enemyTransform.localScale = Vector3.Lerp(startSize, targetSize, elapsedTime * sizeChangeSpeed);
+            enemyUseLadder.localScale = Vector3.Lerp(startSize, targetSize, elapsedTime);
             yield return null;
         }
 
-        enemyTransform.localScale = targetSize;
+        enemyUseLadder.localScale = targetSize;
     }
 }

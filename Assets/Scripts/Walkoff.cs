@@ -7,17 +7,18 @@ public class Walkoff : MonoBehaviour
     private PlayerController playerController;
     Rigidbody2D rb;
     private float moveInput;
-    private bool isOnFloor = false;
+    private LadderClimb ladderClimb;
 
     void Start()
     {
         playerController = GetComponentInParent<PlayerController>();
         rb = GetComponentInParent<Rigidbody2D>();
+        ladderClimb = GetComponent<LadderClimb>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("FloorMask") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Counter"))
+        if (collision.CompareTag("FloorMask") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
             playerController.isOnSurface = false;
             
@@ -27,17 +28,17 @@ public class Walkoff : MonoBehaviour
                 moveInput = Input.GetAxis("Horizontal");
                 rb.velocity = new Vector2(moveInput * playerController.speed, rb.velocity.y);
                 StartCoroutine(playerController.Fall());
-                isOnFloor = true;
             }
         }
-    }
 
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.CompareTag("FloorBoundaries"))
+        if (collision.CompareTag("FloorBoundaries") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Floor"))
         {
             playerController.isOnSurface = true;
-            isOnFloor = false;
+        }
+
+        if (collision.CompareTag("CounterMask") && !playerController.isOnSurface)
+        {
+            playerController.isOnSurface = true;
         }
     }
 }

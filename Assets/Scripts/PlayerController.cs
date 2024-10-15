@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         layerSwitchTransform = transform;
         sr = GetComponentInChildren<SpriteRenderer>();
-        ladderClimb = GetComponent<LadderClimb>();
+        ladderClimb = GetComponentInChildren<LadderClimb>();
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -218,8 +218,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(horz * speed, rb.velocity.y);
             rb.gravityScale = 1f;
         }
-        else if (ladderClimb.isClimbing)
+        else if (ladderClimb.isClimbing && gameObject.layer == LayerMask.NameToLayer("OnLadder"))
         {
+            isInAir = false;
             rb.velocity = new Vector2(rb.velocity.x, vert * climbSpeed);
             rb.gravityScale = 0f;
         }
@@ -278,18 +279,15 @@ public class PlayerController : MonoBehaviour
         while (transform.position.y > jumpStartY)
         {   
             yield return null;
-            Debug.Log("While loop works.");
         }
 
-        if (!isOnSurface && gameObject.layer == LayerMask.NameToLayer("Counter"))
+        if (!isOnSurface && gameObject.layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
             StartCoroutine(Fall());
-            Debug.Log("Fall registered");
         }
         else
         {
             isInAir = false;
-            Debug.Log("isInAir set to false by jump coroutine");
             isOnSurface = true;
         }
     }
@@ -297,13 +295,11 @@ public class PlayerController : MonoBehaviour
     public IEnumerator Fall()
     {
         float startY = transform.position.y;
-        
-        if (gameObject.layer == LayerMask.NameToLayer("Counter"))
-        {
+    
         LayerSwitch();
-        }
+        StartCoroutine(IgnoreFloorBoundariesCollision());
 
-        while (transform.position.y > startY - 3 && transform.position.y >= -14.8f)
+        while (transform.position.y > startY - 3.4 && transform.position.y >= -14.8f)
         {
             rb.gravityScale = 1;
             rb.velocity = new Vector2(horz * speed, rb.velocity.y);
@@ -313,6 +309,18 @@ public class PlayerController : MonoBehaviour
 
         isInAir = false;
         isOnSurface = true;
+    }
+
+    private IEnumerator IgnoreFloorBoundariesCollision()
+    {
+        GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("TempIgnore");
+
+        for (int i = 0; i <= 1000; i++)
+        {
+            yield return null;
+        }
+
+        GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
     }
 
     public void LayerSwitch()

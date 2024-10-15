@@ -7,10 +7,12 @@ public class LadderClimb : MonoBehaviour
     public bool isClimbing = false;
     private SpriteRenderer sr;
     private Collider2D ladderCollider;
+    private Transform playerTransform;
 
     void Start()
     {
-        sr = GetComponentInChildren<SpriteRenderer>();
+        sr = GameObject.Find("SC_Front").GetComponent<SpriteRenderer>();
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     void Update()
@@ -18,9 +20,9 @@ public class LadderClimb : MonoBehaviour
         if (isClimbing)
         {
             float ladderHeight = ladderCollider.bounds.size.y;
-            float currentHeight = transform.position.y - ladderCollider.bounds.min.y;
+            float currentHeight = playerTransform.position.y - ladderCollider.bounds.min.y;
             float scale = Mathf.Lerp(0.75f, 1f, currentHeight / ladderHeight);
-            transform.localScale = new Vector3(scale, scale, 1);
+            playerTransform.localScale = new Vector3(scale, scale, 1);
         }
     }
 
@@ -29,7 +31,7 @@ public class LadderClimb : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isClimbing = true;
-            gameObject.layer = LayerMask.NameToLayer("OnLadder");
+            GameObject.Find("Player").layer = LayerMask.NameToLayer("OnLadder");
             ladderCollider = collision;
         }
     }
@@ -40,15 +42,15 @@ public class LadderClimb : MonoBehaviour
         {
             ladderCollider = collision;
 
-            if (transform.position.y > ladderCollider.bounds.max.y)
+            if (playerTransform.position.y > ladderCollider.bounds.max.y)
             {
-                gameObject.layer = LayerMask.NameToLayer("Counter");
+                GameObject.Find("Player").layer = LayerMask.NameToLayer("Counter");
                 sr.sortingLayerName = "OnCounter";
                 sr.sortingOrder = 5;
             }
             else if (transform.position.y < ladderCollider.bounds.min.y)
             {
-                gameObject.layer = LayerMask.NameToLayer("Floor");
+                GameObject.Find("Player").layer = LayerMask.NameToLayer("Floor");
                 sr.sortingLayerName = "OnFloor";
                 sr.sortingOrder = 5;
             }

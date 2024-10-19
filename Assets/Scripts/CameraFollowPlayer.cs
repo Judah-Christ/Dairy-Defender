@@ -1,31 +1,44 @@
+using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {
-    public float followSpeed = 10f;
-    public Transform target;
-    public float yOffset = 1.5f;
-    public float xOffset = 2f;
 
+    [SerializeField] CinemachineVirtualCamera primecam;
+    [SerializeField] CinemachineVirtualCamera[] virtcam;
+    [SerializeField] string triggerTag;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        SwitchToCamera(primecam);
     }
 
-    private void FixedUpdate()
+    private void SwitchToCamera(CinemachineVirtualCamera targetcamera)
     {
-        Vector3 newpos = new Vector3(target.position.x + xOffset, target.position.y + yOffset, -10);
-        transform.position = newpos;
+        foreach(CinemachineVirtualCamera camera in virtcam)
+        {
+            camera.enabled = camera == targetcamera;
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (collision.CompareTag(triggerTag))
+        {
+            CinemachineVirtualCamera targetcamera = collision.GetComponentInChildren<CinemachineVirtualCamera>();
+            SwitchToCamera (targetcamera);
+        }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag(triggerTag))
+        {
+            SwitchToCamera(primecam);
+        }
+    }
+
 
 }

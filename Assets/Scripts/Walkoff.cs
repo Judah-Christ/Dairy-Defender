@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Walkoff : MonoBehaviour
@@ -8,6 +7,7 @@ public class Walkoff : MonoBehaviour
     Rigidbody2D rb;
     private float moveInput;
     private LadderClimb ladderClimb;
+   
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class Walkoff : MonoBehaviour
         if (collision.CompareTag("FloorMask") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
             playerController.isOnSurface = false;
+           
             
             if(!playerController.isInAir)
             {
@@ -34,6 +35,7 @@ public class Walkoff : MonoBehaviour
         if (collision.CompareTag("FloorBoundaries") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Floor"))
         {
             playerController.isOnSurface = true;
+
         }
 
         if (collision.CompareTag("CounterMask") && !playerController.isOnSurface)
@@ -42,3 +44,4 @@ public class Walkoff : MonoBehaviour
         }
     }
 }
+

@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     private LadderClimb ladderClimb;
     private float i = 0;
     public float climbSpeed = 3f;
+    private Collider2D counterCollision;
+    bool soundPlayed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -278,6 +280,11 @@ public class PlayerController : MonoBehaviour
 
         while (transform.position.y > jumpStartY)
         {   
+            if (!soundPlayed && rb.velocity.y < 0)
+            {
+                AudioManager.instance.PlayPausableSFX("FallFromCounterF");
+                soundPlayed = true;
+            }
             yield return null;
         }
 
@@ -287,15 +294,21 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PauseSFX();
             isInAir = false;
             isOnSurface = true;
+            soundPlayed = false;
         }
     }
 
     public IEnumerator Fall()
     {
+        if (!soundPlayed)
+        {
+            AudioManager.instance.PlayPausableSFX("FallFromCounterF");
+        }
         float startY = transform.position.y;
-    
+
         LayerSwitch();
         StartCoroutine(IgnoreFloorBoundariesCollision());
 
@@ -307,20 +320,29 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
+        AudioManager.instance.PauseSFX();
+        AudioManager.instance.PlaySFX("FallLandingThudF");
         isInAir = false;
         isOnSurface = true;
+        soundPlayed = false;
     }
 
-    private IEnumerator IgnoreFloorBoundariesCollision()
+    public IEnumerator IgnoreFloorBoundariesCollision()
     {
         GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("TempIgnore");
 
-        for (int i = 0; i <= 1000; i++)
+        for (int i = 0; i <= 730; i++)
         {
+            if (counterCollision != null && counterCollision.CompareTag("CounterMask") && i > 200)
+            {
+                GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
+            }
+
             yield return null;
         }
 
         GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
+        isOnSurface = true;
     }
 
     public void LayerSwitch()
@@ -364,6 +386,19 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerTouching = true;
             targets = collision.gameObject.transform;
+        }
+
+        if (collision.CompareTag("CounterMask"))
+        {
+            counterCollision = collision;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CounterMask"))
+        {
+            counterCollision = null;
         }
     }
 }

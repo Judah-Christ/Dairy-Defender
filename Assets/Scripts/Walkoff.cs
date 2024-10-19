@@ -8,6 +8,7 @@ public class Walkoff : MonoBehaviour
     Rigidbody2D rb;
     private float moveInput;
     private LadderClimb ladderClimb;
+    private bool backEdgeSwitch = false;
 
     void Start()
     {
@@ -31,14 +32,29 @@ public class Walkoff : MonoBehaviour
             }
         }
 
-        if (collision.CompareTag("FloorBoundaries") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Floor"))
+        if (collision.CompareTag("FloorBoundaries") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Floor") && !playerController.isInAir)
         {
             playerController.isOnSurface = true;
         }
 
-        if (collision.CompareTag("CounterMask") && !playerController.isOnSurface)
+        if (collision.CompareTag("CounterMask") && !playerController.isOnSurface && !backEdgeSwitch)
         {
             playerController.isOnSurface = true;
+        }
+
+        if (collision.CompareTag("BackEdge") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Counter"))
+        {
+            backEdgeSwitch = true;
+            rb.velocity = new Vector2(moveInput * playerController.speed, 0);
+            StartCoroutine(playerController.Fall());
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BackEdge"))
+        {
+            backEdgeSwitch = false;
         }
     }
 }

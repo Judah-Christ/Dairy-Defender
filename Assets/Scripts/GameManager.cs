@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         origTimer = objectiveTimer;
         StartWaves();
+        AudioManager.instance.PlayMusic("Adrián Berenguer - Potencial");
     }
 
     public void AddCoin(int amount)

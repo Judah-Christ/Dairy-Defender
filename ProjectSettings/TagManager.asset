@@ -13,6 +13,7 @@ TagManager:
   - FloorMask
   - Ladder
   - CounterMask
+  - BackEdge
   layers:
   - Default
   - TransparentFX

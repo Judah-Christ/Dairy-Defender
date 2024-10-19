@@ -1682,6 +1682,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1d331c72112b96745b6ab87fe61589e4, type: 2}
   isUpgraded: 0
   gameManager: {fileID: 0}
+  towerParent: {fileID: 0}
 --- !u!1 &8710466546614467251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,7 +1880,6 @@ MonoBehaviour:
   raycastMask:
     serializedVersion: 2
     m_Bits: 8
-  upgardePanel: {fileID: 6335045645252978876}
 --- !u!50 &673118385377826809
 Rigidbody2D:
   serializedVersion: 4

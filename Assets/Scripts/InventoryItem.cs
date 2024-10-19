@@ -50,14 +50,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         isDragging = false;
         transform.SetParent(parentAfterDrag);
         isTowerPlaced = true;
-        if (spawnLocationController.canPlace == true)
+        if (spawnLocationController.canPlace == true && slotController.isFull == true)
         {
             slotController.isFull = false;
             Time.timeScale = 0;
             isTowerPlaced = false;
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
-            //image.sprite = null;
+            image.sprite = null;
+            towerObject = null;
             Time.timeScale = 1;
         }
         else 

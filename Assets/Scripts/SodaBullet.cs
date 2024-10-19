@@ -35,14 +35,14 @@ public class SodaBullet : MonoBehaviour
 
     //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.CompareTag("Player"))
-        {
-            upgradePanel.SetActive(true);
-        }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.transform.CompareTag("Player"))
+    //    {
+    //        upgradePanel.SetActive(true);
+    //    }
         
-    }
+    //}
 
     //private void OnCollisionEnter2D(Collision2D collision)
     //{

@@ -18,15 +18,19 @@ public class UpgradeController : MonoBehaviour
     public GameObject[] inventory = new GameObject[8];
     [SerializeField] private UpgradeSlot upgradeSlot;
     public List<GameItem> Towers = new List<GameItem>();
-    private PlayerTurret playerTurret;
+    [SerializeField] private PlayerTurret playerTurret;
+    //private PlayerTurret playerTurret;
     private SodaBullet sodaBullet;
     public bool isUpgraded = false;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameObject towerParent;
+    [SerializeField] private TextController textController;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        textController = GameObject.Find("GameText").GetComponent<TextController>();
         inventory[0] = GameObject.Find("InventorySlot1");
         inventory[1] = GameObject.Find("InventorySlot2");
         inventory[2] = GameObject.Find("InventorySlot3");
@@ -83,7 +87,8 @@ public class UpgradeController : MonoBehaviour
                 Debug.Log("Only one");
                 AddTowerAgain1();
                 Destroy(tower);
-                Destroy(upgradePanel);                
+                Destroy(upgradePanel);
+                Destroy(towerParent);
                 break;
             case UpgradeSlot.TWO:
                 AddTowerAgain2();
@@ -111,7 +116,8 @@ public class UpgradeController : MonoBehaviour
                 addItem.itemUpgradeCost = Towers[0].itemUpgradeCost;
                 if (addItem.itemUpgradeCost < gameManager.Coins)
                 {
-                    playerTurret.firingSpeed += 0.1f;
+                    textController.UpdateCoins();
+                    playerTurret.firingSpeed += 0.5f;
                     gameManager.RemoveCoin(addItem.itemUpgradeCost);
                 }
                 
@@ -120,6 +126,7 @@ public class UpgradeController : MonoBehaviour
                 addItem.itemUpgradeCost = Towers[1].itemUpgradeCost;
                 if (addItem.itemUpgradeCost < gameManager.Coins)
                 {
+                    textController.UpdateCoins();
                     isUpgraded = true;
                     gameManager.RemoveCoin(addItem.itemUpgradeCost);
                 }

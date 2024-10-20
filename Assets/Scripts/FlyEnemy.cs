@@ -13,14 +13,14 @@ public class FlyEnemy : MonoBehaviour
     {
         target = FindAnyObjectByType<ObjectiveManager>().transform;
         rb = GetComponent<Rigidbody2D>();
-        speed = 2f;
+        speed =0.03f;
     }
 
     void Update()
     {
         if (target != null)
         {
-            rb.position = Vector3.MoveTowards(rb.position, target.position, .004f);
+            rb.position = Vector3.MoveTowards(rb.position, target.position, speed);
         }
     }
 }

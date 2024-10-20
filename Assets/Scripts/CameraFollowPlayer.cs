@@ -30,6 +30,7 @@ public class CameraFollowPlayer : MonoBehaviour
         {
             CinemachineVirtualCamera targetcamera = collision.GetComponentInChildren<CinemachineVirtualCamera>();
             SwitchToCamera (targetcamera);
+            print("other cam");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -37,6 +38,7 @@ public class CameraFollowPlayer : MonoBehaviour
         if (collision.CompareTag(triggerTag))
         {
             SwitchToCamera(primecam);
+            print("back to primcam");
         }
     }
 

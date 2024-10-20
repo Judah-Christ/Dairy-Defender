@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private InputAction rightLeft;
     private InputAction interact;
     private InputAction shooting;
+    private InputAction map;
     private Coroutine shoot;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firingPoint;
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private float timeUpdate;
 
     public float mouseSensitvity = 100f;
+    [SerializeField] CinemachineVirtualCamera Mapcam;
 
 
     private Transform targets;
@@ -64,7 +67,8 @@ public class PlayerController : MonoBehaviour
         upDown = PlayerControls.currentActionMap.FindAction("UpDown");
         rightLeft = PlayerControls.currentActionMap.FindAction("RightLeft");
         interact = PlayerControls.currentActionMap.FindAction("Interact");
-        shooting = PlayerControls.currentActionMap.FindAction("SHooting");
+        shooting = PlayerControls.currentActionMap.FindAction("Shooting");
+        map = PlayerControls.currentActionMap.FindAction("Map");
 
         upDown.started += UpDown_started;
         upDown.canceled += UpDown_canceled;
@@ -74,6 +78,8 @@ public class PlayerController : MonoBehaviour
         interact.canceled += Interact_canceled;
         shooting.canceled += Shooting_canceled;
         shooting.started += Shooting_started;
+        map.started += Map_started;
+        map.canceled += Map_canceled;
 
         isPlayerMoving = false;
         isPlayerMovingSide = false;
@@ -99,6 +105,16 @@ public class PlayerController : MonoBehaviour
     private void Shooting_canceled(InputAction.CallbackContext context)
     {
         //isShootOnCD = false;
+    }
+
+    private void Map_started(InputAction.CallbackContext context)
+    {
+        Mapcam.enabled = true;
+    }
+
+    private void Map_canceled(InputAction.CallbackContext context)
+    {
+        Mapcam.enabled = false;
     }
 
     private void UpDown_canceled(InputAction.CallbackContext context)

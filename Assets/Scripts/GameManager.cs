@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
     public void ObjectiveComplete()
     {
         EndWaves();
+        StartCoroutine(AudioManager.instance.FadeOut());
         SceneManager.LoadScene(1);
         Debug.Log("Objective Complete!");
     }

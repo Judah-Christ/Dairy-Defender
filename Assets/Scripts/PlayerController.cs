@@ -111,6 +111,10 @@ public class PlayerController : MonoBehaviour
     private void UpDown_started(InputAction.CallbackContext context)
     {
         isPlayerMoving = true;
+        if (isOnSurface)
+        {
+        AudioManager.instance.PlayPausableSFX("FootstepsF");
+        }
     }
     private void RightLeft_canceled(InputAction.CallbackContext context)
     {
@@ -120,6 +124,10 @@ public class PlayerController : MonoBehaviour
     private void RightLeft_started(InputAction.CallbackContext context)
     {
         isPlayerMovingSide = true;
+        if (isOnSurface)
+        {
+        AudioManager.instance.PlayPausableSFX("FootstepsF");
+        }
     }
     private void Interact_canceled(InputAction.CallbackContext context)
     {
@@ -245,6 +253,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                AudioManager.instance.PauseSFX();
                 player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
@@ -274,6 +283,7 @@ public class PlayerController : MonoBehaviour
     {   
         jumpStartY = transform.position.y;
         rb.velocity = Vector2.up * jumpForce;
+        AudioManager.instance.PauseSFX();
         Debug.Log("Jump Works");
 
         yield return new WaitForFixedUpdate();
@@ -298,6 +308,11 @@ public class PlayerController : MonoBehaviour
             isInAir = false;
             isOnSurface = true;
             soundPlayed = false;
+
+            if (isPlayerMovingSide)
+            {
+                AudioManager.instance.PlaySFX("FootstepsF");
+            }
         }
     }
 

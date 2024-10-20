@@ -141,6 +141,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   lootDrop: {fileID: 6472674490139302122, guid: 2f6d26ceafc37324f8ece0262ee0ad79, type: 3}
+  deathScream: {fileID: 8300000, guid: 4cad1c6116f0f6442bdf8f118f261266, type: 3}
+  deathScream1: {fileID: 8300000, guid: ffb70d4527087d644ba1a85c1011d7c8, type: 3}
+  deathScream2: {fileID: 8300000, guid: 0f98d0391135fa24a9f91afe51c205ec, type: 3}
+  deathScream3: {fileID: 8300000, guid: ecd4a177a22f4054697ac9e29bb73c39, type: 3}
+  deathScream4: {fileID: 8300000, guid: 0a946ffecf07a964e9b4623bda140867, type: 3}
+  deathScream5: {fileID: 8300000, guid: f40b370119daaae428df01c3fe06ab68, type: 3}
+  deathScream6: {fileID: 8300000, guid: 969749cdb6a8efb42ae470a24e22907a, type: 3}
+  deathScream7: {fileID: 8300000, guid: 56ea16c73fcc03546a5a114cea9700be, type: 3}
+  coinDrop: {fileID: 8300000, guid: 3d12784f6b1d42a4d92d74e1fe4cee81, type: 3}
 --- !u!60 &-5474241824688700714
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -257,7 +266,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9e853abaf987ea94bba8fd66fbf46913, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

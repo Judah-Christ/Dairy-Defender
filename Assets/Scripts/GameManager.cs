@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         origTimer = objectiveTimer;
         StartWaves();
+        AudioManager.instance.PlayMusic("Adrián Berenguer - Potencial");
     }
 
     public void AddCoin(int amount)
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     public void ObjectiveComplete()
     {
         EndWaves();
+        StartCoroutine(AudioManager.instance.FadeOut());
         SceneManager.LoadScene(1);
         Debug.Log("Objective Complete!");
     }

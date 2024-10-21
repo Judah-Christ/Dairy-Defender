@@ -343,7 +343,7 @@ public class PlayerController : MonoBehaviour
         LayerSwitch();
         StartCoroutine(IgnoreFloorBoundariesCollision());
 
-        while (transform.position.y > startY - 3.4 && transform.position.y >= -14.8f)
+        while (transform.position.y > startY - 3.6 && transform.position.y >= -14.8f)
         {
             rb.gravityScale = 1;
             rb.velocity = new Vector2(horz * speed, rb.velocity.y);
@@ -356,6 +356,7 @@ public class PlayerController : MonoBehaviour
         isInAir = false;
         isOnSurface = true;
         soundPlayed = false;
+        GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
     }
 
     public IEnumerator IgnoreFloorBoundariesCollision()
@@ -423,6 +424,11 @@ public class PlayerController : MonoBehaviour
         {
             counterCollision = collision;
         }
+
+        //if (collision.CompareTag("FloorBoundaries"))
+        //{
+        //    counterCollision = collision;
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -431,5 +437,9 @@ public class PlayerController : MonoBehaviour
         {
             counterCollision = null;
         }
+
+        
+
+
     }
 }

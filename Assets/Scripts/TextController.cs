@@ -18,11 +18,14 @@ public class TextController : MonoBehaviour
 
     public void UpdateCoins()
     {
-        if (currentCoinTotal < gameManager.Coins)
-        {
-            coinText.text = gameManager.Coins.ToString();
-            currentCoinTotal = gameManager.Coins;
-        }
+        currentCoinTotal = gameManager.Coins;
+        coinText.text = currentCoinTotal.ToString();
+        //if (currentCoinTotal < gameManager.Coins)
+        //{
+        //    currentCoinTotal = gameManager.Coins;
+        //    coinText.text = currentCoinTotal.ToString();
+            
+        //}
     }
 
 

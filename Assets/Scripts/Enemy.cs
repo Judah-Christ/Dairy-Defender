@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Soda")
+        if (collision.transform.tag == "Soda" && !isflyEnemy)
         {
             agent.speed /= collision.GetComponent<SodaSlowController>().slowSpeed;
         }

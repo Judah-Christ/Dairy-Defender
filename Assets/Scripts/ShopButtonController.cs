@@ -20,6 +20,8 @@ public class ShopButtonController : MonoBehaviour
     
     private int itemCost;
 
+    [SerializeField] private Image itemIm;
+
     [SerializeField]
     private TMP_Text _buttonText;
 
@@ -147,7 +149,7 @@ public class ShopButtonController : MonoBehaviour
     private void UISetup()
     {
         this.itemCost = shopItem.itemCost;
-        //itemIm = shopItem.itemImage;
+        itemIm.sprite = shopItem.itemSprite;
         //itemSpri = shopItem.itemSprite;
         itemName = shopItem.itemName;
 

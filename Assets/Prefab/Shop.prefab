@@ -855,7 +855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 829775215580275172}
   - component: {fileID: 8327991551499164019}
-  - component: {fileID: 6032940137997180485}
+  - component: {fileID: 6576371989612819406}
   m_Layer: 5
   m_Name: TowerPreviewTwo
   m_TagString: Untagged
@@ -890,7 +890,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485603088539362982}
   m_CullTransparentMesh: 1
---- !u!114 &6032940137997180485
+--- !u!114 &6576371989612819406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1485603088539362982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -910,13 +910,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1600050875712839028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonSlot: 0
+  itemIm: {fileID: 0}
   _buttonText: {fileID: 4446097548261995356}
   _shopCost: {fileID: 4641312142256457424}
   inventory:
@@ -1435,6 +1439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonSlot: 2
+  itemIm: {fileID: 0}
   _buttonText: {fileID: 1863047121030465850}
   _shopCost: {fileID: 590369337676628843}
   inventory:
@@ -1458,7 +1463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930817774976506463}
   - component: {fileID: 1337255399454127670}
-  - component: {fileID: 2686319241625002251}
+  - component: {fileID: 8217125844395607307}
   m_Layer: 5
   m_Name: TowerPreviewOne
   m_TagString: Untagged
@@ -1493,7 +1498,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3115736411855740691}
   m_CullTransparentMesh: 1
---- !u!114 &2686319241625002251
+--- !u!114 &8217125844395607307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1502,7 +1507,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3115736411855740691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1513,13 +1518,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3123115057968967806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonSlot: 1
+  itemIm: {fileID: 0}
   _buttonText: {fileID: 1938823421959397820}
   _shopCost: {fileID: 3858537859297471637}
   inventory:
@@ -2384,7 +2393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6237831897172324510}
   - component: {fileID: 1943078006790129078}
-  - component: {fileID: 2454338968518385366}
+  - component: {fileID: 5789118291215781050}
   m_Layer: 5
   m_Name: TowerPreviewFour
   m_TagString: Untagged
@@ -2419,7 +2428,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5429587039574735970}
   m_CullTransparentMesh: 1
---- !u!114 &2454338968518385366
+--- !u!114 &5789118291215781050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2428,7 +2437,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5429587039574735970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -2439,13 +2448,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5818021950762174591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +2973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4834396639780904513}
   - component: {fileID: 6985846196029232007}
-  - component: {fileID: 3705036077752317716}
+  - component: {fileID: 8496081267436509478}
   m_Layer: 5
   m_Name: TowerPreviewThree
   m_TagString: Untagged
@@ -2996,7 +3008,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7668339815198788791}
   m_CullTransparentMesh: 1
---- !u!114 &3705036077752317716
+--- !u!114 &8496081267436509478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3005,7 +3017,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7668339815198788791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -3016,13 +3028,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7755949451124356633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,6 +3587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonSlot: 3
+  itemIm: {fileID: 0}
   _buttonText: {fileID: 3549947365046370880}
   _shopCost: {fileID: 5053477229581867057}
   inventory:

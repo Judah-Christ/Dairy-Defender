@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
 
     NavMeshAgent agent;
     private GameManager GM;
-    [SerializeField] bool isflyEnemy = false;
+    [SerializeField] private float agentSpeed = 3.5f;
+    [SerializeField] public bool isflyEnemy = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +42,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Soda" && !isflyEnemy)
+        if (collision.transform.tag == "Soda")
         {
-            agent.speed /= 2;
-            //if(collision.GetComponent<UpgradeController>().isUpgraded == true)
-            //{
-            //    agent.speed /= 4;
-            //}
+            agent.speed /= collision.GetComponent<SodaSlowController>().slowSpeed;
+        }
+        else
+        {
+            Debug.Log("No slow");
         }
     }
 
@@ -55,7 +56,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.transform.tag == "Soda" && !isflyEnemy)
         {
-            agent.speed *= 2;
+            agent.speed = agentSpeed;
         }
     }
 }

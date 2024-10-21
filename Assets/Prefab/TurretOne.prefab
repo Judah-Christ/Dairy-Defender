@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2133732778864459811}
   - component: {fileID: 2643763590357162995}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: UpgradeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,9 +134,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
   - {fileID: 11400000, guid: a73b864897257ab45a21630534e220b8, type: 2}
   - {fileID: 11400000, guid: 1d331c72112b96745b6ab87fe61589e4, type: 2}
+  playerTurret: {fileID: 6655681747409290518}
   isUpgraded: 0
   gameManager: {fileID: 0}
   towerParent: {fileID: 5177212075189524895}
+  textController: {fileID: 0}
 --- !u!1 &208572071305465712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,7 +1871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8710466546614467251, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Name
-      value: Turret (1)
+      value: PlayerTurret
       objectReference: {fileID: 0}
     - target: {fileID: 8790490371069597577, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Layer
@@ -1894,3 +1896,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8710466546614467251, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
   m_PrefabInstance: {fileID: 5883271199846519182}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6655681747409290518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+  m_PrefabInstance: {fileID: 5883271199846519182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2973599307883850557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0720ad26833e5cc408ed8b468bc5ba59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

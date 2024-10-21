@@ -184,17 +184,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711a75f9a20f83d4483b2dd57e89f8f4, type: 3}
---- !u!114 &119193415 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6655681747409290518, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
-  m_PrefabInstance: {fileID: 1498759879}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0720ad26833e5cc408ed8b468bc5ba59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &186743275
 GameObject:
   m_ObjectHideFlags: 0
@@ -22789,10 +22778,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 202695355800921641, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
-      propertyPath: m_Name
-      value: UpgradeCanvas
-      objectReference: {fileID: 0}
     - target: {fileID: 2429511564813885908, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.05
@@ -22838,17 +22823,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1361565525}
     - target: {fileID: 2643763590357162995, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
-      propertyPath: playerTurret
-      value: 
-      objectReference: {fileID: 119193415}
-    - target: {fileID: 2643763590357162995, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
       propertyPath: textController
       value: 
       objectReference: {fileID: 472566815}
-    - target: {fileID: 2973599307883850557, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
-      propertyPath: m_Name
-      value: PlayerTurret
-      objectReference: {fileID: 0}
     - target: {fileID: 5177212075189524895, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
       propertyPath: m_Name
       value: TurretOne

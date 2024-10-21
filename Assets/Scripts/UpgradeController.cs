@@ -25,6 +25,8 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject towerParent;
     [SerializeField] private TextController textController;
+    [SerializeField] private SodaSlowController sodaSlowController;
+    private int noUpgrading = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -114,18 +116,21 @@ public class UpgradeController : MonoBehaviour
         {
             case UpgradeSlot.ONE:
                 addItem.itemUpgradeCost = Towers[0].itemUpgradeCost;
-                if (addItem.itemUpgradeCost < gameManager.Coins)
+                if (addItem.itemUpgradeCost < gameManager.Coins && noUpgrading < 3)
                 {
+                    noUpgrading++;
                     textController.UpdateCoins();
-                    playerTurret.firingSpeed += 0.5f;
+                    playerTurret.firingSpeed += 0.1f;
                     gameManager.RemoveCoin(addItem.itemUpgradeCost);
                 }
                 
                 break;
             case UpgradeSlot.TWO:
                 addItem.itemUpgradeCost = Towers[1].itemUpgradeCost;
-                if (addItem.itemUpgradeCost < gameManager.Coins)
+                if (addItem.itemUpgradeCost < gameManager.Coins && noUpgrading < 3)
                 {
+                    noUpgrading++;
+                    sodaSlowController.slowSpeed += 1;
                     textController.UpdateCoins();
                     isUpgraded = true;
                     gameManager.RemoveCoin(addItem.itemUpgradeCost);

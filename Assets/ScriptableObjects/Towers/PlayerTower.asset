@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerTower
   m_EditorClassIdentifier: 
   itemName: PlayerTower
-  itemObject: {fileID: 8710466546614467251, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+  itemObject: {fileID: 5177212075189524895, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
   itemSprite: {fileID: 21300000, guid: 814619a82ea9bd74fa3e554c19191db4, type: 3}
   itemImage: {fileID: 5187082088675654809, guid: 01faa3c07a0dae344b231232c28be5da, type: 3}
   itemCost: 4

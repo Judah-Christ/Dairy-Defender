@@ -26,7 +26,7 @@ public class PlayerTurret : MonoBehaviour
     private bool isShootOnCD;
     private bool isPlayerNear;
     private float _maxRange;
-    public GameObject upgardePanel;
+    //public GameObject upgardePanel;
 
     
     
@@ -44,13 +44,13 @@ public class PlayerTurret : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.CompareTag("Player"))
-        {
-            upgardePanel.SetActive(true);
-        }
-    }
+    //public void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.transform.CompareTag("Player"))
+    //    {
+    //        upgardePanel.SetActive(true);
+    //    }
+    //}
 
     private void RotateBasedOnMouse()
     {

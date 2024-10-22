@@ -28,8 +28,10 @@ public class ObjectiveManager : MonoBehaviour
 
         if(currentHealth <= 0)
         {
+            StartCoroutine(AudioManager.instance.FadeOut());
             GM.ObjectiveFailed();
             Destroy(gameObject);
+            Debug.Log("TEST");
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

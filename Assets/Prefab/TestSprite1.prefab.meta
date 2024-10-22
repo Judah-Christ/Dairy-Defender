@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefab/TestSprite1.prefab.meta
 guid: 0c1b9f1c1fd524c43849cca874cb10a2
+========
+guid: 169f35010605fa24ea06e64d741e5c6f
+>>>>>>>> StartOrStopWaves:Assets/Tilesets/Palettes/Bridges.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

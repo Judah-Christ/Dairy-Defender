@@ -1269,7 +1269,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -1096707243, guid: ec171e3ff4a4ecc438c7ae2bfef8a4be, type: 3}
+  m_Sprite: {fileID: 428145310, guid: ec171e3ff4a4ecc438c7ae2bfef8a4be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1290,7 +1290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2429511564813885908}
   m_Layer: 0
-  m_Name: TurretOne
+  m_Name: TurretSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1964,6 +1964,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 4116811335257806855, guid: 65c5124a1082b7c4a98cef52ddeb3c82, type: 3}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: upgardePanel
       value: 
       objectReference: {fileID: 0}
@@ -1982,7 +1986,7 @@ PrefabInstance:
     - target: {fileID: 3616771190163577771, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1443707742, guid: ec171e3ff4a4ecc438c7ae2bfef8a4be, type: 3}
+      objectReference: {fileID: 581447819, guid: ec171e3ff4a4ecc438c7ae2bfef8a4be, type: 3}
     - target: {fileID: 3616771190163577771, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Color.b
       value: 1

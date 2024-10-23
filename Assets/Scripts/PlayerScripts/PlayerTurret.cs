@@ -44,14 +44,6 @@ public class PlayerTurret : MonoBehaviour
 
     }
 
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.transform.CompareTag("Player"))
-    //    {
-    //        upgardePanel.SetActive(true);
-    //    }
-    //}
-
     private void RotateBasedOnMouse()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

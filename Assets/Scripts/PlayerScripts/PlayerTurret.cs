@@ -27,6 +27,7 @@ public class PlayerTurret : MonoBehaviour
     private bool isShootOnCD;
     private bool isPlayerNear;
     private float _maxRange;
+    public bool IsTurretActive;
     public Animator playerTurretAnim;
     //public GameObject upgardePanel;
 
@@ -64,12 +65,12 @@ public class PlayerTurret : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, angle-  90);
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         Debug.DrawRay(firingPoint.position, firingPoint.up * sighted, Color.green);
         Ray ray = new Ray(firingPoint.position, firingPoint.up);
         RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.up, sighted,raycastMask);
-        if (hit.collider != null && hit.transform.tag == "Enemy")
+        if (hit.collider != null && hit.transform.tag == "Enemy" && !IsTurretActive)
         {
             if (isShootOnCD == false)
             {
@@ -79,18 +80,29 @@ public class PlayerTurret : MonoBehaviour
                 
             }
         }
+
+        if (IsTurretActive == true)
+        {
+            if (isShootOnCD == false)
+            {
+                playerTurretAnim.SetTrigger("ShootBolt");
+                Instantiate(bullet, firingPoint.position, firingPoint.rotation);
+                isShootOnCD = true;
+
+            }
+        }
     }
     
 
     // Update is called once per frame
     void Update()
     {
-        if (!PC.isTurretMounted || !isPlayerNear)
+        if (!IsTurretActive || !isPlayerNear)
         {
             this.scansScript.SpeedStart();
             Shoot();
         }
-        if (PC.isTurretMounted && isPlayerNear)
+        if (IsTurretActive && isPlayerNear)
         {
            RotateBasedOnMouse();
            this.scansScript.SpeedStop();

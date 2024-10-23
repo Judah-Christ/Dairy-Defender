@@ -1612,6 +1612,10 @@ MonoBehaviour:
   towerParent: {fileID: 0}
   textController: {fileID: 0}
   sodaSlowController: {fileID: 6478710424657345427}
+  lemonade: {fileID: 6773195374952635329, guid: 5aabf76eec1291542973a418cdd4d069, type: 3}
+  tea: {fileID: 6773195374952635329, guid: 138558ede381ca64a94adb3325770b02, type: 3}
+  rustTower: {fileID: 5177212075189524895, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+  metalTower: {fileID: 5177212075189524895, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
 --- !u!1 &6297923884466487587
 GameObject:
   m_ObjectHideFlags: 0

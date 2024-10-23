@@ -26,6 +26,10 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] private GameObject towerParent;
     [SerializeField] private TextController textController;
     [SerializeField] private SodaSlowController sodaSlowController;
+    [SerializeField] private GameObject lemonade;
+    [SerializeField] private GameObject tea;
+    [SerializeField] private GameObject rustTower;
+    [SerializeField] private GameObject metalTower;
     private int noUpgrading = 0;
 
     // Start is called before the first frame update
@@ -123,7 +127,18 @@ public class UpgradeController : MonoBehaviour
                     playerTurret.firingSpeed += 0.1f;
                     gameManager.RemoveCoin(addItem.itemUpgradeCost);
                 }
+                if(noUpgrading == 1)
+                {
+                    Destroy(tower);
+                    Instantiate(rustTower, tower.transform.position, Quaternion.identity);
+                }
                 
+                if(noUpgrading == 2)
+                {
+                    Destroy(tower);
+                    Instantiate(metalTower, tower.transform.position, Quaternion.identity);
+                }
+
                 break;
             case UpgradeSlot.TWO:
                 addItem.itemUpgradeCost = Towers[1].itemUpgradeCost;
@@ -135,6 +150,19 @@ public class UpgradeController : MonoBehaviour
                     isUpgraded = true;
                     gameManager.RemoveCoin(addItem.itemUpgradeCost);
                 }
+
+                if (noUpgrading == 1)
+                {
+                    Destroy(tower);
+                    Instantiate(lemonade, tower.transform.position, Quaternion.identity);
+                }
+
+                if(noUpgrading == 2)
+                {
+                    Destroy(tower);
+                    Instantiate(tea, tower.transform.position, Quaternion.identity);
+                }
+
                 break;
             case UpgradeSlot.THREE:
                 Debug.Log("NO UPGRADE YET!");

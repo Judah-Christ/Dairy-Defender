@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int Coins;
     public int Tower;
     public bool isGamePaused;
+    [SerializeField] private GameObject WinMenu;
 
     [SerializeField] private float objectiveTimer;
     private float origTimer;
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour
     {
         origTimer = objectiveTimer;
         StartWaves();
-        AudioManager.instance.PlayMusic("Adrián Berenguer - Potencial");
+        AudioManager.instance.PlayMusic("DDBattleLoop");
+        WinMenu = GameObject.Find("WinMenuCanvas");
     }
 
     public void AddCoin(int amount)
@@ -67,14 +69,14 @@ public class GameManager : MonoBehaviour
     {
         EndWaves();
         StartCoroutine(AudioManager.instance.FadeOut());
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
         Debug.Log("Objective Complete!");
     }
 
     public void ObjectiveFailed()
     {
         EndWaves();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
         Debug.Log("Objective Failed!");
     }
 

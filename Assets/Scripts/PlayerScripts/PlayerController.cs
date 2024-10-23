@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -50,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
 
     private Transform targets;
+    private PlayerTurret PT;
+    private GameObject currentCrossbow;
     private Transform layerSwitchTransform;
     private SpriteRenderer sr;
     public Vector3 origSize = Vector3.one;
@@ -182,6 +185,8 @@ public class PlayerController : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         Vector3 newpos = new Vector3(targets.position.x, targets.position.y, +10);
         transform.position = newpos;
+        currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(true);
+        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     public void MountTurret()
@@ -190,6 +195,7 @@ public class PlayerController : MonoBehaviour
         {
             isTurretMounted = true;
             _physCol.enabled = false;
+            PT.IsTurretActive = true;
         }
     }
 
@@ -198,7 +204,10 @@ public class PlayerController : MonoBehaviour
        
         isTurretMounted = false;
         _physCol.enabled = true;
+        PT.IsTurretActive = false;
         gameObject.transform.eulerAngles = new Vector3(0,0,0);
+        currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(false);
+        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
 
     }
 
@@ -215,7 +224,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isShootOnCD && isTurretMounted)
         {
-            Instantiate(bullet, firingPoint.position, firingPoint.rotation);
+            PT.Shoot();
             isShootOnCD = true;
         }
     }
@@ -417,6 +426,8 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerTouching = true;
             targets = collision.gameObject.transform;
+            currentCrossbow = collision.gameObject;
+            PT = currentCrossbow.GetComponent<PlayerTurret>();
         }
 
         if (collision.CompareTag("CounterMask"))

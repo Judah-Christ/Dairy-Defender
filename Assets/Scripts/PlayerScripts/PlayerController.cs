@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
     {
         RotateBasedOnMouse();
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        Vector3 newpos = new Vector3(targets.position.x, targets.position.y, +10);
+        Vector3 newpos = new Vector3(targets.position.x, targets.position.y, 0);
         transform.position = newpos;
         currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(true);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;

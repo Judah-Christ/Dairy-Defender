@@ -25,15 +25,16 @@ public class FlyEnemy : MonoBehaviour
         if (target != null)
         {
             rb.position = Vector3.MoveTowards(rb.position, target.position, speed);
-            moveDirection = new Vector2 (rb.velocity.x, rb.velocity.y);
+            moveDirection = new Vector2(rb.velocity.magnitude, rb.velocity.y).normalized;
             AnimationUpdate();
         }
-
-
+        
+        
     }
 
     private void AnimationUpdate()
     {
+        Debug.Log(rb.velocity.magnitude);
         anim.SetInteger("MoveX" , ((int)(moveDirection.x)));
         anim.SetInteger("MoveY", ((int)(moveDirection.y)));
     }

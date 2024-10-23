@@ -29,6 +29,10 @@ public class EnemyLevelChange : MonoBehaviour
             isUsingLadder = true;
             StartCoroutine(LayerSwitch());
         }
+        else
+        {
+            StartCoroutine(ChangeSize(originalSize));
+        }
     }
 
     private IEnumerator LayerSwitch()

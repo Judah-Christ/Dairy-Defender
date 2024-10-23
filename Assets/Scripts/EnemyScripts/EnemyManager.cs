@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
     {
             audioSource.PlayOneShot(coinDrop);
             GameObject coin = Instantiate(lootDrop,transform.position, Quaternion.identity);
-            coin.layer = gameObject.layer;
+            //coin.layer = gameObject.layer;
             SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
             sr.sortingLayerName = gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
             yield return new WaitForSeconds(deathScreams[i].length);

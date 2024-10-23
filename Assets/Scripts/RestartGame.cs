@@ -51,7 +51,7 @@ public class RestartGame : MonoBehaviour
     /// </summary>
     private void Restart_started(InputAction.CallbackContext obj)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     /// <summary>
     /// destroy the restart and resetting the value

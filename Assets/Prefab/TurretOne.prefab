@@ -551,7 +551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6246024586052128277}
   - component: {fileID: 9217011203335655295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoltSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,7 +867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 847013608213867026}
   - component: {fileID: 7154535944107520298}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SC_Mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2077,6 +2077,10 @@ PrefabInstance:
       propertyPath: upgardePanel
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: playerTurretAnim
+      value: 
+      objectReference: {fileID: 8886951065307662557}
     - target: {fileID: 1707371235817004686, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1
@@ -2169,6 +2173,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8215840847942058782, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8288953170328649518, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -444.6609
@@ -2184,6 +2192,10 @@ PrefabInstance:
     - target: {fileID: 8710466546614467251, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Name
       value: PlayerTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710466546614467251, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8790490371069597577, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Layer

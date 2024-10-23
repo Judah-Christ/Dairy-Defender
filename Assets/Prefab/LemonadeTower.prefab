@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 6249283834061130562}
   - component: {fileID: 8382175214074314774}
   - component: {fileID: 6478710424657345427}
-  - component: {fileID: 6473316315688908565}
+  - component: {fileID: 9151711912661701009}
   m_Layer: 0
   m_Name: Soda_AOE
   m_TagString: Soda
@@ -243,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 2502284169572103987}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000007411305, y: 0.22722527, z: -1.1681048}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -290,7 +290,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 853309026, guid: 9a46941f9a624d24aad30885f653aade, type: 3}
+  m_Sprite: {fileID: 1865847923, guid: 852f7b1513e332446a52e5d073903b8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -333,9 +333,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.002029195, y: -0.004974041}
+  m_Offset: {x: -0.00014105943, y: -0.005003474}
   serializedVersion: 2
-  m_Radius: 0.8622857
+  m_Radius: 1.507013
 --- !u!114 &6478710424657345427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,8 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9805d645ac721554d9a5de184ba7f349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowSpeed: 2
---- !u!114 &6473316315688908565
+  slowSpeed: 3
+--- !u!114 &9151711912661701009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f291b5701d2c8fd4b8d334d7daeb287f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeLevel: 1
+  UpgradeLevel: 2
 --- !u!1 &2586549566613655429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,7 +1760,7 @@ GameObject:
   - component: {fileID: 8531434827392210218}
   - component: {fileID: 812005412616744954}
   m_Layer: 0
-  m_Name: SodaTower
+  m_Name: LemonadeTower
   m_TagString: Soda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1825,7 +1825,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -1747484585, guid: 0bca727ee2ce55c4c8ee3ffb0c0666bf, type: 3}
+  m_Sprite: {fileID: -244217092, guid: 0bca727ee2ce55c4c8ee3ffb0c0666bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

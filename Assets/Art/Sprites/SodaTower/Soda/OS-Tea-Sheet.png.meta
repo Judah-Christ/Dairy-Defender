@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0bca727ee2ce55c4c8ee3ffb0c0666bf
+guid: a3cfba82e0a9a4049aea970d3a32f4d5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Windows Store Apps
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -107,11 +107,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,274 +123,316 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SodaTowerIdle_0
+      name: OS-Tea-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 168
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc6e7e75aaeb59045ab7720ad0dc5095
-      internalID: -1747484585
+      spriteID: 087230656a774cc4083a0447f75277ee
+      internalID: 55831785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SodaTowerIdle_1
+      name: OS-Tea-Sheet_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 168
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd551b280dce1cc498c9d42881f00b41
-      internalID: 1624154137
+      spriteID: 9e1511454a64fb747941ab32e4fcae0b
+      internalID: -411295380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SodaTowerIdle_2
+      name: OS-Tea-Sheet_2
       rect:
         serializedVersion: 2
-        x: 104
-        y: 168
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1b5b72447f92bb4cb5094828010398e
-      internalID: -52539274
+      spriteID: 1198b0d0158514d4e833029a20635303
+      internalID: 1765877736
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SodaTowerIdle_3
+      name: OS-Tea-Sheet_3
       rect:
         serializedVersion: 2
-        x: 156
-        y: 168
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 400b9c7c6e3f0324791debd6e1bbdcb9
-      internalID: 815751
+      spriteID: d98deca51da713a43b0c735b2c8484fd
+      internalID: -1581924163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LemonTowerIdle_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 84
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72db722a28216e34887a5bf05b473727
-      internalID: -244217092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LemonTowerIdle_1
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 84
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73d9aa53135ada943b7897c3869aa75b
-      internalID: 1063575141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LemonTowerIdle_2
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 84
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6315ccac3048bf4fb1ebf6908d98dd7
-      internalID: 719626361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LemonTowerIdle_3
-      rect:
-        serializedVersion: 2
-        x: 156
-        y: 84
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0b8b837da883fe459ea282a3f562378
-      internalID: 377600781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LemonTowerIdle_4
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 84
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec22c871e6218004a9a13105ff24d720
-      internalID: 2041213893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TeaTowerIdle_0
+      name: OS-Tea-Sheet_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4aeecc1b76ceeda4c85e90be2ff39492
-      internalID: 507524525
+      spriteID: ea74fbb8c6f9759408cea87efa59c54f
+      internalID: 1899743205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TeaTowerIdle_1
+      name: OS-Tea-Sheet_5
       rect:
         serializedVersion: 2
-        x: 52
-        y: 0
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84e2269f1f3ab0b4db43709e1e01a0fb
-      internalID: 1738484153
+      spriteID: 0dc791fbd8ebf1e4d95bb1b5eb9b6a10
+      internalID: -2040362582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TeaTowerIdle_2
+      name: OS-Tea-Sheet_6
       rect:
         serializedVersion: 2
-        x: 104
-        y: 0
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc6849dc010795d46b615427879f18f7
-      internalID: -1878282535
+      spriteID: cfc320a06a5e27541ab62a9faea48440
+      internalID: -2031622003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TeaTowerIdle_3
+      name: OS-Tea-Sheet_7
       rect:
         serializedVersion: 2
-        x: 156
-        y: 0
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5113b75011e0ac343876734d40b03419
-      internalID: -1938514525
+      spriteID: 3595783b31089ab4d9c44eaf7ce6bc7c
+      internalID: 1219584114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OS-Tea-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f74b613098e13a042adc52abce99cf78
+      internalID: 807388348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OS-Tea-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39163a82097e8b248992d9d05901378f
+      internalID: -937423406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OS-Tea-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c42eebfd0e8b94996e2f5371c390c3
+      internalID: 408770260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OS-Tea-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2b5d81d0cdfa9840959b5a5a95f8b99
+      internalID: -1127759301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OS-Tea-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e2e45c96059e3a498239ada8f2cb086
+      internalID: -485386318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OS-Tea-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5110a7578ebc05f48b97918f427c2411
+      internalID: -1045840931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OS-Tea-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d6b5a415e55f84a9ff57bb0ef1b9d7
+      internalID: 1791385128
       vertices: []
       indices: 
       edges: []
@@ -406,19 +448,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LemonTowerIdle_0: -244217092
-      LemonTowerIdle_1: 1063575141
-      LemonTowerIdle_2: 719626361
-      LemonTowerIdle_3: 377600781
-      LemonTowerIdle_4: 2041213893
-      SodaTowerIdle_0: -1747484585
-      SodaTowerIdle_1: 1624154137
-      SodaTowerIdle_2: -52539274
-      SodaTowerIdle_3: 815751
-      TeaTowerIdle_0: 507524525
-      TeaTowerIdle_1: 1738484153
-      TeaTowerIdle_2: -1878282535
-      TeaTowerIdle_3: -1938514525
+      OS-Tea-Sheet_0: 55831785
+      OS-Tea-Sheet_1: -411295380
+      OS-Tea-Sheet_10: 408770260
+      OS-Tea-Sheet_11: -1127759301
+      OS-Tea-Sheet_12: -485386318
+      OS-Tea-Sheet_13: -1045840931
+      OS-Tea-Sheet_14: 1791385128
+      OS-Tea-Sheet_2: 1765877736
+      OS-Tea-Sheet_3: -1581924163
+      OS-Tea-Sheet_4: 1899743205
+      OS-Tea-Sheet_5: -2040362582
+      OS-Tea-Sheet_6: -2031622003
+      OS-Tea-Sheet_7: 1219584114
+      OS-Tea-Sheet_8: 807388348
+      OS-Tea-Sheet_9: -937423406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

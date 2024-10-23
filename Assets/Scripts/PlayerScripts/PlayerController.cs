@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
 
     private Transform targets;
+    private GameObject currentCrossbow;
     private Transform layerSwitchTransform;
     private SpriteRenderer sr;
     public Vector3 origSize = Vector3.one;
@@ -182,6 +184,8 @@ public class PlayerController : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         Vector3 newpos = new Vector3(targets.position.x, targets.position.y, +10);
         transform.position = newpos;
+        currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(true);
+        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     public void MountTurret()
@@ -199,6 +203,8 @@ public class PlayerController : MonoBehaviour
         isTurretMounted = false;
         _physCol.enabled = true;
         gameObject.transform.eulerAngles = new Vector3(0,0,0);
+        currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(false);
+        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
 
     }
 
@@ -215,6 +221,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isShootOnCD && isTurretMounted)
         {
+            currentCrossbow.GetComponent<PlayerTurret>().playerTurretAnim.SetTrigger("ShootBolt");
             Instantiate(bullet, firingPoint.position, firingPoint.rotation);
             isShootOnCD = true;
         }
@@ -224,6 +231,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isShootOnCD == true && _fireTimer <= 0f)
         {
+            currentCrossbow.GetComponent<PlayerTurret>().playerTurretAnim.SetTrigger("ChargeBolt");
             _fireTimer = fireTimerOrig;
             isShootOnCD = false;
         }
@@ -417,6 +425,7 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerTouching = true;
             targets = collision.gameObject.transform;
+            currentCrossbow = collision.gameObject;
         }
 
         if (collision.CompareTag("CounterMask"))

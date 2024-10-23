@@ -11,6 +11,7 @@ public class PlayerTurret : MonoBehaviour
     //public GameObject playerTurret;
     //private GameObject enemy;
     private GameObject player;
+    public GameObject PlayerSprite;
     public float speed;
     //private Coroutine shoot;
     [SerializeField] private GameObject bullet;
@@ -26,6 +27,7 @@ public class PlayerTurret : MonoBehaviour
     private bool isShootOnCD;
     private bool isPlayerNear;
     private float _maxRange;
+    public Animator playerTurretAnim;
     //public GameObject upgardePanel;
 
     
@@ -41,6 +43,7 @@ public class PlayerTurret : MonoBehaviour
         PC = player.GetComponent<PlayerController>();
         fireTimerOrig = _fireTimer;
         firingPoint = gameObject.GetComponentInChildren<Transform>();
+        playerTurretAnim = gameObject.GetComponentInParent<Animator>();
 
     }
 
@@ -70,8 +73,10 @@ public class PlayerTurret : MonoBehaviour
         {
             if (isShootOnCD == false)
             {
+                playerTurretAnim.SetTrigger("ShootBolt");
                 Instantiate(bullet, firingPoint.position, firingPoint.rotation);
                 isShootOnCD = true;
+                
             }
         }
     }
@@ -102,8 +107,10 @@ public class PlayerTurret : MonoBehaviour
 
     private void ShootCD()
     {
+        
         if (isShootOnCD == true && _fireTimer <= 0f)
         {
+            playerTurretAnim.SetTrigger("ChargeBolt");
             isShootOnCD = false;
             _fireTimer = fireTimerOrig;
         }

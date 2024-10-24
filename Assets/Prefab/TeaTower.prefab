@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1612,6 +1612,10 @@ MonoBehaviour:
   towerParent: {fileID: 0}
   textController: {fileID: 0}
   sodaSlowController: {fileID: 6478710424657345427}
+  lemonade: {fileID: 0}
+  tea: {fileID: 0}
+  rustTower: {fileID: 0}
+  metalTower: {fileID: 0}
 --- !u!1 &6297923884466487587
 GameObject:
   m_ObjectHideFlags: 0

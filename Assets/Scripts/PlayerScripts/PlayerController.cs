@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
@@ -64,6 +65,10 @@ public class PlayerController : MonoBehaviour
     public float climbSpeed = 3f;
     private Collider2D counterCollision;
     bool soundPlayed = false;
+    public bool isPaused = false;
+    public GameObject pauseMenu;
+    private bool upgradeMenuIsOpen = false;
+    public GameObject upgradeMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -302,6 +307,33 @@ public class PlayerController : MonoBehaviour
             isInAir = true;
             StartCoroutine(Jump());
         }
+
+        if (SceneManager.GetActiveScene().name == "KitchenVSLevel")
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (upgradeMenuIsOpen)
+                {
+                    CloseUpgradeMenu();
+                }
+                else
+                {
+                    OpenUpgradeMenu();
+                }
+            }
+        }
     }
 
     private IEnumerator Jump()
@@ -442,5 +474,36 @@ public class PlayerController : MonoBehaviour
         {
             counterCollision = null;
         }
+    }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void OpenUpgradeMenu()
+    {
+        upgradeMenu.SetActive(true);
+        upgradeMenuIsOpen = true;
+    }
+
+    public void CloseUpgradeMenu()
+    {
+        upgradeMenu.SetActive(false);
+        upgradeMenuIsOpen = false;
     }
 }

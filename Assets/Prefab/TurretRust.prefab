@@ -2085,6 +2085,10 @@ PrefabInstance:
       propertyPath: upgardePanel
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: raycastMask.m_Bits
+      value: 4104
+      objectReference: {fileID: 0}
     - target: {fileID: 1707371235817004686, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1

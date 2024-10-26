@@ -67,8 +67,9 @@ public class PlayerController : MonoBehaviour
     bool soundPlayed = false;
     public bool isPaused = false;
     public GameObject pauseMenu;
-    private bool upgradeMenuIsOpen = false;
+    public bool upgradeMenuIsOpen = false;
     public GameObject upgradeMenu;
+    public GameObject HUD;
 
     // Start is called before the first frame update
     void Start()
@@ -314,10 +315,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (isPaused)
                 {
+                    HUD.SetActive(true);
                     Resume();
                 }
                 else
                 {
+                    HUD.SetActive(false);
                     Pause();
                 }
             }

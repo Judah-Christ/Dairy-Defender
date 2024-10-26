@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18552ac3e25df2946b5bc8819c057750
+guid: b5ccfc04d51793f4dbc06ed8d45c4fff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UMWrenchAndHammer_0
+      name: UpgradeMenuInactive_0
       rect:
         serializedVersion: 2
-        x: 90
-        y: 776
-        width: 237
-        height: 243
+        x: 1762
+        y: 74
+        width: 76
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ddbef59741ea7b43acdd5d145d818d3
-      internalID: -1430746108
+      spriteID: 95f017cf35cb8d843819f554117da160
+      internalID: -1860379992
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UMWrenchAndHammer_0: -1430746108
+      UpgradeMenuInactive_0: -1860379992
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

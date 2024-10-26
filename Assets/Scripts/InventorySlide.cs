@@ -11,6 +11,7 @@ public class InventorySlide : MonoBehaviour
 
     private RectTransform transform;
     private bool isMouseNearBottom = false;
+    private bool isMouseAboveInv = false;
 
     void Start()
     {
@@ -23,10 +24,11 @@ public class InventorySlide : MonoBehaviour
     void Update()
     {
         isMouseNearBottom = Input.mousePosition.y <= distanceFromBottomEdge;
+        isMouseAboveInv = (Input.mousePosition.x >= 428f && Input.mousePosition.x <= 1491f);
         
         Vector2 move = transform.anchoredPosition;
 
-        if (isMouseNearBottom)
+        if (isMouseNearBottom && isMouseAboveInv)
         {
             move.y = Mathf.Lerp(move.y, outPosition, Time.deltaTime * invSlideSpeed);
         }

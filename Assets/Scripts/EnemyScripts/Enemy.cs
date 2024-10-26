@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class Enemy : MonoBehaviour
     private GameManager GM;
     [SerializeField] private float agentSpeed = 3.5f;
     [SerializeField] public bool isflyEnemy = false;
+
+    private Vector3 pastMoveDirection;
+    private Vector3 moveDirection;
+
+    [SerializeField]
+    private float _maxSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +47,16 @@ public class Enemy : MonoBehaviour
         
     }
 
+    private void GetDistance()
+    {
+        if (pastMoveDirection != transform.position)
+        {
+            moveDirection = (pastMoveDirection - transform.position).normalized;
+            pastMoveDirection = transform.position;
+            //Debug.Log(moveDirection);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Soda" && !isflyEnemy)
@@ -48,7 +65,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("No slow");
+            //Debug.Log("No slow");
+            return;
         }
     }
 

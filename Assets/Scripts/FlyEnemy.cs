@@ -8,8 +8,11 @@ public class FlyEnemy : MonoBehaviour
     private Rigidbody2D rb;
     //private GameManager GM;
     private float speed;
-    private Vector2 moveDirection;
+    private Vector3 pastMoveDirection;
+    private Vector3 moveDirection;
 
+    [SerializeField]
+    private float _maxSpeed;
     private Animator anim;
 
     void Start()
@@ -25,8 +28,13 @@ public class FlyEnemy : MonoBehaviour
         if (target != null)
         {
             rb.position = Vector3.MoveTowards(rb.position, target.position, speed);
-            moveDirection = new Vector2(rb.velocity.magnitude, rb.velocity.y).normalized;
-            AnimationUpdate();
+            GetDistance();
+
+        }
+
+        if (rb.velocity.magnitude > _maxSpeed)
+        {
+            rb.velocity = Vector2.zero;
         }
         
         
@@ -34,8 +42,17 @@ public class FlyEnemy : MonoBehaviour
 
     private void AnimationUpdate()
     {
-        Debug.Log(rb.velocity.magnitude);
-        anim.SetInteger("MoveX" , ((int)(moveDirection.x)));
-        anim.SetInteger("MoveY", ((int)(moveDirection.y)));
+        anim.SetInteger("MoveXInt" , (int)moveDirection.x);
+        anim.SetInteger("MoveYInt", (int)moveDirection.y);
+    }
+
+    private void GetDistance()
+    {
+        if (pastMoveDirection != transform.position)
+        {
+            moveDirection = (pastMoveDirection - transform.position).normalized;
+            pastMoveDirection = transform.position;
+            AnimationUpdate();
+        }
     }
 }

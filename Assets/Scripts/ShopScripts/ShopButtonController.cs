@@ -20,6 +20,8 @@ public class ShopButtonController : MonoBehaviour
     
     private int itemCost;
 
+    [SerializeField] private Image itemIm;
+
     [SerializeField]
     private TMP_Text _buttonText;
 
@@ -42,8 +44,8 @@ public class ShopButtonController : MonoBehaviour
                 Debug.Log(inventory[i]);
                 inventory[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
                 inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = shopItem.itemObject;
-                inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject.transform.position = 
-                    inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().imageLocation.transform.position;
+                //inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject.transform.position = 
+                //    inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().imageLocation.transform.position;
                 inventory[i].GetComponent<SlotController>().isFull = true;
                 itemAdded = true;
                 break;
@@ -147,7 +149,7 @@ public class ShopButtonController : MonoBehaviour
     private void UISetup()
     {
         this.itemCost = shopItem.itemCost;
-        //itemIm = shopItem.itemImage;
+        itemIm.sprite = shopItem.itemSprite;
         //itemSpri = shopItem.itemSprite;
         itemName = shopItem.itemName;
 

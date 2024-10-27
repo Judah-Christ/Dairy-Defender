@@ -2,10 +2,12 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
@@ -50,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
 
     private Transform targets;
+    private PlayerTurret PT;
+    private GameObject currentCrossbow;
     private Transform layerSwitchTransform;
     private SpriteRenderer sr;
     public Vector3 origSize = Vector3.one;
@@ -61,6 +65,12 @@ public class PlayerController : MonoBehaviour
     public float climbSpeed = 3f;
     private Collider2D counterCollision;
     bool soundPlayed = false;
+    public bool isPaused = false;
+    public GameObject pauseMenu;
+    public bool upgradeMenuIsOpen = false;
+    public GameObject upgradeMenu;
+    public GameObject HUD;
+    private ZoomIconChange zoomIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +107,8 @@ public class PlayerController : MonoBehaviour
         layerSwitchTransform = transform;
         sr = GetComponentInChildren<SpriteRenderer>();
         ladderClimb = GetComponentInChildren<LadderClimb>();
+
+        zoomIcon = GameObject.Find("ZoomButton").GetComponent<ZoomIconChange>();
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -127,7 +139,7 @@ public class PlayerController : MonoBehaviour
     private void UpDown_started(InputAction.CallbackContext context)
     {
         isPlayerMoving = true;
-        if (isOnSurface)
+        if (isOnSurface && !isPaused)
         {
         AudioManager.instance.PlayPausableSFX("FootstepsF");
         }
@@ -140,7 +152,7 @@ public class PlayerController : MonoBehaviour
     private void RightLeft_started(InputAction.CallbackContext context)
     {
         isPlayerMovingSide = true;
-        if (isOnSurface)
+        if (isOnSurface && !isPaused)
         {
         AudioManager.instance.PlayPausableSFX("FootstepsF");
         }
@@ -180,8 +192,10 @@ public class PlayerController : MonoBehaviour
     {
         RotateBasedOnMouse();
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        Vector3 newpos = new Vector3(targets.position.x, targets.position.y, +10);
+        Vector3 newpos = new Vector3(targets.position.x, targets.position.y, 0);
         transform.position = newpos;
+        currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(true);
+        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     public void MountTurret()
@@ -190,6 +204,7 @@ public class PlayerController : MonoBehaviour
         {
             isTurretMounted = true;
             _physCol.enabled = false;
+            PT.IsTurretActive = true;
         }
     }
 
@@ -198,7 +213,10 @@ public class PlayerController : MonoBehaviour
        
         isTurretMounted = false;
         _physCol.enabled = true;
+        PT.IsTurretActive = false;
         gameObject.transform.eulerAngles = new Vector3(0,0,0);
+        currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(false);
+        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
 
     }
 
@@ -215,7 +233,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isShootOnCD && isTurretMounted)
         {
-            Instantiate(bullet, firingPoint.position, firingPoint.rotation);
+            PT.Shoot();
             isShootOnCD = true;
         }
     }
@@ -292,6 +310,40 @@ public class PlayerController : MonoBehaviour
         {
             isInAir = true;
             StartCoroutine(Jump());
+        }
+
+        if (SceneManager.GetActiveScene().name == "KitchenVSLevel")
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isPaused)
+                {
+                    HUD.SetActive(true);
+                    Resume();
+                }
+                else
+                {
+                    HUD.SetActive(false);
+                    Pause();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (upgradeMenuIsOpen)
+                {
+                    CloseUpgradeMenu();
+                }
+                else
+                {
+                    OpenUpgradeMenu();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                zoomIcon.zoomClicked();
+            }
         }
     }
 
@@ -417,6 +469,8 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerTouching = true;
             targets = collision.gameObject.transform;
+            currentCrossbow = collision.gameObject;
+            PT = currentCrossbow.GetComponent<PlayerTurret>();
         }
 
         if (collision.CompareTag("CounterMask"))
@@ -431,5 +485,38 @@ public class PlayerController : MonoBehaviour
         {
             counterCollision = null;
         }
+    }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        AudioManager.instance.music.Pause();
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        AudioManager.instance.music.UnPause();
+        isPaused = false;
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void OpenUpgradeMenu()
+    {
+        upgradeMenu.SetActive(true);
+        upgradeMenuIsOpen = true;
+    }
+
+    public void CloseUpgradeMenu()
+    {
+        upgradeMenu.SetActive(false);
+        upgradeMenuIsOpen = false;
     }
 }

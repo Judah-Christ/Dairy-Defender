@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -565363365078092846}
   - component: {fileID: -5244579378941419039}
   - component: {fileID: -7796481723108027728}
+  - component: {fileID: 4302175137077854189}
   m_Layer: 3
   m_Name: RatEnemy
   m_TagString: Enemy
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1456645030521396675, guid: 627b14cd898c1874480d45a401582b94, type: 3}
+  agentSpeed: 3.5
   isflyEnemy: 0
 --- !u!195 &-6463996141506686354
 NavMeshAgent:
@@ -142,9 +144,9 @@ MonoBehaviour:
   maxHealth: 100
   lootDrop: {fileID: 6472674490139302122, guid: 2f6d26ceafc37324f8ece0262ee0ad79, type: 3}
   deathScream: {fileID: 8300000, guid: 4cad1c6116f0f6442bdf8f118f261266, type: 3}
-  deathScream1: {fileID: 8300000, guid: ffb70d4527087d644ba1a85c1011d7c8, type: 3}
-  deathScream2: {fileID: 8300000, guid: 0f98d0391135fa24a9f91afe51c205ec, type: 3}
-  deathScream3: {fileID: 8300000, guid: ecd4a177a22f4054697ac9e29bb73c39, type: 3}
+  deathScream1: {fileID: 8300000, guid: 0f98d0391135fa24a9f91afe51c205ec, type: 3}
+  deathScream2: {fileID: 8300000, guid: ecd4a177a22f4054697ac9e29bb73c39, type: 3}
+  deathScream3: {fileID: 8300000, guid: 969749cdb6a8efb42ae470a24e22907a, type: 3}
   deathScream4: {fileID: 8300000, guid: 0a946ffecf07a964e9b4623bda140867, type: 3}
   deathScream5: {fileID: 8300000, guid: f40b370119daaae428df01c3fe06ab68, type: 3}
   deathScream6: {fileID: 8300000, guid: 969749cdb6a8efb42ae470a24e22907a, type: 3}
@@ -234,7 +236,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -268,7 +270,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9e853abaf987ea94bba8fd66fbf46913, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.703
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -277,7 +279,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 7
+  MaxDistance: 4
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -352,3 +354,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4302175137077854189
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8607136179756912600}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 786845fde66ac184e9c3518b5a61e56d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

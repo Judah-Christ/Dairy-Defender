@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestEnemies.unity
-    guid: 56c09f719f0357349bd4ddc86c06c56f
+    path: Assets/Scenes/MainMenu.unity
+    guid: dfafb67ef7880d74c83d58cd635be7ce
+  - enabled: 1
+    path: Assets/Scenes/KitchenVSLevel.unity
+    guid: ffec58dfb07d42240949eed1e5bbc446
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 112a117b3b051484d9a0ad3ef004fca2

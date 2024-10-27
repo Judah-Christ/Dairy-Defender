@@ -13,11 +13,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float agentSpeed = 3.5f;
     [SerializeField] public bool isflyEnemy = false;
 
-    private Vector3 pastMoveDirection;
-    private Vector3 moveDirection;
+    public Vector3 moveDirection;
+
+    private Rigidbody2D rb2d;
 
     [SerializeField]
     private float _maxSpeed;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,24 +40,23 @@ public class Enemy : MonoBehaviour
         if (target != null && !GM.isGamePaused)
         {
             agent.SetDestination(target.position);
+            AnimationUpdate();
         }
         if (GM.isGamePaused)
         {
             agent.SetDestination(gameObject.transform.position);
         }
 
-
+        moveDirection = transform.InverseTransformDirection(agent.velocity);
+        
         
     }
 
-    private void GetDistance()
+
+    private void AnimationUpdate()
     {
-        if (pastMoveDirection != transform.position)
-        {
-            moveDirection = (pastMoveDirection - transform.position).normalized;
-            pastMoveDirection = transform.position;
-            //Debug.Log(moveDirection);
-        }
+        anim.SetFloat("MoveX", moveDirection.x);
+        anim.SetFloat("MoveY", moveDirection.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

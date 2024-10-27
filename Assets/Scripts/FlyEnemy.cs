@@ -1,3 +1,4 @@
+using NavMeshPlus.Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,6 @@ public class FlyEnemy : MonoBehaviour
     private Rigidbody2D rb;
     //private GameManager GM;
     private float speed;
-    private Vector3 pastMoveDirection;
     private Vector3 moveDirection;
 
     [SerializeField]
@@ -42,16 +42,15 @@ public class FlyEnemy : MonoBehaviour
 
     private void AnimationUpdate()
     {
-        anim.SetInteger("MoveXInt" , (int)moveDirection.x);
-        anim.SetInteger("MoveYInt", (int)moveDirection.y);
+        anim.SetFloat("MoveX" , moveDirection.x);
+        anim.SetFloat("MoveY", moveDirection.y);
     }
 
     private void GetDistance()
     {
-        if (pastMoveDirection != transform.position)
+        if (target.transform.position != transform.position)
         {
-            moveDirection = (pastMoveDirection - transform.position).normalized;
-            pastMoveDirection = transform.position;
+            moveDirection = (target.transform.position - transform.position).normalized;
             AnimationUpdate();
         }
     }

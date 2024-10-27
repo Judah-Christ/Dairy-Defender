@@ -224,7 +224,14 @@ MonoBehaviour:
   isTurretMounted: 0
   speed: 10
   speedX: 10
+  jumpForce: 0
+  isInAir: 0
   mouseSensitvity: 100
+  Mapcam: {fileID: 0}
+  origSize: {x: 1, y: 1, z: 1}
+  smallSize: {x: 0.75, y: 0.75, z: 0.75}
+  isOnSurface: 1
+  climbSpeed: 3
 --- !u!61 &8822181860427174281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -237,10 +244,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 12023
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

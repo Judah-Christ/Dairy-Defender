@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ObjectiveManager : MonoBehaviour
 {
-    private int currentHealth;
+    public int currentHealth;
     [SerializeField] int maxHealth = 1000;
     private GameManager GM;
     public Slider objectiveHealthSlider;
@@ -16,6 +16,15 @@ public class ObjectiveManager : MonoBehaviour
     public Color highHealthColor;
     public Color mediumHealthColor;
     public Color lowHealthColor;
+
+    [SerializeField]
+    private GameObject CakeFull;
+
+    [SerializeField]
+    private GameObject CakeHalf;
+
+    [SerializeField]
+    private GameObject CakeCrit;
 
     // Start is called before the first frame update
     void Start()
@@ -54,8 +63,21 @@ public class ObjectiveManager : MonoBehaviour
         currentHealth -= amount;
         HealthSliderUpdate();
         
+        if(currentHealth <= (maxHealth / 2))
+        {
+            CakeFull.SetActive(false);
+            CakeHalf.SetActive(true);
+            CakeCrit.SetActive(false);
+        }
 
-        if(currentHealth <= 0)
+        if (currentHealth <= (maxHealth / 4))
+        {
+            CakeFull.SetActive(false);
+            CakeHalf.SetActive(false);
+            CakeCrit.SetActive(true);
+        }
+
+        if (currentHealth <= 0)
         {
             StartCoroutine(AudioManager.instance.FadeOut());
             GM.ObjectiveFailed();
@@ -65,7 +87,7 @@ public class ObjectiveManager : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Counter")
+        if (collision.gameObject.tag == "Enemy")
         {
             TakeDamage(50);
             collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);

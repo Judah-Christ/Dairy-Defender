@@ -36,7 +36,7 @@ public class UpgradeController : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        textController = GameObject.Find("GameText").GetComponent<TextController>();
+        //textController = GameObject.Find("GameText").GetComponent<TextController>();
         inventory[0] = GameObject.Find("InventorySlot1");
         inventory[1] = GameObject.Find("InventorySlot2");
         inventory[2] = GameObject.Find("InventorySlot3");

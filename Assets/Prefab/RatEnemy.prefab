@@ -107,6 +107,8 @@ MonoBehaviour:
   target: {fileID: 1456645030521396675, guid: 627b14cd898c1874480d45a401582b94, type: 3}
   agentSpeed: 3.5
   isflyEnemy: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  _maxSpeed: 0
 --- !u!195 &-6463996141506686354
 NavMeshAgent:
   m_ObjectHideFlags: 0

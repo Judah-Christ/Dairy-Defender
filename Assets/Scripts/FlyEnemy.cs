@@ -54,4 +54,6 @@ public class FlyEnemy : MonoBehaviour
             AnimationUpdate();
         }
     }
+
+    
 }

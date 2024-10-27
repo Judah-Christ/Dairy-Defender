@@ -61,7 +61,7 @@ public class PlayerTurret : MonoBehaviour
     {
         Debug.DrawRay(firingPoint.position, firingPoint.up * sighted, Color.green);
         Ray ray = new Ray(firingPoint.position, firingPoint.up);
-        RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.up, sighted,raycastMask);
+        RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.up, sighted, raycastMask);
         if (hit.collider != null && hit.transform.tag == "Enemy" && !IsTurretActive)
         {
             if (isShootOnCD == false)

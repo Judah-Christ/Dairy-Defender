@@ -13,12 +13,16 @@ public class InventorySlide : MonoBehaviour
     private bool isMouseNearBottom = false;
     private bool isMouseAboveInv = false;
 
+    private PlayerController playerController;
+
     void Start()
     {
         transform = GetComponent<RectTransform>();
         Vector2 rest = transform.anchoredPosition;
         rest.y = inPosition;
         transform.anchoredPosition = rest;
+        
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -28,7 +32,11 @@ public class InventorySlide : MonoBehaviour
         
         Vector2 move = transform.anchoredPosition;
 
-        if (isMouseNearBottom && isMouseAboveInv)
+        if (playerController.upgradeMenuIsOpen)
+        {
+            move.y = Mathf.Lerp(move.y, outPosition, Time.deltaTime * invSlideSpeed);
+        }
+        else if (isMouseNearBottom && isMouseAboveInv)
         {
             move.y = Mathf.Lerp(move.y, outPosition, Time.deltaTime * invSlideSpeed);
         }

@@ -11,7 +11,7 @@ public class UpgradeMenuSlide : MonoBehaviour
     public float inactiveYPosition = -443.6f;
     public float inactiveSize = 0.5058114f;
     public float activeSize = 1f;
-    private float duration = 0.1f;
+    private float duration = 0.03f;
 
     private RectTransform iconButton;
     private Vector2 activePos;

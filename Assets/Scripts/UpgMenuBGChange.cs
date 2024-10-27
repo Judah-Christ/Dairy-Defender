@@ -21,7 +21,7 @@ public class UpgMenuBGChange : MonoBehaviour
     private Vector2 inactiveSize = new Vector2(76f, 44f);
     private Vector2 activeSize = new Vector2(400f, 1080f);
 
-    private float duration = 0.1f;
+    private float duration = 0.04f;
 
     void Start()
     {

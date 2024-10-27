@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
@@ -64,6 +65,12 @@ public class PlayerController : MonoBehaviour
     public float climbSpeed = 3f;
     private Collider2D counterCollision;
     bool soundPlayed = false;
+    public bool isPaused = false;
+    public GameObject pauseMenu;
+    public bool upgradeMenuIsOpen = false;
+    public GameObject upgradeMenu;
+    public GameObject HUD;
+    private ZoomIconChange zoomIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -100,6 +107,8 @@ public class PlayerController : MonoBehaviour
         layerSwitchTransform = transform;
         sr = GetComponentInChildren<SpriteRenderer>();
         ladderClimb = GetComponentInChildren<LadderClimb>();
+
+        zoomIcon = GameObject.Find("ZoomButton").GetComponent<ZoomIconChange>();
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -130,7 +139,7 @@ public class PlayerController : MonoBehaviour
     private void UpDown_started(InputAction.CallbackContext context)
     {
         isPlayerMoving = true;
-        if (isOnSurface)
+        if (isOnSurface && !isPaused)
         {
         AudioManager.instance.PlayPausableSFX("FootstepsF");
         }
@@ -143,7 +152,7 @@ public class PlayerController : MonoBehaviour
     private void RightLeft_started(InputAction.CallbackContext context)
     {
         isPlayerMovingSide = true;
-        if (isOnSurface)
+        if (isOnSurface && !isPaused)
         {
         AudioManager.instance.PlayPausableSFX("FootstepsF");
         }
@@ -302,6 +311,40 @@ public class PlayerController : MonoBehaviour
             isInAir = true;
             StartCoroutine(Jump());
         }
+
+        if (SceneManager.GetActiveScene().name == "KitchenVSLevel")
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isPaused)
+                {
+                    HUD.SetActive(true);
+                    Resume();
+                }
+                else
+                {
+                    HUD.SetActive(false);
+                    Pause();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (upgradeMenuIsOpen)
+                {
+                    CloseUpgradeMenu();
+                }
+                else
+                {
+                    OpenUpgradeMenu();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                zoomIcon.zoomClicked();
+            }
+        }
     }
 
     private IEnumerator Jump()
@@ -442,5 +485,38 @@ public class PlayerController : MonoBehaviour
         {
             counterCollision = null;
         }
+    }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        AudioManager.instance.music.Pause();
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        AudioManager.instance.music.UnPause();
+        isPaused = false;
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void OpenUpgradeMenu()
+    {
+        upgradeMenu.SetActive(true);
+        upgradeMenuIsOpen = true;
+    }
+
+    public void CloseUpgradeMenu()
+    {
+        upgradeMenu.SetActive(false);
+        upgradeMenuIsOpen = false;
     }
 }

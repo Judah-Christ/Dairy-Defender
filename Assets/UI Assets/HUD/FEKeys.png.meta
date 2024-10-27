@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 70203748744ee8b4290da81ef22bc6cd
+guid: 5a0bd57b80e34d64786246e6fb0da703
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UMCloseButton_0
+      name: FEKeys_0
       rect:
         serializedVersion: 2
-        x: 65
-        y: 50
-        width: 202
-        height: 37
+        x: 0
+        y: 0
+        width: 19
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52fcfe462e1aa974d92d09ccbcc11133
-      internalID: -784686407
+      spriteID: 5b5a1ca059e06164e9156664d2ed90c4
+      internalID: 482097135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FEKeys_1
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 0
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976ed59cd3201e74b8e844781c302faa
+      internalID: 46764246
       vertices: []
       indices: 
       edges: []
@@ -141,7 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UMCloseButton_0: -784686407
+      FEKeys_0: 482097135
+      FEKeys_1: 46764246
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

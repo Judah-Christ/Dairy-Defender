@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 70203748744ee8b4290da81ef22bc6cd
+guid: 66d7ad00cad31db4f8dd4d08954183e7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UMCloseButton_0
+      name: UpgradeMenuActive_0
       rect:
         serializedVersion: 2
-        x: 65
-        y: 50
-        width: 202
-        height: 37
+        x: 0
+        y: 0
+        width: 400
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52fcfe462e1aa974d92d09ccbcc11133
-      internalID: -784686407
+      spriteID: 7a4ea6c3f3304a14a8819c74ce2d31f9
+      internalID: 50719114
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UMCloseButton_0: -784686407
+      UpgradeMenuActive_0: 50719114
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

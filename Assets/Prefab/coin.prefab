@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentObject: 0
-  pickupQuanity: 5
+  pickupQuanity: 1
 --- !u!111 &7799859127810206231
 Animation:
   m_ObjectHideFlags: 0

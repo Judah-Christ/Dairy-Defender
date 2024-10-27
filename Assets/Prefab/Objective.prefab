@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1760612585243405132}
   - component: {fileID: 3606665351631709285}
   - component: {fileID: 2146880626585665769}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Objective
   m_TagString: Objective
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.97, y: -2.02, z: 0}
-  m_LocalScale: {x: 2.8614, y: 2.8842, z: 1}
+  m_LocalScale: {x: 2.8614, y: 2.8842006, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,11 +72,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 990900047
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.43867922, g: 1, b: 0.475404, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4151b057619c1eb41bfbbe1ca0fda5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 4000
 --- !u!60 &2146880626585665769
 PolygonCollider2D:
   m_ObjectHideFlags: 0

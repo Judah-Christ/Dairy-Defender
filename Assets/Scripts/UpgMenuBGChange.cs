@@ -12,11 +12,11 @@ public class UpgMenuBGChange : MonoBehaviour
     private PlayerController playerController;
     private RectTransform rt;
 
-    private Vector2 inactiveScale = new Vector2(3.112218f, 3.112218f);
-    private Vector2 activeScale = Vector2.one;
+    private Vector2 inactiveScale = new Vector2(1.296612f, 1.296612f);
+    private Vector2 activeScale = new Vector2(0.4223122f, 0.4223122f);
 
-    private Vector2 inactivePosition = new Vector2(-733.9058f, -444.0552f);
-    private Vector2 activePosition = new Vector2(-759.8f, 0f);
+    private Vector2 inactivePosition = new Vector2(-305.7f, -184.9f);
+    private Vector2 activePosition = new Vector2(-317, 0.2f);
 
     private Vector2 inactiveSize = new Vector2(76f, 44f);
     private Vector2 activeSize = new Vector2(400f, 1080f);

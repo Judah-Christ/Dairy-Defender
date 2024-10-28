@@ -10,11 +10,11 @@ using static ShopButtonController;
 public class UpgradeController : MonoBehaviour
 {
     public GameObject tower;
-    public Sprite image;
+    //public Sprite image;
     [SerializeField] private GameItem addItem;
     private GameObject addTowerItem;
 
-    public GameObject upgradePanel;
+    //public GameObject upgradePanel;
     public GameObject[] inventory = new GameObject[8];
     [SerializeField] private UpgradeLevel upgradeLevel;
     public List<GameItem> Towers = new List<GameItem>();
@@ -23,7 +23,6 @@ public class UpgradeController : MonoBehaviour
     private SodaBullet sodaBullet;
     public bool isUpgraded = false;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private GameObject towerParent;
     [SerializeField] private TextController textController;
     [SerializeField] private SodaSlowController sodaSlowController;
     [SerializeField] private GameObject lemonade;
@@ -61,7 +60,7 @@ public class UpgradeController : MonoBehaviour
             }
         }
         Destroy(tower);
-        Destroy(upgradePanel);
+        
         
 
     }
@@ -80,7 +79,7 @@ public class UpgradeController : MonoBehaviour
             }
         }
         Destroy(tower);
-        Destroy(upgradePanel);
+        
 
 
     }
@@ -93,8 +92,6 @@ public class UpgradeController : MonoBehaviour
                 Debug.Log("Only one");
                 AddTowerAgain1();
                 Destroy(tower);
-                Destroy(upgradePanel);
-                Destroy(towerParent);
                 break;
             case UpgradeLevel.TWO:
                 AddTowerAgain2();

@@ -44,7 +44,7 @@ public class UpgradeSelector : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition.ReadValue<Vector2>()), Vector2.zero, Mathf.Infinity, collisionMask);
             if (hit)
             {
-                currentTower = hit.transform.gameObject;;
+                currentTower = hit.transform.gameObject;
                 print(hit.transform.gameObject.name);
             }
             else

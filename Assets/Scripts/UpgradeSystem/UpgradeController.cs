@@ -16,7 +16,7 @@ public class UpgradeController : MonoBehaviour
 
     public GameObject upgradePanel;
     public GameObject[] inventory = new GameObject[8];
-    [SerializeField] private UpgradeSlot upgradeSlot;
+    [SerializeField] private UpgradeLevel upgradeLevel;
     public List<GameItem> Towers = new List<GameItem>();
     [SerializeField] private PlayerTurret playerTurret;
     //private PlayerTurret playerTurret;
@@ -87,25 +87,25 @@ public class UpgradeController : MonoBehaviour
 
     public void ButtonPress()
     {
-        switch (upgradeSlot)
+        switch (upgradeLevel)
         {
-            case UpgradeSlot.ONE:
+            case UpgradeLevel.ONE:
                 Debug.Log("Only one");
                 AddTowerAgain1();
                 Destroy(tower);
                 Destroy(upgradePanel);
                 Destroy(towerParent);
                 break;
-            case UpgradeSlot.TWO:
+            case UpgradeLevel.TWO:
                 AddTowerAgain2();
                 Destroy(tower);
                 break;
-            case UpgradeSlot.THREE:
+            case UpgradeLevel.THREE:
                 addItem.itemObject = Towers[2].itemObject;
                 addItem.itemSprite = Towers[2].itemSprite;
                 //AddTowerAgain();
                 break;
-            case UpgradeSlot.FOUR:
+            case UpgradeLevel.FOUR:
                 addItem.itemObject = Towers[3].itemObject;
                 addItem.itemSprite = Towers[3].itemSprite;
                 //AddTowerAgain();
@@ -116,9 +116,9 @@ public class UpgradeController : MonoBehaviour
 
     public void UpgradeButtonPress()
     {
-        switch (upgradeSlot)
+        switch (upgradeLevel)
         {
-            case UpgradeSlot.ONE:
+            case UpgradeLevel.ONE:
                 addItem.itemUpgradeCost = Towers[0].itemUpgradeCost;
                 if (addItem.itemUpgradeCost < gameManager.Coins && noUpgrading < 3)
                 {
@@ -140,7 +140,7 @@ public class UpgradeController : MonoBehaviour
                 }
 
                 break;
-            case UpgradeSlot.TWO:
+            case UpgradeLevel.TWO:
                 addItem.itemUpgradeCost = Towers[1].itemUpgradeCost;
                 if (addItem.itemUpgradeCost < gameManager.Coins && noUpgrading < 3)
                 {
@@ -164,16 +164,16 @@ public class UpgradeController : MonoBehaviour
                 }
 
                 break;
-            case UpgradeSlot.THREE:
+            case UpgradeLevel.THREE:
                 Debug.Log("NO UPGRADE YET!");
                 break;
-            case UpgradeSlot.FOUR:
+            case UpgradeLevel.FOUR:
                 Debug.Log("NO UPGRADE YET!");
                 break;
 
         }
     }
-    public enum UpgradeSlot
+    public enum UpgradeLevel
     {
         ONE,
         TWO,

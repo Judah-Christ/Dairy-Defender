@@ -128,7 +128,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  upgradeSlot: 0
+  upgradeLevel: 0
   Towers:
   - {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
   - {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
@@ -1451,13 +1451,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6367551391703435979}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0027607686, w: 0.9999962}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2429511564813885908}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.316}
 --- !u!212 &8240684289632651105
 SpriteRenderer:
   m_ObjectHideFlags: 0

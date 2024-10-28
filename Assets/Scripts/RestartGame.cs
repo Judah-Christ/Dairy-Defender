@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class RestartGame : MonoBehaviour
 {
     [SerializeField] private PlayerInput PlayerControls;
-    [SerializeField] private InputAction _restart;
-    [SerializeField] private InputAction _Quit;
+    private InputAction _restart;
+    private InputAction _Quit;
 
 
     /// <summary>

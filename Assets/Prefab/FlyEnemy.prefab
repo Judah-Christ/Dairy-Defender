@@ -104,11 +104,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 250
   lootDrop: {fileID: 6472674490139302122, guid: 2f6d26ceafc37324f8ece0262ee0ad79, type: 3}
-  deathScream: {fileID: 8300000, guid: 9537c204b94f0904eb4cdedaa3aee47f, type: 3}
-  deathScream1: {fileID: 8300000, guid: 52edab2111dc5e6418c6f5ee01a11ec9, type: 3}
-  deathScream2: {fileID: 8300000, guid: 0f98d0391135fa24a9f91afe51c205ec, type: 3}
-  deathScream3: {fileID: 8300000, guid: ecd4a177a22f4054697ac9e29bb73c39, type: 3}
-  coinDrop: {fileID: 8300000, guid: 3d12784f6b1d42a4d92d74e1fe4cee81, type: 3}
+  deathScream: {fileID: 0}
+  deathScream1: {fileID: 0}
+  deathScream2: {fileID: 0}
+  deathScream3: {fileID: 0}
+  coinDrop: {fileID: 0}
 --- !u!50 &-7852653258134223156
 Rigidbody2D:
   serializedVersion: 4
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 448

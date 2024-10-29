@@ -7,13 +7,9 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerTurret : MonoBehaviour
 {
 
-    //public Transform targets;
-    //public GameObject playerTurret;
-    //private GameObject enemy;
     private GameObject player;
     public GameObject PlayerSprite;
     public float speed;
-    //private Coroutine shoot;
     [SerializeField] private GameObject bullet;
     private Transform firingPoint;
     [Range(0.1f, 2f)]
@@ -29,7 +25,6 @@ public class PlayerTurret : MonoBehaviour
     private float _maxRange;
     public bool IsTurretActive;
     public Animator playerTurretAnim;
-    //public GameObject upgardePanel;
 
     
     

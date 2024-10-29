@@ -86477,6 +86477,7 @@ Transform:
   m_Children:
   - {fileID: 1672139470}
   - {fileID: 811640427}
+  - {fileID: 1226480620}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177243148
@@ -86765,7 +86766,7 @@ MonoBehaviour:
   playerInput: {fileID: 1226480617}
   collisionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16384
 --- !u!114 &1226480619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86779,9 +86780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
-  image: {fileID: 0}
   addItem: {fileID: 0}
-  upgradePanel: {fileID: 0}
   inventory:
   - {fileID: 0}
   - {fileID: 0}
@@ -86796,13 +86795,12 @@ MonoBehaviour:
   playerTurret: {fileID: 0}
   isUpgraded: 0
   gameManager: {fileID: 1672139472}
-  towerParent: {fileID: 0}
   textController: {fileID: 0}
   sodaSlowController: {fileID: 0}
   lemonade: {fileID: 0}
-  tea: {fileID: 0}
-  rustTower: {fileID: 0}
-  metalTower: {fileID: 0}
+  tea: {fileID: 6773195374952635329, guid: 138558ede381ca64a94adb3325770b02, type: 3}
+  rustTower: {fileID: 5177212075189524895, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+  metalTower: {fileID: 5177212075189524895, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
 --- !u!4 &1226480620
 Transform:
   m_ObjectHideFlags: 0
@@ -86811,12 +86809,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226480616}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 137.76433, y: 325.68488, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 155.69543, y: 326.3195, z: 0.005219944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1177076744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251654681
 GameObject:
@@ -97584,4 +97582,3 @@ SceneRoots:
   - {fileID: 1177076744}
   - {fileID: 1299437446}
   - {fileID: 730072553}
-  - {fileID: 1226480620}

@@ -9,7 +9,9 @@ using static ShopButtonController;
 
 public class UpgradeController : MonoBehaviour
 {
-    public GameObject tower;
+    private UpgradeSelector US;
+
+    private GameObject tower;
     //public Sprite image;
     [SerializeField] private GameItem addItem;
     private GameObject addTowerItem;
@@ -18,23 +20,32 @@ public class UpgradeController : MonoBehaviour
     public GameObject[] inventory = new GameObject[8];
     [SerializeField] private UpgradeLevel upgradeLevel;
     public List<GameItem> Towers = new List<GameItem>();
-    [SerializeField] private PlayerTurret playerTurret;
+
     //private PlayerTurret playerTurret;
     private SodaBullet sodaBullet;
     public bool isUpgraded = false;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private TextController textController;
-    [SerializeField] private SodaSlowController sodaSlowController;
-    [SerializeField] private GameObject lemonade;
-    [SerializeField] private GameObject tea;
-    [SerializeField] private GameObject rustTower;
-    [SerializeField] private GameObject metalTower;
+
+    private PlayerTurret playerTurret;
+    private SodaSlowController sodaSlowController;
+    [SerializeField] private GameObject _sodaTower;
+    [SerializeField] private GameObject _lemonade;
+    [SerializeField] private GameObject _tea;
+    [SerializeField] private GameObject _playerTower;
+    [SerializeField] private GameObject _rustTower;
+    [SerializeField] private GameObject _metalTower;
     private int noUpgrading = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        US = GameObject.Find("UpgradeManager").GetComponent<UpgradeSelector>();
+
+        playerTurret = _playerTower.GetComponent<PlayerTurret>();
+        sodaSlowController = _sodaTower.GetComponent<SodaSlowController>();
+
         //textController = GameObject.Find("GameText").GetComponent<TextController>();
         inventory[0] = GameObject.Find("InventorySlot1");
         inventory[1] = GameObject.Find("InventorySlot2");
@@ -59,7 +70,7 @@ public class UpgradeController : MonoBehaviour
                 break;
             }
         }
-        Destroy(tower);
+        Destroy(US.currentTower);
         
         
 
@@ -78,7 +89,7 @@ public class UpgradeController : MonoBehaviour
                 break;
             }
         }
-        Destroy(tower);
+        Destroy(US.currentTower);
         
 
 
@@ -91,11 +102,11 @@ public class UpgradeController : MonoBehaviour
             case UpgradeLevel.ONE:
                 Debug.Log("Only one");
                 AddTowerAgain1();
-                Destroy(tower);
+                Destroy(US.currentTower);
                 break;
             case UpgradeLevel.TWO:
                 AddTowerAgain2();
-                Destroy(tower);
+                Destroy(US.currentTower);
                 break;
             case UpgradeLevel.THREE:
                 addItem.itemObject = Towers[2].itemObject;
@@ -126,14 +137,14 @@ public class UpgradeController : MonoBehaviour
                 }
                 if(noUpgrading == 1)
                 {
-                    Destroy(tower);
-                    Instantiate(rustTower, tower.transform.position, Quaternion.identity);
+                    Destroy(US.currentTower);
+                    Instantiate(_rustTower, US.currentTower.transform.position, Quaternion.identity);
                 }
                 
                 if(noUpgrading == 2)
                 {
-                    Destroy(tower);
-                    Instantiate(metalTower, tower.transform.position, Quaternion.identity);
+                    Destroy(US.currentTower);
+                    Instantiate(_metalTower, US.currentTower.transform.position, Quaternion.identity);
                 }
 
                 break;
@@ -150,14 +161,14 @@ public class UpgradeController : MonoBehaviour
 
                 if (noUpgrading == 1)
                 {
-                    Destroy(tower);
-                    Instantiate(lemonade, tower.transform.position, Quaternion.identity);
+                    Destroy(US.currentTower);
+                    Instantiate(_lemonade, US.currentTower.transform.position, Quaternion.identity);
                 }
 
                 if(noUpgrading == 2)
                 {
-                    Destroy(tower);
-                    Instantiate(tea, tower.transform.position, Quaternion.identity);
+                    Destroy(US.currentTower);
+                    Instantiate(_tea, US.currentTower.transform.position, Quaternion.identity);
                 }
 
                 break;

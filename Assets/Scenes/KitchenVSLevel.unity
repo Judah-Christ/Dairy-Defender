@@ -7743,6 +7743,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457430222}
   m_CullTransparentMesh: 1
+--- !u!1 &496425595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8494503397332525373, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+  m_PrefabInstance: {fileID: 439677798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &500972845
 GameObject:
   m_ObjectHideFlags: 0
@@ -85920,6 +85925,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2449cfc3e4ff0b047975a10eea811e4b, type: 3}
+--- !u!1 &1115993586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5393334264939638229, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+  m_PrefabInstance: {fileID: 439677798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1123886259
 GameObject:
   m_ObjectHideFlags: 0
@@ -86315,6 +86325,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137048509}
   m_CullTransparentMesh: 1
+--- !u!1 &1157332706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1231309083000633514, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+  m_PrefabInstance: {fileID: 439677798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1161674568
 GameObject:
   m_ObjectHideFlags: 0
@@ -86889,28 +86904,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f916dc3f90d50418e5f1896ca754c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 0}
   addItem: {fileID: 0}
   inventory:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1636760064}
+  - {fileID: 1455756334}
+  - {fileID: 2099993842}
+  - {fileID: 1647850041}
+  - {fileID: 1287616638}
+  - {fileID: 496425595}
+  - {fileID: 1157332706}
+  - {fileID: 1115993586}
   upgradeLevel: 0
-  Towers: []
-  playerTurret: {fileID: 0}
+  Towers:
+  - {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
+  - {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
   isUpgraded: 0
   gameManager: {fileID: 1672139472}
   textController: {fileID: 0}
-  sodaSlowController: {fileID: 0}
-  lemonade: {fileID: 0}
-  tea: {fileID: 6773195374952635329, guid: 138558ede381ca64a94adb3325770b02, type: 3}
-  rustTower: {fileID: 5177212075189524895, guid: 108369ac3af44db438579d5ca5195325, type: 3}
-  metalTower: {fileID: 5177212075189524895, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+  _sodaTower: {fileID: 6773195374952635329, guid: 3843fc06715e3f94f90bf20b8a75d7c2, type: 3}
+  _lemonade: {fileID: 6773195374952635329, guid: 5aabf76eec1291542973a418cdd4d069, type: 3}
+  _tea: {fileID: 6773195374952635329, guid: 138558ede381ca64a94adb3325770b02, type: 3}
+  _playerTower: {fileID: 5177212075189524895, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
+  _rustTower: {fileID: 5177212075189524895, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+  _metalTower: {fileID: 5177212075189524895, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
 --- !u!4 &1226480620
 Transform:
   m_ObjectHideFlags: 0
@@ -87077,6 +87093,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1469221344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1287616638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1929239963956110217, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+  m_PrefabInstance: {fileID: 439677798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1299437445
 GameObject:
   m_ObjectHideFlags: 0
@@ -87764,6 +87785,11 @@ RectTransform:
   m_AnchoredPosition: {x: -305.7, y: -184.9}
   m_SizeDelta: {x: 76, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1455756334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 888395310226308575, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+  m_PrefabInstance: {fileID: 439677798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1469221343
 GameObject:
   m_ObjectHideFlags: 0
@@ -88209,6 +88235,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634126161}
   m_CullTransparentMesh: 1
+--- !u!1 &1636760064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4088893594773038915, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+  m_PrefabInstance: {fileID: 439677798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1637255617
 GameObject:
   m_ObjectHideFlags: 0
@@ -88284,6 +88315,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637255617}
   m_CullTransparentMesh: 1
+--- !u!1 &1647850041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9070284612495289652, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+  m_PrefabInstance: {fileID: 439677798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1665321563
 GameObject:
   m_ObjectHideFlags: 0
@@ -93814,13 +93850,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2044033786}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2044033788}
+        m_TargetAssemblyTypeName: UpgradeController, Assembly-CSharp
+        m_MethodName: ButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -97267,28 +97303,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f916dc3f90d50418e5f1896ca754c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 0}
   addItem: {fileID: 0}
   inventory:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1636760064}
+  - {fileID: 1455756334}
+  - {fileID: 2099993842}
+  - {fileID: 1647850041}
+  - {fileID: 1287616638}
+  - {fileID: 496425595}
+  - {fileID: 1157332706}
+  - {fileID: 1115993586}
   upgradeLevel: 0
-  Towers: []
-  playerTurret: {fileID: 0}
+  Towers:
+  - {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
+  - {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
   isUpgraded: 0
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1672139472}
   textController: {fileID: 0}
-  sodaSlowController: {fileID: 0}
-  lemonade: {fileID: 0}
-  tea: {fileID: 0}
-  rustTower: {fileID: 0}
-  metalTower: {fileID: 0}
+  _sodaTower: {fileID: 6773195374952635329, guid: 3843fc06715e3f94f90bf20b8a75d7c2, type: 3}
+  _lemonade: {fileID: 6773195374952635329, guid: 5aabf76eec1291542973a418cdd4d069, type: 3}
+  _tea: {fileID: 6773195374952635329, guid: 138558ede381ca64a94adb3325770b02, type: 3}
+  _playerTower: {fileID: 5177212075189524895, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
+  _rustTower: {fileID: 5177212075189524895, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+  _metalTower: {fileID: 5177212075189524895, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+--- !u!1 &2099993842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3389794386971692546, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}
+  m_PrefabInstance: {fileID: 439677798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2115460362
 GameObject:
   m_ObjectHideFlags: 0

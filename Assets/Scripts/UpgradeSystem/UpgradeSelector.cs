@@ -16,6 +16,7 @@ public class UpgradeSelector : MonoBehaviour
     public GameObject currentTower { get; private set; }
     private GameObject selection;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class UpgradeSelector : MonoBehaviour
         mouseAction.canceled += MouseAction_canceled;
         mousePosition = playerInput.currentActionMap.FindAction("MousePosition");
         PC = GameObject.Find("Player").GetComponent<PlayerController>();
+
     }
 
     private void MouseAction_started(InputAction.CallbackContext context)

@@ -47,10 +47,31 @@ public class UpgradeSelector : MonoBehaviour
             if (hit)
             {
                 currentTower = hit.transform.gameObject;
-                selection = currentTower.transform.Find("Selection").gameObject;
-                selection.SetActive(true);
                 
-                Debug.Log(currentTower);
+                if (currentTower.CompareTag("Turret"))
+                {
+                    if (selection != null)
+                    {
+                        selection.SetActive(false);
+                        selection = null;
+                    }
+                    Transform parent = currentTower.transform.parent;
+                    selection = parent.Find("Selection").gameObject;
+                    selection.SetActive(true);
+                    Debug.Log(currentTower);
+                }
+                if (currentTower.CompareTag("Soda"))
+                {
+                    if (selection != null)
+                    {
+                    selection.SetActive(false);
+                    selection = null;
+                    }
+                    selection = currentTower.transform.Find("Selection").gameObject;
+                    selection.SetActive(true);
+                    Debug.Log(currentTower);
+                }
+                
             }
             else
             {

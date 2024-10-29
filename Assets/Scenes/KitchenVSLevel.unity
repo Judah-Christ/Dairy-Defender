@@ -83332,23 +83332,76 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2643763590357162995, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
-      propertyPath: textController
-      value: 
-      objectReference: {fileID: 2138105447}
     - target: {fileID: 5177212075189524895, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
       propertyPath: m_Name
       value: TurretOne
       objectReference: {fileID: 0}
-    - target: {fileID: 6655681747409290518, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
-      propertyPath: raycastMask.m_Bits
-      value: 4096
+    - target: {fileID: 5177212075189524895, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
+--- !u!1001 &750973162
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.922803
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.471847
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177212075189524895, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
+      propertyPath: m_Name
+      value: TurretSteel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48382aaca73e5784f8ae44c4ba618141, type: 3}
 --- !u!1 &808493993
 GameObject:
   m_ObjectHideFlags: 0
@@ -86566,6 +86619,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1199086195
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.091896
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.54130864
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429511564813885908, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177212075189524895, guid: 108369ac3af44db438579d5ca5195325, type: 3}
+      propertyPath: m_Name
+      value: TurretRust
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 108369ac3af44db438579d5ca5195325, type: 3}
 --- !u!1 &1212759560
 GameObject:
   m_ObjectHideFlags: 0
@@ -93397,7 +93507,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1812526362}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2044033788}
+        m_TargetAssemblyTypeName: UpgradeController, Assembly-CSharp
+        m_MethodName: UpgradeButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1812526362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93691,7 +93813,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1842613874}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2044033786}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1842613874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97089,6 +97223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2044033787}
+  - component: {fileID: 2044033788}
   m_Layer: 5
   m_Name: UpgradeMenu
   m_TagString: Untagged
@@ -97120,6 +97255,40 @@ RectTransform:
   m_AnchoredPosition: {x: 17.3, y: 6.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2044033788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044033786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f916dc3f90d50418e5f1896ca754c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
+  addItem: {fileID: 0}
+  inventory:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  upgradeLevel: 0
+  Towers: []
+  playerTurret: {fileID: 0}
+  isUpgraded: 0
+  gameManager: {fileID: 0}
+  textController: {fileID: 0}
+  sodaSlowController: {fileID: 0}
+  lemonade: {fileID: 0}
+  tea: {fileID: 0}
+  rustTower: {fileID: 0}
+  metalTower: {fileID: 0}
 --- !u!1 &2115460362
 GameObject:
   m_ObjectHideFlags: 0
@@ -97582,3 +97751,5 @@ SceneRoots:
   - {fileID: 1177076744}
   - {fileID: 1299437446}
   - {fileID: 730072553}
+  - {fileID: 1199086195}
+  - {fileID: 750973162}

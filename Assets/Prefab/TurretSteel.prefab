@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 847013608213867026}
   - component: {fileID: 7154535944107520298}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SC_Mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 808580050389457547}
   - component: {fileID: 133374958107857071}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BoltSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 455051016367427801}
   - component: {fileID: 3512627109849180187}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: TurretBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,8 +378,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1361098101
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e52f61c06235ca8418b30e99f621aa43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -526,7 +526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8215840847942058782, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8288953170328649518, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8710466546614467251, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8790490371069597577, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: m_Layer

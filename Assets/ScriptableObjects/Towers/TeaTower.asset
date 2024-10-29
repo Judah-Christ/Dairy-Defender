@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe80d21f50c5c54594bd5d74c7e39b7, type: 3}
+  m_Name: TeaTower
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemObject: {fileID: 0}
+  itemSprite: {fileID: 0}
+  itemImage: {fileID: 0}
+  itemCost: 0
+  itemType: 0
+  Health: 0
+  itemTransform: {fileID: 0}
+  itemUpgradeCost: 0

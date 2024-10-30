@@ -15,14 +15,7 @@ public class UpgradeController : MonoBehaviour
     private UnityEngine.UI.Button upgradeButton;
     private UnityEngine.UI.Button dismantleButton;
 
-    private GameObject tower;
-    //public Sprite image;
-    [SerializeField] private GameItem addItem;
-    private GameObject addTowerItem;
-
-    //public GameObject upgradePanel;
     public GameObject[] inventory = new GameObject[8];
-    [SerializeField] private UpgradeLevel upgradeLevel;
 
     public bool isUpgraded = false;
     [SerializeField] private GameManager gameManager;
@@ -61,45 +54,6 @@ public class UpgradeController : MonoBehaviour
         inventory[7] = GameObject.Find("InventorySlot8");
     }
 
-    //public void AddTowerAgain1()
-    //{
-    //    for (int i = 0; i < inventory.Length; i++)
-    //    {
-    //        if (inventory[i].GetComponent<SlotController>().isFull == false)
-    //        {
-    //            Debug.Log(inventory[i]);
-    //            inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = Towers[0].itemSprite;
-    //            inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = Towers[0].itemObject;
-    //            inventory[i].GetComponent<SlotController>().isFull = true;
-    //            Destroy(US.currentTower);
-    //            break;
-    //        }
-    //    }
-        
-        
-        
-
-    //}
-
-    //public void AddTowerAgain2()
-    //{
-    //    for (int i = 0; i < inventory.Length; i++)
-    //    {
-    //        if (inventory[i].GetComponent<SlotController>().isFull == false)
-    //        {
-    //            Debug.Log(inventory[i]);
-    //            inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = addItem.itemSprite;
-    //            inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = addItem.itemObject;
-    //            inventory[i].GetComponent<SlotController>().isFull = true;
-    //            break;
-    //        }
-    //    }
-    //    Destroy(US.currentTower);
-        
-
-
-    //}
-
     public void ButtonPress()
     {
         if (towerType == 1)
@@ -107,18 +61,18 @@ public class UpgradeController : MonoBehaviour
             switch (playerTurret.TowerLevel)
             {
                 case UpgradeLevel.LVL_ONE:
-                    PickUpTower(_playerTower, towerType);
-                    break;
+                     PickUpTower(_playerTower, towerType);
+                     break;
                 case UpgradeLevel.LVL_TWO:
-                    PickUpTower(_rustTower, towerType);
-                    break;
+                     PickUpTower(_rustTower, towerType);
+                     break;
                 case UpgradeLevel.LVL_THREE:
-                    PickUpTower(_metalTower, towerType);
-                    break;
+                     PickUpTower(_metalTower, towerType);
+                     break;
                 case UpgradeLevel.NONE:
-                    break;
+                     break;
                 default:
-                    return;
+                     return;
 
             }
 
@@ -127,18 +81,18 @@ public class UpgradeController : MonoBehaviour
                 switch (sodaSlowController.SodaLevel)
                 {
                     case UpgradeLevel.LVL_ONE:
-                        PickUpTower(_sodaTower, towerType);
-                        break;
+                         PickUpTower(_sodaTower, towerType);
+                         break;
                     case UpgradeLevel.LVL_TWO:
-                        PickUpTower(_lemonade, towerType);
-                        break;
+                         PickUpTower(_lemonade, towerType);
+                         break;
                     case UpgradeLevel.LVL_THREE:
-                        PickUpTower(_tea, towerType);
-                        break;
+                         PickUpTower(_tea, towerType);
+                         break;
                     case UpgradeLevel.NONE:
-                        break;
+                         break;
                     default:
-                        return;
+                         return;
 
                 }
             }
@@ -160,8 +114,7 @@ public class UpgradeController : MonoBehaviour
                         if(US.CurrentTower != null)
                         {
                             DestroyTower(US.CurrentTower);
-                            US.CurrentTower = Instantiate(_rustTower, US.CurrentTower.transform.position, Quaternion.identity);
-                            GetUpgradeLevel(US.CurrentTower);
+                            Instantiate(_rustTower, US.CurrentTower.transform.position, Quaternion.identity);
                         }
                         
                     }
@@ -174,8 +127,7 @@ public class UpgradeController : MonoBehaviour
                         if(US.CurrentTower != null)
                         {
                             DestroyTower(US.CurrentTower);
-                            US.CurrentTower = Instantiate(_metalTower, US.CurrentTower.transform.position, Quaternion.identity);
-                            GetUpgradeLevel(US.CurrentTower);
+                            Instantiate(_metalTower, US.CurrentTower.transform.position, Quaternion.identity);
                         }
                         
                     }
@@ -203,8 +155,7 @@ public class UpgradeController : MonoBehaviour
                         if(US.CurrentTower != null)
                         {
                             DestroyTower(US.CurrentTower);
-                            US.CurrentTower = Instantiate(_lemonade, US.CurrentTower.transform.position, Quaternion.identity);
-                            GetUpgradeLevel(US.CurrentTower);
+                            Instantiate(_lemonade, US.CurrentTower.transform.position, Quaternion.identity);
                         }
                     }
                     break;
@@ -216,8 +167,7 @@ public class UpgradeController : MonoBehaviour
                         if(US.CurrentTower != null)
                         {
                             DestroyTower(US.CurrentTower);
-                            US.CurrentTower = Instantiate(_tea, US.CurrentTower.transform.position, Quaternion.identity);
-                            GetUpgradeLevel(US.CurrentTower);
+                            Instantiate(_tea, US.CurrentTower.transform.position, Quaternion.identity);
                         }
                     }
                     break;
@@ -233,13 +183,6 @@ public class UpgradeController : MonoBehaviour
         }
 
     }
-    //public enum UpgradeLevel
-    //{
-    //    ONE,
-    //    TWO,
-    //    THREE,
-    //    FOUR,
-    //}
 
     public void GetUpgradeLevel(GameObject currentTower)
     {

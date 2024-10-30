@@ -540,6 +540,10 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 2042131428}
+    - target: {fileID: 8268371421221915034, guid: 14af907c993f8974a8efbd01a033698f, type: 3}
+      propertyPath: collisionMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8632020202761038310, guid: 14af907c993f8974a8efbd01a033698f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -37.967182
@@ -1191,7 +1195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &203079274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -98382,13 +98386,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialougue:
-  - Hi how is it going
-  - this is a test
-  - 'to see how everything '
-  - works!
+  - Sir Cheesington, it is up to thee to defend the holy lands from the Rat Kings
+    forces
+  - Regretably, all other arms and armor have gone to support the siege of the Rat
+    King's Castle
+  - Their is a balista nearby that you can use to repell the Rat King's forces
+  - If the balista is not enough to keep them at bay, then their is a store nearby
+    that you can by more balistas at, or the brand new S.O.D.A dispenser to slow
+    them down
   dialougueText: {fileID: 1199481887}
   dialouguePanel: {fileID: 77664724}
   contButton: {fileID: 824429787}
+  waveSpawner: {fileID: 1672139471}
 --- !u!1 &2099993842 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3389794386971692546, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}

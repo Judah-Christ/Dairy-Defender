@@ -134,6 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9805d645ac721554d9a5de184ba7f349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SodaLevel: 0
+  UpgradeCost: 3
+  toolbarImage: {fileID: 0}
   slowSpeed: 2
 --- !u!114 &6473316315688908565
 MonoBehaviour:

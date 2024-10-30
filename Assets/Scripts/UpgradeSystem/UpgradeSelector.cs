@@ -13,8 +13,9 @@ public class UpgradeSelector : MonoBehaviour
     [SerializeField] private LayerMask collisionMask;
     private Ray ray;
     private PlayerController PC;
-    public GameObject currentTower { get; private set; }
+    public GameObject CurrentTower;
     private GameObject selection;
+    private UpgradeController UC;
 
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class UpgradeSelector : MonoBehaviour
         mouseAction.canceled += MouseAction_canceled;
         mousePosition = playerInput.currentActionMap.FindAction("MousePosition");
         PC = GameObject.Find("Player").GetComponent<PlayerController>();
-
+        UC = GameObject.Find("UpgradeMenu").GetComponent<UpgradeController>();
     }
 
     private void MouseAction_started(InputAction.CallbackContext context)
@@ -46,43 +47,44 @@ public class UpgradeSelector : MonoBehaviour
         {
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition.ReadValue<Vector2>()), Vector2.zero, Mathf.Infinity, collisionMask);
-            if (hit)
+            if (hit && CurrentTower == null)
             {
-                currentTower = hit.transform.gameObject;
+                CurrentTower = hit.transform.gameObject;
+                UC.GetUpgradeLevel(CurrentTower);
                 
-                if (currentTower.CompareTag("Turret"))
+                if (CurrentTower.CompareTag("Turret"))
                 {
                     if (selection != null)
                     {
                         selection.SetActive(false);
                         selection = null;
                     }
-                    Transform parent = currentTower.transform.parent;
+                    Transform parent = CurrentTower.transform.parent;
                     selection = parent.Find("Selection").gameObject;
                     selection.SetActive(true);
-                    Debug.Log(currentTower);
+                    Debug.Log(CurrentTower);
                 }
-                if (currentTower.CompareTag("Soda"))
+                if (CurrentTower.CompareTag("Soda"))
                 {
                     if (selection != null)
                     {
                     selection.SetActive(false);
                     selection = null;
                     }
-                    selection = currentTower.transform.Find("Selection").gameObject;
+                    selection = CurrentTower.transform.Find("Selection").gameObject;
                     selection.SetActive(true);
-                    Debug.Log(currentTower);
+                    Debug.Log(CurrentTower);
                 }
                 
             }
-            else
+            else if (hit == false && CurrentTower == null)
             {
                 if (selection != null)
                 {
                     selection.SetActive(false);
                     selection = null;
                 }
-                currentTower = null;
+                CurrentTower = null;
             }
         }
         if (PC.upgradeMenuIsOpen == false)
@@ -92,7 +94,7 @@ public class UpgradeSelector : MonoBehaviour
                 selection.SetActive(false);
                 selection = null;
             }
-            currentTower = null;
+            CurrentTower = null;
         }
     }
 }

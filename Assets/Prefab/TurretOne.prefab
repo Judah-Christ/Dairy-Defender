@@ -405,9 +405,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: _turret
+      value: 
+      objectReference: {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: Selection
       value: 
       objectReference: {fileID: 6367551391703435979}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: UpgradeCost
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: PlayerSprite
       value: 

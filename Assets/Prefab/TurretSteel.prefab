@@ -409,9 +409,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4116811335257806855, guid: 65c5124a1082b7c4a98cef52ddeb3c82, type: 3}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: _turret
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c56f057d1a4be34d94612f962ef7067, type: 2}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: Selection
       value: 
       objectReference: {fileID: 6591807274870153927}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: TowerLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: PlayerSprite
       value: 

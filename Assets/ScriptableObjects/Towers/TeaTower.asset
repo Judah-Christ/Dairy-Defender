@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: TeaTower
   m_EditorClassIdentifier: 
   itemName: 
-  itemObject: {fileID: 0}
+  itemObject: {fileID: 6773195374952635329, guid: 138558ede381ca64a94adb3325770b02, type: 3}
   itemSprite: {fileID: 0}
   itemImage: {fileID: 0}
-  itemCost: 0
-  itemType: 0
-  Health: 0
+  itemCost: 10
+  upgradeLevel: 2
+  Health: 30
   itemTransform: {fileID: 0}
   itemUpgradeCost: 0

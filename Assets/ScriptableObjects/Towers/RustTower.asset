@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: RustTower
   m_EditorClassIdentifier: 
   itemName: 
-  itemObject: {fileID: 0}
+  itemObject: {fileID: 5177212075189524895, guid: 108369ac3af44db438579d5ca5195325, type: 3}
   itemSprite: {fileID: 0}
   itemImage: {fileID: 0}
-  itemCost: 0
-  itemType: 0
-  Health: 0
+  itemCost: 7
+  upgradeLevel: 1
+  Health: 20
   itemTransform: {fileID: 0}
   itemUpgradeCost: 0

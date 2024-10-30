@@ -19,7 +19,9 @@ public class GameItem : ScriptableObject
 
 public enum UpgradeLevel
 {
-    LevelOne,
-    LevelTwo,
-    LevelThree
+    LVL_ONE,
+    LVL_TWO,
+    LVL_THREE,
+    NONE
+     
 }

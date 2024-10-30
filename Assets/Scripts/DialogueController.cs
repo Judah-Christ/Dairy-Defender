@@ -12,6 +12,8 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private GameObject dialouguePanel;
     public GameObject contButton;
     public WaveSpawner waveSpawner;
+    private bool startFirstTalk = true;
+    private bool startSecondTalk2 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,14 +52,17 @@ public class DialogueController : MonoBehaviour
     }
 
 
-    public void StartTalking(Wave wave)
+    public void StartTalking()
     {
-        if (wave.name == "Wave1")
-        {
-            WaveSpawner.Wave wave1;
-            dialouguePanel.SetActive(true);
-            StartCoroutine(TextApperanceSpeed());
-        }
+        startFirstTalk = false;
+        dialouguePanel.SetActive(true);
+        StartCoroutine(TextApperanceSpeed());
+        //if (waveSpawner.state == SpawnState.waiting)
+        //{
+        //    startFirstTalk = false;
+        //    dialouguePanel.SetActive(true);
+        //    StartCoroutine(TextApperanceSpeed());
+        //}
         
     }
 
@@ -65,6 +70,11 @@ public class DialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(startFirstTalk == true)
+        {
+            StartTalking();
+        }
+        
         //if(dialouguePanel.activeInHierarchy)
         //{
 

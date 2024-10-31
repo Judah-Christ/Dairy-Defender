@@ -48,7 +48,7 @@ public class ItemSpawnLocationController : MonoBehaviour
             {
                 spawnPointLocation.transform.position = hit.point;
                 canPlace = true;
-                print(hit.transform.name);
+                //print(hit.transform.name);
             }
             else
             {

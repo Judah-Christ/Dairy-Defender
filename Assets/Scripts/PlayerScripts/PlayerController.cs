@@ -395,7 +395,7 @@ public class PlayerController : MonoBehaviour
         LayerSwitch();
         StartCoroutine(IgnoreFloorBoundariesCollision());
 
-        while (transform.position.y > startY - 3.4 && transform.position.y >= -14.8f)
+        while (transform.position.y > startY - 4 && transform.position.y >= -14.8f)
         {
             rb.gravityScale = 1;
             rb.velocity = new Vector2(horz * speed, rb.velocity.y);
@@ -403,6 +403,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
+        GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
         AudioManager.instance.PauseSFX();
         AudioManager.instance.PlaySFX("FallLandingThudF");
         isInAir = false;
@@ -416,7 +417,7 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i <= 730; i++)
         {
-            if (counterCollision != null && counterCollision.CompareTag("CounterMask") && i > 200)
+            if (counterCollision != null && counterCollision.CompareTag("CounterMask") && i > 160)
             {
                 GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
             }

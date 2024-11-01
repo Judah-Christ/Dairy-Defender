@@ -154,7 +154,7 @@ public class UpgradeController : MonoBehaviour
                         gameManager.RemoveCoin(sodaSlowController.UpgradeCost);
                         if(US.CurrentTower != null)
                         {
-                            DestroyTower(US.CurrentTower);
+                            Destroy(US.CurrentTower);
                             Instantiate(_lemonade, US.CurrentTower.transform.position, Quaternion.identity);
                         }
                     }
@@ -166,7 +166,7 @@ public class UpgradeController : MonoBehaviour
                         gameManager.RemoveCoin(sodaSlowController.UpgradeCost);
                         if(US.CurrentTower != null)
                         {
-                            DestroyTower(US.CurrentTower);
+                            Destroy(US.CurrentTower);
                             Instantiate(_tea, US.CurrentTower.transform.position, Quaternion.identity);
                         }
                     }

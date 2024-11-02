@@ -88359,6 +88359,10 @@ PrefabInstance:
       propertyPath: upgradeMenu
       value: 
       objectReference: {fileID: 573525492}
+    - target: {fileID: -6179449652804179653, guid: da8b7fad5f4f0bb468f9d8a1346ae3cd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3231130429587328780, guid: da8b7fad5f4f0bb468f9d8a1346ae3cd, type: 3}
       propertyPath: m_Layer
       value: 7

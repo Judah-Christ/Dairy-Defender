@@ -11,7 +11,8 @@ public class DialogueController : MonoBehaviour
     private int index;
     [SerializeField] private GameObject dialouguePanel;
     public GameObject contButton;
-    public WaveSpawner waveSpawner;
+    //public WaveSpawner waveSpawner;
+    [SerializeField] private GameObject gameController;
     private bool startFirstTalk = true;
     private bool startSecondTalk2 = false;
     // Start is called before the first frame update
@@ -47,6 +48,7 @@ public class DialogueController : MonoBehaviour
         }
         else
         {
+            gameController.GetComponent<WaveSpawner>().enabled = true;
             zeroText();
         }
     }

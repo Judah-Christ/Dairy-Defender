@@ -6409,6 +6409,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1988143705764162156, guid: b4da003d49ae3bf49bf7729b91c51e55, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7173250973813720016, guid: b4da003d49ae3bf49bf7729b91c51e55, type: 3}
       propertyPath: m_LocalPosition.x
       value: -49.51
@@ -86304,6 +86308,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1988143705764162156, guid: 2449cfc3e4ff0b047975a10eea811e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7173250973813720016, guid: 2449cfc3e4ff0b047975a10eea811e4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.67
@@ -89302,7 +89310,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672139469}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab371c21da951ed4ab6e1bff9b376cb0, type: 3}
   m_Name: 
@@ -98397,7 +98405,7 @@ MonoBehaviour:
   dialougueText: {fileID: 1199481887}
   dialouguePanel: {fileID: 77664724}
   contButton: {fileID: 824429787}
-  waveSpawner: {fileID: 1672139471}
+  gameController: {fileID: 1672139469}
 --- !u!1 &2099993842 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3389794386971692546, guid: 139fda6ce3b4b3042a7ee8707f9bbe03, type: 3}

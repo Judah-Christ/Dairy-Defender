@@ -17,6 +17,8 @@ public class ObjectiveManager : MonoBehaviour
     public Color mediumHealthColor;
     public Color lowHealthColor;
 
+    
+
     [SerializeField]
     private GameObject CakeFull;
 
@@ -38,6 +40,8 @@ public class ObjectiveManager : MonoBehaviour
     private void Update()
     {
         //Debug.Log(currentHealth);
+        
+
     }
 
     public void HealthSliderUpdate()

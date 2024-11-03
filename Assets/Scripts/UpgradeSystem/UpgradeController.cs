@@ -9,33 +9,43 @@ using static ShopButtonController;
 
 public class UpgradeController : MonoBehaviour
 {
-    public GameObject tower;
-    public Sprite image;
+    private UpgradeSelector US;
+
+    private GameObject tower;
+    //public Sprite image;
     [SerializeField] private GameItem addItem;
     private GameObject addTowerItem;
 
-    public GameObject upgradePanel;
+    //public GameObject upgradePanel;
     public GameObject[] inventory = new GameObject[8];
-    [SerializeField] private UpgradeSlot upgradeSlot;
+    [SerializeField] private UpgradeLevel upgradeLevel;
     public List<GameItem> Towers = new List<GameItem>();
-    [SerializeField] private PlayerTurret playerTurret;
+
     //private PlayerTurret playerTurret;
     private SodaBullet sodaBullet;
     public bool isUpgraded = false;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private GameObject towerParent;
     [SerializeField] private TextController textController;
-    [SerializeField] private SodaSlowController sodaSlowController;
-    [SerializeField] private GameObject lemonade;
-    [SerializeField] private GameObject tea;
-    [SerializeField] private GameObject rustTower;
-    [SerializeField] private GameObject metalTower;
+
+    private PlayerTurret playerTurret;
+    private SodaSlowController sodaSlowController;
+    [SerializeField] private GameObject _sodaTower;
+    [SerializeField] private GameObject _lemonade;
+    [SerializeField] private GameObject _tea;
+    [SerializeField] private GameObject _playerTower;
+    [SerializeField] private GameObject _rustTower;
+    [SerializeField] private GameObject _metalTower;
     private int noUpgrading = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        US = GameObject.Find("UpgradeManager").GetComponent<UpgradeSelector>();
+
+        playerTurret = _playerTower.GetComponent<PlayerTurret>();
+        sodaSlowController = _sodaTower.GetComponent<SodaSlowController>();
+
         //textController = GameObject.Find("GameText").GetComponent<TextController>();
         inventory[0] = GameObject.Find("InventorySlot1");
         inventory[1] = GameObject.Find("InventorySlot2");
@@ -60,8 +70,8 @@ public class UpgradeController : MonoBehaviour
                 break;
             }
         }
-        Destroy(tower);
-        Destroy(upgradePanel);
+        Destroy(US.currentTower);
+        
         
 
     }
@@ -79,33 +89,31 @@ public class UpgradeController : MonoBehaviour
                 break;
             }
         }
-        Destroy(tower);
-        Destroy(upgradePanel);
+        Destroy(US.currentTower);
+        
 
 
     }
 
     public void ButtonPress()
     {
-        switch (upgradeSlot)
+        switch (upgradeLevel)
         {
-            case UpgradeSlot.ONE:
+            case UpgradeLevel.ONE:
                 Debug.Log("Only one");
                 AddTowerAgain1();
-                Destroy(tower);
-                Destroy(upgradePanel);
-                Destroy(towerParent);
+                Destroy(US.currentTower);
                 break;
-            case UpgradeSlot.TWO:
+            case UpgradeLevel.TWO:
                 AddTowerAgain2();
-                Destroy(tower);
+                Destroy(US.currentTower);
                 break;
-            case UpgradeSlot.THREE:
+            case UpgradeLevel.THREE:
                 addItem.itemObject = Towers[2].itemObject;
                 addItem.itemSprite = Towers[2].itemSprite;
                 //AddTowerAgain();
                 break;
-            case UpgradeSlot.FOUR:
+            case UpgradeLevel.FOUR:
                 addItem.itemObject = Towers[3].itemObject;
                 addItem.itemSprite = Towers[3].itemSprite;
                 //AddTowerAgain();
@@ -116,9 +124,9 @@ public class UpgradeController : MonoBehaviour
 
     public void UpgradeButtonPress()
     {
-        switch (upgradeSlot)
+        switch (upgradeLevel)
         {
-            case UpgradeSlot.ONE:
+            case UpgradeLevel.ONE:
                 addItem.itemUpgradeCost = Towers[0].itemUpgradeCost;
                 if (addItem.itemUpgradeCost < gameManager.Coins && noUpgrading < 3)
                 {
@@ -129,18 +137,18 @@ public class UpgradeController : MonoBehaviour
                 }
                 if(noUpgrading == 1)
                 {
-                    Destroy(tower);
-                    Instantiate(rustTower, tower.transform.position, Quaternion.identity);
+                    Destroy(US.currentTower);
+                    Instantiate(_rustTower, US.currentTower.transform.position, Quaternion.identity);
                 }
                 
                 if(noUpgrading == 2)
                 {
-                    Destroy(tower);
-                    Instantiate(metalTower, tower.transform.position, Quaternion.identity);
+                    Destroy(US.currentTower);
+                    Instantiate(_metalTower, US.currentTower.transform.position, Quaternion.identity);
                 }
 
                 break;
-            case UpgradeSlot.TWO:
+            case UpgradeLevel.TWO:
                 addItem.itemUpgradeCost = Towers[1].itemUpgradeCost;
                 if (addItem.itemUpgradeCost < gameManager.Coins && noUpgrading < 3)
                 {
@@ -153,27 +161,27 @@ public class UpgradeController : MonoBehaviour
 
                 if (noUpgrading == 1)
                 {
-                    Destroy(tower);
-                    Instantiate(lemonade, tower.transform.position, Quaternion.identity);
+                    Destroy(US.currentTower);
+                    Instantiate(_lemonade, US.currentTower.transform.position, Quaternion.identity);
                 }
 
                 if(noUpgrading == 2)
                 {
-                    Destroy(tower);
-                    Instantiate(tea, tower.transform.position, Quaternion.identity);
+                    Destroy(US.currentTower);
+                    Instantiate(_tea, US.currentTower.transform.position, Quaternion.identity);
                 }
 
                 break;
-            case UpgradeSlot.THREE:
+            case UpgradeLevel.THREE:
                 Debug.Log("NO UPGRADE YET!");
                 break;
-            case UpgradeSlot.FOUR:
+            case UpgradeLevel.FOUR:
                 Debug.Log("NO UPGRADE YET!");
                 break;
 
         }
     }
-    public enum UpgradeSlot
+    public enum UpgradeLevel
     {
         ONE,
         TWO,

@@ -437,14 +437,14 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("Counter");
             sr.sortingLayerName = "OnCounter";
-            sr.sortingOrder = 5;
+            sr.sortingOrder = 4;
             StartCoroutine(ChangeSize(origSize));
         }
         else
         {
             gameObject.layer = LayerMask.NameToLayer("Floor");
             sr.sortingLayerName = "OnFloor";
-            sr.sortingOrder = 5;
+            sr.sortingOrder = 4;
             StartCoroutine(ChangeSize(smallSize));
         }
     }

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7580695594934668931
 Transform:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SodaLevel: 2
   UpgradeCost: 5
-  toolbarImage: {fileID: 0}
+  toolbarImage: {fileID: 21300000, guid: 9b10724e183c7c74782222b57821ebb9, type: 3}
   slowSpeed: 4
 --- !u!114 &3713322012982694641
 MonoBehaviour:

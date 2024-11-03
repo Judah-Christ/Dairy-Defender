@@ -56,45 +56,45 @@ public class UpgradeController : MonoBehaviour
 
     public void ButtonPress()
     {
+        GetUpgradeLevel(US.CurrentTower);
         if (towerType == 1)
         {
             switch (playerTurret.TowerLevel)
             {
                 case UpgradeLevel.LVL_ONE:
-                     PickUpTower(_playerTower, towerType);
+                    PickUpTower(_playerTower, towerType);
+                    break;
+                case UpgradeLevel.LVL_TWO:
+                    PickUpTower(_rustTower, towerType);
+                    break;
+                case UpgradeLevel.LVL_THREE:
+                    PickUpTower(_metalTower, towerType);
+                    break;
+                case UpgradeLevel.NONE:
+                    break;
+                default:
+                    return;
+
+            }
+        }
+        if (towerType == 2)
+        {
+            switch (sodaSlowController.SodaLevel)
+            {
+                case UpgradeLevel.LVL_ONE:
+                     PickUpTower(_sodaTower, towerType);
                      break;
                 case UpgradeLevel.LVL_TWO:
-                     PickUpTower(_rustTower, towerType);
+                     PickUpTower(_lemonade, towerType);
                      break;
                 case UpgradeLevel.LVL_THREE:
-                     PickUpTower(_metalTower, towerType);
+                     PickUpTower(_tea, towerType);
                      break;
                 case UpgradeLevel.NONE:
                      break;
                 default:
                      return;
 
-            }
-
-            if (towerType == 2)
-            {
-                switch (sodaSlowController.SodaLevel)
-                {
-                    case UpgradeLevel.LVL_ONE:
-                         PickUpTower(_sodaTower, towerType);
-                         break;
-                    case UpgradeLevel.LVL_TWO:
-                         PickUpTower(_lemonade, towerType);
-                         break;
-                    case UpgradeLevel.LVL_THREE:
-                         PickUpTower(_tea, towerType);
-                         break;
-                    case UpgradeLevel.NONE:
-                         break;
-                    default:
-                         return;
-
-                }
             }
         }
         
@@ -237,12 +237,18 @@ public class UpgradeController : MonoBehaviour
 
     public void DestroyTower(GameObject currentTower)
     {
-        GameObject towerParent = currentTower.transform.parent.gameObject;
-        if (towerParent != null)
+        if (currentTower.CompareTag("Soda"))
         {
-           Destroy(towerParent.gameObject);
+            Destroy(currentTower);
         }
-        
+        else
+        {
+            GameObject towerParent = currentTower.transform.parent.gameObject;
+            if (towerParent != null)
+            {
+                Destroy(towerParent.gameObject);
+            }
+        }        
     }
 
     // Update is called once per frame

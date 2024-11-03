@@ -11,7 +11,6 @@ public class UpgradeSelector : MonoBehaviour
     private InputAction mousePosition;
     private bool isMouseActive = false;
     [SerializeField] private LayerMask collisionMask;
-    private Ray ray;
     private PlayerController PC;
     public GameObject CurrentTower;
     private GameObject selection;
@@ -24,7 +23,6 @@ public class UpgradeSelector : MonoBehaviour
         playerInput.currentActionMap.Enable();
         mouseAction = playerInput.currentActionMap.FindAction("Mouse");
         mouseAction.started += MouseAction_started;
-        mouseAction.canceled += MouseAction_canceled;
         mousePosition = playerInput.currentActionMap.FindAction("MousePosition");
         PC = GameObject.Find("Player").GetComponent<PlayerController>();
         UC = GameObject.Find("UpgradeMenu").GetComponent<UpgradeController>();
@@ -32,18 +30,7 @@ public class UpgradeSelector : MonoBehaviour
 
     private void MouseAction_started(InputAction.CallbackContext context)
     {
-        isMouseActive = true;
-    }
-
-    private void MouseAction_canceled(InputAction.CallbackContext context)
-    {
-        isMouseActive = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isMouseActive == true && PC.upgradeMenuIsOpen == true)
+        if (PC.upgradeMenuIsOpen == true)
         {
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition.ReadValue<Vector2>()), Vector2.zero, Mathf.Infinity, collisionMask);
@@ -51,50 +38,61 @@ public class UpgradeSelector : MonoBehaviour
             {
                 CurrentTower = hit.transform.gameObject;
                 UC.GetUpgradeLevel(CurrentTower);
-                
+
                 if (CurrentTower.CompareTag("Turret"))
                 {
-                    if (selection != null)
-                    {
-                        selection.SetActive(false);
-                        selection = null;
-                    }
+                    DeselectTower();
                     Transform parent = CurrentTower.transform.parent;
                     selection = parent.Find("Selection").gameObject;
                     selection.SetActive(true);
-                    Debug.Log(CurrentTower);
+                    return;
                 }
                 if (CurrentTower.CompareTag("Soda"))
                 {
-                    if (selection != null)
-                    {
-                    selection.SetActive(false);
-                    selection = null;
-                    }
+                    DeselectTower();
                     selection = CurrentTower.transform.Find("Selection").gameObject;
                     selection.SetActive(true);
                     Debug.Log(CurrentTower);
+                    return;
                 }
-                
+
             }
-            else if (hit == false && CurrentTower == null)
+            else if (hit && CurrentTower != null)
             {
-                if (selection != null)
-                {
-                    selection.SetActive(false);
-                    selection = null;
-                }
-                CurrentTower = null;
+                DeselectTower(true);
+                return;
+            }
+            else if (hit == false)
+            {
+                
             }
         }
         if (PC.upgradeMenuIsOpen == false)
         {
-            if (selection != null)
-            {
-                selection.SetActive(false);
-                selection = null;
-            }
+            DeselectTower();
             CurrentTower = null;
+            return;
         }
     }
+
+    private void DeselectTower()
+    {
+        if(selection != null) 
+        {
+            selection.SetActive(false);
+            selection = null;
+        }
+    }
+
+    public void DeselectTower(bool removeTower)
+    {
+        if (selection != null && removeTower == true)
+        {
+            selection.SetActive(false);
+            selection = null;
+            CurrentTower = null;
+            return;
+        }
+    }
+
 }

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: PlayerTower
   itemObject: {fileID: 5177212075189524895, guid: 9ef4d5969c360674f9b17531786fbeb9, type: 3}
-  itemSprite: {fileID: -1443707742, guid: ec171e3ff4a4ecc438c7ae2bfef8a4be, type: 3}
+  itemSprite: {fileID: 21300000, guid: 8a64776805cec504ebaa844b3f080133, type: 3}
   itemImage: {fileID: 4495080535469305671, guid: 0c1b9f1c1fd524c43849cca874cb10a2, type: 3}
   itemCost: 4
-  itemType: 0
+  upgradeLevel: 0
   Health: 10
   itemTransform: {fileID: 0}
   itemUpgradeCost: 4

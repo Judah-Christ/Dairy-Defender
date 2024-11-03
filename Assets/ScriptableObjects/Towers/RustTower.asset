@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   itemObject: {fileID: 5177212075189524895, guid: 108369ac3af44db438579d5ca5195325, type: 3}
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: a600a4e9111a90442aa4688dfbd5791e, type: 3}
   itemImage: {fileID: 0}
   itemCost: 7
   upgradeLevel: 1

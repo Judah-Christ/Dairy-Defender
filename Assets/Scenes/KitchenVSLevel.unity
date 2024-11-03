@@ -101200,11 +101200,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialougue:
-  - Text
-  - Text
-  - Text
-  - Text
-  - Text
+  - Sir Cheesington, it is up to thee to defend the holy lands from the Rat Kings
+    forces
+  - Regretably, all other arms and armor have gone to support the siege of the Rat
+    King's Castle
+  - Their is a balista nearby that you can use to repell the Rat King's forces
+  - If the balista is not enough to keep them at bay, then their is a store nearby
+    that you can by more balistas at, or the brand new S.O.D.A dispenser to slow
+    them down
   dialougueText: {fileID: 600902218}
   dialouguePanel: {fileID: 1495123478}
   contButton: {fileID: 2045152405}

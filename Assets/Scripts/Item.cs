@@ -10,15 +10,18 @@ public class GameItem : ScriptableObject
     public Sprite itemSprite;
     public Image itemImage;
     public int itemCost;
-    public ItemType itemType;
+    public UpgradeLevel upgradeLevel;
     public int Health;
     public Transform itemTransform;
     public int itemUpgradeCost;
 
 }
 
-public enum ItemType
+public enum UpgradeLevel
 {
-    TOWER,
-    AMMO,
+    LVL_ONE,
+    LVL_TWO,
+    LVL_THREE,
+    NONE
+     
 }

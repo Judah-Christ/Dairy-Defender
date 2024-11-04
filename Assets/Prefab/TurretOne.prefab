@@ -405,13 +405,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: _turret
+      value: 
+      objectReference: {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: Selection
       value: 
       objectReference: {fileID: 6367551391703435979}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: UpgradeCost
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: PlayerSprite
       value: 
       objectReference: {fileID: 1703598315771569352}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: toolbarImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a64776805cec504ebaa844b3f080133, type: 3}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: upgardePanel
       value: 

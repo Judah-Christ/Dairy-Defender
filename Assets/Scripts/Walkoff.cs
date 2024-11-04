@@ -48,8 +48,18 @@ public class Walkoff : MonoBehaviour
         if (collision.CompareTag("BackEdge") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Counter"))
         {
             backEdgeSwitch = true;
-            rb.velocity = new Vector2(moveInput * playerController.speed, 0);
-            StartCoroutine(playerController.Fall());
+
+            if (!playerController.isInAir)
+            {
+                playerController.isOnSurface = false;
+                playerController.isInAir = true;
+                moveInput = Input.GetAxis("Horizontal");
+                Debug.Log("BackEdgeDetected");
+                rb.velocity = Vector2.zero;
+                rb.velocity = new Vector2(moveInput * playerController.speed, rb.velocity.y);
+                GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("TempIgnore");
+                StartCoroutine(playerController.Fall());
+            }
         }
     }
 

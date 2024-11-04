@@ -58,9 +58,6 @@ public class RestartGame : MonoBehaviour
     /// </summary>
     private void OnDestroy()
     {
-        _restart.started -= Restart_started;
-        _restart.canceled -= Restart_canceled;
-        _Quit.started -= Quit_started;
-        _Quit.canceled -= Quit_canceled;
+
     }
 }

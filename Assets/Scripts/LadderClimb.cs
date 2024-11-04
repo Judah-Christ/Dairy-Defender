@@ -8,6 +8,8 @@ public class LadderClimb : MonoBehaviour
     private SpriteRenderer sr;
     private Collider2D ladderCollider;
     private Transform playerTransform;
+    public float ladderCenter;
+    private float centerPullSpeed = 2f;
 
     void Start()
     {
@@ -23,6 +25,8 @@ public class LadderClimb : MonoBehaviour
             float currentHeight = playerTransform.position.y - ladderCollider.bounds.min.y;
             float scale = Mathf.Lerp(0.75f, 1f, currentHeight / ladderHeight);
             playerTransform.localScale = new Vector3(scale, scale, 1);
+            Vector2 moveToCenter = new Vector2(ladderCenter, playerTransform.position.y);
+            playerTransform.position = Vector2.Lerp(playerTransform.position, moveToCenter, centerPullSpeed * Time.deltaTime);
         }
     }
 
@@ -33,6 +37,7 @@ public class LadderClimb : MonoBehaviour
             isClimbing = true;
             GameObject.Find("Player").layer = LayerMask.NameToLayer("OnLadder");
             ladderCollider = collision;
+            ladderCenter = collision.transform.position.x;
         }
     }
 

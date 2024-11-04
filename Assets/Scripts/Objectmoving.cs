@@ -38,7 +38,7 @@ public class Objectmoving : MonoBehaviour
         if (waveU == 1)
         {
             SpawnObjective(objectives[Random.Range(0, spawnPoints.Length)].objective);
-            Destroy(gameObject);
+            
             
         }
     }

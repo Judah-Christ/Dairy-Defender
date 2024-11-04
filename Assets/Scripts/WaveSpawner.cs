@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
 
     public SpawnState state = SpawnState.counting;
+
+    public static Action<int> waveUpdated;
 
     void Start()
     {
@@ -80,6 +84,7 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             nextWave++;
+            waveUpdated?.Invoke(nextWave);
         }  
     }
 

@@ -1,33 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static WaveSpawner;
 
 public class Objectmoving : MonoBehaviour
 {
-    private ObjectiveManager manager;
-    private WaveSpawner waveSpawner;
-    public class  Objective{
-        public string name;
-        public Transform objective;
+   
 
-    }
-
+    public Objective[] objectives;
     public Transform[] spawnPoints;
 
 
     // Start is called before the first frame update
     void Start()
     {
-     
+        WaveSpawner.waveUpdated += HandleWaveUpdated;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (waveSpawner.nextWave == 2)
-        {
-            SpawnObjective(objective.o
-        }
+       
+        
     }
     void SpawnObjective(Transform objective)
     {
@@ -38,5 +32,19 @@ public class Objectmoving : MonoBehaviour
         Instantiate(objective, sp.position, sp.rotation);
 
     }
+    
+    private void HandleWaveUpdated(int waveU)
+    {
+        if (waveU == 1)
+        {
+            SpawnObjective(objectives[Random.Range(0, spawnPoints.Length)].objective);
+            Destroy(gameObject);
+            
+        }
+    }
 
+    private void OnDestroy()
+    {
+        WaveSpawner.waveUpdated -= HandleWaveUpdated;
+    }
 }

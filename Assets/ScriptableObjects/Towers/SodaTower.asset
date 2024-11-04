@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: SodaTower
   itemObject: {fileID: 6773195374952635329, guid: 3843fc06715e3f94f90bf20b8a75d7c2, type: 3}
-  itemSprite: {fileID: 21300000, guid: 9dc521df02c0e6345857b0ae6fb701e0, type: 3}
+  itemSprite: {fileID: -1747484585, guid: 0bca727ee2ce55c4c8ee3ffb0c0666bf, type: 3}
   itemImage: {fileID: 8846000119444984712, guid: 9ed1e19886e52c947840891a4283c79b, type: 3}
   itemCost: 6
-  upgradeLevel: 0
+  itemType: 0
   Health: 10
   itemTransform: {fileID: 0}
   itemUpgradeCost: 4

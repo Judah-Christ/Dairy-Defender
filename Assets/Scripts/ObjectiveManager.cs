@@ -90,7 +90,7 @@ public class ObjectiveManager : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             TakeDamage(50);
-            //collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
+            collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
 
         }
     }

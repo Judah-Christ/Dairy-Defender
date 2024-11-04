@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerTurret : MonoBehaviour
@@ -27,9 +26,7 @@ public class PlayerTurret : MonoBehaviour
     public bool IsTurretActive;
     public Animator playerTurretAnim;
 
-    public UpgradeLevel TowerLevel;
-    public Sprite toolbarImage;
-    public int UpgradeCost;
+    
     
 
 
@@ -136,7 +133,5 @@ public class PlayerTurret : MonoBehaviour
             isPlayerNear = false;
         }
     }
-
-    
 
 }

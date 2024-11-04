@@ -35,7 +35,7 @@ public class ShopButtonController : MonoBehaviour
 
 
 
-    public void AddTower(GameObject tower)
+    public void AddTower()
     {
         for (int i = 0; i < inventory.Length; i++)
         {
@@ -44,6 +44,8 @@ public class ShopButtonController : MonoBehaviour
                 Debug.Log(inventory[i]);
                 inventory[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
                 inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = shopItem.itemObject;
+                //inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject.transform.position = 
+                //    inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().imageLocation.transform.position;
                 inventory[i].GetComponent<SlotController>().isFull = true;
                 itemAdded = true;
                 break;
@@ -103,7 +105,7 @@ public class ShopButtonController : MonoBehaviour
                 if(shopItem.itemCost <= gameManager.Coins)
                 {
                     gameManager.Coins -= shopItem.itemCost;
-                    AddTower(shopItem.itemObject);
+                    AddTower();
                     Debug.Log("purchased");
                 }
                 break;
@@ -111,7 +113,7 @@ public class ShopButtonController : MonoBehaviour
                 if(shopItem.itemCost <= gameManager.Coins)
                 {
                     gameManager.Coins -= shopItem.itemCost;
-                    AddTower(shopItem.itemObject);
+                    AddTower();
                     Debug.Log("purchased");
                 }
                 break;
@@ -119,7 +121,7 @@ public class ShopButtonController : MonoBehaviour
                 if(shopItem.itemCost <= gameManager.Coins)
                 {
                     gameManager.Coins -= shopItem.itemCost;
-                    AddTower(shopItem.itemObject);
+                    AddTower();
                     Debug.Log("purchased");
                 }
                 break;
@@ -127,7 +129,7 @@ public class ShopButtonController : MonoBehaviour
                 if(shopItem.itemCost <= gameManager.Coins)
                 {
                     gameManager.Coins -= shopItem.itemCost;
-                    AddTower(shopItem.itemObject);
+                    AddTower();
                     Debug.Log("purchased");
                 }
                 break;

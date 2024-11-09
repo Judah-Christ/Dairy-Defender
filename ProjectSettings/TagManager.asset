@@ -15,6 +15,12 @@ TagManager:
   - CounterMask
   - BackEdge
   - Tower
+  - PCTZone
+  - SodaTowerZone
+  - PlayerTurretObstructionWithSodaTower
+  - SodaTowerObstructionWithSodaTower
+  - SodaTowerObstructionWithPlayerTurret
+  - PlayerTurretObstructionWithPlayerTurret
   layers:
   - Default
   - TransparentFX
@@ -32,8 +38,8 @@ TagManager:
   - Placeable
   - Tower
   - Dialogue
-  - 
-  - 
+  - EnemyCounter
+  - EnemyFloor
   - 
   - 
   - 
@@ -63,6 +69,12 @@ TagManager:
     locked: 0
   - name: OnCounter
     uniqueID: 1361098101
+    locked: 0
+  - name: SodaTowerZones
+    uniqueID: 1830806133
+    locked: 0
+  - name: PCTZones
+    uniqueID: 3192839903
     locked: 0
   - name: AboveOnCounter
     uniqueID: 1728246671

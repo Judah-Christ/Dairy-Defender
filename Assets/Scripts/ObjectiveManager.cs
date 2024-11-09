@@ -33,7 +33,7 @@ public class ObjectiveManager : MonoBehaviour
         currentHealth = maxHealth;
         objectiveHealthSlider.maxValue = maxHealth;
         objectiveHealthSlider.value = maxHealth;
-        objSliderFill.color = highHealthColor;
+        objSliderFill.GetComponent<Image>().color = highHealthColor;
     }
     private void Update()
     {
@@ -44,11 +44,11 @@ public class ObjectiveManager : MonoBehaviour
     {
         objectiveHealthSlider.value = currentHealth;
 
-        if (currentHealth > 0.66 * maxHealth)
+        if (currentHealth >= 0.66 * maxHealth)
         {
             objSliderFill.color = highHealthColor;
         }
-        else if (currentHealth > 0.33 * maxHealth)
+        else if (currentHealth >= 0.33 * maxHealth)
         {
             objSliderFill.color = mediumHealthColor;
         }

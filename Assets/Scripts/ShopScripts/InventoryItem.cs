@@ -25,10 +25,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField] private PlayerInput playerInput;
     private InputAction mousePosition;
     private bool isDragging = false;
-
-
-
-
+    private GameObject dragImage;
+    public Canvas invCanvas;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -36,11 +34,21 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
 
+        dragImage = new GameObject("DragImage");
+        dragImage.transform.SetParent(invCanvas.transform);
+        var imageComponent = dragImage.AddComponent<Image>();
+        imageComponent.sprite = image.sprite;
+        imageComponent.raycastTarget = false;
+        dragImage.GetComponent<RectTransform>().sizeDelta = image.rectTransform.sizeDelta;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         isDragging = true;
+        if (dragImage != null)
+        {
+            dragImage.transform.position = mousePosition.ReadValue<Vector2>();
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -49,6 +57,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         isDragging = false;
         transform.SetParent(parentAfterDrag);
         isTowerPlaced = true;
+
+        if (dragImage != null)
+        {
+            Destroy(dragImage);
+        }
+
         if (spawnLocationController.canPlace == true && slotController.isFull == true)
         {
             slotController.isFull = false;

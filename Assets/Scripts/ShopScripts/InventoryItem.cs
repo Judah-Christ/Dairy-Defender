@@ -27,6 +27,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private bool isDragging = false;
     private GameObject dragImage;
     public Canvas invCanvas;
+    public GameObject turretTowerZones;
+    public GameObject sodaTowerZones;
+    private bool raycastForTurretZones = false;
+    private bool raycastForSodaZones = false;
+    private bool obstruction = false;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -40,6 +45,18 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         imageComponent.sprite = image.sprite;
         imageComponent.raycastTarget = false;
         dragImage.GetComponent<RectTransform>().sizeDelta = image.rectTransform.sizeDelta;
+
+        if (towerObject.name == "TurretOne" || towerObject.name == "TurretSteel" || towerObject.name == "TurretRust")
+        {
+            turretTowerZones.SetActive(true);
+            raycastForTurretZones = true;
+            Debug.Log("Tower type detected");
+        }
+        else if (towerObject.name == "SodaTower" || towerObject.name == "LemonadeTower" || towerObject.name == "TeaTower")
+        {
+            sodaTowerZones.SetActive(true);
+            raycastForSodaZones = true;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -63,7 +80,61 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             Destroy(dragImage);
         }
 
-        if (spawnLocationController.canPlace == true && slotController.isFull == true)
+        bool isOverTurretZone = false;
+        bool isOverSodaZone = false;
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(eventData.position);
+        Debug.Log("World Point is" + worldPoint);
+        Collider2D[] hits = Physics2D.OverlapPointAll(worldPoint);
+        Debug.Log("Number of hits is" + hits.Length);
+
+        foreach (Collider2D hit in hits)
+        {
+            Debug.Log("Hit object is" + hit.name);
+
+            if (raycastForTurretZones && hit.CompareTag("PCTZone"))
+            {
+                isOverTurretZone = true;
+            }
+            else if (raycastForSodaZones && hit.CompareTag("SodaTowerZone"))
+            {
+                isOverSodaZone = true;
+            }
+        }
+
+        foreach (Collider2D hit in hits)
+        {
+            if (isOverTurretZone)
+            {
+                if (hit.CompareTag("PlayerTurretObstructionWithPlayerTurret") || hit.CompareTag("PlayerTurretObstructionWithSodaTower"))
+                {
+                    obstruction = true;
+                    Debug.Log("Obstruction detected for TurretZone");
+                    break;
+                }
+            }
+            else if (isOverSodaZone)
+            {
+                if (hit.CompareTag("SodaTowerObstructionWithSodaTower") || hit.CompareTag("SodaTowerObstructionWithPlayerTurret"))
+                {
+                    obstruction = true;
+                    Debug.Log("Obstruction detected for SodaZone");
+                    break;
+                }
+            }
+        }
+
+        if (!obstruction && isOverTurretZone && spawnLocationController.canPlace == true && slotController.isFull == true)
+        {
+            slotController.isFull = false;
+            Time.timeScale = 0;
+            isTowerPlaced = false;
+            var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
+                Quaternion.identity) as GameObject;
+            image.sprite = null;
+            towerObject = null;
+            Time.timeScale = 1;
+        }
+        else if (!obstruction && isOverSodaZone && spawnLocationController.canPlace == true && slotController.isFull == true)
         {
             slotController.isFull = false;
             Time.timeScale = 0;
@@ -77,7 +148,22 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         else 
         {
             transform.SetParent(parentAfterDrag);
+            
+            if (!isOverSodaZone || !isOverTurretZone)
+            {
+                //code for UI/audio signal for attempt to place outside of proper zone
+            }
+            else if (obstruction)
+            {
+                //code for UI/audio signal for obstruction with another tower
+            }
         }
+
+        raycastForTurretZones = false;
+        raycastForSodaZones = false;
+        turretTowerZones.SetActive(false);
+        sodaTowerZones.SetActive(false);
+        obstruction = false;
 
     }
 

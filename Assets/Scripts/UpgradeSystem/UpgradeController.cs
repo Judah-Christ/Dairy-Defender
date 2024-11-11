@@ -10,7 +10,7 @@ using static ShopButtonController;
 
 public class UpgradeController : MonoBehaviour
 {
-    private UpgradeSelector US;
+    public UpgradeSelector US;
 
     private UnityEngine.UI.Button upgradeButton;
     private UnityEngine.UI.Button dismantleButton;
@@ -35,7 +35,7 @@ public class UpgradeController : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        US = GameObject.Find("UpgradeMenu").GetComponent<UpgradeSelector>();
+        // = GameObject.Find("UpgradeMenu").GetComponent<UpgradeSelector>();
 
         upgradeButton = gameObject.transform.Find("UpgradeButton").GetComponent<UnityEngine.UI.Button>();
         dismantleButton = gameObject.transform.Find("DismantleButton").GetComponent<UnityEngine.UI.Button>();

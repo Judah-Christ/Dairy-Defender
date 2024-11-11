@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviour
     public GameObject UpgButtonBG;
     public GameObject HammerAndWrench;
 
+    public bool hasMoved = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -140,6 +142,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpDown_started(InputAction.CallbackContext context)
     {
+        hasMoved = true;
         isPlayerMoving = true;
         if (isOnSurface && !isPaused)
         {

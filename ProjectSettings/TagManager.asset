@@ -21,6 +21,7 @@ TagManager:
   - SodaTowerObstructionWithSodaTower
   - SodaTowerObstructionWithPlayerTurret
   - PlayerTurretObstructionWithPlayerTurret
+  - Interactable
   layers:
   - Default
   - TransparentFX

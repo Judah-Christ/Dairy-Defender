@@ -7,6 +7,8 @@ using static WaveSpawner;
 public class DialogueController : MonoBehaviour
 {
     [SerializeField] private string[] dialougue;
+    [SerializeField] private string[] wave5Dialougue;
+    [SerializeField] private string[] wave10Dialougue;
     [SerializeField] private TMP_Text dialougueText;
     private int index;
     [SerializeField] private GameObject dialouguePanel;
@@ -52,6 +54,13 @@ public class DialogueController : MonoBehaviour
             zeroText();
         }
     }
+
+
+    public void NextWave5Line()
+    {
+
+    }
+
 
 
     public void StartTalking()

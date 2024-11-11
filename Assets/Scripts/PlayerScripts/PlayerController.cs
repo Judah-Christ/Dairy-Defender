@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour
     public GameObject upgradeMenu;
     public GameObject HUD;
     private ZoomIconChange zoomIcon;
+    public GameObject UpgButtonBG;
+    public GameObject HammerAndWrench;
 
     // Start is called before the first frame update
     void Start()
@@ -333,10 +335,14 @@ public class PlayerController : MonoBehaviour
                 if (upgradeMenuIsOpen)
                 {
                     CloseUpgradeMenu();
+                    UpgButtonBG.GetComponent<UpgMenuBGChange>().upgradeMenuCloseButtonHandler();
+                    HammerAndWrench.GetComponent<UpgradeMenuSlide>().CloseButtonHandler();
                 }
                 else
                 {
                     OpenUpgradeMenu();
+                    UpgButtonBG.GetComponent<UpgMenuBGChange>().upgradeIconClicked();
+                    HammerAndWrench.GetComponent<UpgradeMenuSlide>().UpgradeButtonClick();
                 }
             }
 

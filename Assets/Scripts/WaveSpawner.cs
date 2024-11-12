@@ -12,9 +12,11 @@ public class WaveSpawner : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform enemy;
+        public Transform enemy1;
+        public Transform enemy2;
         public int count;
         public float rate;
+        
     }
 
     public Wave[] waves;
@@ -39,6 +41,8 @@ public class WaveSpawner : MonoBehaviour
         }
 
         waveCountdown = timeBetweenWaves;
+
+        
     }
 
     void Update()
@@ -109,7 +113,8 @@ public class WaveSpawner : MonoBehaviour
         state = SpawnState.spawning;
         for(int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy(wave.enemy);
+            SpawnEnemy(wave.enemy1);
+            SpawnEnemyFly(wave.enemy2);
             yield return new WaitForSeconds(1f/wave.rate);
         }
 
@@ -120,10 +125,62 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy(Transform enemy)
     {
         Debug.Log("spawning enemy:" + enemy.name);
-
+        
+        if (nextWave == 0)
+        {
+            Transform sp = spawnPoints[Random.Range(0, 5)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }if(nextWave == 1)
+        {
+            Transform sp = spawnPoints[Random.Range(0, 5)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
+        if (nextWave == 2)
+        {
+            Transform sp = spawnPoints[Random.Range(0, 5)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
+        if (nextWave == 3)
+        {
+            Transform sp = spawnPoints[Random.Range(0, 5)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
+        if (nextWave == 4)
+        {
+            Transform sp = spawnPoints[Random.Range(0, 5)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
        
-        Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-      Instantiate(enemy, sp.position, sp.rotation);
-         
+    }
+    void SpawnEnemyFly(Transform enemy)
+    {
+        Debug.Log("spawning enemy:" + enemy.name);
+
+        if (nextWave == 0)
+        {
+            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
+        if (nextWave == 1)
+        {
+            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
+        if (nextWave == 2)
+        {
+            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
+        if (nextWave == 3)
+        {
+            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
+        if (nextWave == 4)
+        {
+            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Instantiate(enemy, sp.position, sp.rotation);
+        }
+
     }
 }

@@ -11,10 +11,10 @@ public class UpgradeSelector : MonoBehaviour
     private InputAction mousePosition;
     private bool isMouseActive = false;
     [SerializeField] private LayerMask collisionMask;
-    private Ray ray;
     private PlayerController PC;
-    public GameObject currentTower { get; private set; }
+    public GameObject CurrentTower;
     private GameObject selection;
+    private UpgradeController UC;
 
 
     // Start is called before the first frame update
@@ -23,76 +23,76 @@ public class UpgradeSelector : MonoBehaviour
         playerInput.currentActionMap.Enable();
         mouseAction = playerInput.currentActionMap.FindAction("Mouse");
         mouseAction.started += MouseAction_started;
-        mouseAction.canceled += MouseAction_canceled;
         mousePosition = playerInput.currentActionMap.FindAction("MousePosition");
         PC = GameObject.Find("Player").GetComponent<PlayerController>();
-
+        UC = GameObject.Find("UpgradeMenu").GetComponent<UpgradeController>();
     }
 
     private void MouseAction_started(InputAction.CallbackContext context)
     {
-        isMouseActive = true;
-    }
-
-    private void MouseAction_canceled(InputAction.CallbackContext context)
-    {
-        isMouseActive = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isMouseActive == true && PC.upgradeMenuIsOpen == true)
+        if (PC.upgradeMenuIsOpen == true)
         {
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition.ReadValue<Vector2>()), Vector2.zero, Mathf.Infinity, collisionMask);
-            if (hit)
+            if (hit && CurrentTower == null)
             {
-                currentTower = hit.transform.gameObject;
-                
-                if (currentTower.CompareTag("Turret"))
+                CurrentTower = hit.transform.gameObject;
+                UC.GetUpgradeLevel(CurrentTower);
+
+                if (CurrentTower.CompareTag("Turret"))
                 {
-                    if (selection != null)
-                    {
-                        selection.SetActive(false);
-                        selection = null;
-                    }
-                    Transform parent = currentTower.transform.parent;
+                    DeselectTower();
+                    Transform parent = CurrentTower.transform.parent;
                     selection = parent.Find("Selection").gameObject;
                     selection.SetActive(true);
-                    Debug.Log(currentTower);
+                    return;
                 }
-                if (currentTower.CompareTag("Soda"))
+                if (CurrentTower.CompareTag("Soda"))
                 {
-                    if (selection != null)
-                    {
-                    selection.SetActive(false);
-                    selection = null;
-                    }
-                    selection = currentTower.transform.Find("Selection").gameObject;
+                    DeselectTower();
+                    selection = CurrentTower.transform.Find("Selection").gameObject;
                     selection.SetActive(true);
-                    Debug.Log(currentTower);
+                    Debug.Log(CurrentTower);
+                    return;
                 }
-                
+
             }
-            else
+            else if (hit && CurrentTower != null)
             {
-                if (selection != null)
-                {
-                    selection.SetActive(false);
-                    selection = null;
-                }
-                currentTower = null;
+                DeselectTower(true);
+                return;
+            }
+            else if (hit == false)
+            {
+                
             }
         }
         if (PC.upgradeMenuIsOpen == false)
         {
-            if (selection != null)
-            {
-                selection.SetActive(false);
-                selection = null;
-            }
-            currentTower = null;
+            DeselectTower();
+            CurrentTower = null;
+            return;
         }
     }
+
+    private void DeselectTower()
+    {
+        if(selection != null) 
+        {
+            selection.SetActive(false);
+            selection = null;
+        }
+    }
+
+    public void DeselectTower(bool removeTower)
+    {
+        if (selection != null && removeTower == true)
+        {
+            selection.SetActive(false);
+            selection = null;
+            CurrentTower = null;
+            return;
+        }
+    }
+
 }

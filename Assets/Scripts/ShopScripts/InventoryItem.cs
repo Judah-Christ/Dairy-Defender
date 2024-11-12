@@ -189,6 +189,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         inventory[7] = GameObject.Find("InventorySlot8");
         playerInput.currentActionMap.Enable();
         mousePosition = playerInput.currentActionMap.FindAction("MousePosition");
+        image.enabled = false;
     }
 
     void Update()
@@ -197,5 +198,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             image.transform.position = mousePosition.ReadValue<Vector2>();
         }
+        if(slotController.isFull == true)
+        {
+            image.enabled = true;
+        }
+        if (slotController.isFull == false)
+        {
+            image.enabled = false;
+        }
+
     }
 }

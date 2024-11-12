@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static WaveSpawner;
 
 public class Objectmoving : MonoBehaviour
@@ -13,13 +14,15 @@ public class Objectmoving : MonoBehaviour
 
     public GameObject objectiveSet;
 
+    public Slider objectiveHealthSlider;
+    public Image objSliderFill;
+
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnObjective(objectives[Random.Range(0, 0)].objective);
         WaveSpawner.waveUpdated += HandleWaveUpdated;
-        
     }
 
     // Update is called once per frame

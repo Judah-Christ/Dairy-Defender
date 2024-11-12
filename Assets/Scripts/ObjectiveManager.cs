@@ -16,7 +16,7 @@ public class ObjectiveManager : MonoBehaviour
     public Color highHealthColor;
     public Color mediumHealthColor;
     public Color lowHealthColor;
-
+    public Objectmoving objectmoving;
     
 
     [SerializeField]
@@ -31,6 +31,9 @@ public class ObjectiveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        objectmoving = GameObject.Find("GameManager").GetComponent<Objectmoving>();
+        objectiveHealthSlider = objectmoving.objectiveHealthSlider;
+        objSliderFill = objectmoving.objSliderFill;
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
         objectiveHealthSlider.maxValue = maxHealth;

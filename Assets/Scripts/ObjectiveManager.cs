@@ -17,6 +17,8 @@ public class ObjectiveManager : MonoBehaviour
     public Color mediumHealthColor;
     public Color lowHealthColor;
 
+    
+
     [SerializeField]
     private GameObject CakeFull;
 
@@ -38,6 +40,8 @@ public class ObjectiveManager : MonoBehaviour
     private void Update()
     {
         //Debug.Log(currentHealth);
+        
+
     }
 
     public void HealthSliderUpdate()
@@ -61,7 +65,7 @@ public class ObjectiveManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        HealthSliderUpdate();
+       // HealthSliderUpdate();
         
         if(currentHealth <= (maxHealth / 2))
         {
@@ -85,6 +89,8 @@ public class ObjectiveManager : MonoBehaviour
             Debug.Log("TEST");
         }
     }
+    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")

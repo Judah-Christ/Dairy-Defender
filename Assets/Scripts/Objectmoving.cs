@@ -31,9 +31,9 @@ public class Objectmoving : MonoBehaviour
     void SpawnObjective(Transform objective)
     {
         Debug.Log("spawning objective:" + objective.name);
-        objectiveSet = objective.gameObject;
+     
         Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(objective, sp.position, sp.rotation);
+        objectiveSet = Instantiate(objective, sp.position, sp.rotation).gameObject;
        
 
     }

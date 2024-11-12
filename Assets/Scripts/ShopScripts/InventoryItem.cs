@@ -141,6 +141,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             isTowerPlaced = false;
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
+            SpriteRenderer sr = createImage.GetComponent<SpriteRenderer>();
+            float towerY = createImage.transform.position.y;
+            float maxY = 15.0f;
+            float minY = -16.0f;
+            int maxSortingLayer = 999;
+            float relativeY = Mathf.Clamp01((maxY - towerY) / (maxY - minY));
+            int sortOrder = Mathf.RoundToInt(relativeY * maxSortingLayer);
+            sr.sortingOrder = sortOrder;
             image.sprite = null;
             towerObject = null;
             Time.timeScale = 1;

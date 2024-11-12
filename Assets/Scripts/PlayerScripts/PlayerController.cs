@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -43,7 +44,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     public bool isInAir = false;
     private float jumpStartY;
-
+    private float shadowJumpStartY;
+    private float shadowPlayerOffset;
     private float timeStart;
     private float timeUpdate;
 
@@ -73,6 +75,12 @@ public class PlayerController : MonoBehaviour
     private ZoomIconChange zoomIcon;
     public GameObject UpgButtonBG;
     public GameObject HammerAndWrench;
+    public GameObject EToInteract;
+    public GameObject Shadow;
+    public GameObject FloorShadow;
+
+    [SerializeField] private Vector3 floorOrigShadowScale;
+    [SerializeField] private Vector3 floorMinShadowScale;
 
     // Start is called before the first frame update
     void Start()
@@ -107,10 +115,12 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         layerSwitchTransform = transform;
-        sr = GetComponentInChildren<SpriteRenderer>();
+        sr = GameObject.Find("SC_Front").GetComponent<SpriteRenderer>();
         ladderClimb = GetComponentInChildren<LadderClimb>();
 
         zoomIcon = GameObject.Find("ZoomButton").GetComponent<ZoomIconChange>();
+
+        shadowPlayerOffset = Vector3.Distance(transform.position, Shadow.transform.position);
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -269,6 +279,8 @@ public class PlayerController : MonoBehaviour
             isInAir = false;
             rb.velocity = new Vector2(rb.velocity.x, vert * climbSpeed);
             rb.gravityScale = 0f;
+            Shadow.SetActive(false);
+            FloorShadow.SetActive(false);
         }
         else
         {
@@ -302,6 +314,13 @@ public class PlayerController : MonoBehaviour
         if (isShootOnCD)
         {
             ShootCD();
+        }
+
+        if (gameObject.layer == LayerMask.NameToLayer("Counter"))
+        {
+            Shadow = GameObject.Find("ShadowOnCounter");
+            Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "OnCounter";
+            FloorShadow.SetActive(false);
         }
 
     }
@@ -350,20 +369,34 @@ public class PlayerController : MonoBehaviour
             {
                 zoomIcon.zoomClicked();
             }
+
+            if (!ladderClimb.isClimbing)
+            {
+                Shadow.SetActive(true);
+            }
         }
     }
 
     private IEnumerator Jump()
     {   
         jumpStartY = transform.position.y;
+        shadowJumpStartY = Shadow.transform.position.y;
         rb.velocity = Vector2.up * jumpForce;
         AudioManager.instance.PauseSFX();
-        Debug.Log("Jump Works");
 
         yield return new WaitForFixedUpdate();
 
+        Vector3 shadowPosition = Shadow.transform.position;
+        Vector3 origShadowScale = Shadow.transform.localScale;
+        Vector3 minShadowScale = origShadowScale * 0.38f;
+        StartCoroutine(ScaleShadow(origShadowScale, minShadowScale));
+
         while (transform.position.y > jumpStartY)
-        {   
+        {
+            shadowPosition.x = transform.position.x;
+            shadowPosition.y = shadowJumpStartY;
+            Shadow.transform.position = shadowPosition;
+
             if (!soundPlayed && rb.velocity.y < 0)
             {
                 AudioManager.instance.PlayPausableSFX("FallFromCounterF");
@@ -371,6 +404,18 @@ public class PlayerController : MonoBehaviour
             }
             yield return null;
         }
+
+        shadowPosition = transform.position;
+        if (gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            shadowPosition.y = transform.position.y - (shadowPlayerOffset * 0.75f);
+        }
+        else
+        {
+            shadowPosition.y = transform.position.y - shadowPlayerOffset;
+        }
+        Shadow.transform.position = shadowPosition;
+        Shadow.transform.localScale = origShadowScale;
 
         if (!isOnSurface && gameObject.layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
@@ -390,8 +435,68 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public IEnumerator ScaleShadow(Vector3 origSize, Vector3 minSize)
+    {
+        float elapsedTime = 0f;
+        float scaleDuration = 1.04f;
+
+        while (elapsedTime < scaleDuration)
+        {
+            float scaleProgress = elapsedTime / scaleDuration;
+
+            if (scaleProgress < 0.5f)
+            {
+                Shadow.transform.localScale = Vector3.Lerp(origSize, minSize, scaleProgress * 2);
+            }
+            else
+            {
+                Shadow.transform.localScale = Vector3.Lerp(minSize, origSize, (scaleProgress - 0.5f) * 2);
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public IEnumerator ScaleFloorShadow(Vector3 normalSize, Vector3 minimumSize, float height)
+    {
+        Debug.Log("Max Distance: " + height);
+
+        while (true)
+        {
+            float distance = Vector3.Distance(Shadow.transform.position, transform.position);
+            float scaleFactor = Mathf.InverseLerp(height, 0, distance);
+
+            Shadow.transform.localScale = Vector3.Lerp(minimumSize, normalSize, scaleFactor);
+            Debug.Log("Distance: " + distance + ", ScaleFactor: " + scaleFactor + ", Shadow Scale:" + Shadow.transform.localScale);
+
+            if (distance <= shadowPlayerOffset)
+            {
+                Debug.Log("Distance threshold reached");
+                break;
+            }
+
+            yield return null;
+        }
+
+        Shadow.transform.localScale = normalSize;
+        Debug.Log("ScaleFloorShadow finished, final shadow scale: " + Shadow.transform.localScale);
+    }
+
     public IEnumerator Fall()
     {
+        FloorShadow.SetActive(true);
+        Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Non-visible";
+        Shadow = GameObject.Find("ShadowOnFloor");
+        Shadow.transform.localScale = floorMinShadowScale;
+        Debug.Log("Starting fall with initial shadow scale" + Shadow.transform.localScale);
+        Vector3 floorShadowPosition = Shadow.transform.position;
+        floorShadowPosition.y = transform.position.y - (4 + (shadowPlayerOffset * 0.75f));
+        Shadow.transform.position = floorShadowPosition;
+
+        float maxDistance = Vector3.Distance(Shadow.transform.position, transform.position);
+        StartCoroutine(ScaleFloorShadow(floorOrigShadowScale, floorMinShadowScale, maxDistance));
+
         if (!soundPlayed)
         {
             AudioManager.instance.PlayPausableSFX("FallFromCounterF");
@@ -406,6 +511,9 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = 1;
             rb.velocity = new Vector2(horz * speed, rb.velocity.y);
 
+            floorShadowPosition.x = transform.position.x;
+            Shadow.transform.position = floorShadowPosition;
+
             yield return null;
         }
 
@@ -415,6 +523,9 @@ public class PlayerController : MonoBehaviour
         isInAir = false;
         isOnSurface = true;
         soundPlayed = false;
+        floorShadowPosition = transform.position;
+        floorShadowPosition.y = transform.position.y - (shadowPlayerOffset * 0.75f);
+        Shadow.transform.position = floorShadowPosition;
     }
 
     public IEnumerator IgnoreFloorBoundariesCollision()
@@ -443,14 +554,14 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("Counter");
             sr.sortingLayerName = "OnCounter";
-            sr.sortingOrder = 4;
+            sr.sortingOrder = 1000;
             StartCoroutine(ChangeSize(origSize));
         }
         else
         {
             gameObject.layer = LayerMask.NameToLayer("Floor");
             sr.sortingLayerName = "OnFloor";
-            sr.sortingOrder = 4;
+            sr.sortingOrder = 1000;
             StartCoroutine(ChangeSize(smallSize));
         }
     }
@@ -484,6 +595,11 @@ public class PlayerController : MonoBehaviour
         {
             counterCollision = collision;
         }
+
+        if (collision.CompareTag("Interactable"))
+        {
+            EToInteract.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -491,6 +607,11 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("CounterMask"))
         {
             counterCollision = null;
+        }
+
+        if (collision.CompareTag("Interactable"))
+        {
+            EToInteract.SetActive(false);
         }
     }
 

@@ -11,6 +11,9 @@ public class BulletController : MonoBehaviour
     [Range(1, 10)]
     [SerializeField] private float lifetime = 3f;
 
+    [Range(25, 300)]
+    [SerializeField] private int damageAmount;
+
     // Start is called before the first frame update
    
          private Rigidbody2D rb;
@@ -41,7 +44,7 @@ public class BulletController : MonoBehaviour
         if (collision.transform.tag == "Enemy")
         {
             EnemyManager enemyComponent = collision.gameObject.GetComponent<EnemyManager>();
-            enemyComponent.TakeDamage(100);
+            enemyComponent.TakeDamage(damageAmount);
             Destroy(gameObject);
         }
     }

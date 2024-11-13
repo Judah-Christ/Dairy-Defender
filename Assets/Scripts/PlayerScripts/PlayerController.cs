@@ -620,7 +620,7 @@ public class PlayerController : MonoBehaviour
             counterCollision = null;
         }
 
-        if (collision.CompareTag("Interactable"))
+        if (collision.CompareTag("Interactable") && collision.gameObject != null)
         {
             EToInteract.SetActive(false);
         }

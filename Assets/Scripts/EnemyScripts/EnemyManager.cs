@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -22,6 +23,14 @@ public class EnemyManager : MonoBehaviour
     private GameObject coin;
     private PlayerController pc;
 
+    [SerializeField] private Color highHealth;
+    [SerializeField] private Color mediumHealth;
+    [SerializeField] private Color lowHealth;
+    [SerializeField] private Slider enemySlider;
+    [SerializeField] private Image enemySliderFill;
+
+    [SerializeField] private Canvas canvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +38,7 @@ public class EnemyManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         deathScreams = new AudioClip[] {deathScream, deathScream1, deathScream2, deathScream3};
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        enemySliderFill.color = highHealth;
     }
 
     // Update is called once per frame
@@ -42,11 +52,25 @@ public class EnemyManager : MonoBehaviour
         {
             audioSource.UnPause();
         }
+
+        if (currenthealth >= 0.66 * maxHealth)
+        {
+            enemySliderFill.color = highHealth;
+        }
+        else if (currenthealth >= 0.33 * maxHealth)
+        {
+            enemySliderFill.color = mediumHealth;
+        }
+        else
+        {
+            enemySliderFill.color = lowHealth;
+        }
     }
 
     public void TakeDamage(int damageAmount)
     {
         currenthealth -= damageAmount;
+        enemySlider.value = currenthealth;
 
         if (currenthealth <= 0) 
         { 

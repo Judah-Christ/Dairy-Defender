@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using static ShopButtonController;
+//using static ShopButtonController;
 
 public class UpgradeController : MonoBehaviour
 {
@@ -14,6 +14,9 @@ public class UpgradeController : MonoBehaviour
 
     private UnityEngine.UI.Button upgradeButton;
     private UnityEngine.UI.Button dismantleButton;
+    private UnityEngine.UI.Button pickUpButton;
+    private UnityEngine.UI.Button rotateLeftButton;
+    private UnityEngine.UI.Button rotateRightButton;
 
     public GameObject[] inventory = new GameObject[8];
 
@@ -31,6 +34,7 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] private GameObject _metalTower;
     private int towerType;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +42,10 @@ public class UpgradeController : MonoBehaviour
         US = GameObject.Find("UpgradeMenu").GetComponent<UpgradeSelector>();
 
         upgradeButton = gameObject.transform.Find("UpgradeButton").GetComponent<UnityEngine.UI.Button>();
+        pickUpButton = gameObject.transform.Find("PickUpButton").GetComponent<UnityEngine.UI.Button>();
         dismantleButton = gameObject.transform.Find("DismantleButton").GetComponent<UnityEngine.UI.Button>();
+        rotateLeftButton = gameObject.transform.Find("RotateLeftButton").GetComponent<UnityEngine.UI.Button>();
+        rotateRightButton = gameObject.transform.Find("RotateRightButton").GetComponent<UnityEngine.UI.Button>();
 
         playerTurret = _playerTower.GetComponent<PlayerTurret>();
         sodaSlowController = _sodaTower.GetComponent<SodaSlowController>();
@@ -251,6 +258,44 @@ public class UpgradeController : MonoBehaviour
         }        
     }
 
+    public void RotateTowerLeft()
+    {
+        if(US.CurrentTower != null && US.CurrentTower.CompareTag("Turret"))
+        {
+            playerTurret.CurrentRotation += 90;
+            US.CurrentTower.transform.parent.Rotate(0, 0, playerTurret.CurrentRotation);
+        }
+    }
+
+    public void RotateTowerRight()
+    {
+        if (US.CurrentTower != null && US.CurrentTower.CompareTag("Turret"))
+        {
+            playerTurret.CurrentRotation -= 90;
+            US.CurrentTower.transform.parent.Rotate(0, 0, playerTurret.CurrentRotation);
+        }
+    }
+
+    public void DismantleTower()
+    {
+        if(US.CurrentTower != null)
+        {
+            GetUpgradeLevel(US.CurrentTower);
+            if(towerType == 1)
+            {
+                gameManager.AddCoin((playerTurret.UpgradeCost -1));
+                DestroyTower(US.CurrentTower);
+                return;
+            }
+            if(towerType == 2)
+            {
+                gameManager.AddCoin((sodaSlowController.UpgradeCost - 1));
+                DestroyTower(US.CurrentTower);
+                return;
+            }
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -258,11 +303,20 @@ public class UpgradeController : MonoBehaviour
         {
             upgradeButton.interactable = false;
             dismantleButton.interactable = false;
+            pickUpButton.interactable = false;
+            rotateLeftButton.interactable = false;
+            rotateRightButton.interactable = false;
         }
         if (US.CurrentTower != null)
         {
             upgradeButton.interactable = true;
             dismantleButton.interactable = true;
+            pickUpButton.interactable = true;
+            if(towerType == 1)
+            {
+                rotateLeftButton.interactable = true;
+                rotateRightButton.interactable = true;
+            }
         }
     }
 }

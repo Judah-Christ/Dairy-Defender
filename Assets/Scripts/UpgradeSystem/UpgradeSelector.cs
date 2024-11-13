@@ -9,7 +9,6 @@ public class UpgradeSelector : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     private InputAction mouseAction;
     private InputAction mousePosition;
-    private bool isMouseActive = false;
     [SerializeField] private LayerMask collisionMask;
     private PlayerController PC;
     public GameObject CurrentTower;

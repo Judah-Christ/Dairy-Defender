@@ -30,6 +30,7 @@ public class PlayerTurret : MonoBehaviour
     public UpgradeLevel TowerLevel;
     public Sprite toolbarImage;
     public int UpgradeCost;
+    public int CurrentRotation;
     
 
 

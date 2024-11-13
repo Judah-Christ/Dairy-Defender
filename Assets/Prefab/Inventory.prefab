@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 783774490736349765}
   - component: {fileID: 395550238555993239}
   - component: {fileID: 3254074104895663282}
+  - component: {fileID: 2545034332434076278}
   m_Layer: 5
   m_Name: Toolbar
   m_TagString: Untagged
@@ -143,7 +144,7 @@ RectTransform:
   m_GameObject: {fileID: 1052587497746798059}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.74786973, y: 0.74786973, z: 0.74786973}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7731499662958412765}
@@ -158,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 591.1663, y: 64.2346}
+  m_AnchoredPosition: {x: 0, y: -47.85}
+  m_SizeDelta: {x: 592, y: 93}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &783774490736349765
 CanvasRenderer:
@@ -182,14 +183,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 683294335736fb749920fa01adab54d3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -215,14 +216,30 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
+    m_Bottom: 4
+  m_ChildAlignment: 7
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 55, y: 55}
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &2545034332434076278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052587497746798059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224e58cd6b940b547b3bebd81047d232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inPosition: -47.85
+  outPosition: 0
+  distanceFromBottomEdge: 250
+  invSlideSpeed: 5
 --- !u!1 &1231309083000633514
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -399,7 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -585,9 +602,23 @@ MonoBehaviour:
   imageLocation: {fileID: 0}
   towerObject: {fileID: 0}
   towerLocation: {fileID: 0}
+  towerLocationObject: {fileID: 0}
   offsetTower: {x: 9.7667, y: -2.231555, z: 0}
   parentAfterDrag: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  inventory:
+  - {fileID: 2539306951529078294}
+  - {fileID: 3027862135690756510}
+  - {fileID: 8902956713405493859}
+  - {fileID: 1939053270217732947}
+  - {fileID: 7035897856127737791}
+  - {fileID: 2996622792917547237}
+  - {fileID: 2005222935407066317}
+  - {fileID: 8602303745496601165}
+  spawnLocationController: {fileID: 0}
+  playerInput: {fileID: 0}
+  invCanvas: {fileID: 2066464111393771267}
+  turretTowerZones: {fileID: 0}
+  sodaTowerZones: {fileID: 0}
 --- !u!1 &2005222935407066317
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,9 +751,23 @@ MonoBehaviour:
   imageLocation: {fileID: 0}
   towerObject: {fileID: 2005222935407066317}
   towerLocation: {fileID: 0}
+  towerLocationObject: {fileID: 0}
   offsetTower: {x: 9.7667, y: -2.231555, z: 0}
   parentAfterDrag: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  inventory:
+  - {fileID: 2539306951529078294}
+  - {fileID: 3027862135690756510}
+  - {fileID: 8902956713405493859}
+  - {fileID: 1939053270217732947}
+  - {fileID: 7035897856127737791}
+  - {fileID: 2996622792917547237}
+  - {fileID: 2005222935407066317}
+  - {fileID: 8602303745496601165}
+  spawnLocationController: {fileID: 0}
+  playerInput: {fileID: 0}
+  invCanvas: {fileID: 2066464111393771267}
+  turretTowerZones: {fileID: 0}
+  sodaTowerZones: {fileID: 0}
 --- !u!1 &2332388525176336144
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -932,9 +977,23 @@ MonoBehaviour:
   imageLocation: {fileID: 0}
   towerObject: {fileID: 0}
   towerLocation: {fileID: 0}
+  towerLocationObject: {fileID: 0}
   offsetTower: {x: 9.7667, y: -2.231555, z: 0}
   parentAfterDrag: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  inventory:
+  - {fileID: 2539306951529078294}
+  - {fileID: 3027862135690756510}
+  - {fileID: 8902956713405493859}
+  - {fileID: 1939053270217732947}
+  - {fileID: 7035897856127737791}
+  - {fileID: 2996622792917547237}
+  - {fileID: 2005222935407066317}
+  - {fileID: 8602303745496601165}
+  spawnLocationController: {fileID: 0}
+  playerInput: {fileID: 0}
+  invCanvas: {fileID: 2066464111393771267}
+  turretTowerZones: {fileID: 0}
+  sodaTowerZones: {fileID: 0}
 --- !u!1 &2996622792917547237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,9 +1126,23 @@ MonoBehaviour:
   imageLocation: {fileID: 0}
   towerObject: {fileID: 0}
   towerLocation: {fileID: 0}
+  towerLocationObject: {fileID: 0}
   offsetTower: {x: 9.7667, y: -2.231555, z: 0}
   parentAfterDrag: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  inventory:
+  - {fileID: 2539306951529078294}
+  - {fileID: 3027862135690756510}
+  - {fileID: 8902956713405493859}
+  - {fileID: 1939053270217732947}
+  - {fileID: 7035897856127737791}
+  - {fileID: 2996622792917547237}
+  - {fileID: 2005222935407066317}
+  - {fileID: 8602303745496601165}
+  spawnLocationController: {fileID: 0}
+  playerInput: {fileID: 0}
+  invCanvas: {fileID: 2066464111393771267}
+  turretTowerZones: {fileID: 0}
+  sodaTowerZones: {fileID: 0}
 --- !u!1 &3027862135690756510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,9 +1275,23 @@ MonoBehaviour:
   imageLocation: {fileID: 0}
   towerObject: {fileID: 0}
   towerLocation: {fileID: 0}
+  towerLocationObject: {fileID: 0}
   offsetTower: {x: 9.7667, y: -2.231555, z: 0}
   parentAfterDrag: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  inventory:
+  - {fileID: 2539306951529078294}
+  - {fileID: 3027862135690756510}
+  - {fileID: 8902956713405493859}
+  - {fileID: 1939053270217732947}
+  - {fileID: 7035897856127737791}
+  - {fileID: 2996622792917547237}
+  - {fileID: 2005222935407066317}
+  - {fileID: 8602303745496601165}
+  spawnLocationController: {fileID: 0}
+  playerInput: {fileID: 0}
+  invCanvas: {fileID: 2066464111393771267}
+  turretTowerZones: {fileID: 0}
+  sodaTowerZones: {fileID: 0}
 --- !u!1 &3389794386971692546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1381,7 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1496,7 +1583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1714,9 +1801,23 @@ MonoBehaviour:
   imageLocation: {fileID: 0}
   towerObject: {fileID: 0}
   towerLocation: {fileID: 0}
+  towerLocationObject: {fileID: 0}
   offsetTower: {x: 9.7667, y: -2.231555, z: 0}
   parentAfterDrag: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  inventory:
+  - {fileID: 2539306951529078294}
+  - {fileID: 3027862135690756510}
+  - {fileID: 8902956713405493859}
+  - {fileID: 1939053270217732947}
+  - {fileID: 7035897856127737791}
+  - {fileID: 2996622792917547237}
+  - {fileID: 2005222935407066317}
+  - {fileID: 8602303745496601165}
+  spawnLocationController: {fileID: 0}
+  playerInput: {fileID: 0}
+  invCanvas: {fileID: 2066464111393771267}
+  turretTowerZones: {fileID: 0}
+  sodaTowerZones: {fileID: 0}
 --- !u!1 &8494503397332525373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1778,7 +1879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1964,9 +2065,23 @@ MonoBehaviour:
   imageLocation: {fileID: 0}
   towerObject: {fileID: 8602303745496601165}
   towerLocation: {fileID: 0}
+  towerLocationObject: {fileID: 0}
   offsetTower: {x: 9.7667, y: -2.231555, z: 0}
   parentAfterDrag: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  inventory:
+  - {fileID: 2539306951529078294}
+  - {fileID: 3027862135690756510}
+  - {fileID: 8902956713405493859}
+  - {fileID: 1939053270217732947}
+  - {fileID: 7035897856127737791}
+  - {fileID: 2996622792917547237}
+  - {fileID: 2005222935407066317}
+  - {fileID: 8602303745496601165}
+  spawnLocationController: {fileID: 0}
+  playerInput: {fileID: 0}
+  invCanvas: {fileID: 2066464111393771267}
+  turretTowerZones: {fileID: 0}
+  sodaTowerZones: {fileID: 0}
 --- !u!1 &8902956713405493859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,9 +2214,23 @@ MonoBehaviour:
   imageLocation: {fileID: 0}
   towerObject: {fileID: 0}
   towerLocation: {fileID: 0}
+  towerLocationObject: {fileID: 0}
   offsetTower: {x: 9.7667, y: -2.231555, z: 0}
   parentAfterDrag: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  inventory:
+  - {fileID: 2539306951529078294}
+  - {fileID: 3027862135690756510}
+  - {fileID: 8902956713405493859}
+  - {fileID: 1939053270217732947}
+  - {fileID: 7035897856127737791}
+  - {fileID: 2996622792917547237}
+  - {fileID: 2005222935407066317}
+  - {fileID: 8602303745496601165}
+  spawnLocationController: {fileID: 0}
+  playerInput: {fileID: 0}
+  invCanvas: {fileID: 2066464111393771267}
+  turretTowerZones: {fileID: 0}
+  sodaTowerZones: {fileID: 0}
 --- !u!1 &9070284612495289652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,7 +2292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

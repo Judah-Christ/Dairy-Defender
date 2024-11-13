@@ -10,9 +10,11 @@ public class Scan : MonoBehaviour
     Quaternion angle;
     float zAngle;
     public float speed;
+    private PlayerTurret PT;
     // Start is called before the first frame update
     void Start()
     {
+        PT = gameObject.GetComponent<PlayerTurret>();
         leftToRight = true;
         zAngle = 0;
         speed = 50;
@@ -37,7 +39,7 @@ public class Scan : MonoBehaviour
             {
                 zAngle -= Time.deltaTime * speed;
                 angle = Quaternion.Euler(0, 0, zAngle);
-                if (zAngle <= -90)
+                if (zAngle <= PT.CurrentRotation - 90)
                 {
                     leftToRight = !leftToRight;
                 }
@@ -46,7 +48,7 @@ public class Scan : MonoBehaviour
             {
                 zAngle += Time.deltaTime * speed;
                 angle = Quaternion.Euler(0, 0, zAngle);
-                if (zAngle >= 90)
+                if (zAngle >= PT.CurrentRotation + 90)
                 {
                     leftToRight = !leftToRight;
                 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7735332352112761985}
   - component: {fileID: 6225085978125809482}
   - component: {fileID: 7854622388237233228}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: EToInteractProxTrigger
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258888428594577465}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 8455600040842471969}
   - component: {fileID: 7120216954089702975}
   - component: {fileID: 4187091020809702994}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: SodaTowerObstructionWithPlayerTurretTrigger
   m_TagString: SodaTowerObstructionWithPlayerTurret
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6438112010449828873}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 7359148128322755237}
   - component: {fileID: 8262044385166032668}
   - component: {fileID: 8142952826555380888}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: PlayerTurretObstructionWithPlayerTurretTrigger
   m_TagString: PlayerTurretObstructionWithPlayerTurret
   m_Icon: {fileID: 0}
@@ -703,7 +703,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8083562506272248347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

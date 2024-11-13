@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: -5244579378941419039}
   - component: {fileID: -7796481723108027728}
   - component: {fileID: 4302175137077854189}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: RatEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8607136179756912600}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cbac5de109a2ad4586a5d61212da688, type: 3}
   m_Name: 

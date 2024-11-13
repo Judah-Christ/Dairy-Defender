@@ -121,6 +121,8 @@ public class PlayerController : MonoBehaviour
         zoomIcon = GameObject.Find("ZoomButton").GetComponent<ZoomIconChange>();
 
         shadowPlayerOffset = Vector3.Distance(transform.position, Shadow.transform.position);
+
+        
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -581,8 +583,10 @@ public class PlayerController : MonoBehaviour
         layerSwitchTransform.localScale = targetSize;
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.transform.tag == ("Turret"))
         {
             isPlayerTouching = true;

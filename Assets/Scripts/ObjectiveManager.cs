@@ -32,9 +32,9 @@ public class ObjectiveManager : MonoBehaviour
     void Start()
     {
         objectmoving = GameObject.Find("GameManager").GetComponent<Objectmoving>();
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         objectiveHealthSlider = objectmoving.objectiveHealthSlider;
         objSliderFill = objectmoving.objSliderFill;
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
         objectiveHealthSlider.maxValue = maxHealth;
         objectiveHealthSlider.value = maxHealth;
@@ -42,7 +42,7 @@ public class ObjectiveManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //Debug.Log(currentHealth);
+        Debug.Log(currentHealth);
         HealthSliderUpdate();
 
     }
@@ -68,7 +68,7 @@ public class ObjectiveManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-       // HealthSliderUpdate();
+        HealthSliderUpdate();
         
         if(currentHealth <= (maxHealth / 2))
         {

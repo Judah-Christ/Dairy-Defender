@@ -307,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -400.1, y: -130.4}
+  m_AnchoredPosition: {x: -388, y: 110}
   m_SizeDelta: {x: 202, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7271226818905776440
@@ -1182,6 +1182,7 @@ GameObject:
   - component: {fileID: 5561064152244683696}
   - component: {fileID: 7432708985221044533}
   - component: {fileID: 7605232095385601054}
+  - component: {fileID: 2072173063482046678}
   m_Layer: 0
   m_Name: ShopSprite
   m_TagString: Interactable
@@ -1257,6 +1258,55 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!60 &7605232095385601054
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158980790041812390}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.16, y: 0.16}
+      - {x: -0.16, y: -0.16}
+      - {x: 0.16, y: -0.16}
+      - {x: 0.16, y: 0.16}
+  m_UseDelaunayMesh: 0
+--- !u!60 &2072173063482046678
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1588,7 +1638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff855ea4236056145ad0b852d1a0c778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopPanel: {fileID: 0}
+  shopPanel: {fileID: 3123115057968967806}
   inventory:
   - {fileID: 0}
   - {fileID: 0}
@@ -1599,8 +1649,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isPickUp: 0
-  towerItem: {fileID: 0}
-  sodaItem: {fileID: 0}
+  towerItem: {fileID: 11400000, guid: 47922e9f44931334f9e93c8f19f84dba, type: 2}
+  sodaItem: {fileID: 11400000, guid: 62d43e9c546d317419c7307de9d3670f, type: 2}
 --- !u!58 &2433228091527007834
 CircleCollider2D:
   m_ObjectHideFlags: 0

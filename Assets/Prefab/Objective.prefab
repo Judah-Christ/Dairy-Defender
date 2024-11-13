@@ -220,9 +220,9 @@ MonoBehaviour:
   maxHealth: 10000
   objectiveHealthSlider: {fileID: 0}
   objSliderFill: {fileID: 0}
-  highHealthColor: {r: 0.27450982, g: 0.50980395, b: 0.7058824, a: 0}
-  mediumHealthColor: {r: 0.5294118, g: 0.80784315, b: 0.92156863, a: 0}
-  lowHealthColor: {r: 1, g: 0.54901963, b: 0, a: 0}
+  highHealthColor: {r: 0.27450982, g: 0.50980395, b: 0.7058824, a: 1}
+  mediumHealthColor: {r: 0.5294118, g: 0.80784315, b: 0.92156863, a: 1}
+  lowHealthColor: {r: 1, g: 0.54901963, b: 0, a: 1}
   objectmoving: {fileID: 0}
   CakeFull: {fileID: 472057971591395567}
   CakeHalf: {fileID: 5846095446953646687}

@@ -445,18 +445,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c893eeb30187e468a3640a73854d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 250
+  maxHealth: 75
   lootDrop: {fileID: 6472674490139302122, guid: 2f6d26ceafc37324f8ece0262ee0ad79, type: 3}
   deathScream: {fileID: 0}
   deathScream1: {fileID: 0}
   deathScream2: {fileID: 0}
   deathScream3: {fileID: 0}
   coinDrop: {fileID: 0}
-  highHealth: {r: 1, g: 0.38823533, b: 0.28627452, a: 0}
-  mediumHealth: {r: 1, g: 0.62352943, b: 0.47450984, a: 0}
-  lowHealth: {r: 1, g: 0.83921576, b: 0.007843138, a: 0}
+  highHealth: {r: 1, g: 0.38823533, b: 0.28627452, a: 1}
+  mediumHealth: {r: 1, g: 0.62352943, b: 0.47450984, a: 1}
+  lowHealth: {r: 1, g: 0.83921576, b: 0.007843138, a: 1}
   enemySlider: {fileID: 1574152736613412769}
   enemySliderFill: {fileID: 2129927456734144143}
+  canvas: {fileID: 0}
 --- !u!50 &-7852653258134223156
 Rigidbody2D:
   serializedVersion: 4

@@ -75,20 +75,21 @@ public class EnemyManager : MonoBehaviour
         if (currenthealth <= 0) 
         { 
             int i = Random.Range(0, deathScreams.Length);
-            audioSource.PlayOneShot(deathScreams[i]);
+            //audioSource.PlayOneShot(deathScreams[i]);
             StartCoroutine(Death(i));
         }
     }
 
     IEnumerator Death(int i)
     {
-            audioSource.PlayOneShot(coinDrop);
-            GameObject coin = Instantiate(lootDrop, transform.position, Quaternion.identity);
-            //coin.layer = gameObject.layer;
-            SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
-            sr.sortingLayerName = gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
-            yield return new WaitForSeconds(deathScreams[i].length);
-            Destroy(gameObject);
+         //audioSource.PlayOneShot(coinDrop);
+         GameObject coin = Instantiate(lootDrop, transform.position, Quaternion.identity);
+         //coin.layer = gameObject.layer;
+         SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
+         sr.sortingLayerName = gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+         //yield return new WaitForSeconds(deathScreams[i].length);
+         yield return new WaitForSeconds(3);
+         Destroy(gameObject);
     }
    
    

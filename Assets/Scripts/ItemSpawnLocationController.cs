@@ -11,8 +11,7 @@ public class ItemSpawnLocationController : MonoBehaviour
     private InputAction mousePosition;
     private bool isMouseActive = false;
     public LayerMask collisionMask;
-    public Camera camera;
-    private Ray ray;
+    public Camera CurrentCamera;
     public GameObject spawnPointLocation;
     public bool canPlace = false;
 

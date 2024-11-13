@@ -13,7 +13,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     public UnityEngine.UI.Image image;
     public SlotController slotController;
-    private bool isTowerPlaced = false;
+    //private bool isTowerPlaced = false;
     public Transform imageLocation;
     public GameObject towerObject;
     public Transform towerLocation;
@@ -72,7 +72,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.raycastTarget = true;
         isDragging = false;
         transform.SetParent(parentAfterDrag);
-        isTowerPlaced = true;
 
         if (dragImage != null)
         {
@@ -120,7 +119,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             slotController.isFull = false;
             Time.timeScale = 0;
-            isTowerPlaced = false;
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
             image.sprite = null;
@@ -131,7 +129,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             slotController.isFull = false;
             Time.timeScale = 0;
-            isTowerPlaced = false;
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
             SpriteRenderer sr = createImage.GetComponent<SpriteRenderer>();

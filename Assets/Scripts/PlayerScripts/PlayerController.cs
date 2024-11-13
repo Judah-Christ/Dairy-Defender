@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firingPoint;
     [Range(0.1f, 2f)]
-    [SerializeField] private float firingSpeed = 0.5f;
     [SerializeField] private Collider2D _physCol;
     [SerializeField] private float _fireTimer;
     private float fireTimerOrig;
@@ -63,7 +62,6 @@ public class PlayerController : MonoBehaviour
     private float sizeChangeSpeed = 1.5f;
     public bool isOnSurface = true;
     private LadderClimb ladderClimb;
-    private float i = 0;
     public float climbSpeed = 3f;
     private Collider2D counterCollision;
     bool soundPlayed = false;
@@ -372,7 +370,7 @@ public class PlayerController : MonoBehaviour
                 zoomIcon.zoomClicked();
             }
 
-            if (!ladderClimb.isClimbing)
+            if (!ladderClimb.isClimbing && Shadow != null)
             {
                 Shadow.SetActive(true);
             }

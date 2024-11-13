@@ -9,7 +9,7 @@ public class InventorySlide : MonoBehaviour
     public float distanceFromBottomEdge = 50f;
     public float invSlideSpeed = 5f;
 
-    private RectTransform transform;
+    private RectTransform rectTransform;
     private bool isMouseNearBottom = false;
     private bool isMouseAboveInv = false;
 
@@ -17,10 +17,10 @@ public class InventorySlide : MonoBehaviour
 
     void Start()
     {
-        transform = GetComponent<RectTransform>();
-        Vector2 rest = transform.anchoredPosition;
+        rectTransform = GetComponent<RectTransform>();
+        Vector2 rest = rectTransform.anchoredPosition;
         rest.y = inPosition;
-        transform.anchoredPosition = rest;
+        rectTransform.anchoredPosition = rest;
         
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
@@ -30,7 +30,7 @@ public class InventorySlide : MonoBehaviour
         isMouseNearBottom = Input.mousePosition.y <= distanceFromBottomEdge;
         isMouseAboveInv = (Input.mousePosition.x >= 428f && Input.mousePosition.x <= 1491f);
         
-        Vector2 move = transform.anchoredPosition;
+        Vector2 move = rectTransform.anchoredPosition;
 
         if (playerController.upgradeMenuIsOpen)
         {
@@ -45,6 +45,6 @@ public class InventorySlide : MonoBehaviour
             move.y = Mathf.Lerp(move.y, inPosition, Time.deltaTime * invSlideSpeed);
         }
 
-        transform.anchoredPosition = move;
+        rectTransform.anchoredPosition = move;
     }
 }

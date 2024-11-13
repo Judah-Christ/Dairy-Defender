@@ -16,7 +16,7 @@ public class DialogueController : MonoBehaviour
     //public WaveSpawner waveSpawner;
     [SerializeField] private GameObject gameController;
     private bool startFirstTalk = true;
-    private bool startSecondTalk2 = false;
+    //private bool startSecondTalk2 = false;
     // Start is called before the first frame update
     void Start()
     {

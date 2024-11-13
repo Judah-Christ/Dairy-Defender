@@ -40,10 +40,10 @@ public class ObjectiveManager : MonoBehaviour
         objectiveHealthSlider.value = maxHealth;
         objSliderFill.GetComponent<Image>().color = highHealthColor;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         //Debug.Log(currentHealth);
-        
+        HealthSliderUpdate();
 
     }
 

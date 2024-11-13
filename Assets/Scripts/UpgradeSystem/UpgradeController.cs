@@ -140,10 +140,8 @@ public class UpgradeController : MonoBehaviour
                     }
                     break;
                 case UpgradeLevel.LVL_THREE:
-                    Debug.Log("NO UPGRADE YET!");
                     break;
                 case UpgradeLevel.NONE:
-                    Debug.Log("NO UPGRADE YET!");
                     break;
                 default:
                     return;
@@ -179,10 +177,8 @@ public class UpgradeController : MonoBehaviour
                     }
                     break;
                 case UpgradeLevel.LVL_THREE:
-                    Debug.Log("NO UPGRADE YET!");
                     break;
                 case UpgradeLevel.NONE:
-                    Debug.Log("NO UPGRADE YET!");
                     break;
                 default:
                     return;
@@ -213,7 +209,6 @@ public class UpgradeController : MonoBehaviour
             {
                 if (towerType == 1) //Player Turret
                 {
-                    Debug.Log(inventory[i]);
                     inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = playerTurret.toolbarImage;
                     inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = tower;
                     inventory[i].GetComponent<SlotController>().isFull = true;
@@ -222,7 +217,6 @@ public class UpgradeController : MonoBehaviour
                 }
                 if (towerType == 2) //Soda Tower
                 {
-                    Debug.Log(inventory[i]);
                     inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = sodaSlowController.toolbarImage;
                     inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = tower;
                     inventory[i].GetComponent<SlotController>().isFull = true;
@@ -231,7 +225,6 @@ public class UpgradeController : MonoBehaviour
                 }
                 if (towerType == 3) //Trap Tower [NOT IMPLEMENTED YET]
                 {
-                    Debug.Log(inventory[i]);
                     inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = sodaSlowController.toolbarImage;  //CHANGE WHEN TRAP IS ADDED
                     inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = tower;
                     inventory[i].GetComponent<SlotController>().isFull = true;

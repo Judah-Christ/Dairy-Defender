@@ -54,7 +54,6 @@ public class Walkoff : MonoBehaviour
                 playerController.isOnSurface = false;
                 playerController.isInAir = true;
                 moveInput = Input.GetAxis("Horizontal");
-                Debug.Log("BackEdgeDetected");
                 rb.velocity = Vector2.zero;
                 rb.velocity = new Vector2(moveInput * playerController.speed, rb.velocity.y);
                 GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("TempIgnore");

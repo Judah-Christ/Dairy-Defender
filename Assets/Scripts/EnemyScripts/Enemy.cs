@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            //Debug.Log("No slow");
+            //.Log("No slow");
             return;
         }
     }

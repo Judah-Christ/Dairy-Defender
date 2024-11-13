@@ -69,7 +69,6 @@ public class ShopController : MonoBehaviour
         {
             if (inventory[i].GetComponent<SlotController>().isFull == false && isPickUp == false)
             {
-                Debug.Log(inventory[i]);
                 inventory[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
                 inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = shopItem.itemObject;
                 inventory[i].GetComponent<SlotController>().isFull = true;
@@ -77,11 +76,6 @@ public class ShopController : MonoBehaviour
                 break;
             }
 
-        }
-
-        if (!itemAdded)
-        {
-            Debug.Log("Inventory full - item not added");
         }
     }
 

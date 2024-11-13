@@ -462,7 +462,6 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator ScaleFloorShadow(Vector3 normalSize, Vector3 minimumSize, float height)
     {
-        Debug.Log("Max Distance: " + height);
 
         while (true)
         {
@@ -470,11 +469,8 @@ public class PlayerController : MonoBehaviour
             float scaleFactor = Mathf.InverseLerp(height, 0, distance);
 
             Shadow.transform.localScale = Vector3.Lerp(minimumSize, normalSize, scaleFactor);
-            Debug.Log("Distance: " + distance + ", ScaleFactor: " + scaleFactor + ", Shadow Scale:" + Shadow.transform.localScale);
-
             if (distance <= shadowPlayerOffset)
             {
-                Debug.Log("Distance threshold reached");
                 break;
             }
 
@@ -482,7 +478,6 @@ public class PlayerController : MonoBehaviour
         }
 
         Shadow.transform.localScale = normalSize;
-        Debug.Log("ScaleFloorShadow finished, final shadow scale: " + Shadow.transform.localScale);
     }
 
     public IEnumerator Fall()
@@ -491,7 +486,6 @@ public class PlayerController : MonoBehaviour
         Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Non-visible";
         Shadow = GameObject.Find("ShadowOnFloor");
         Shadow.transform.localScale = floorMinShadowScale;
-        Debug.Log("Starting fall with initial shadow scale" + Shadow.transform.localScale);
         Vector3 floorShadowPosition = Shadow.transform.position;
         floorShadowPosition.y = transform.position.y - (4 + (shadowPlayerOffset * 0.75f));
         Shadow.transform.position = floorShadowPosition;

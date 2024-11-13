@@ -48,7 +48,6 @@ public class TurretController : MonoBehaviour
         //print(hit.transform.name);
         if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
         {
-            Debug.Log("help");
             Instantiate(bullet, firingPoint.position, firingPoint.rotation);
         }
     }

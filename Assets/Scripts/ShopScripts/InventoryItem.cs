@@ -50,7 +50,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             turretTowerZones.SetActive(true);
             raycastForTurretZones = true;
-            Debug.Log("Tower type detected");
         }
         else if (towerObject.name == "SodaTower" || towerObject.name == "LemonadeTower" || towerObject.name == "TeaTower")
         {
@@ -83,14 +82,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         bool isOverTurretZone = false;
         bool isOverSodaZone = false;
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(eventData.position);
-        Debug.Log("World Point is" + worldPoint);
         Collider2D[] hits = Physics2D.OverlapPointAll(worldPoint);
-        Debug.Log("Number of hits is" + hits.Length);
 
         foreach (Collider2D hit in hits)
         {
-            Debug.Log("Hit object is" + hit.name);
-
             if (raycastForTurretZones && hit.CompareTag("PCTZone"))
             {
                 isOverTurretZone = true;
@@ -108,7 +103,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 if (hit.CompareTag("PlayerTurretObstructionWithPlayerTurret") || hit.CompareTag("PlayerTurretObstructionWithSodaTower"))
                 {
                     obstruction = true;
-                    Debug.Log("Obstruction detected for TurretZone");
                     break;
                 }
             }
@@ -117,7 +111,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 if (hit.CompareTag("SodaTowerObstructionWithSodaTower") || hit.CompareTag("SodaTowerObstructionWithPlayerTurret"))
                 {
                     obstruction = true;
-                    Debug.Log("Obstruction detected for SodaZone");
                     break;
                 }
             }

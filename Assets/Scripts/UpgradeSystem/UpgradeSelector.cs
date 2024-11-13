@@ -51,7 +51,6 @@ public class UpgradeSelector : MonoBehaviour
                     DeselectTower();
                     selection = CurrentTower.transform.Find("Selection").gameObject;
                     selection.SetActive(true);
-                    Debug.Log(CurrentTower);
                     return;
                 }
 

@@ -42,7 +42,6 @@ public class ObjectiveManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Debug.Log(currentHealth);
         HealthSliderUpdate();
 
     }
@@ -89,7 +88,6 @@ public class ObjectiveManager : MonoBehaviour
             StartCoroutine(AudioManager.instance.FadeOut());
             GM.ObjectiveFailed();
             Destroy(gameObject);
-            Debug.Log("TEST");
         }
     }
     

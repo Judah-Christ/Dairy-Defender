@@ -93522,6 +93522,8 @@ MonoBehaviour:
   - If the balista is not enough to keep them at bay, then their is a store nearby
     that you can by more balistas at, or the brand new S.O.D.A dispenser to slow
     them down
+  wave5Dialougue: []
+  wave10Dialougue: []
   dialougueText: {fileID: 1544545809}
   dialouguePanel: {fileID: 2107040827}
   contButton: {fileID: 2139988920}
@@ -94272,14 +94274,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop
       objectReference: {fileID: 0}
-    - target: {fileID: 6576371989612819406, guid: ef2b43682ed7f1347b236007f60f0f7a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9dc521df02c0e6345857b0ae6fb701e0, type: 3}
-    - target: {fileID: 8217125844395607307, guid: ef2b43682ed7f1347b236007f60f0f7a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8a64776805cec504ebaa844b3f080133, type: 3}
     - target: {fileID: 8378677152540366160, guid: ef2b43682ed7f1347b236007f60f0f7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -57.97
@@ -96054,17 +96048,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - name: Wave1
-    enemy: {fileID: 1256879540867567607, guid: 403a5b812ed58d944ac7d84525261036, type: 3}
+    enemy1: {fileID: 0}
+    enemy2: {fileID: 0}
     count: 40
     rate: 1
   - name: wave2
-    enemy: {fileID: 7304473856749169344, guid: 4f0f026666f1b2a4bbaca868307fb2a4, type: 3}
+    enemy1: {fileID: 0}
+    enemy2: {fileID: 0}
     count: 50
     rate: 5
   - name: wave3
-    enemy: {fileID: 7304473856749169344, guid: 4f0f026666f1b2a4bbaca868307fb2a4, type: 3}
+    enemy1: {fileID: 0}
+    enemy2: {fileID: 0}
     count: 60
     rate: 7
+  nextWave: 0
   spawnPoints:
   - {fileID: 1976452403}
   - {fileID: 939176057}

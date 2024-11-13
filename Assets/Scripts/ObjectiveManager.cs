@@ -31,10 +31,12 @@ public class ObjectiveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        objectiveHealthSlider = GameObject.Find("ObjectiveSlider").GetComponent<Slider>();
+        objSliderFill = GameObject.Find("ObjectiveSliderFill").GetComponent<Image>();
         objectmoving = GameObject.Find("GameManager").GetComponent<Objectmoving>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        objectiveHealthSlider = objectmoving.objectiveHealthSlider;
-        objSliderFill = objectmoving.objSliderFill;
+        //objectiveHealthSlider = objectmoving.objectiveHealthSlider;
+        //objSliderFill = objectmoving.objSliderFill;             
         currentHealth = maxHealth;
         objectiveHealthSlider.maxValue = maxHealth;
         objectiveHealthSlider.value = maxHealth;

@@ -7,7 +7,7 @@ public class ShopController : MonoBehaviour
     private bool EOpensShop = false;
     public GameObject shopPanel;
     public GameObject[] inventory = new GameObject[8];
-    bool itemAdded = false;
+    //bool itemAdded = false;
     public bool isPickUp = false;
     [SerializeField]
     private GameItem towerItem;
@@ -72,7 +72,6 @@ public class ShopController : MonoBehaviour
                 inventory[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItem.itemSprite;
                 inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = shopItem.itemObject;
                 inventory[i].GetComponent<SlotController>().isFull = true;
-                itemAdded = true;
                 break;
             }
 

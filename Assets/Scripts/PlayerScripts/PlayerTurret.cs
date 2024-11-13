@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerTurret : MonoBehaviour
 {
 
-    //public Transform targets;
-    //public GameObject playerTurret;
-    //private GameObject enemy;
     private GameObject player;
     public GameObject PlayerSprite;
     public float speed;
-    //private Coroutine shoot;
     [SerializeField] private GameObject bullet;
     private Transform firingPoint;
     [Range(0.1f, 2f)]
@@ -29,9 +26,11 @@ public class PlayerTurret : MonoBehaviour
     private float _maxRange;
     public bool IsTurretActive;
     public Animator playerTurretAnim;
-    //public GameObject upgardePanel;
 
-    
+    public UpgradeLevel TowerLevel;
+    public Sprite toolbarImage;
+    public int UpgradeCost;
+    public int CurrentRotation;
     
 
 
@@ -61,8 +60,8 @@ public class PlayerTurret : MonoBehaviour
     {
         Debug.DrawRay(firingPoint.position, firingPoint.up * sighted, Color.green);
         Ray ray = new Ray(firingPoint.position, firingPoint.up);
-        RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.up, sighted,raycastMask);
-        if (hit.collider != null && hit.transform.tag == "Enemy" && !IsTurretActive)
+        RaycastHit2D hit = Physics2D.Raycast(firingPoint.position, firingPoint.up, sighted, raycastMask);
+        if (hit.collider != null && hit.transform.CompareTag("Enemy") && !IsTurretActive)
         {
             if (isShootOnCD == false)
             {
@@ -138,5 +137,7 @@ public class PlayerTurret : MonoBehaviour
             isPlayerNear = false;
         }
     }
+
+    
 
 }

@@ -224,7 +224,26 @@ MonoBehaviour:
   isTurretMounted: 0
   speed: 10
   speedX: 10
+  jumpForce: 0
+  isInAir: 0
   mouseSensitvity: 100
+  Mapcam: {fileID: 0}
+  origSize: {x: 1, y: 1, z: 1}
+  smallSize: {x: 0.75, y: 0.75, z: 0.75}
+  isOnSurface: 1
+  climbSpeed: 3
+  isPaused: 0
+  pauseMenu: {fileID: 0}
+  upgradeMenuIsOpen: 0
+  upgradeMenu: {fileID: 0}
+  HUD: {fileID: 0}
+  UpgButtonBG: {fileID: 0}
+  HammerAndWrench: {fileID: 0}
+  EToInteract: {fileID: 0}
+  Shadow: {fileID: 0}
+  FloorShadow: {fileID: 0}
+  floorOrigShadowScale: {x: 0, y: 0, z: 0}
+  floorMinShadowScale: {x: 0, y: 0, z: 0}
 --- !u!61 &8822181860427174281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -237,10 +256,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 12023
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -322,30 +341,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6341792325361069525}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0125a4be0001794fa79e62e144570d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerControls: {fileID: 5514829925584787730}
-  _restart:
-    m_Name: Restart
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 180c264a-5d4b-43d9-ada4-1cfb73c43f88
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  _Quit:
-    m_Name: Quit
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 0cf2b89f-f3c8-4c3a-a60a-1adc4394f1e5
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!114 &2233871091648706815
 MonoBehaviour:
   m_ObjectHideFlags: 0

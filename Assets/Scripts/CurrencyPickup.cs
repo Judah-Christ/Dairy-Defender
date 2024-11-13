@@ -28,7 +28,6 @@ public class CurrencyPickup : MonoBehaviour
             {
                 GM.Tower += pickupQuanity;
                 Destroy(gameObject);
-                Debug.Log(GM.Tower);
                 return;
             }
             

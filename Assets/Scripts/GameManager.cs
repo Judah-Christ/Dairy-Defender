@@ -69,15 +69,13 @@ public class GameManager : MonoBehaviour
     {
         EndWaves();
         StartCoroutine(AudioManager.instance.FadeOut());
-        SceneManager.LoadScene(3);
-        Debug.Log("Objective Complete!");
+        //SceneManager.LoadScene(3);
     }
 
     public void ObjectiveFailed()
     {
         EndWaves();
-        SceneManager.LoadScene(4);
-        Debug.Log("Objective Failed!");
+        //SceneManager.LoadScene(4);
     }
 
 }

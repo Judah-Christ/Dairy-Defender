@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class Enemy : MonoBehaviour
     private GameManager GM;
     [SerializeField] private float agentSpeed = 3.5f;
     [SerializeField] public bool isflyEnemy = false;
+
+    public Vector3 moveDirection;
+
+    private Rigidbody2D rb2d;
+
+    [SerializeField]
+    private float _maxSpeed;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +31,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,14 +40,23 @@ public class Enemy : MonoBehaviour
         if (target != null && !GM.isGamePaused)
         {
             agent.SetDestination(target.position);
+            AnimationUpdate();
         }
         if (GM.isGamePaused)
         {
             agent.SetDestination(gameObject.transform.position);
         }
 
-
+        moveDirection = transform.InverseTransformDirection(agent.velocity);
         
+        
+    }
+
+
+    private void AnimationUpdate()
+    {
+        anim.SetFloat("MoveX", moveDirection.x);
+        anim.SetFloat("MoveY", moveDirection.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +67,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("No slow");
+            //.Log("No slow");
+            return;
         }
     }
 
@@ -59,4 +79,5 @@ public class Enemy : MonoBehaviour
             agent.speed = agentSpeed;
         }
     }
+
 }

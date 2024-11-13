@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    void Start()
+    {
+        AudioManager.instance.PlayMusic("DDMainMenuLoop");
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(2);
@@ -15,9 +20,9 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
     }
 
-    void Start()
+    public void HowToPlay()
     {
-        
+        SceneManager.LoadScene(1);
     }
 
     void Update()

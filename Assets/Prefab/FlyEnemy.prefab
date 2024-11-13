@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1456645030521396675, guid: 627b14cd898c1874480d45a401582b94, type: 3}
-  _maxSpeed: 0.01
+  _maxSpeed: 10
 --- !u!95 &8801619238839867659
 Animator:
   serializedVersion: 5

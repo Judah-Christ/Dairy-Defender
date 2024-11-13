@@ -68,7 +68,7 @@ public class ObjectiveManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-       // HealthSliderUpdate();
+        HealthSliderUpdate();
         
         if(currentHealth <= (maxHealth / 2))
         {

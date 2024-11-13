@@ -11,6 +11,7 @@ public class Objectmoving : MonoBehaviour
 
     public Objective[] objectives;
     public Transform[] spawnPoints;
+    private int pointState = 0;
 
     public GameObject objectiveSet;
 
@@ -21,7 +22,7 @@ public class Objectmoving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnObjective(objectives[Random.Range(0, 0)].objective);
+        SpawnObjective(objectives[pointState].objective);
         WaveSpawner.waveUpdated += HandleWaveUpdated;
     }
 
@@ -35,7 +36,8 @@ public class Objectmoving : MonoBehaviour
     {
         Debug.Log("spawning objective:" + objective.name);
      
-        Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Transform sp = spawnPoints[pointState];
+        pointState++;
         objectiveSet = Instantiate(objective, sp.position, sp.rotation).gameObject;
        
 
@@ -46,8 +48,22 @@ public class Objectmoving : MonoBehaviour
         if (waveU == 1)
         {
             Destroy(objectiveSet);
-            SpawnObjective(objectives[Random.Range(1, 1)].objective);
-           
+            SpawnObjective(objectives[pointState].objective);
+        }
+        if(waveU == 2)
+        {
+            Destroy(objectiveSet);
+            SpawnObjective(objectives[pointState].objective);
+        }
+        if(waveU == 3)
+        {
+            Destroy(objectiveSet);
+            SpawnObjective(objectives[pointState].objective);
+        }
+        if (waveU == 4)
+        {
+            Destroy(objectiveSet);
+            SpawnObjective(objectives[pointState].objective);
         }
     }
 

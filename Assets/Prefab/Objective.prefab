@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1728246671
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 511b0b2c16ecfcf4e9951ad0eb86686f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1728246671
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1fccdb99f1e971a4ab97ed092dc8413b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -196,7 +196,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.8614, y: 2.8842, z: 1}
+  m_LocalScale: {x: 2.8614, y: 2.8842006, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3345761019521222993}
@@ -216,13 +216,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4151b057619c1eb41bfbbe1ca0fda5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
+  currentHealth: 10000
   maxHealth: 10000
   objectiveHealthSlider: {fileID: 0}
   objSliderFill: {fileID: 0}
-  highHealthColor: {r: 0, g: 0, b: 0, a: 0}
-  mediumHealthColor: {r: 0, g: 0, b: 0, a: 0}
-  lowHealthColor: {r: 0, g: 0, b: 0, a: 0}
+  highHealthColor: {r: 0.27450982, g: 0.50980395, b: 0.7058824, a: 0}
+  mediumHealthColor: {r: 0.5294118, g: 0.80784315, b: 0.92156863, a: 0}
+  lowHealthColor: {r: 1, g: 0.54901963, b: 0, a: 0}
+  objectmoving: {fileID: 0}
   CakeFull: {fileID: 472057971591395567}
   CakeHalf: {fileID: 5846095446953646687}
   CakeCrit: {fileID: 2252918971645471132}
@@ -349,7 +350,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1728246671
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c145f2923fdbe664e9a701971b6e98d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

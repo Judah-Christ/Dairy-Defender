@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float objectiveTimer;
     private float origTimer;
+    private WaveSpawner waveSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
         StartWaves();
         AudioManager.instance.PlayMusic("DDBattleLoop");
         WinMenu = GameObject.Find("WinMenuCanvas");
+        waveSpawner = GetComponent<WaveSpawner>();
+        StartCoroutine(waveSpawner.CountdownFrom30());
+        Debug.Log("Countdown Started");
     }
 
     public void AddCoin(int amount)

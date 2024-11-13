@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         EndWaves();
         StartCoroutine(AudioManager.instance.FadeOut());
+        WinMenu.SetActive(true);
         //SceneManager.LoadScene(3);
         Debug.Log("Objective Complete!");
     }

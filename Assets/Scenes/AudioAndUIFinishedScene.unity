@@ -94272,6 +94272,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 6576371989612819406, guid: ef2b43682ed7f1347b236007f60f0f7a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9dc521df02c0e6345857b0ae6fb701e0, type: 3}
+    - target: {fileID: 8217125844395607307, guid: ef2b43682ed7f1347b236007f60f0f7a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a64776805cec504ebaa844b3f080133, type: 3}
     - target: {fileID: 8378677152540366160, guid: ef2b43682ed7f1347b236007f60f0f7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -57.97

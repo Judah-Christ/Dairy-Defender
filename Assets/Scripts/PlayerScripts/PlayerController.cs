@@ -604,6 +604,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.transform.tag == ("Turret"))
+        {
+            isPlayerTouching = false;
+            targets = collision.gameObject.transform;
+            currentCrossbow = collision.gameObject;
+            PT = currentCrossbow.GetComponent<PlayerTurret>();
+        }
         if (collision.CompareTag("CounterMask"))
         {
             counterCollision = null;

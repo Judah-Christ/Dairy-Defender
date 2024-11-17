@@ -28,7 +28,7 @@ public class Walkoff : MonoBehaviour
                 playerController.isInAir = true;
                 moveInput = Input.GetAxis("Horizontal");
                 rb.velocity = new Vector2(moveInput * playerController.speed, rb.velocity.y);
-                AudioManager.instance.PauseSFX();
+                //AudioManager.instance.PauseSFX();
                 GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("TempIgnore");
                 StartCoroutine(playerController.Fall());
 

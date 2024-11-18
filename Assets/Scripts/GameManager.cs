@@ -58,13 +58,12 @@ public class GameManager : MonoBehaviour
             {
                 objectiveTimer -= Time.deltaTime;
             }
-            if(objectiveTimer < 0)
-            {
-                ObjectiveComplete();
-            }
+            
+           
         }
     }
-
+    
+      
     public void ObjectiveComplete()
     {
         EndWaves();

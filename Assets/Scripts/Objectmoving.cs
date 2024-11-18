@@ -11,7 +11,7 @@ public class Objectmoving : MonoBehaviour
 
     public Objective[] objectives;
     public Transform[] spawnPoints;
-
+    private int point = 0;
     public GameObject objectiveSet;
 
     public Slider objectiveHealthSlider;
@@ -21,7 +21,7 @@ public class Objectmoving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnObjective(objectives[Random.Range(0, 0)].objective);
+        SpawnObjective(objectives[0].objective);
         WaveSpawner.waveUpdated += HandleWaveUpdated;
     }
 
@@ -34,7 +34,8 @@ public class Objectmoving : MonoBehaviour
     void SpawnObjective(Transform objective)
     {
      
-        Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Transform sp = spawnPoints[point];
+        point++;
         objectiveSet = Instantiate(objective, sp.position, sp.rotation).gameObject;
        
 
@@ -44,9 +45,29 @@ public class Objectmoving : MonoBehaviour
     {
         if (waveU == 1)
         {
-            Destroy(objectiveSet);
-            SpawnObjective(objectives[Random.Range(1, 1)].objective);
-           
+            // Destroy(objectiveSet);
+            SpawnObjective(objectives[point].objective);
+
+
+            if (waveU == 2)
+            {
+                // Destroy(objectiveSet);
+                SpawnObjective(objectives[point].objective);
+
+            }
+            if (waveU == 3)
+            {
+                // Destroy(objectiveSet);
+                SpawnObjective(objectives[point].objective);
+
+            }
+            if (waveU == 4)
+            {
+                // Destroy(objectiveSet);
+                SpawnObjective(objectives[point].objective);
+
+            }
+
         }
     }
 

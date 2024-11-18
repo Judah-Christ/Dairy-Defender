@@ -5,8 +5,14 @@ using FMODUnity;
 
 public class FMODEvents : MonoBehaviour
 {
-    [field: Header("Jump SFX")]
+    [field: Header("Player SFX")]
+    [field: SerializeField] public EventReference playerFootsteps { get; private set; }
     [field: SerializeField] public EventReference Jump { get; private set; }
+    [field: Header("Enemy SFX")]
+    [field: SerializeField] public EventReference ratSqueaks { get; private set; }
+    [field: Header("Music")]
+    [field: SerializeField] public EventReference mainMenuMusic { get; private set; }
+    [field: SerializeField] public EventReference battleMusic { get; private set; }
     public static FMODEvents instance { get; private set; }
 
     private void Awake()

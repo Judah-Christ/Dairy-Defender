@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f820a6b1-a085-4962-86c7-37c07605c259}">
+		<property name="assetPath">
+			<value>Sound Effects/ScurryF.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>45</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9c648642-935a-461b-ae8d-eb18d4585072}</destination>
+		</relationship>
+	</object>
+</objects>

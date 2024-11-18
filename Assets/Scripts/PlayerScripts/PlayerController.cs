@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
+using FMOD.Studio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -80,6 +81,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 floorOrigShadowScale;
     [SerializeField] private Vector3 floorMinShadowScale;
 
+    private EventInstance playerFootsteps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -120,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
         shadowPlayerOffset = Vector3.Distance(transform.position, Shadow.transform.position);
 
-        
+        playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -323,6 +326,8 @@ public class PlayerController : MonoBehaviour
             FloorShadow.SetActive(false);
         }
 
+        UpdateSound();
+
     }
 
     private void Update()
@@ -378,7 +383,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator Jump()
-    {   
+    {
         jumpStartY = transform.position.y;
         shadowJumpStartY = Shadow.transform.position.y;
         rb.velocity = Vector2.up * jumpForce;
@@ -649,5 +654,23 @@ public class PlayerController : MonoBehaviour
     {
         upgradeMenu.SetActive(false);
         upgradeMenuIsOpen = false;
+    }
+
+    private void UpdateSound()
+    {
+        if (isOnSurface && !isInAir && !isPaused && rb.velocity.x != 0)
+        {
+            PLAYBACK_STATE playbackState;
+            playerFootsteps.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                playerFootsteps.start();
+            }
+        }
+
+        else
+        {
+            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+        }
     }
 }

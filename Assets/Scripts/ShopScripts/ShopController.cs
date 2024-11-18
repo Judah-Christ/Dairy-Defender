@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class ShopController : MonoBehaviour
     [SerializeField]
     private GameItem sodaItem;
     private GameItem shopItem;
+    public bool shopMenuIsOpen;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,9 @@ public class ShopController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && EOpensShop)
         {
+            Debug.Log($"E key pressed. shopMenuIsOpen before = {shopMenuIsOpen}");
             OpenShop();
+            Debug.Log($"E key pressed. shopMenuIsOpen after = {shopMenuIsOpen}");
         }
     }
 
@@ -53,6 +57,8 @@ public class ShopController : MonoBehaviour
     private void OpenShop()
     {
         shopPanel.SetActive(true);
+        shopMenuIsOpen = true;
+        Debug.Log($"OpenShop called. shopMenuIsOpen = {shopMenuIsOpen}");
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -81,5 +87,11 @@ public class ShopController : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         EOpensShop = false;
+    }
+
+    public void CloseHandle()
+    {
+        shopMenuIsOpen = false;
+        Debug.Log($"CloseHandler called. shopMenuIsOpen = {shopMenuIsOpen}");
     }
 }

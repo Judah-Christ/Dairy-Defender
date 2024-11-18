@@ -42,7 +42,7 @@ public class WaveSpawner : MonoBehaviour
     {
         if (spawnPoints.Length == 0)
         {
-            Debug.LogError("no spawn points");
+            //Debug.LogError("no spawn points");
         }
 
         waveCountdown = timeBetweenWaves;
@@ -82,7 +82,7 @@ public class WaveSpawner : MonoBehaviour
 
     void WaveCompleted()
     {
-        Debug.Log("waveCompleted");
+        //Debug.Log("waveCompleted");
         state = SpawnState.counting;
         waveCountdown = timeBetweenWaves;
         StartCoroutine(CountdownFrom30());
@@ -90,7 +90,7 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave + 1 > waves.Length + 1)
         {
             nextWave = 0;
-            Debug.Log("all waves done looping");
+           // Debug.Log("all waves done looping");
         }
         else
         {
@@ -116,7 +116,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave wave)
     {
-        Debug.Log("spawning Wave" + wave);
+        //Debug.Log("spawning Wave" + wave);
         waveInfo.text = "Wave: " + (nextWave + 1) + " of 5";
 
         state = SpawnState.spawning;
@@ -133,7 +133,7 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(Transform enemy)
     {
-        Debug.Log("spawning enemy:" + enemy.name);
+        //Debug.Log("spawning enemy:" + enemy.name);
 
         if (nextWave == 0)
         {
@@ -164,7 +164,7 @@ public class WaveSpawner : MonoBehaviour
     }
     void SpawnEnemyFly(Transform enemy)
     {
-        Debug.Log("spawning enemy:" + enemy.name);
+        //Debug.Log("spawning enemy:" + enemy.name);
 
         if (nextWave == 0)
         {
@@ -203,7 +203,7 @@ public class WaveSpawner : MonoBehaviour
 
     public IEnumerator CountdownFrom30()
     {
-        Debug.Log("CountdownCalled");
+        //Debug.Log("CountdownCalled");
         for (int i = countdownTime; i > 0; i--)
         {
             waveInfo.text = i.ToString();

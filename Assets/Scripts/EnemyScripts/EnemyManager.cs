@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
+
+[RequireComponent(typeof(StudioEventEmitter))]
 
 public class EnemyManager : MonoBehaviour
 {
@@ -31,6 +34,8 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
 
+    private StudioEventEmitter emitter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +44,9 @@ public class EnemyManager : MonoBehaviour
         deathScreams = new AudioClip[] {deathScream, deathScream1, deathScream2, deathScream3};
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         enemySliderFill.color = highHealth;
+
+        emitter = AudioManager.instance.InitializeEventEmitter(FMODEvents.instance.ratSqueaks, this.gameObject);
+        emitter.Play();
     }
 
     // Update is called once per frame
@@ -76,6 +84,7 @@ public class EnemyManager : MonoBehaviour
         { 
             int i = Random.Range(0, deathScreams.Length);
             //audioSource.PlayOneShot(deathScreams[i]);
+            emitter.Stop();
             StartCoroutine(Death(i));
         }
     }

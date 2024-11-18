@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         origTimer = objectiveTimer;
         StartWaves();
-        AudioManager.instance.PlayMusic("DDBattleLoop");
+        //AudioManager.instance.PlayMusic("DDBattleLoop");
         WinMenu = GameObject.Find("WinMenuCanvas");
     }
 
@@ -68,14 +68,14 @@ public class GameManager : MonoBehaviour
     public void ObjectiveComplete()
     {
         EndWaves();
-        StartCoroutine(AudioManager.instance.FadeOut());
-        SceneManager.LoadScene(3);
+        //StartCoroutine(AudioManager.instance.FadeOut());
+        //SceneManager.LoadScene(3);
     }
 
     public void ObjectiveFailed()
     {
         EndWaves();
-        SceneManager.LoadScene(4);
+        //SceneManager.LoadScene(4);
     }
 
 }

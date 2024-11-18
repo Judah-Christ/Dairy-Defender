@@ -87,7 +87,7 @@ public class ObjectiveManager : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            StartCoroutine(AudioManager.instance.FadeOut());
+            //StartCoroutine(AudioManager.instance.FadeOut());
             GM.ObjectiveFailed();
             Destroy(gameObject);
         }

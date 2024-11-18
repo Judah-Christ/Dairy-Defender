@@ -994,6 +994,8 @@ GameObject:
   m_Component:
   - component: {fileID: 411409848}
   - component: {fileID: 411409849}
+  - component: {fileID: 411409851}
+  - component: {fileID: 411409850}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1021,10 +1023,10 @@ RectTransform:
   - {fileID: 233003633}
   m_Father: {fileID: 1777688838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411409849
 MonoBehaviour:
@@ -1038,6 +1040,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52801f6fa5deed4b9ba1c66ccef0b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &411409850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411409847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 590505f4a132e074b8d16c0c87c141cf, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &411409851
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411409847}
+  m_CullTransparentMesh: 1
 --- !u!1 &457430222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,32 +2262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b9ed409d1b2d145bf3d9ef70253930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 704704552}
-  sfx: {fileID: 704704551}
-  pausableSfx: {fileID: 704704550}
-  Music:
-  - {fileID: 8300000, guid: 1eecc986ccf1c2145be6561f8bd6875b, type: 3}
-  - {fileID: 8300000, guid: c8800538b5adfd247a5ebf8cb85b84c4, type: 3}
-  - {fileID: 8300000, guid: 6dd9b8ac9efc5dc4696c5e1c1c4e39e6, type: 3}
-  - {fileID: 8300000, guid: abe3d1df802630443b308389a76a0ef8, type: 3}
-  - {fileID: 8300000, guid: 1649994070cb17943a6dafb72635745d, type: 3}
-  SFX:
-  - {fileID: 8300000, guid: 3d12784f6b1d42a4d92d74e1fe4cee81, type: 3}
-  - {fileID: 8300000, guid: 65fb65251ffe1d64b8c920b726bd88cf, type: 3}
-  - {fileID: 8300000, guid: 1c95a9c3647538b4f897ad6cac9048be, type: 3}
-  - {fileID: 8300000, guid: fda8229e21025d24b9848440da10f5a4, type: 3}
-  - {fileID: 8300000, guid: d1376b7ea9cee1245a891f2c8f8844b2, type: 3}
-  - {fileID: 8300000, guid: 37014687e9ae78f43baa94224ba335fd, type: 3}
-  - {fileID: 8300000, guid: 4c9a695c6f52bd84f9cb2d40d8454e98, type: 3}
-  - {fileID: 8300000, guid: eb7fed29a95a328498b6957ef26e0c2c, type: 3}
-  - {fileID: 8300000, guid: 78a24f2255c755b4a8d6cfe1662cfb99, type: 3}
-  - {fileID: 8300000, guid: 41baf6729aa4e2a4b89aff74946d0bbc, type: 3}
-  - {fileID: 8300000, guid: 9537c204b94f0904eb4cdedaa3aee47f, type: 3}
-  - {fileID: 8300000, guid: 24919c06d30bac540bc02cfdb4760041, type: 3}
-  - {fileID: 8300000, guid: f6e5a7341a632ad4f973a14d4c826b8d, type: 3}
-  - {fileID: 8300000, guid: 6348c8ca73d14544280b5b1c5a60532c, type: 3}
-  - {fileID: 8300000, guid: 1a555d41a5c4b2b4a832288a8e609e09, type: 3}
-  - {fileID: 8300000, guid: ec6ff794518f8e344a47958b74019263, type: 3}
 --- !u!4 &704704554
 Transform:
   m_ObjectHideFlags: 0

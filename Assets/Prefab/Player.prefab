@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: -6179449652804179653}
   - component: {fileID: 2233871091648706815}
   - component: {fileID: 705527130449654697}
+  - component: {fileID: -4346299087327899529}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -397,7 +398,6 @@ MonoBehaviour:
   PlayerControls: {fileID: 5514829925584787730}
   bullet: {fileID: 4116811335257806855, guid: 24ee3b4877453464e9b92dfdf4fa62a5, type: 3}
   firingPoint: {fileID: 4291900789361448924}
-  firingSpeed: 0.5
   _physCol: {fileID: 8822181860427174281}
   _fireTimer: 0.5
   player: {fileID: 6341792325361069525}
@@ -547,6 +547,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6341792325361069525}
   m_Enabled: 1
+--- !u!114 &-4346299087327899529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341792325361069525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &7019769708916157481
 GameObject:
   m_ObjectHideFlags: 0

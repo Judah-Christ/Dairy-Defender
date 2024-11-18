@@ -7,7 +7,7 @@ public class MainMenuController : MonoBehaviour
 {
     void Start()
     {
-        AudioManager.instance.PlayMusic("DDMainMenuLoop");
+        //AudioManager.instance.PlayMusic("DDMainMenuLoop");
     }
 
     public void PlayGame()

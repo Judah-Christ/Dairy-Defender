@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
         isPlayerMoving = true;
         if (isOnSurface && !isPaused)
         {
-        AudioManager.instance.PlayPausableSFX("FootstepsF");
+        //AudioManager.instance.PlayPausableSFX("FootstepsF");
         }
     }
     private void RightLeft_canceled(InputAction.CallbackContext context)
@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         isPlayerMovingSide = true;
         if (isOnSurface && !isPaused)
         {
-        AudioManager.instance.PlayPausableSFX("FootstepsF");
+        //AudioManager.instance.PlayPausableSFX("FootstepsF");
         }
     }
     private void Interact_canceled(InputAction.CallbackContext context)
@@ -301,7 +301,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                AudioManager.instance.PauseSFX();
+                //AudioManager.instance.PauseSFX();
                 player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
@@ -382,7 +382,7 @@ public class PlayerController : MonoBehaviour
         jumpStartY = transform.position.y;
         shadowJumpStartY = Shadow.transform.position.y;
         rb.velocity = Vector2.up * jumpForce;
-        AudioManager.instance.PauseSFX();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.Jump, this.transform.position);
 
         yield return new WaitForFixedUpdate();
 
@@ -397,9 +397,9 @@ public class PlayerController : MonoBehaviour
             shadowPosition.y = shadowJumpStartY;
             Shadow.transform.position = shadowPosition;
 
-            if (!soundPlayed && rb.velocity.y < 0)
+            if (rb.velocity.y < 0)
             {
-                AudioManager.instance.PlayPausableSFX("FallFromCounterF");
+                //AudioManager.instance.PlayPausableSFX("FallFromCounterF");
                 soundPlayed = true;
             }
             yield return null;
@@ -423,14 +423,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            AudioManager.instance.PauseSFX();
+            //AudioManager.instance.PauseSFX();
             isInAir = false;
             isOnSurface = true;
             soundPlayed = false;
 
             if (isPlayerMovingSide)
             {
-                AudioManager.instance.PlaySFX("FootstepsF");
+                //AudioManager.instance.PlaySFX("FootstepsF");
             }
         }
     }
@@ -493,7 +493,7 @@ public class PlayerController : MonoBehaviour
 
         if (!soundPlayed)
         {
-            AudioManager.instance.PlayPausableSFX("FallFromCounterF");
+            //AudioManager.instance.PlayPausableSFX("FallFromCounterF");
         }
         float startY = transform.position.y;
 
@@ -512,8 +512,8 @@ public class PlayerController : MonoBehaviour
         }
 
         GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
-        AudioManager.instance.PauseSFX();
-        AudioManager.instance.PlaySFX("FallLandingThudF");
+        //AudioManager.instance.PauseSFX();
+        //AudioManager.instance.PlaySFX("FallLandingThudF");
         isInAir = false;
         isOnSurface = true;
         soundPlayed = false;
@@ -622,7 +622,7 @@ public class PlayerController : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        AudioManager.instance.music.Pause();
+        //AudioManager.instance.music.Pause();
         isPaused = true;
     }
 
@@ -630,7 +630,7 @@ public class PlayerController : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
-        AudioManager.instance.music.UnPause();
+        //AudioManager.instance.music.UnPause();
         isPaused = false;
     }
 

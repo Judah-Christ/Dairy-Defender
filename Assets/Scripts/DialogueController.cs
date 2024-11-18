@@ -7,8 +7,8 @@ using static WaveSpawner;
 public class DialogueController : MonoBehaviour
 {
     [SerializeField] private string[] dialougue;
-    [SerializeField] private string[] wave5Dialougue;
-    [SerializeField] private string[] wave10Dialougue;
+    [SerializeField] private string[] wave3Dialougue;
+    [SerializeField] private string[] PostWaveDialougue;
     [SerializeField] private TMP_Text dialougueText;
     private int index;
     [SerializeField] private GameObject dialouguePanel;
@@ -56,9 +56,20 @@ public class DialogueController : MonoBehaviour
     }
 
 
-    public void NextWave5Line()
+    public void NextWave3Line()
     {
-
+        contButton.SetActive(false);
+        if (index < wave3Dialougue.Length - 1)
+        {
+            index++;
+            dialougueText.text = "";
+            StartCoroutine(TextApperanceSpeed());
+        }
+        else
+        {
+            gameController.GetComponent<WaveSpawner>().enabled = true;
+            zeroText();
+        }
     }
 
 

@@ -54,14 +54,14 @@ public class GameManager : MonoBehaviour
     {
         if (!isGamePaused)
         {
-            if(objectiveTimer > 0)
-            {
-                objectiveTimer -= Time.deltaTime;
-            }
-            if(objectiveTimer < 0)
-            {
-                ObjectiveComplete();
-            }
+            //if(objectiveTimer > 0)
+            //{
+            //    objectiveTimer -= Time.deltaTime;
+            //}
+            //if(objectiveTimer < 0)
+            //{
+            //    ObjectiveComplete();
+            //}
         }
     }
 
@@ -69,13 +69,13 @@ public class GameManager : MonoBehaviour
     {
         EndWaves();
         //StartCoroutine(AudioManager.instance.FadeOut());
-        //SceneManager.LoadScene(3);
+        SceneManager.LoadScene(3);
     }
 
     public void ObjectiveFailed()
     {
         EndWaves();
-        //SceneManager.LoadScene(4);
+        SceneManager.LoadScene(4);
     }
 
 }

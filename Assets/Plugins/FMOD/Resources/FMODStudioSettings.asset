@@ -380,8 +380,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../Classwork/Fall 2024/IM 289/Miscellaneous/DairyDefenderFMOD/DairyDefenderFMOD.fspro
-  sourceBankPath: ../Classwork/Fall 2024/IM 289/Miscellaneous/DairyDefenderFMOD/Build
+  sourceProjectPath: Assets/DairyDefenderFMOD/DairyDefenderFMOD/DairyDefenderFMOD.fspro
+  sourceBankPath: Assets/DairyDefenderFMOD/DairyDefenderFMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -405,6 +405,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Music
   - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264

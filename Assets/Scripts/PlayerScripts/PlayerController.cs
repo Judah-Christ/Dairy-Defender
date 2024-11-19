@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D counterCollision;
     bool soundPlayed = false;
     public bool isPaused = false;
+    private bool fallEnded = true;
     public GameObject pauseMenu;
     public bool upgradeMenuIsOpen = false;
     public GameObject upgradeMenu;
@@ -82,6 +83,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 floorMinShadowScale;
 
     private EventInstance playerFootsteps;
+    private EventInstance fallSound;
 
     // Start is called before the first frame update
     void Start()
@@ -124,6 +126,7 @@ public class PlayerController : MonoBehaviour
         shadowPlayerOffset = Vector3.Distance(transform.position, Shadow.transform.position);
 
         playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
+        fallSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.Fall);
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -338,7 +341,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Jump());
         }
 
-        if (SceneManager.GetActiveScene().name == "KitchenVSLevel")
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -486,6 +489,7 @@ public class PlayerController : MonoBehaviour
     public IEnumerator Fall()
     {
         FloorShadow.SetActive(true);
+        fallEnded = false;
         Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Non-visible";
         Shadow = GameObject.Find("ShadowOnFloor");
         Shadow.transform.localScale = floorMinShadowScale;
@@ -498,7 +502,7 @@ public class PlayerController : MonoBehaviour
 
         if (!soundPlayed)
         {
-            //AudioManager.instance.PlayPausableSFX("FallFromCounterF");
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.Fall, this.transform.position);
         }
         float startY = transform.position.y;
 
@@ -517,8 +521,8 @@ public class PlayerController : MonoBehaviour
         }
 
         GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
-        //AudioManager.instance.PauseSFX();
-        //AudioManager.instance.PlaySFX("FallLandingThudF");
+        fallEnded = true;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.fallThud, this.transform.position);
         isInAir = false;
         isOnSurface = true;
         soundPlayed = false;
@@ -625,6 +629,7 @@ public class PlayerController : MonoBehaviour
 
     public void Pause()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.pauseMenuOpen, this.transform.position);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         //AudioManager.instance.music.Pause();
@@ -658,7 +663,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateSound()
     {
-        if (isOnSurface && !isInAir && !isPaused && rb.velocity.x != 0)
+        if (isOnSurface && !isInAir && !isPaused && (rb.velocity.x != 0 || rb.velocity.y != 0))
         {
             PLAYBACK_STATE playbackState;
             playerFootsteps.getPlaybackState(out playbackState);
@@ -667,10 +672,23 @@ public class PlayerController : MonoBehaviour
                 playerFootsteps.start();
             }
         }
-
         else
         {
             playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+
+        if (!fallEnded)
+        {
+            PLAYBACK_STATE fallPlaybackState;
+            fallSound.getPlaybackState(out fallPlaybackState);
+            if (fallPlaybackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                fallSound.start();
+            }
+        }
+        else
+        {
+            fallSound.stop(STOP_MODE.IMMEDIATE);
         }
     }
 }

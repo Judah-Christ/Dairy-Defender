@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using static UnityEngine.GraphicsBuffer;
+using FMOD.Studio;
 
 public class PlayerTurret : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class PlayerTurret : MonoBehaviour
             if (isShootOnCD == false)
             {
                 playerTurretAnim.SetTrigger("ShootBolt");
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.towerShoot, this.transform.position);
                 Instantiate(bullet, firingPoint.position, firingPoint.rotation);
                 isShootOnCD = true;
                 
@@ -77,6 +79,7 @@ public class PlayerTurret : MonoBehaviour
             if (isShootOnCD == false)
             {
                 playerTurretAnim.SetTrigger("ShootBolt");
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.towerShoot, this.transform.position);
                 Instantiate(bullet, firingPoint.position, firingPoint.rotation);
                 isShootOnCD = true;
 

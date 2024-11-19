@@ -5,6 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using Cinemachine;
 using TMPro;
+using FMOD.Studio;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -83,6 +84,7 @@ public class WaveSpawner : MonoBehaviour
     void WaveCompleted()
     {
         //Debug.Log("waveCompleted");
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.roundWin, this.transform.position);
         state = SpawnState.counting;
         waveCountdown = timeBetweenWaves;
         StartCoroutine(CountdownFrom30());

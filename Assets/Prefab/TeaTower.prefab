@@ -383,7 +383,6 @@ GameObject:
   - component: {fileID: 6014198085192167611}
   - component: {fileID: 8531434827392210218}
   - component: {fileID: 812005412616744954}
-  - component: {fileID: 7507761727986906015}
   m_Layer: 14
   m_Name: TeaTower
   m_TagString: Soda
@@ -568,37 +567,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7507761727986906015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6773195374952635329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -755244764
-      Data2: 1325781175
-      Data3: -527879237
-      Data4: 1075214509
-    Path: event:/SodaTower
-  Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &8918305532679059615
 GameObject:
   m_ObjectHideFlags: 0

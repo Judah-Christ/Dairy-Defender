@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using FMODUnity;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -33,7 +32,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private bool raycastForTurretZones = false;
     private bool raycastForSodaZones = false;
     private bool obstruction = false;
-    private StudioEventEmitter emitter;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -121,7 +119,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             slotController.isFull = false;
             Time.timeScale = 0;
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.towerPlace, this.transform.position);
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
             image.sprite = null;
@@ -132,7 +129,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             slotController.isFull = false;
             Time.timeScale = 0;
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.towerPlace, this.transform.position);
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
             SpriteRenderer sr = createImage.GetComponent<SpriteRenderer>();
@@ -153,11 +149,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             
             if (!isOverSodaZone || !isOverTurretZone)
             {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.errorFeedback, this.transform.position);
+                //code for UI/audio signal for attempt to place outside of proper zone
             }
             else if (obstruction)
             {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.errorFeedback, this.transform.position);
+                //code for UI/audio signal for obstruction with another tower
             }
         }
 
@@ -202,5 +198,4 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
     }
-
 }

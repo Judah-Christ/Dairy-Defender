@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using FMOD.Studio;
 //using static ShopButtonController;
 
 public class UpgradeController : MonoBehaviour
@@ -123,7 +122,6 @@ public class UpgradeController : MonoBehaviour
                         {
                             DestroyTower(US.CurrentTower);
                             Instantiate(_rustTower, US.CurrentTower.transform.position, Quaternion.identity);
-
                         }
                         
                     }
@@ -163,7 +161,6 @@ public class UpgradeController : MonoBehaviour
                         {
                             Destroy(US.CurrentTower);
                             Instantiate(_lemonade, US.CurrentTower.transform.position, Quaternion.identity);
-                            AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
                     }
                     break;
@@ -176,7 +173,6 @@ public class UpgradeController : MonoBehaviour
                         {
                             Destroy(US.CurrentTower);
                             Instantiate(_tea, US.CurrentTower.transform.position, Quaternion.identity);
-                            AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
                     }
                     break;
@@ -281,14 +277,12 @@ public class UpgradeController : MonoBehaviour
             if(towerType == 1)
             {
                 gameManager.AddCoin((playerTurret.UpgradeCost -1));
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
                 DestroyTower(US.CurrentTower);
                 return;
             }
             if(towerType == 2)
             {
                 gameManager.AddCoin((sodaSlowController.UpgradeCost - 1));
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
                 DestroyTower(US.CurrentTower);
                 return;
             }

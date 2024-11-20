@@ -19,7 +19,7 @@ public class FlyEnemy : MonoBehaviour
     {
         target = FindAnyObjectByType<ObjectiveManager>().transform;
         rb = GetComponent<Rigidbody2D>();
-        speed =0.03f;
+        speed =0.05f;
         anim = gameObject.GetComponent<Animator>();
     }
 
@@ -53,6 +53,14 @@ public class FlyEnemy : MonoBehaviour
             moveDirection = (target.transform.position - transform.position).normalized;
             AnimationUpdate();
         }
+    }
+
+    public void StopMovement()
+    {
+        speed = 0f;
+        target = gameObject.transform;
+        BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
+        collider.enabled = false;
     }
 
     

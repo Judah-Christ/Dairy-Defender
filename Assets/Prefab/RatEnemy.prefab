@@ -569,7 +569,9 @@ MonoBehaviour:
   lowHealth: {r: 1, g: 0.84313726, b: 0, a: 1}
   enemySlider: {fileID: 520237784643637938}
   enemySliderFill: {fileID: 7749510774644517942}
+  isflyEnemy: 0
   canvas: {fileID: 0}
+  _knockbackAmount: 5
 --- !u!60 &-5474241824688700714
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -651,7 +653,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 47612139fc8b71d4991211f65f88303a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 8

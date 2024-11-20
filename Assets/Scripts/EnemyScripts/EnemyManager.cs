@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,8 +29,11 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Color lowHealth;
     [SerializeField] private Slider enemySlider;
     [SerializeField] private Image enemySliderFill;
+    [SerializeField] private bool isflyEnemy;
 
     [SerializeField] private Canvas canvas;
+    [SerializeField] private float _knockbackAmount;
+    private Rigidbody2D rb2d;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +43,7 @@ public class EnemyManager : MonoBehaviour
         deathScreams = new AudioClip[] {deathScream, deathScream1, deathScream2, deathScream3};
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         enemySliderFill.color = highHealth;
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -67,29 +72,38 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount, Vector2 direction)
     {
         currenthealth -= damageAmount;
+        rb2d.AddForce(direction * _knockbackAmount * Time.deltaTime, ForceMode2D.Impulse);
         enemySlider.value = currenthealth;
 
         if (currenthealth <= 0) 
         { 
             int i = Random.Range(0, deathScreams.Length);
             //audioSource.PlayOneShot(deathScreams[i]);
-            StartCoroutine(Death(i));
+            enemySlider.value = 0;
+            Death(i);
         }
     }
 
-    IEnumerator Death(int i)
+    private void Death(int i)
     {
          //audioSource.PlayOneShot(coinDrop);
          GameObject coin = Instantiate(lootDrop, transform.position, Quaternion.identity);
          //coin.layer = gameObject.layer;
          SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
          sr.sortingLayerName = gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
-         //yield return new WaitForSeconds(deathScreams[i].length);
-         yield return new WaitForSeconds(3);
-         Destroy(gameObject);
+
+        if(isflyEnemy == true)
+        {
+            FlyEnemy flyEnemy = gameObject.GetComponent<FlyEnemy>();
+            flyEnemy.StopMovement();
+        }
+        if (isflyEnemy == false)
+        {
+
+        }
     }
    
    

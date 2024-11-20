@@ -22,6 +22,7 @@ TagManager:
   - SodaTowerObstructionWithPlayerTurret
   - PlayerTurretObstructionWithPlayerTurret
   - Interactable
+  - Bullet
   layers:
   - Default
   - TransparentFX

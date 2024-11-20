@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
     private GameManager GM;
     [SerializeField] private float agentSpeed = 3.5f;
-    [SerializeField] public bool isflyEnemy = false;
+    [SerializeField] private bool isflyEnemy = false;
 
     public Vector3 moveDirection;
 
@@ -66,11 +66,6 @@ public class Enemy : MonoBehaviour
         if (collision.transform.tag == "Soda" && !isflyEnemy)
         {
             agent.speed /= collision.GetComponent<SodaSlowController>().slowSpeed;
-        }
-        else
-        {
-            //.Log("No slow");
-            return;
         }
     }
 

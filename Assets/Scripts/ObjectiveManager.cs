@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Security.Cryptography;
+using System.Drawing;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static WaveSpawner;
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -13,11 +10,13 @@ public class ObjectiveManager : MonoBehaviour
     private GameManager GM;
     public Slider objectiveHealthSlider;
     public Image objSliderFill;
-    public Color highHealthColor;
-    public Color mediumHealthColor;
-    public Color lowHealthColor;
+    public UnityEngine.Color highHealthColor;
+    public UnityEngine.Color mediumHealthColor;
+    public UnityEngine.Color lowHealthColor;
     public Objectmoving objectmoving;
-    
+
+    private int objectivesLeft = 1;
+
 
     [SerializeField]
     private GameObject CakeFull;
@@ -41,6 +40,7 @@ public class ObjectiveManager : MonoBehaviour
         objectiveHealthSlider.maxValue = maxHealth;
         objectiveHealthSlider.value = maxHealth;
         objSliderFill.GetComponent<Image>().color = highHealthColor;
+        WaveSpawner.waveUpdated += HandleWaveUpdated;
     }
     private void FixedUpdate()
     {
@@ -88,11 +88,46 @@ public class ObjectiveManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             StartCoroutine(AudioManager.instance.FadeOut());
-            GM.ObjectiveFailed();
+           
+                objectivesLeft = objectivesLeft - 1;
+            if (objectivesLeft == 0)
+            {
+               GM.ObjectiveFailed();
+            }
             Destroy(gameObject);
         }
     }
-    
+    private void HandleWaveUpdated(int waveU)
+    {
+        if (waveU == 1)
+        {
+
+            objectivesLeft++;
+            Debug.Log(objectivesLeft);
+
+        }
+            if (waveU == 2)
+            {
+                objectivesLeft++;
+
+            }
+            if (waveU == 3)
+            {
+                objectivesLeft++;
+            }
+            if (waveU == 4)
+            {
+                objectivesLeft++;
+
+            }
+
+        
+
+    }
+    private void OnDestroy()
+    {
+        WaveSpawner.waveUpdated -= HandleWaveUpdated;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

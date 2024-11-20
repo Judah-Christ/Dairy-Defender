@@ -45,10 +45,10 @@ public class Objectmoving : MonoBehaviour
     {
         if (waveU == 1)
         {
-             //Destroy(objectiveSet);
+            //Destroy(objectiveSet);
             SpawnObjective(objectives[point].objective);
-           
 
+        }
 
             if (waveU == 2)
             {
@@ -69,7 +69,7 @@ public class Objectmoving : MonoBehaviour
 
             }
 
-        }
+        
     }
 
     private void OnDestroy()

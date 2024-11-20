@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     public List<GameItem> Ammo;
 
     public static GameManager gameManager;
+    private ObjectiveManager objectiveM;
     public int Coins;
     public int Tower;
     public bool isGamePaused;
+   
     [SerializeField] private GameObject WinMenu;
 
     [SerializeField] private float objectiveTimer;
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
             
            
         }
+       
     }
     
       

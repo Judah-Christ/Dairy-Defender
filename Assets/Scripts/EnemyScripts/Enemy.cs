@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _maxSpeed;
     private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
     {
         if (target != null && !GM.isGamePaused)
         {
+            
             agent.SetDestination(target.position);
             AnimationUpdate();
         }

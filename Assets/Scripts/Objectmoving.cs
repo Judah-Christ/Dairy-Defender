@@ -11,7 +11,7 @@ public class Objectmoving : MonoBehaviour
 
     public Objective[] objectives;
     public Transform[] spawnPoints;
-    private int point = 0;
+    public int point = 0;
     public GameObject objectiveSet;
 
     public Slider objectiveHealthSlider;
@@ -45,8 +45,9 @@ public class Objectmoving : MonoBehaviour
     {
         if (waveU == 1)
         {
-            // Destroy(objectiveSet);
+             //Destroy(objectiveSet);
             SpawnObjective(objectives[point].objective);
+           
 
 
             if (waveU == 2)

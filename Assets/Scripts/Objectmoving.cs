@@ -11,7 +11,9 @@ public class Objectmoving : MonoBehaviour
 
     public Objective[] objectives;
     public Transform[] spawnPoints;
+    public Transform[] activeObjectives;
     public int point = 0;
+    public int apoint = 1;
     public GameObject objectiveSet;
 
     public Slider objectiveHealthSlider;
@@ -22,6 +24,7 @@ public class Objectmoving : MonoBehaviour
     void Start()
     {
         SpawnObjective(objectives[0].objective);
+       
         WaveSpawner.waveUpdated += HandleWaveUpdated;
     }
 
@@ -35,6 +38,7 @@ public class Objectmoving : MonoBehaviour
     {
      
         Transform sp = spawnPoints[point];
+       Transform aO= activeObjectives[apoint];
         point++;
         objectiveSet = Instantiate(objective, sp.position, sp.rotation).gameObject;
        

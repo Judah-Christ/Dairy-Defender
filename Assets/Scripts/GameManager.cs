@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static WaveSpawner;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class GameManager : MonoBehaviour
 
     public static GameManager gameManager;
     private ObjectiveManager objectiveM;
+    private Objectmoving objectmoving;
     public int Coins;
     public int Tower;
     public bool isGamePaused;
-   
+    public int objectivesLeft = 1;
+
     [SerializeField] private GameObject WinMenu;
 
     [SerializeField] private float objectiveTimer;
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
         StartWaves();
         AudioManager.instance.PlayMusic("DDBattleLoop");
         WinMenu = GameObject.Find("WinMenuCanvas");
+        WaveSpawner.waveUpdated += HandleWaveUpdated;
     }
 
     public void AddCoin(int amount)
@@ -60,8 +64,17 @@ public class GameManager : MonoBehaviour
             {
                 objectiveTimer -= Time.deltaTime;
             }
-            
            
+            if (objectiveM.currentHealth <= 0)
+            {
+                objectivesLeft = objectivesLeft - 1;
+                if (objectivesLeft == 0)
+                {
+                    ObjectiveFailed();
+                }
+               
+            }
+
         }
        
     }
@@ -78,6 +91,37 @@ public class GameManager : MonoBehaviour
     {
         EndWaves();
         SceneManager.LoadScene(4);
+    }
+    private void HandleWaveUpdated(int waveU)
+    {
+        if (waveU == 1)
+        {
+
+            objectivesLeft++;
+            Debug.Log(objectivesLeft);
+
+        }
+        if (waveU == 2)
+        {
+            objectivesLeft++;
+
+        }
+        if (waveU == 3)
+        {
+            objectivesLeft++;
+        }
+        if (waveU == 4)
+        {
+            objectivesLeft++;
+
+        }
+
+
+
+    }
+    private void OnDestroy()
+    {
+        WaveSpawner.waveUpdated -= HandleWaveUpdated;
     }
 
 }

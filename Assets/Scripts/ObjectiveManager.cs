@@ -1,7 +1,7 @@
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
-using static WaveSpawner;
+
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class ObjectiveManager : MonoBehaviour
     public UnityEngine.Color lowHealthColor;
     public Objectmoving objectmoving;
 
-    private int objectivesLeft = 1;
+
 
 
     [SerializeField]
@@ -40,7 +40,7 @@ public class ObjectiveManager : MonoBehaviour
         objectiveHealthSlider.maxValue = maxHealth;
         objectiveHealthSlider.value = maxHealth;
         objSliderFill.GetComponent<Image>().color = highHealthColor;
-        WaveSpawner.waveUpdated += HandleWaveUpdated;
+        
     }
     private void FixedUpdate()
     {
@@ -88,46 +88,10 @@ public class ObjectiveManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             StartCoroutine(AudioManager.instance.FadeOut());
-           
-                objectivesLeft = objectivesLeft - 1;
-            if (objectivesLeft == 0)
-            {
-               GM.ObjectiveFailed();
-            }
             Destroy(gameObject);
         }
     }
-    private void HandleWaveUpdated(int waveU)
-    {
-        if (waveU == 1)
-        {
-
-            objectivesLeft++;
-            Debug.Log(objectivesLeft);
-
-        }
-            if (waveU == 2)
-            {
-                objectivesLeft++;
-
-            }
-            if (waveU == 3)
-            {
-                objectivesLeft++;
-            }
-            if (waveU == 4)
-            {
-                objectivesLeft++;
-
-            }
-
-        
-
-    }
-    private void OnDestroy()
-    {
-        WaveSpawner.waveUpdated -= HandleWaveUpdated;
-    }
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

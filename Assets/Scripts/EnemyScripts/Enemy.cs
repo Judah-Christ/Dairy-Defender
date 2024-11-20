@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+
 
 public class Enemy : MonoBehaviour
 {
@@ -27,12 +29,14 @@ public class Enemy : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         if (!GM.isGamePaused)
         {
-            target = FindAnyObjectByType<ObjectiveManager>().transform;
+           
         }
+        
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         anim = GetComponent<Animator>();
+     
     }
 
     // Update is called once per frame
@@ -40,9 +44,11 @@ public class Enemy : MonoBehaviour
     {
         if (target != null && !GM.isGamePaused)
         {
+          
+                agent.SetDestination(target.position);
+                AnimationUpdate();
             
-            agent.SetDestination(target.position);
-            AnimationUpdate();
+           
         }
         if (GM.isGamePaused)
         {
@@ -53,6 +59,7 @@ public class Enemy : MonoBehaviour
         
         
     }
+   
 
 
     private void AnimationUpdate()

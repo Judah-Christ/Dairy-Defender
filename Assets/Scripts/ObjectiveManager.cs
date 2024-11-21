@@ -12,11 +12,21 @@ public class ObjectiveManager : MonoBehaviour
     [SerializeField] int maxHealth = 1000;
     private GameManager GM;
     public Slider objectiveHealthSlider;
+    public Slider objectiveHealthSlider2;
+    public Slider objectiveHealthSlider3;
+    public Slider objectiveHealthSlider4;
+    public Slider objectiveHealthSlider5;
     public Image objSliderFill;
     public Color highHealthColor;
     public Color mediumHealthColor;
     public Color lowHealthColor;
     public Objectmoving objectmoving;
+    private WaveSpawner waveSpawner;
+    private GameObject wave1Canvas;
+    private GameObject wave2Canvas;
+    private GameObject wave3Canvas;
+    private GameObject wave4Canvas;
+    private GameObject wave5Canvas;
     
 
     [SerializeField]
@@ -31,7 +41,16 @@ public class ObjectiveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        wave1Canvas = GameObject.Find("Wave1Canvas");
+        wave2Canvas = GameObject.Find("Wave2Canvas");
+        wave3Canvas = GameObject.Find("Wave3Canvas");
+        wave4Canvas = GameObject.Find("Wave4Canvas");
+        wave5Canvas = GameObject.Find("Wave5Canvas");
         objectiveHealthSlider = GameObject.Find("ObjectiveSlider").GetComponent<Slider>();
+        objectiveHealthSlider2 = GameObject.Find("ObjectiveSlider2").GetComponent<Slider>();
+        objectiveHealthSlider3 = GameObject.Find("ObjectiveSlider3").GetComponent<Slider>();
+        objectiveHealthSlider4 = GameObject.Find("ObjectiveSlider4").GetComponent<Slider>();
+        objectiveHealthSlider5 = GameObject.Find("ObjectiveSlider5").GetComponent<Slider>();
         objSliderFill = GameObject.Find("ObjectiveSliderFill").GetComponent<Image>();
         objectmoving = GameObject.Find("GameManager").GetComponent<Objectmoving>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -41,9 +60,38 @@ public class ObjectiveManager : MonoBehaviour
         objectiveHealthSlider.maxValue = maxHealth;
         objectiveHealthSlider.value = maxHealth;
         objSliderFill.GetComponent<Image>().color = highHealthColor;
+
+        waveSpawner = GameObject.Find("GameManager").GetComponent<WaveSpawner>();
+        wave2Canvas.SetActive(false);
+        wave3Canvas.SetActive(false);
+        wave4Canvas.SetActive(false);
+        wave5Canvas.SetActive(false);
+
     }
     private void FixedUpdate()
     {
+        if (waveSpawner.nextWave == 1)
+        {
+            GameObject.Find("Wave1Canvas").SetActive(false);
+            GameObject.Find("Wave2Canvas").SetActive(true);
+            objectiveHealthSlider = GameObject.Find("W2ObjectiveSlider").GetComponent<Slider>();
+        }
+
+        if (waveSpawner.nextWave == 2)
+        {
+
+        }
+
+        if (waveSpawner.nextWave == 3)
+        {
+
+        }
+
+        if (waveSpawner.nextWave == 4)
+        {
+
+        }
+
         HealthSliderUpdate();
 
     }

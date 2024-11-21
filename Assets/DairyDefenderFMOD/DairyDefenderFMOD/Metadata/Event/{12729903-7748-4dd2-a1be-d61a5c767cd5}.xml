@@ -5,7 +5,7 @@
 			<value>EnemyHit</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ac8c5da0-68cb-401b-a09f-8531270ab341}</destination>
@@ -99,6 +99,7 @@
 	<object class="MixerBusEffectChain" id="{d91e721b-6ed9-44cd-8688-093f902e77b4}">
 		<relationship name="effects">
 			<destination>{762dd200-366b-48b8-a7bb-8b3ffc3b213e}</destination>
+			<destination>{9b7842eb-07b3-43ed-9e1f-d627de49b5d9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b2844272-9a24-4f8b-985b-fe99a48a1080}" />
@@ -109,4 +110,5 @@
 	</object>
 	<object class="MixerBusFader" id="{59c78e22-0185-4417-abe4-784b35630031}" />
 	<object class="MixerBusFader" id="{762dd200-366b-48b8-a7bb-8b3ffc3b213e}" />
+	<object class="SpatialiserEffect" id="{9b7842eb-07b3-43ed-9e1f-d627de49b5d9}" />
 </objects>

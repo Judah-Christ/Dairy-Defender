@@ -5,7 +5,7 @@
 			<value>SodaTower</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ac8c5da0-68cb-401b-a09f-8531270ab341}</destination>
@@ -136,6 +136,7 @@
 	<object class="MixerBusEffectChain" id="{0f413010-0470-4d83-ba91-00bb570cee36}">
 		<relationship name="effects">
 			<destination>{f61c9f75-9aaa-42e9-b30d-8232f620ccda}</destination>
+			<destination>{bb254bf2-04b2-4604-aec4-882a9785b34c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{75348ca8-44c5-420d-a431-68b7a04ceed6}" />
@@ -147,5 +148,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{575f36b6-3ff8-4d91-8920-2067a5cdf9b8}" />
 	<object class="MixerBusFader" id="{f61c9f75-9aaa-42e9-b30d-8232f620ccda}" />
+	<object class="SpatialiserEffect" id="{bb254bf2-04b2-4604-aec4-882a9785b34c}" />
 	<object class="MixerBusFader" id="{632cc6c9-ced6-4265-a517-b965fb7e487b}" />
 </objects>

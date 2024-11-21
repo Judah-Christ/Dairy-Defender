@@ -5,7 +5,7 @@
 			<value>RatSqueaks</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ac8c5da0-68cb-401b-a09f-8531270ab341}</destination>
@@ -130,6 +130,7 @@
 	<object class="MixerBusEffectChain" id="{751be005-9b37-4698-a7f4-fed4fa26afed}">
 		<relationship name="effects">
 			<destination>{9cd2eb4e-2b35-4a2a-88b8-6ec67ad9ad1a}</destination>
+			<destination>{f83a939a-cf5f-4351-b079-7860f23997ff}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{24534445-8f1f-4691-b4ba-f2da7d6a6a47}" />
@@ -141,5 +142,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{44c94838-88b0-436f-b3cd-9711c7333081}" />
 	<object class="MixerBusFader" id="{9cd2eb4e-2b35-4a2a-88b8-6ec67ad9ad1a}" />
+	<object class="SpatialiserEffect" id="{f83a939a-cf5f-4351-b079-7860f23997ff}" />
 	<object class="MixerBusFader" id="{8f34b87a-61f5-4db9-8f23-dcb9c8d15675}" />
 </objects>

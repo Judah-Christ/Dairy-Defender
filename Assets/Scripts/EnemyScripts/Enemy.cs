@@ -94,9 +94,8 @@ public class Enemy : MonoBehaviour
 
     public void StopEnemy()
     {
-        PolygonCollider2D collider = gameObject.GetComponent<PolygonCollider2D>();
-        collider.enabled = false;
         agent.SetDestination(target.position);
+        agent.velocity = new Vector3(0, 0, 0);
         agent.speed = 0;
         anim.SetTrigger("DeathAnim");
     }

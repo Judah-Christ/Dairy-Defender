@@ -23,6 +23,7 @@ TagManager:
   - PlayerTurretObstructionWithPlayerTurret
   - Interactable
   - Bullet
+  - CoinAOE
   layers:
   - Default
   - TransparentFX

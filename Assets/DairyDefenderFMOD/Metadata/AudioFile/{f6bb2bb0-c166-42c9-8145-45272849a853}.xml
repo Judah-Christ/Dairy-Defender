@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f6bb2bb0-c166-42c9-8145-45272849a853}">
+		<property name="assetPath">
+			<value>Sound Effects/RatDeathScream.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.9593958333333332</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9c648642-935a-461b-ae8d-eb18d4585072}</destination>
+		</relationship>
+	</object>
+</objects>

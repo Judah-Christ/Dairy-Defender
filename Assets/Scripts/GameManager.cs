@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,15 +14,18 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     private ObjectiveManager objectiveM;
     private Objectmoving objectmoving;
+    private WaveSpawner waveSpawner;
     public int Coins;
     public int Tower;
     public bool isGamePaused;
     public int objectivesLeft = 1;
+    public List<Transform> activeObject;
 
     [SerializeField] private GameObject WinMenu;
 
     [SerializeField] private float objectiveTimer;
     private float origTimer;
+    private object wavesDone;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +33,10 @@ public class GameManager : MonoBehaviour
         origTimer = objectiveTimer;
         StartWaves();
         AudioManager.instance.PlayMusic("DDBattleLoop");
+      
         WinMenu = GameObject.Find("WinMenuCanvas");
         WaveSpawner.waveUpdated += HandleWaveUpdated;
+      
     }
 
     public void AddCoin(int amount)
@@ -55,26 +61,18 @@ public class GameManager : MonoBehaviour
     {
         isGamePaused = true;
     }
-
-    private void FixedUpdate()
+    public void AddToObjectiveList(Transform added)
     {
-        if (!isGamePaused)
-        {
-            if(objectiveTimer > 0)
-            {
-                objectiveTimer -= Time.deltaTime;
-            }
-           
-            if (objectiveM.currentHealth <= 0)
-            {
-                objectivesLeft = objectivesLeft - 1;
-                if (objectivesLeft == 0)
-                {
-                    ObjectiveFailed();
-                }
-               
-            }
+        activeObject.Add(added);
+    }
 
+    public void lose()
+    {
+        objectivesLeft--;
+        
+        if (objectivesLeft == 0)
+        {
+            ObjectiveFailed();
         }
        
     }
@@ -112,8 +110,19 @@ public class GameManager : MonoBehaviour
         }
         if (waveU == 4)
         {
+           
             objectivesLeft++;
+            if (objectivesLeft >= 1  )
+            {
+                waveSpawner.WaveCompleted();
+               
+            }
+           
 
+        }
+        if (waveU == 5)
+        {
+            ObjectiveComplete();
         }
 
 

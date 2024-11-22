@@ -87,6 +87,8 @@ public class ObjectiveManager : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            FindAnyObjectByType<GameManager>().lose();
+                
             StartCoroutine(AudioManager.instance.FadeOut());
             Destroy(gameObject);
         }

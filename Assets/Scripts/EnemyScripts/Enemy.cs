@@ -29,14 +29,14 @@ public class Enemy : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         if (!GM.isGamePaused)
         {
-           
+
         }
-        
+
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         anim = GetComponent<Animator>();
-     
+
     }
 
     // Update is called once per frame
@@ -44,11 +44,11 @@ public class Enemy : MonoBehaviour
     {
         if (target != null && !GM.isGamePaused)
         {
-          
-                agent.SetDestination(target.position);
-                AnimationUpdate();
-            
-           
+            CheckDist();                                                    
+            agent.SetDestination(target.position);
+            AnimationUpdate();
+
+
         }
         if (GM.isGamePaused)
         {
@@ -56,10 +56,32 @@ public class Enemy : MonoBehaviour
         }
 
         moveDirection = transform.InverseTransformDirection(agent.velocity);
-        
-        
+
+
     }
-   
+    private void CheckDist()
+    {
+        if (GM.activeObject.Count == 1)
+        {
+            target = GM.activeObject[0];
+            return;
+        }
+        int j = 0;
+        float maxDistance = 10000000f;
+        for (int i = 0; i < GM.activeObject.Count; i++)
+        {
+            Transform t = GM.activeObject[i];
+            float dist = Vector2.Distance(agent.transform.position, t.position);
+            if (dist < maxDistance)
+            {
+                j = i;
+                maxDistance = dist;
+                target = t;
+            }
+            
+        }
+    }
+
 
 
     private void AnimationUpdate()

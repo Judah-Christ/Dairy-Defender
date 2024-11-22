@@ -13,8 +13,8 @@ public class Objectmoving : MonoBehaviour
     public Transform[] spawnPoints;
     public Transform[] activeObjectives;
     public int point = 0;
-    public int apoint = 1;
     public GameObject objectiveSet;
+    private GameManager gameManager;
 
     public Slider objectiveHealthSlider;
     public Image objSliderFill;
@@ -23,9 +23,11 @@ public class Objectmoving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         SpawnObjective(objectives[0].objective);
-       
+        
         WaveSpawner.waveUpdated += HandleWaveUpdated;
+     
     }
 
     // Update is called once per frame
@@ -38,9 +40,9 @@ public class Objectmoving : MonoBehaviour
     {
      
         Transform sp = spawnPoints[point];
-       Transform aO= activeObjectives[apoint];
         point++;
         objectiveSet = Instantiate(objective, sp.position, sp.rotation).gameObject;
+        gameManager.AddToObjectiveList(objectiveSet.transform);
        
 
     }

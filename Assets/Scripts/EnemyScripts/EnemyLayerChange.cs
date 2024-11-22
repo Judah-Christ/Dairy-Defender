@@ -55,7 +55,7 @@ public class EnemyLevelChange : MonoBehaviour
 
         if (movingToCounter)
         {
-            gameObject.layer = LayerMask.NameToLayer("Counter");
+            gameObject.layer = LayerMask.NameToLayer("TempIgnore");
             sr.sortingLayerName = "OnCounter";
             sr.sortingOrder = 0;
         }

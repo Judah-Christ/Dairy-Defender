@@ -52,7 +52,7 @@ public class LadderClimb : MonoBehaviour
 
             if (playerTransform.position.y > ladderCollider.bounds.max.y)
             {
-                GameObject.Find("Player").layer = LayerMask.NameToLayer("TempIgnore");
+                GameObject.Find("Player").layer = LayerMask.NameToLayer("Counter");
                 sr.sortingLayerName = "OnCounter";
                 sr.sortingOrder = 1000;
                 PlayerController.Shadow = counterShadow;

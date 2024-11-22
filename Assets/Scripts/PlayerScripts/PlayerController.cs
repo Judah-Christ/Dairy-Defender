@@ -80,6 +80,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 floorOrigShadowScale;
     [SerializeField] private Vector3 floorMinShadowScale;
 
+    [SerializeField] private GameObject fullyUpgraded;
+    [SerializeField] private GameObject notEnoughCoins;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,8 +123,6 @@ public class PlayerController : MonoBehaviour
         zoomIcon = GameObject.Find("ZoomButton").GetComponent<ZoomIconChange>();
 
         shadowPlayerOffset = Vector3.Distance(transform.position, Shadow.transform.position);
-
-        
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -642,6 +644,8 @@ public class PlayerController : MonoBehaviour
     public void OpenUpgradeMenu()
     {
         upgradeMenu.SetActive(true);
+        fullyUpgraded.SetActive(false);
+        notEnoughCoins.SetActive(false);
         upgradeMenuIsOpen = true;
     }
 

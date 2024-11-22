@@ -34,6 +34,8 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] private GameObject _metalTower;
     private int towerType;
 
+    [SerializeField] private GameObject towerFullyUpgradedError;
+    [SerializeField] private GameObject notEnoughCoinsError;
 
     // Start is called before the first frame update
     void Start()
@@ -125,6 +127,10 @@ public class UpgradeController : MonoBehaviour
                         }
                         
                     }
+                    else
+                    {
+                        StartCoroutine(CoinErrorMessage());
+                    }
                     break;
                 case UpgradeLevel.LVL_TWO:
                     if (playerTurret.UpgradeCost < gameManager.Coins)
@@ -138,8 +144,13 @@ public class UpgradeController : MonoBehaviour
                         }
                         
                     }
+                    else
+                    {
+                        StartCoroutine(CoinErrorMessage());
+                    }
                     break;
                 case UpgradeLevel.LVL_THREE:
+                    StartCoroutine(UpgradeErrorMessage());
                     break;
                 case UpgradeLevel.NONE:
                     break;
@@ -163,6 +174,10 @@ public class UpgradeController : MonoBehaviour
                             Instantiate(_lemonade, US.CurrentTower.transform.position, Quaternion.identity);
                         }
                     }
+                    else
+                    {
+                        StartCoroutine(CoinErrorMessage());
+                    }
                     break;
                 case UpgradeLevel.LVL_TWO:
                     if (sodaSlowController.UpgradeCost < gameManager.Coins)
@@ -175,8 +190,13 @@ public class UpgradeController : MonoBehaviour
                             Instantiate(_tea, US.CurrentTower.transform.position, Quaternion.identity);
                         }
                     }
+                    else
+                    {
+                        StartCoroutine(CoinErrorMessage());
+                    }
                     break;
                 case UpgradeLevel.LVL_THREE:
+                    StartCoroutine(UpgradeErrorMessage());
                     break;
                 case UpgradeLevel.NONE:
                     break;
@@ -311,5 +331,19 @@ public class UpgradeController : MonoBehaviour
                 rotateRightButton.interactable = true;
             }
         }
+    }
+
+    IEnumerator CoinErrorMessage()
+    {
+        notEnoughCoinsError.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        notEnoughCoinsError.SetActive(false);
+    }
+
+    IEnumerator UpgradeErrorMessage()
+    {
+        towerFullyUpgradedError.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        towerFullyUpgradedError.SetActive(false);
     }
 }

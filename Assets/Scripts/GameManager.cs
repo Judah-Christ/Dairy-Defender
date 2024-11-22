@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public int Coins;
     public int Tower;
     public bool isGamePaused;
-    [SerializeField] private GameObject WinMenu;
+    private GameObject WinMenu;
+    private GameObject LoseMenu;
 
     [SerializeField] private float objectiveTimer;
     private float origTimer;
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
         StartWaves();
         //AudioManager.instance.PlayMusic("DDBattleLoop");
         WinMenu = GameObject.Find("WinMenuCanvas");
+        WinMenu.SetActive(false);
+        LoseMenu = GameObject.Find("LoseMenuCanvas");
+        LoseMenu.SetActive(false);
     }
 
     public void AddCoin(int amount)
@@ -69,13 +73,15 @@ public class GameManager : MonoBehaviour
     {
         EndWaves();
         //StartCoroutine(AudioManager.instance.FadeOut());
-        SceneManager.LoadScene(3);
+        //SceneManager.LoadScene(3);
+        WinMenu.SetActive(true);
     }
 
     public void ObjectiveFailed()
     {
         EndWaves();
-        SceneManager.LoadScene(4);
+        //SceneManager.LoadScene(4);
+        LoseMenu.SetActive(true);
     }
 
 }

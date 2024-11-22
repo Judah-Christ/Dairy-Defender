@@ -14,6 +14,7 @@ public class FlyEnemy : MonoBehaviour
     [SerializeField]
     private float _maxSpeed;
     private Animator anim;
+    private int knockBackX;
 
     void Start()
     {
@@ -57,11 +58,21 @@ public class FlyEnemy : MonoBehaviour
 
     public void StopMovement()
     {
+        anim.SetTrigger("Death");
         speed = 0f;
         target = gameObject.transform;
         BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
         collider.enabled = false;
     }
 
-    
+    public void CollisionDirection(Vector2 direction)
+    {
+        anim.SetInteger("KnockBackX", ((int)direction.x));
+    }
+
+    public void TriggerKnockback()
+    {
+        anim.SetTrigger("KnockbackAnim");
+    }
+
 }

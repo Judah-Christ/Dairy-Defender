@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     public Vector3 moveDirection;
 
     private Rigidbody2D rb2d;
-
+    private int knockBackX;
     [SerializeField]
     private float _maxSpeed;
     private Animator anim;
@@ -50,6 +50,11 @@ public class Enemy : MonoBehaviour
         }
 
         moveDirection = transform.InverseTransformDirection(agent.velocity);
+
+        if (agent.velocity.sqrMagnitude > _maxSpeed)
+        {
+            agent.velocity = Vector3.zero;
+        }
         
         
     }
@@ -75,6 +80,25 @@ public class Enemy : MonoBehaviour
         {
             agent.speed = agentSpeed;
         }
+    }
+
+    public void CollisionDirection(Vector2 direction)
+    {
+        anim.SetInteger("KnockBackX", ((int)direction.x));
+    }
+
+    public void TriggerKnockback()
+    {
+        anim.SetTrigger("KnockbackAnim");
+    }
+
+    public void StopEnemy()
+    {
+        PolygonCollider2D collider = gameObject.GetComponent<PolygonCollider2D>();
+        collider.enabled = false;
+        agent.SetDestination(target.position);
+        agent.speed = 0;
+        anim.SetTrigger("DeathAnim");
     }
 
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7461463961433006522}
   - component: {fileID: 6492889075942070879}
   - component: {fileID: 4435341325953778517}
-  - component: {fileID: 7799859127810206231}
   - component: {fileID: -717784665255758934}
   - component: {fileID: 6554895766522250854}
   m_Layer: 0
@@ -123,21 +122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentObject: 0
   pickupQuanity: 1
---- !u!111 &7799859127810206231
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6472674490139302122}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 62006b9dfc00c5b439087c9b616049c6, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!212 &-717784665255758934
 SpriteRenderer:
   m_ObjectHideFlags: 0

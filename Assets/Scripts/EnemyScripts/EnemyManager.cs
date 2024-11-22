@@ -34,6 +34,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private float _knockbackAmount;
     private Rigidbody2D rb2d;
+    private FlyEnemy flyEnemy;
+    private Enemy enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,15 @@ public class EnemyManager : MonoBehaviour
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         enemySliderFill.color = highHealth;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+
+        if(isflyEnemy == true)
+        {
+            flyEnemy = gameObject.GetComponent<FlyEnemy>();
+        }
+        if(isflyEnemy == false)
+        {
+            enemy = gameObject.GetComponent<Enemy>();
+        }
     }
 
     // Update is called once per frame
@@ -74,17 +85,40 @@ public class EnemyManager : MonoBehaviour
 
     public void TakeDamage(int damageAmount, Vector2 direction)
     {
-        currenthealth -= damageAmount;
-        rb2d.AddForce(direction * _knockbackAmount * Time.deltaTime, ForceMode2D.Impulse);
-        enemySlider.value = currenthealth;
+        
+        if(currenthealth > 0)
+        {
+            currenthealth -= damageAmount;
+            rb2d.AddForce(direction * _knockbackAmount * Time.deltaTime, ForceMode2D.Impulse);
+            enemySlider.value = currenthealth;
+
+
+            if (isflyEnemy == true)
+            {
+                flyEnemy.CollisionDirection(direction);
+            }
+            if (isflyEnemy == false)
+            {
+                enemy.CollisionDirection(direction);
+            }
+        }
 
         if (currenthealth <= 0) 
-        { 
+        {
+            if (isflyEnemy == true)
+            {
+                flyEnemy.CollisionDirection(direction);
+            }
+            if (isflyEnemy == false)
+            {
+                enemy.CollisionDirection(direction);
+            }
             int i = Random.Range(0, deathScreams.Length);
             //audioSource.PlayOneShot(deathScreams[i]);
             enemySlider.value = 0;
             Death(i);
         }
+
     }
 
     private void Death(int i)
@@ -97,12 +131,11 @@ public class EnemyManager : MonoBehaviour
 
         if(isflyEnemy == true)
         {
-            FlyEnemy flyEnemy = gameObject.GetComponent<FlyEnemy>();
             flyEnemy.StopMovement();
         }
         if (isflyEnemy == false)
         {
-
+            enemy.StopEnemy();
         }
     }
    

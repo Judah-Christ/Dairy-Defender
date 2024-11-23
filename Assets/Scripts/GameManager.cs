@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static WaveSpawner;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,14 +13,19 @@ public class GameManager : MonoBehaviour
 
     public static GameManager gameManager;
     private ObjectiveManager objectiveM;
+    private Objectmoving objectmoving;
+    private WaveSpawner waveSpawner;
     public int Coins;
     public int Tower;
     public bool isGamePaused;
-   
+    public int objectivesLeft = 1;
+    public List<Transform> activeObject;
+
     [SerializeField] private GameObject WinMenu;
 
     [SerializeField] private float objectiveTimer;
     private float origTimer;
+    private object wavesDone;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +33,10 @@ public class GameManager : MonoBehaviour
         origTimer = objectiveTimer;
         StartWaves();
         AudioManager.instance.PlayMusic("DDBattleLoop");
+      
         WinMenu = GameObject.Find("WinMenuCanvas");
+        WaveSpawner.waveUpdated += HandleWaveUpdated;
+      
     }
 
     public void AddCoin(int amount)
@@ -51,17 +61,18 @@ public class GameManager : MonoBehaviour
     {
         isGamePaused = true;
     }
-
-    private void FixedUpdate()
+    public void AddToObjectiveList(Transform added)
     {
-        if (!isGamePaused)
+        activeObject.Add(added);
+    }
+
+    public void lose()
+    {
+        objectivesLeft--;
+        
+        if (objectivesLeft == 0)
         {
-            if(objectiveTimer > 0)
-            {
-                objectiveTimer -= Time.deltaTime;
-            }
-            
-           
+            ObjectiveFailed();
         }
        
     }
@@ -78,6 +89,48 @@ public class GameManager : MonoBehaviour
     {
         EndWaves();
         SceneManager.LoadScene(4);
+    }
+    private void HandleWaveUpdated(int waveU)
+    {
+        if (waveU == 1)
+        {
+
+            objectivesLeft++;
+            Debug.Log(objectivesLeft);
+
+        }
+        if (waveU == 2)
+        {
+            objectivesLeft++;
+
+        }
+        if (waveU == 3)
+        {
+            objectivesLeft++;
+        }
+        if (waveU == 4)
+        {
+           
+            objectivesLeft++;
+            if (objectivesLeft >= 1  )
+            {
+                waveSpawner.WaveCompleted();
+               
+            }
+           
+
+        }
+        if (waveU == 5)
+        {
+            ObjectiveComplete();
+        }
+
+
+
+    }
+    private void OnDestroy()
+    {
+        WaveSpawner.waveUpdated -= HandleWaveUpdated;
     }
 
 }

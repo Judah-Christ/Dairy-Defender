@@ -1,6 +1,7 @@
 using NavMeshPlus.Extensions;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics.Internal;
 using UnityEngine;
 
 public class FlyEnemy : MonoBehaviour
@@ -9,7 +10,9 @@ public class FlyEnemy : MonoBehaviour
     private Rigidbody2D rb;
     //private GameManager GM;
     private float speed;
+    private GameManager GM;
     private Vector3 moveDirection;
+   
 
     [SerializeField]
     private float _maxSpeed;
@@ -20,6 +23,8 @@ public class FlyEnemy : MonoBehaviour
     {
         target = FindAnyObjectByType<ObjectiveManager>().transform;
         rb = GetComponent<Rigidbody2D>();
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        speed =0.03f;
         speed =0.05f;
         anim = gameObject.GetComponent<Animator>();
     }
@@ -28,8 +33,10 @@ public class FlyEnemy : MonoBehaviour
     {
         if (target != null)
         {
+            CheckDist();
             rb.position = Vector3.MoveTowards(rb.position, target.position, speed);
-            GetDistance();
+            AnimationUpdate();
+
 
         }
 
@@ -40,8 +47,30 @@ public class FlyEnemy : MonoBehaviour
         
         
     }
+    private void CheckDist()
+    {
+        if (GM.activeObject.Count == 1)
+        {
+            target = GM.activeObject[0];
+            return;
+        }
+        int j = 0;
+        float maxDistance = 10000000f;
+        for (int i = 0; i < GM.activeObject.Count; i++)
+        {
+            Transform t = GM.activeObject[i];
+            float dist = Vector2.Distance(transform.position, t.position);
+            if (dist < maxDistance)
+            {
+                j = i;
+                maxDistance = dist;
+                target = t;
+            }
+        }
+    }
 
-    private void AnimationUpdate()
+
+        private void AnimationUpdate()
     {
         anim.SetFloat("MoveX" , moveDirection.x);
         anim.SetFloat("MoveY", moveDirection.y);
@@ -52,7 +81,7 @@ public class FlyEnemy : MonoBehaviour
         if (target.transform.position != transform.position)
         {
             moveDirection = (target.transform.position - transform.position).normalized;
-            AnimationUpdate();
+           
         }
     }
 

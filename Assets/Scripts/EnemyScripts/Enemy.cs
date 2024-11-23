@@ -71,8 +71,6 @@ public class Enemy : MonoBehaviour
         }
         if (collision.CompareTag("OOB") && gameObject.layer != LayerMask.NameToLayer("Floor"))
         {
-            Debug.Log("Bumped!");
-            Unstuck();
         }
     }
 
@@ -102,13 +100,18 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("DeathAnim");
     }
 
-    public void Unstuck()
-    {
-        agent.acceleration = 10000;
-        agent.speed = 1000;
+    //public void Unstuck()
+    //{
+    //    agent.acceleration = 100;
+    //    agent.speed = 100;
 
-        agent.acceleration = 8;
-        agent.speed = 3.5f;
-    }
+    //    //ResetSpeed();
+    //}
+
+    //private void ResetSpeed()
+    //{
+    //    agent.acceleration = 8;
+    //    agent.speed = 3.5f;
+    //}
 
 }

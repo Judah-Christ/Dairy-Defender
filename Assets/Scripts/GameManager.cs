@@ -4,12 +4,16 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using static WaveSpawner;
 
 public class GameManager : MonoBehaviour
 {
     public List<GameItem> Towers;
     public List<GameItem> Ammo;
+
+    public List<Slider> HealthSliders;
+    public List<GameObject> WaveCanvas;
 
     public static GameManager gameManager;
     private ObjectiveManager objectiveM;

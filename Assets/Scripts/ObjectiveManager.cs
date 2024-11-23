@@ -40,15 +40,10 @@ public class ObjectiveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        wave1Canvas = GameObject.Find("Wave1Canvas");
-        wave2Canvas = GameObject.Find("Wave2Canvas");
-        wave3Canvas = GameObject.Find("Wave3Canvas");
-        wave4Canvas = GameObject.Find("Wave4Canvas");
-        wave5Canvas = GameObject.Find("Wave5Canvas");
-        objectiveHealthSlider = GameObject.Find("ObjectiveSlider").GetComponent<Slider>();
-        objectiveHealthSlider2 = GameObject.Find("ObjectiveSlider2").GetComponent<Slider>();
-        objectiveHealthSlider3 = GameObject.Find("ObjectiveSlider3").GetComponent<Slider>();
-        objectiveHealthSlider4 = GameObject.Find("ObjectiveSlider4").GetComponent<Slider>();
+        objectiveHealthSlider = GM.WaveCanvas[0].GetComponentInChildren<Slider>();
+        objectiveHealthSlider2 = GM.WaveCanvas[1].GetComponentInChildren<Slider>();
+        objectiveHealthSlider3 = GM.WaveCanvas[2].GetComponentInChildren<Slider>();
+        objectiveHealthSlider4 = GM.WaveCanvas[3].GetComponentInChildren<Slider>();
         objSliderFill = GameObject.Find("ObjectiveSliderFill").GetComponent<Image>();
         objectmoving = GameObject.Find("GameManager").GetComponent<Objectmoving>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();

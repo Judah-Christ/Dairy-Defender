@@ -24,6 +24,7 @@ TagManager:
   - Interactable
   - Bullet
   - CoinAOE
+  - OOB
   layers:
   - Default
   - TransparentFX

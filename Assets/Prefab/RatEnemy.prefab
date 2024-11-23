@@ -524,6 +524,7 @@ MonoBehaviour:
   isflyEnemy: 0
   moveDirection: {x: 0, y: 0, z: 0}
   _maxSpeed: 20
+  _minSpeed: 5
 --- !u!195 &-6463996141506686354
 NavMeshAgent:
   m_ObjectHideFlags: 0

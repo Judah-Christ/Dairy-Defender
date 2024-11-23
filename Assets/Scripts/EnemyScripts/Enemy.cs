@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     private int knockBackX;
     [SerializeField]
     private float _maxSpeed;
+    [SerializeField]
+    private float _minSpeed;
     private Animator anim;
 
     // Start is called before the first frame update
@@ -50,11 +52,6 @@ public class Enemy : MonoBehaviour
         }
 
         moveDirection = transform.InverseTransformDirection(agent.velocity);
-
-        if (agent.velocity.sqrMagnitude > _maxSpeed)
-        {
-            agent.velocity = Vector3.zero;
-        }
         
         
     }
@@ -71,6 +68,11 @@ public class Enemy : MonoBehaviour
         if (collision.transform.tag == "Soda" && !isflyEnemy)
         {
             agent.speed /= collision.GetComponent<SodaSlowController>().slowSpeed;
+        }
+        if (collision.CompareTag("OOB") && gameObject.layer != LayerMask.NameToLayer("Floor"))
+        {
+            Debug.Log("Bumped!");
+            Unstuck();
         }
     }
 
@@ -98,6 +100,15 @@ public class Enemy : MonoBehaviour
         agent.velocity = new Vector3(0, 0, 0);
         agent.speed = 0;
         anim.SetTrigger("DeathAnim");
+    }
+
+    public void Unstuck()
+    {
+        agent.acceleration = 10000;
+        agent.speed = 1000;
+
+        agent.acceleration = 8;
+        agent.speed = 3.5f;
     }
 
 }

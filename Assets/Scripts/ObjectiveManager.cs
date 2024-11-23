@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Drawing;
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +16,7 @@ public class ObjectiveManager : MonoBehaviour
     public UnityEngine.Color mediumHealthColor;
     public UnityEngine.Color lowHealthColor;
     public Objectmoving objectmoving;
+    public EnemyManager enemyManager;
 
 
 
@@ -93,16 +96,31 @@ public class ObjectiveManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-   
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public IEnumerator ConstantAttack(int damagetime)
     {
-        if (collision.gameObject.tag == "Enemy")
+        for (int i = 0; i < damagetime; i++)
         {
             TakeDamage(50);
-            //collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
-
+            yield return new WaitForSeconds(2f);
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            // TakeDamage(50);
+            StartCoroutine(ConstantAttack(10));
+           // collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
+
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            TakeDamage(0);
+        }
+    }
 }

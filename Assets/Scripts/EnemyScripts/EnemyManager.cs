@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static WaveSpawner;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -80,6 +81,8 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+   
+
     IEnumerator Death(int i)
     {
          //audioSource.PlayOneShot(coinDrop);
@@ -91,7 +94,9 @@ public class EnemyManager : MonoBehaviour
          yield return new WaitForSeconds(3);
          Destroy(gameObject);
     }
-   
-   
 
+    internal void ConstantAttack(int v)
+    {
+        throw new System.NotImplementedException();
+    }
 }

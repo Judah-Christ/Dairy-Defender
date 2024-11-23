@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         //StartCoroutine(AudioManager.instance.FadeOut());
         //SceneManager.LoadScene(3);
         WinMenu.SetActive(true);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.roundWin, this.transform.position);
     }
 
     public void ObjectiveFailed()

@@ -5,7 +5,7 @@
 			<value>RatDeathScreams</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ac8c5da0-68cb-401b-a09f-8531270ab341}</destination>
@@ -119,6 +119,7 @@
 	<object class="MixerBusEffectChain" id="{0b7bc5ac-f764-4aa0-96ed-8e099fcf05bb}">
 		<relationship name="effects">
 			<destination>{f794c2f9-3fe3-4458-b539-54155e1aaa66}</destination>
+			<destination>{299c058a-97b3-49e2-afeb-7ac25c9a47dd}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4c7b28bb-0d04-4a64-b682-00a890cb4712}" />
@@ -150,5 +151,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{6e41568b-202b-4b51-bef1-8d7dd5d7f2e5}" />
 	<object class="MixerBusFader" id="{f794c2f9-3fe3-4458-b539-54155e1aaa66}" />
+	<object class="SpatialiserEffect" id="{299c058a-97b3-49e2-afeb-7ac25c9a47dd}" />
 	<object class="MixerBusFader" id="{9b8a4626-26ca-44de-98a8-41d49fefc2c7}" />
 </objects>

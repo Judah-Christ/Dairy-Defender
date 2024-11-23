@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{c71a5118-d4a2-42e6-b749-bf7b8c43e775}">
+		<property name="name">
+			<value>SceneName</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b6a6842f-2cb7-46c1-8168-0103b38ea0db}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e84d6be0-fac9-40f2-83fe-77f4cba5b405}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e84d6be0-fac9-40f2-83fe-77f4cba5b405}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>MainMenu</value>
+			<value>Level1</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>2</value>
+		</property>
+	</object>
+</objects>

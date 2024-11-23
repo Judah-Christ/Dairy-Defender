@@ -480,6 +480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2429511564813885908}
   - component: {fileID: 2098331285740953146}
+  - component: {fileID: -244867801649908286}
   m_Layer: 14
   m_Name: TurretRust
   m_TagString: Untagged
@@ -529,6 +530,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-244867801649908286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177212075189524895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea3b919bda760043a55983d78583782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 0}
+  firingSpeed: 0.5
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8102333990585592472
 GameObject:
   m_ObjectHideFlags: 0

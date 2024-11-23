@@ -684,7 +684,7 @@ MonoBehaviour:
     Path: event:/FlyBuzzing
   Event: 
   EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0

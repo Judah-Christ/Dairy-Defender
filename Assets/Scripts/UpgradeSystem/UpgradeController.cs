@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using FMOD.Studio;
 //using static ShopButtonController;
 
 public class UpgradeController : MonoBehaviour
@@ -34,6 +35,8 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] private GameObject _metalTower;
     private int towerType;
 
+    [SerializeField] private GameObject towerFullyUpgradedError;
+    [SerializeField] private GameObject notEnoughCoinsError;
 
     // Start is called before the first frame update
     void Start()
@@ -122,8 +125,13 @@ public class UpgradeController : MonoBehaviour
                         {
                             DestroyTower(US.CurrentTower);
                             Instantiate(_rustTower, US.CurrentTower.transform.position, Quaternion.identity);
+                            AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
                         
+                    }
+                    else
+                    {
+                        StartCoroutine(CoinErrorMessage());
                     }
                     break;
                 case UpgradeLevel.LVL_TWO:
@@ -135,11 +143,17 @@ public class UpgradeController : MonoBehaviour
                         {
                             DestroyTower(US.CurrentTower);
                             Instantiate(_metalTower, US.CurrentTower.transform.position, Quaternion.identity);
+                            AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
                         
                     }
+                    else
+                    {
+                        StartCoroutine(CoinErrorMessage());
+                    }
                     break;
                 case UpgradeLevel.LVL_THREE:
+                    StartCoroutine(UpgradeErrorMessage());
                     break;
                 case UpgradeLevel.NONE:
                     break;
@@ -161,7 +175,12 @@ public class UpgradeController : MonoBehaviour
                         {
                             Destroy(US.CurrentTower);
                             Instantiate(_lemonade, US.CurrentTower.transform.position, Quaternion.identity);
+                            AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
+                    }
+                    else
+                    {
+                        StartCoroutine(CoinErrorMessage());
                     }
                     break;
                 case UpgradeLevel.LVL_TWO:
@@ -173,10 +192,16 @@ public class UpgradeController : MonoBehaviour
                         {
                             Destroy(US.CurrentTower);
                             Instantiate(_tea, US.CurrentTower.transform.position, Quaternion.identity);
+                            AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
+                    }
+                    else
+                    {
+                        StartCoroutine(CoinErrorMessage());
                     }
                     break;
                 case UpgradeLevel.LVL_THREE:
+                    StartCoroutine(UpgradeErrorMessage());
                     break;
                 case UpgradeLevel.NONE:
                     break;
@@ -277,12 +302,14 @@ public class UpgradeController : MonoBehaviour
             if(towerType == 1)
             {
                 gameManager.AddCoin((playerTurret.UpgradeCost -1));
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
                 DestroyTower(US.CurrentTower);
                 return;
             }
             if(towerType == 2)
             {
                 gameManager.AddCoin((sodaSlowController.UpgradeCost - 1));
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
                 DestroyTower(US.CurrentTower);
                 return;
             }
@@ -311,5 +338,19 @@ public class UpgradeController : MonoBehaviour
                 rotateRightButton.interactable = true;
             }
         }
+    }
+
+    IEnumerator CoinErrorMessage()
+    {
+        notEnoughCoinsError.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        notEnoughCoinsError.SetActive(false);
+    }
+
+    IEnumerator UpgradeErrorMessage()
+    {
+        towerFullyUpgradedError.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        towerFullyUpgradedError.SetActive(false);
     }
 }

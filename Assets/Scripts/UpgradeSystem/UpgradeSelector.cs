@@ -14,6 +14,7 @@ public class UpgradeSelector : MonoBehaviour
     public GameObject CurrentTower;
     private GameObject selection;
     private UpgradeController UC;
+    [SerializeField] private GameObject leftClickToSelect;
 
 
     // Start is called before the first frame update
@@ -37,10 +38,11 @@ public class UpgradeSelector : MonoBehaviour
             {
                 CurrentTower = hit.transform.gameObject;
                 UC.GetUpgradeLevel(CurrentTower);
+                leftClickToSelect.SetActive(false);
 
                 if (CurrentTower.CompareTag("Turret"))
                 {
-                    DeselectTower();
+                    DeselectTower();              
                     Transform parent = CurrentTower.transform.parent;
                     selection = parent.Find("Selection").gameObject;
                     selection.SetActive(true);
@@ -58,11 +60,12 @@ public class UpgradeSelector : MonoBehaviour
             else if (hit && CurrentTower != null)
             {
                 DeselectTower(true);
+                leftClickToSelect.SetActive(true);
                 return;
             }
             else if (hit == false)
             {
-                
+                //leftClickToSelect.SetActive(true);
             }
         }
         if (PC.upgradeMenuIsOpen == false)

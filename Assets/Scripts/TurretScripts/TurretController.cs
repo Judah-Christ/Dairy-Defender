@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class TurretController : MonoBehaviour
 {
@@ -49,6 +51,7 @@ public class TurretController : MonoBehaviour
         if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
         {
             Instantiate(bullet, firingPoint.position, firingPoint.rotation);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.towerShoot, this.transform.position);
         }
     }
 }

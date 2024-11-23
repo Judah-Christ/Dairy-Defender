@@ -984,85 +984,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269949934}
   m_CullTransparentMesh: 1
---- !u!1 &281773375
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 281773376}
-  - component: {fileID: 281773377}
-  m_Layer: 0
-  m_Name: FMODEvents
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &281773376
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281773375}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 704704554}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &281773377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281773375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 917c4daa18b780242bea507f3abcb72b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <playerFootsteps>k__BackingField:
-    Guid:
-      Data1: 926550049
-      Data2: 1340464747
-      Data3: 681153678
-      Data4: -1210758016
-    Path: event:/SFX/Player/PlayerFootsteps
-  <Jump>k__BackingField:
-    Guid:
-      Data1: -213411221
-      Data2: 1268918916
-      Data3: 363137447
-      Data4: -388623654
-    Path: event:/SFX/Player/Jump
-  <ratSqueaks>k__BackingField:
-    Guid:
-      Data1: 1345290696
-      Data2: 1093345970
-      Data3: 1528530073
-      Data4: 79914533
-    Path: event:/SFX/Enemy/RatSqueaks
-  <mainMenuMusic>k__BackingField:
-    Guid:
-      Data1: 242155462
-      Data2: 1163494742
-      Data3: 1731400339
-      Data4: -1696683758
-    Path: event:/Music/DDMainMenuLoop
-  <battleMusic>k__BackingField:
-    Guid:
-      Data1: -1075989463
-      Data2: 1227790537
-      Data3: 1091237511
-      Data4: 553925932
-    Path: event:/Music/DDBattleLoop
 --- !u!1 &411409847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,7 +1928,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704704549}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -2103,7 +2024,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704704549}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -2199,7 +2120,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704704549}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -2313,7 +2234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 281773376}
+  - {fileID: 997546017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808493993
@@ -3037,6 +2958,183 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969601358}
   m_CullTransparentMesh: 1
+--- !u!1 &997546016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997546017}
+  - component: {fileID: 997546018}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &997546017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997546016}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 704704554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &997546018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997546016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917c4daa18b780242bea507f3abcb72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <playerFootsteps>k__BackingField:
+    Guid:
+      Data1: -1270987907
+      Data2: 1133607530
+      Data3: 1028470665
+      Data4: -1418986490
+    Path: event:/PlayerFootsteps
+  <Jump>k__BackingField:
+    Guid:
+      Data1: -1145639532
+      Data2: 1123091322
+      Data3: -1180980576
+      Data4: -1008632072
+    Path: event:/Jump
+  <Fall>k__BackingField:
+    Guid:
+      Data1: -306012047
+      Data2: 1301580956
+      Data3: -972128607
+      Data4: 1822542110
+    Path: event:/Fall
+  <fallThud>k__BackingField:
+    Guid:
+      Data1: -1363766551
+      Data2: 1304339257
+      Data3: -631602540
+      Data4: -364422149
+    Path: event:/FallThud
+  <ratSqueaks>k__BackingField:
+    Guid:
+      Data1: 384861877
+      Data2: 1114957537
+      Data3: -1705976397
+      Data4: 45303496
+    Path: event:/RatSqueaks
+  <flyBuzzing>k__BackingField:
+    Guid:
+      Data1: 1570059118
+      Data2: 1280343918
+      Data3: -593361742
+      Data4: -1316297018
+    Path: event:/FlyBuzzing
+  <ratDeathScreams>k__BackingField:
+    Guid:
+      Data1: -252279558
+      Data2: 1128403942
+      Data3: 647792019
+      Data4: 644406124
+    Path: event:/RatDeathScreams
+  <enemyHit>k__BackingField:
+    Guid:
+      Data1: 309500163
+      Data2: 1305638728
+      Data3: 450281121
+      Data4: -713263524
+    Path: event:/EnemyHit
+  <sodaTower>k__BackingField:
+    Guid:
+      Data1: -755244764
+      Data2: 1325781175
+      Data3: -527879237
+      Data4: 1075214509
+    Path: event:/SodaTower
+  <towerPlace>k__BackingField:
+    Guid:
+      Data1: -89791941
+      Data2: 1338108635
+      Data3: -1071737704
+      Data4: -687838248
+    Path: event:/TowerPlace
+  <towerShoot>k__BackingField:
+    Guid:
+      Data1: -987974837
+      Data2: 1147839486
+      Data3: -160467326
+      Data4: -434195726
+    Path: event:/TowerShoot
+  <dismantle>k__BackingField:
+    Guid:
+      Data1: -1843954337
+      Data2: 1113745106
+      Data3: 1513473706
+      Data4: -1084102747
+    Path: event:/Dismantle
+  <upgrade>k__BackingField:
+    Guid:
+      Data1: 1014082275
+      Data2: 1089976367
+      Data3: 2135354020
+      Data4: 969715575
+    Path: event:/Upgrade
+  <Music>k__BackingField:
+    Guid:
+      Data1: 1537044782
+      Data2: 1085556018
+      Data3: 2087357836
+      Data4: -1533977154
+    Path: event:/Music
+  <pauseMenuOpen>k__BackingField:
+    Guid:
+      Data1: 1969552102
+      Data2: 1178694206
+      Data3: 46210698
+      Data4: 1783523394
+    Path: event:/PauseMenuOpen
+  <errorFeedback>k__BackingField:
+    Guid:
+      Data1: 619905619
+      Data2: 1341682039
+      Data3: -1700432998
+      Data4: 1533991031
+    Path: event:/ErrorFeedback
+  <roundWin>k__BackingField:
+    Guid:
+      Data1: 1756537113
+      Data2: 1207706477
+      Data3: 555441043
+      Data4: 1456328533
+    Path: event:/RoundWin
+  <buttonDrop>k__BackingField:
+    Guid:
+      Data1: 527051110
+      Data2: 1114166678
+      Data3: -1449767763
+      Data4: -1603780487
+    Path: event:/ButtonDrop
+  <buttonPickUp>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1123886259
 GameObject:
   m_ObjectHideFlags: 0

@@ -79,17 +79,29 @@ public class ObjectiveManager : MonoBehaviour
 
         if (waveSpawner.nextWave == 2)
         {
-
+            GameObject.Find("Wave2Canvas").SetActive(false);
+            GameObject.Find("Wave3Canvas").SetActive(true);
+            objectiveHealthSlider = GameObject.Find("W3ObjectiveSlider").GetComponent<Slider>();
+            objectiveHealthSlider2 = GameObject.Find("W3ObjectiveSlider2").GetComponent<Slider>();
         }
 
         if (waveSpawner.nextWave == 3)
         {
-
+            GameObject.Find("Wave3Canvas").SetActive(false);
+            GameObject.Find("Wave4Canvas").SetActive(true);
+            objectiveHealthSlider = GameObject.Find("W4ObjectiveSlider").GetComponent<Slider>();
+            objectiveHealthSlider2 = GameObject.Find("W4ObjectiveSlider2").GetComponent<Slider>();
+            objectiveHealthSlider3 = GameObject.Find("W4ObjectiveSlider3").GetComponent<Slider>();
         }
 
         if (waveSpawner.nextWave == 4)
         {
-
+            GameObject.Find("Wave4Canvas").SetActive(false);
+            GameObject.Find("Wave5Canvas").SetActive(true);
+            objectiveHealthSlider = GameObject.Find("W5ObjectiveSlider").GetComponent<Slider>();
+            objectiveHealthSlider2 = GameObject.Find("W5ObjectiveSlider2").GetComponent<Slider>();
+            objectiveHealthSlider3 = GameObject.Find("W5ObjectiveSlider3").GetComponent<Slider>();
+            objectiveHealthSlider4 = GameObject.Find("W5ObjectiveSlider4").GetComponent<Slider>();
         }
 
         HealthSliderUpdate();
@@ -98,7 +110,22 @@ public class ObjectiveManager : MonoBehaviour
 
     public void HealthSliderUpdate()
     {
-        objectiveHealthSlider.value = currentHealth;
+        if (gameObject.name == "Objective(Clone)")
+        {
+            objectiveHealthSlider.value = currentHealth;
+        }
+        else if (gameObject.name == "Objective2(Clone)")
+        {
+            objectiveHealthSlider2.value = currentHealth;
+        }
+        else if (gameObject.name == "Objective3(Clone)")
+        {
+            objectiveHealthSlider3.value = currentHealth;
+        }
+        else if (gameObject.name == "Objective4(Clone)")
+        {
+            objectiveHealthSlider4.value = currentHealth;
+        }
 
         if (currentHealth >= 0.66 * maxHealth)
         {

@@ -8,7 +8,10 @@ public class CurrencyPickup : MonoBehaviour
     public PickupObject currentObject;
     public int pickupQuanity;
     private GameManager GM;
+    private bool isMagnetized;
+    private Transform target;
 
+    [SerializeField] private float _pickupSpeed;
 
     private void Start()
     {
@@ -31,6 +34,23 @@ public class CurrencyPickup : MonoBehaviour
                 return;
             }
             
+        }
+
+        if (other.CompareTag("CoinAOE") && target == null)
+        {
+            target = other.transform.parent;
+            isMagnetized = true;
+            gameObject.layer = LayerMask.NameToLayer("TempIgnore");
+            
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(isMagnetized && target != null)
+        {
+            gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, target.transform.position, _pickupSpeed);
+            _pickupSpeed = _pickupSpeed + 0.01f;
         }
     }
 }

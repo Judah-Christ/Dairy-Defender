@@ -458,7 +458,9 @@ MonoBehaviour:
   lowHealth: {r: 1, g: 0.83921576, b: 0.007843138, a: 1}
   enemySlider: {fileID: 1574152736613412769}
   enemySliderFill: {fileID: 2129927456734144143}
+  isflyEnemy: 1
   canvas: {fileID: 0}
+  _knockbackAmount: 5
 --- !u!50 &-7852653258134223156
 Rigidbody2D:
   serializedVersion: 4
@@ -595,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1456645030521396675, guid: 627b14cd898c1874480d45a401582b94, type: 3}
-  _maxSpeed: 10
+  _maxSpeed: 0.025
 --- !u!95 &8801619238839867659
 Animator:
   serializedVersion: 5

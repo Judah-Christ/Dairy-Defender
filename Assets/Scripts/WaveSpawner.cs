@@ -40,10 +40,10 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
-        //if (spawnPoints.Length == 0)
-        //{
-        //    Debug.LogError("no spawn points");
-        //}
+        if (spawnPoints.Length == 0)
+        {
+            Debug.LogError("no spawn points");
+        }
 
         waveCountdown = timeBetweenWaves;
 
@@ -71,7 +71,7 @@ public class WaveSpawner : MonoBehaviour
             if (state != SpawnState.spawning)
             {
                 StartCoroutine(SpawnWave(waves[nextWave]));
-                StartCoroutine(MapcamCall());
+               StartCoroutine(MapcamCall());
             }
         }
         else
@@ -80,7 +80,7 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void WaveCompleted()
+   public void WaveCompleted()
     {
         state = SpawnState.counting;
         waveCountdown = timeBetweenWaves;
@@ -160,7 +160,7 @@ public class WaveSpawner : MonoBehaviour
     }
     void SpawnEnemyFly(Transform enemy)
     {
-        Debug.Log("spawning enemy:" + enemy.name);
+       
 
         if (nextWave == 0)
         {
@@ -199,7 +199,7 @@ public class WaveSpawner : MonoBehaviour
 
     public IEnumerator CountdownFrom30()
     {
-        Debug.Log("CountdownCalled");
+      
         for (int i = countdownTime; i > 0; i--)
         {
             waveInfo.text = i.ToString();

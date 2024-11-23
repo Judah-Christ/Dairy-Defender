@@ -11,8 +11,10 @@ public class Objectmoving : MonoBehaviour
 
     public Objective[] objectives;
     public Transform[] spawnPoints;
-
+    public Transform[] activeObjectives;
+    public int point = 0;
     public GameObject objectiveSet;
+    private GameManager gameManager;
 
     public Slider objectiveHealthSlider;
     public Image objSliderFill;
@@ -21,8 +23,11 @@ public class Objectmoving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnObjective(objectives[Random.Range(0, 0)].objective);
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        SpawnObjective(objectives[0].objective);
+        
         WaveSpawner.waveUpdated += HandleWaveUpdated;
+     
     }
 
     // Update is called once per frame
@@ -34,8 +39,10 @@ public class Objectmoving : MonoBehaviour
     void SpawnObjective(Transform objective)
     {
      
-        Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Transform sp = spawnPoints[point];
+        point++;
         objectiveSet = Instantiate(objective, sp.position, sp.rotation).gameObject;
+        gameManager.AddToObjectiveList(objectiveSet.transform);
        
 
     }
@@ -44,10 +51,31 @@ public class Objectmoving : MonoBehaviour
     {
         if (waveU == 1)
         {
-            Destroy(objectiveSet);
-            SpawnObjective(objectives[Random.Range(1, 1)].objective);
-           
+            //Destroy(objectiveSet);
+            SpawnObjective(objectives[point].objective);
+
         }
+
+            if (waveU == 2)
+            {
+                // Destroy(objectiveSet);
+                SpawnObjective(objectives[point].objective);
+
+            }
+            if (waveU == 3)
+            {
+                // Destroy(objectiveSet);
+                SpawnObjective(objectives[point].objective);
+
+            }
+            if (waveU == 4)
+            {
+                // Destroy(objectiveSet);
+                SpawnObjective(objectives[point].objective);
+
+            }
+
+        
     }
 
     private void OnDestroy()

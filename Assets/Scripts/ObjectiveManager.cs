@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Security.Cryptography;
+using System.Drawing;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -17,9 +14,9 @@ public class ObjectiveManager : MonoBehaviour
     public Slider objectiveHealthSlider4;
     public Slider objectiveHealthSlider5;
     public Image objSliderFill;
-    public Color highHealthColor;
-    public Color mediumHealthColor;
-    public Color lowHealthColor;
+    public UnityEngine.Color highHealthColor;
+    public UnityEngine.Color mediumHealthColor;
+    public UnityEngine.Color lowHealthColor;
     public Objectmoving objectmoving;
     private WaveSpawner waveSpawner;
     private GameObject wave1Canvas;
@@ -28,6 +25,8 @@ public class ObjectiveManager : MonoBehaviour
     private GameObject wave4Canvas;
     private GameObject wave5Canvas;
     
+
+
 
     [SerializeField]
     private GameObject CakeFull;
@@ -162,12 +161,13 @@ public class ObjectiveManager : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //StartCoroutine(AudioManager.instance.FadeOut());
-            GM.ObjectiveFailed();
+            FindAnyObjectByType<GameManager>().lose();
+                
+            StartCoroutine(AudioManager.instance.FadeOut());
             Destroy(gameObject);
         }
     }
-    
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

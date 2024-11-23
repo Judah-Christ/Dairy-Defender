@@ -14,10 +14,9 @@ public class BulletController : MonoBehaviour
     [Range(25, 300)]
     [SerializeField] private int damageAmount;
 
-    // Start is called before the first frame update
-   
-         private Rigidbody2D rb;
+    private Rigidbody2D rb;
     public Vector2 move;
+    private Vector2 direction;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,26 +24,22 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject , lifetime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-     
-       
-    }
 
     private void FixedUpdate()
     {
         
-            rb.velocity = transform.up * speed;
+         rb.velocity = transform.up * speed;
+         direction = rb.velocity;
       
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Enemy")
         {
             EnemyManager enemyComponent = collision.gameObject.GetComponent<EnemyManager>();
-            enemyComponent.TakeDamage(damageAmount);
+            enemyComponent.TakeDamage(damageAmount, direction);
             Destroy(gameObject);
         }
     }

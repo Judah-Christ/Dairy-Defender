@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 using FMODUnity;
@@ -29,8 +30,13 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Color lowHealth;
     [SerializeField] private Slider enemySlider;
     [SerializeField] private Image enemySliderFill;
+    [SerializeField] private bool isflyEnemy;
 
     [SerializeField] private Canvas canvas;
+    [SerializeField] private float _knockbackAmount;
+    private Rigidbody2D rb2d;
+    private FlyEnemy flyEnemy;
+    private Enemy enemy;
 
     private StudioEventEmitter emitter;
 
@@ -42,6 +48,17 @@ public class EnemyManager : MonoBehaviour
         deathScreams = new AudioClip[] {deathScream, deathScream1, deathScream2, deathScream3};
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         enemySliderFill.color = highHealth;
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+
+        if(isflyEnemy == true)
+        {
+            flyEnemy = gameObject.GetComponent<FlyEnemy>();
+        }
+        if(isflyEnemy == false)
+        {
+            enemy = gameObject.GetComponent<Enemy>();
+        }
+    }
 
         if (gameObject.name == "RatEnemy(Clone)")
         {
@@ -80,27 +97,42 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount, Vector2 direction)
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyHit, this.transform.position);
-        currenthealth -= damageAmount;
-        enemySlider.value = currenthealth;
+        
+        if(currenthealth > 0)
+        {
+            currenthealth -= damageAmount;
+            rb2d.AddForce(direction * _knockbackAmount * Time.deltaTime, ForceMode2D.Impulse);
+            enemySlider.value = currenthealth;
+
+
+            if (isflyEnemy == true)
+            {
+                flyEnemy.CollisionDirection(direction);
+            }
+            if (isflyEnemy == false)
+            {
+                enemy.CollisionDirection(direction);
+            }
+        }
 
         if (currenthealth <= 0) 
         {
-            if (gameObject.name == "RatEnemy(Clone)")
+            if (isflyEnemy == true)
             {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.ratDeathScreams, this.transform.position);
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
+                flyEnemy.CollisionDirection(direction);
             }
-            else if (gameObject.name == "FlyEnemy(Clone)")
+            if (isflyEnemy == false)
             {
-                //emitter = AudioManager.instance.InitializeEventEmitter(FMODEvents.instance.flyBuzzing, this.gameObject);
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
+                enemy.CollisionDirection(direction);
             }
-            emitter.Stop();
-            StartCoroutine(Death());
+            int i = Random.Range(0, deathScreams.Length);
+            //audioSource.PlayOneShot(deathScreams[i]);
+            enemySlider.value = 0;
+            Death(i);
         }
+
     }
 
     IEnumerator Death()
@@ -110,9 +142,15 @@ public class EnemyManager : MonoBehaviour
          //coin.layer = gameObject.layer;
          SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
          sr.sortingLayerName = gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
-         //yield return new WaitForSeconds(deathScreams[i].length);
-         yield return new WaitForSeconds(3);
-         Destroy(gameObject);
+
+        if(isflyEnemy == true)
+        {
+            flyEnemy.StopMovement();
+        }
+        if (isflyEnemy == false)
+        {
+            enemy.StopEnemy();
+        }
     }
    
    

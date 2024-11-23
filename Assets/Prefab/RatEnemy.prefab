@@ -359,7 +359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -970.0161, y: -536.7064}
+  m_AnchoredPosition: {x: -970.0161, y: -536.38995}
   m_SizeDelta: {x: 130, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520237784643637938
@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 5518069313228152918}
   - component: {fileID: -6463996141506686354}
   - component: {fileID: 7208415350473510759}
+  - component: {fileID: -235897854444291099}
   - component: {fileID: -5474241824688700714}
   - component: {fileID: -565363365078092846}
   - component: {fileID: -5244579378941419039}
@@ -523,7 +524,8 @@ MonoBehaviour:
   agentSpeed: 3.5
   isflyEnemy: 0
   moveDirection: {x: 0, y: 0, z: 0}
-  _maxSpeed: 0
+  _maxSpeed: 20
+  _minSpeed: 5
 --- !u!195 &-6463996141506686354
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -572,6 +574,10 @@ MonoBehaviour:
   enemySliderFill: {fileID: 7749510774644517942}
   canvas: {fileID: 0}
 --- !u!60 &-5474241824688700714
+  isflyEnemy: 0
+  canvas: {fileID: 0}
+  _knockbackAmount: 5
+--- !u!60 &-235897854444291099
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -636,6 +642,71 @@ PolygonCollider2D:
       - {x: 0.29296875, y: 0.40234375}
       - {x: 0.15234375, y: 0.47265625}
   m_UseDelaunayMesh: 0
+--- !u!60 &-5474241824688700714
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8607136179756912600}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 12215
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4168
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.5}
+      - {x: -0.15234375, y: 0.47265625}
+      - {x: -0.29296875, y: 0.40234375}
+      - {x: -0.40234375, y: 0.29296875}
+      - {x: -0.47265625, y: 0.15234375}
+      - {x: -0.5, y: 0}
+      - {x: -0.47265625, y: -0.15234375}
+      - {x: -0.40234375, y: -0.29296875}
+      - {x: -0.29296875, y: -0.40234375}
+      - {x: -0.15234375, y: -0.47265625}
+      - {x: 0, y: -0.5}
+      - {x: 0.15234375, y: -0.47265625}
+      - {x: 0.29296875, y: -0.40234375}
+      - {x: 0.40234375, y: -0.29296875}
+      - {x: 0.47265625, y: -0.15234375}
+      - {x: 0.5, y: 0}
+      - {x: 0.47265625, y: 0.15234375}
+      - {x: 0.40234375, y: 0.29296875}
+      - {x: 0.29296875, y: 0.40234375}
+      - {x: 0.15234375, y: 0.47265625}
+  m_UseDelaunayMesh: 0
 --- !u!50 &-565363365078092846
 Rigidbody2D:
   serializedVersion: 4
@@ -652,7 +723,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 47612139fc8b71d4991211f65f88303a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 8

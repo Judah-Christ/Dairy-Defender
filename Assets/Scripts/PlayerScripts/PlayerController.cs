@@ -352,7 +352,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Jump());
         }
 
-        if (SceneManager.GetActiveScene().name == "KitchenVSLevel")
+        if (SceneManager.GetActiveScene().name == "KitchenBeta")
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {

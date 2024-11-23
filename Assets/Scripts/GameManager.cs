@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     public int objectivesLeft = 1;
     public List<Transform> activeObject;
 
-    [SerializeField] private GameObject WinMenu;
     private GameObject WinMenu;
     private GameObject LoseMenu;
 
@@ -34,7 +33,6 @@ public class GameManager : MonoBehaviour
     {
         origTimer = objectiveTimer;
         StartWaves();
-        AudioManager.instance.PlayMusic("DDBattleLoop");
       
         WinMenu = GameObject.Find("WinMenuCanvas");
         WaveSpawner.waveUpdated += HandleWaveUpdated;
@@ -86,8 +84,6 @@ public class GameManager : MonoBehaviour
     public void ObjectiveComplete()
     {
         EndWaves();
-        //StartCoroutine(AudioManager.instance.FadeOut());
-        //SceneManager.LoadScene(3);
         WinMenu.SetActive(true);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.roundWin, this.transform.position);
     }
@@ -95,7 +91,6 @@ public class GameManager : MonoBehaviour
     public void ObjectiveFailed()
     {
         EndWaves();
-        //SceneManager.LoadScene(4);
         LoseMenu.SetActive(true);
     }
     private void HandleWaveUpdated(int waveU)

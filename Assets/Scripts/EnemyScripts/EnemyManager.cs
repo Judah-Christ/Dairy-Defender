@@ -58,7 +58,7 @@ public class EnemyManager : MonoBehaviour
         {
             enemy = gameObject.GetComponent<Enemy>();
         }
-    }
+    
 
         if (gameObject.name == "RatEnemy(Clone)")
         {
@@ -110,10 +110,14 @@ public class EnemyManager : MonoBehaviour
             if (isflyEnemy == true)
             {
                 flyEnemy.CollisionDirection(direction);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
+
             }
             if (isflyEnemy == false)
             {
                 enemy.CollisionDirection(direction);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.ratDeathScreams, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
             }
         }
 
@@ -127,15 +131,13 @@ public class EnemyManager : MonoBehaviour
             {
                 enemy.CollisionDirection(direction);
             }
-            int i = Random.Range(0, deathScreams.Length);
-            //audioSource.PlayOneShot(deathScreams[i]);
             enemySlider.value = 0;
-            Death(i);
+            Death();
         }
 
     }
 
-    IEnumerator Death()
+    private void Death()
     {
          //audioSource.PlayOneShot(coinDrop);
          GameObject coin = Instantiate(lootDrop, transform.position, Quaternion.identity);

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{93be5a5b-4ec6-4980-9d5f-e588ec76f774}">
+		<property name="assetPath">
+			<value>Sound Effects/picking_up_change-woodensurface-103253.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.1279999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9c648642-935a-461b-ae8d-eb18d4585072}</destination>
+		</relationship>
+	</object>
+</objects>

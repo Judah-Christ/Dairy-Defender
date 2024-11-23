@@ -71,6 +71,7 @@ public class Enemy : MonoBehaviour
         }
         if (collision.CompareTag("OOB") && gameObject.layer != LayerMask.NameToLayer("Floor"))
         {
+
         }
     }
 

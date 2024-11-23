@@ -8,12 +8,12 @@ public class ObjectiveManager : MonoBehaviour
     public int currentHealth;
     [SerializeField] int maxHealth = 1000;
     private GameManager GM;
-    public Slider objectiveHealthSlider;
-    public Slider objectiveHealthSlider2;
-    public Slider objectiveHealthSlider3;
-    public Slider objectiveHealthSlider4;
-    public Slider objectiveHealthSlider5;
-    public Image objSliderFill;
+    private Slider objectiveHealthSlider;
+    private Slider objectiveHealthSlider2;
+    private Slider objectiveHealthSlider3;
+    private Slider objectiveHealthSlider4;
+    private Slider currentHealthSlider;
+    private Image objSliderFill;
     public UnityEngine.Color highHealthColor;
     public UnityEngine.Color mediumHealthColor;
     public UnityEngine.Color lowHealthColor;
@@ -49,7 +49,6 @@ public class ObjectiveManager : MonoBehaviour
         objectiveHealthSlider2 = GameObject.Find("ObjectiveSlider2").GetComponent<Slider>();
         objectiveHealthSlider3 = GameObject.Find("ObjectiveSlider3").GetComponent<Slider>();
         objectiveHealthSlider4 = GameObject.Find("ObjectiveSlider4").GetComponent<Slider>();
-        objectiveHealthSlider5 = GameObject.Find("ObjectiveSlider5").GetComponent<Slider>();
         objSliderFill = GameObject.Find("ObjectiveSliderFill").GetComponent<Image>();
         objectmoving = GameObject.Find("GameManager").GetComponent<Objectmoving>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -66,41 +65,45 @@ public class ObjectiveManager : MonoBehaviour
         wave4Canvas.SetActive(false);
         wave5Canvas.SetActive(false);
 
+        GetCurrentObjective();
+
     }
     private void FixedUpdate()
     {
-        if (waveSpawner.nextWave == 1)
+        if (waveSpawner != null)
         {
-            GameObject.Find("Wave1Canvas").SetActive(false);
-            GameObject.Find("Wave2Canvas").SetActive(true);
-            objectiveHealthSlider = GameObject.Find("W2ObjectiveSlider").GetComponent<Slider>();
-        }
+            switch(waveSpawner.nextWave)
+            {
+                case 1:
+                    wave1Canvas.SetActive(false);
+                    wave2Canvas.SetActive(true);
+                    objectiveHealthSlider = GameObject.Find("W2ObjectiveSlider").GetComponent<Slider>();
+                    return;
+                case 2:
+                    wave2Canvas.SetActive(false);
+                    wave3Canvas.SetActive(true);
+                    objectiveHealthSlider = GameObject.Find("W3ObjectiveSlider").GetComponent<Slider>();
+                    objectiveHealthSlider2 = GameObject.Find("W3ObjectiveSlider2").GetComponent<Slider>();
+                    return;
+                case 3:
+                    wave3Canvas.SetActive(false);
+                    wave4Canvas.SetActive(true);
+                    objectiveHealthSlider = GameObject.Find("W4ObjectiveSlider").GetComponent<Slider>();
+                    objectiveHealthSlider2 = GameObject.Find("W4ObjectiveSlider2").GetComponent<Slider>();
+                    objectiveHealthSlider3 = GameObject.Find("W4ObjectiveSlider3").GetComponent<Slider>();
+                    return;
+                case 4:
+                    wave4Canvas.SetActive(false);
+                    wave5Canvas.SetActive(true);
+                    objectiveHealthSlider = GameObject.Find("W5ObjectiveSlider").GetComponent<Slider>();
+                    objectiveHealthSlider2 = GameObject.Find("W5ObjectiveSlider2").GetComponent<Slider>();
+                    objectiveHealthSlider3 = GameObject.Find("W5ObjectiveSlider3").GetComponent<Slider>();
+                    objectiveHealthSlider4 = GameObject.Find("W5ObjectiveSlider4").GetComponent<Slider>();
+                    return;
+                default:
+                    break;
 
-        if (waveSpawner.nextWave == 2)
-        {
-            GameObject.Find("Wave2Canvas").SetActive(false);
-            GameObject.Find("Wave3Canvas").SetActive(true);
-            objectiveHealthSlider = GameObject.Find("W3ObjectiveSlider").GetComponent<Slider>();
-            objectiveHealthSlider2 = GameObject.Find("W3ObjectiveSlider2").GetComponent<Slider>();
-        }
-
-        if (waveSpawner.nextWave == 3)
-        {
-            GameObject.Find("Wave3Canvas").SetActive(false);
-            GameObject.Find("Wave4Canvas").SetActive(true);
-            objectiveHealthSlider = GameObject.Find("W4ObjectiveSlider").GetComponent<Slider>();
-            objectiveHealthSlider2 = GameObject.Find("W4ObjectiveSlider2").GetComponent<Slider>();
-            objectiveHealthSlider3 = GameObject.Find("W4ObjectiveSlider3").GetComponent<Slider>();
-        }
-
-        if (waveSpawner.nextWave == 4)
-        {
-            GameObject.Find("Wave4Canvas").SetActive(false);
-            GameObject.Find("Wave5Canvas").SetActive(true);
-            objectiveHealthSlider = GameObject.Find("W5ObjectiveSlider").GetComponent<Slider>();
-            objectiveHealthSlider2 = GameObject.Find("W5ObjectiveSlider2").GetComponent<Slider>();
-            objectiveHealthSlider3 = GameObject.Find("W5ObjectiveSlider3").GetComponent<Slider>();
-            objectiveHealthSlider4 = GameObject.Find("W5ObjectiveSlider4").GetComponent<Slider>();
+            }
         }
 
         HealthSliderUpdate();
@@ -109,34 +112,50 @@ public class ObjectiveManager : MonoBehaviour
 
     public void HealthSliderUpdate()
     {
-        if (gameObject.name == "Objective(Clone)")
+        if(currentHealthSlider != null)
         {
-            objectiveHealthSlider.value = currentHealth;
-        }
-        else if (gameObject.name == "Objective2(Clone)")
-        {
-            objectiveHealthSlider2.value = currentHealth;
-        }
-        else if (gameObject.name == "Objective3(Clone)")
-        {
-            objectiveHealthSlider3.value = currentHealth;
-        }
-        else if (gameObject.name == "Objective4(Clone)")
-        {
-            objectiveHealthSlider4.value = currentHealth;
+            currentHealthSlider.value = currentHealth;
+
+            if (currentHealth >= 0.66 * maxHealth)
+            {
+                objSliderFill.color = highHealthColor;
+            }
+            else if (currentHealth >= 0.33 * maxHealth)
+            {
+                objSliderFill.color = mediumHealthColor;
+            }
+            else
+            {
+                objSliderFill.color = lowHealthColor;
+            }
         }
 
-        if (currentHealth >= 0.66 * maxHealth)
+    }
+
+    private void GetCurrentObjective()
+    {
+        for(int i = 0;  i < GM.activeObject.Count; i++)
         {
-            objSliderFill.color = highHealthColor;
-        }
-        else if (currentHealth >= 0.33 * maxHealth)
-        {
-            objSliderFill.color = mediumHealthColor;
-        }
-        else
-        {
-            objSliderFill.color = lowHealthColor;
+            if (gameObject.transform == GM.activeObject[i])
+            {
+                switch(i)
+                {
+                    case 0:
+                        currentHealthSlider = objectiveHealthSlider;
+                        return;
+                    case 1:
+                        currentHealthSlider = objectiveHealthSlider2;
+                        return;
+                    case 2:
+                        currentHealthSlider = objectiveHealthSlider3;
+                        return;
+                    case 3:
+                        currentHealthSlider = objectiveHealthSlider4;
+                        return;
+                    default:
+                        break;
+                }
+            }
         }
     }
 

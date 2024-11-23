@@ -97,15 +97,11 @@ public class GameManager : MonoBehaviour
     {
         if (waveU == 1)
         {
-
             objectivesLeft++;
-            Debug.Log(objectivesLeft);
-
         }
         if (waveU == 2)
         {
             objectivesLeft++;
-
         }
         if (waveU == 3)
         {

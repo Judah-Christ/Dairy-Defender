@@ -844,6 +844,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: UpgradeCost
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: PlayerSprite
       value: 
       objectReference: {fileID: 1703598315771569352}

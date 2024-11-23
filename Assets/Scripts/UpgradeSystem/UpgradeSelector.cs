@@ -82,6 +82,7 @@ public class UpgradeSelector : MonoBehaviour
         {
             selection.SetActive(false);
             selection = null;
+            leftClickToSelect.SetActive(true);
         }
     }
 

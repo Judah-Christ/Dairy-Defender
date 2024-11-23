@@ -298,17 +298,19 @@ public class UpgradeController : MonoBehaviour
     {
         if(US.CurrentTower != null)
         {
+            int returnPTCost = playerTurret.UpgradeCost - 1;
+            int returnSCost = sodaSlowController.UpgradeCost - 1;
             GetUpgradeLevel(US.CurrentTower);
             if(towerType == 1)
             {
-                gameManager.AddCoin((playerTurret.UpgradeCost -1));
+                gameManager.AddCoin(returnPTCost);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
                 DestroyTower(US.CurrentTower);
                 return;
             }
             if(towerType == 2)
             {
-                gameManager.AddCoin((sodaSlowController.UpgradeCost - 1));
+                gameManager.AddCoin(returnSCost);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
                 DestroyTower(US.CurrentTower);
                 return;

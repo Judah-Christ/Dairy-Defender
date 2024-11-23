@@ -19,7 +19,6 @@ public class EnemyManager : MonoBehaviour
     public AudioClip deathScream2;
     public AudioClip deathScream3;
     public AudioClip coinDrop;
-    private AudioSource audioSource;
     private AudioClip[] deathScreams;
     private SpriteRenderer sr;
     private GameObject coin;
@@ -44,7 +43,6 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         currenthealth = maxHealth;
-        audioSource = GetComponent<AudioSource>();
         deathScreams = new AudioClip[] {deathScream, deathScream1, deathScream2, deathScream3};
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         enemySliderFill.color = highHealth;
@@ -74,14 +72,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pc.isPaused) 
-        {
-            //audioSource.Pause();
-        }
-        else
-        {
-            //audioSource.UnPause();
-        }
+
 
         if (currenthealth >= 0.66 * maxHealth)
         {
@@ -139,7 +130,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Death()
     {
-         //audioSource.PlayOneShot(coinDrop);
+
          GameObject coin = Instantiate(lootDrop, transform.position, Quaternion.identity);
          //coin.layer = gameObject.layer;
          SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();

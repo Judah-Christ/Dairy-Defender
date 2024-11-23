@@ -77,7 +77,9 @@ public class PlayerController : MonoBehaviour
     public GameObject HammerAndWrench;
     public GameObject EToInteract;
     public GameObject Shadow;
+    private SpriteRenderer counterShadowSprite;
     public GameObject FloorShadow;
+    private SpriteRenderer floorShadowSprite;
 
     [SerializeField] private Vector3 floorOrigShadowScale;
     [SerializeField] private Vector3 floorMinShadowScale;
@@ -128,6 +130,8 @@ public class PlayerController : MonoBehaviour
         zoomIcon = GameObject.Find("ZoomButton").GetComponent<ZoomIconChange>();
 
         shadowPlayerOffset = Vector3.Distance(transform.position, Shadow.transform.position);
+        counterShadowSprite = Shadow.GetComponent<SpriteRenderer>();
+        floorShadowSprite = FloorShadow.GetComponent<SpriteRenderer>();
 
         playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
         fallSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.Fall);
@@ -227,6 +231,8 @@ public class PlayerController : MonoBehaviour
             isTurretMounted = true;
             _physCol.enabled = false;
             PT.IsTurretActive = true;
+            counterShadowSprite.enabled = false;
+            floorShadowSprite.enabled = false;
         }
     }
 
@@ -239,6 +245,8 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.eulerAngles = new Vector3(0,0,0);
         currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(false);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        counterShadowSprite.enabled = true;
+        floorShadowSprite.enabled = true;
 
     }
 
@@ -289,8 +297,8 @@ public class PlayerController : MonoBehaviour
             isInAir = false;
             rb.velocity = new Vector2(rb.velocity.x, vert * climbSpeed);
             rb.gravityScale = 0f;
-            Shadow.SetActive(false);
-            FloorShadow.SetActive(false);
+            counterShadowSprite.enabled = false;
+            floorShadowSprite.enabled = false;
         }
         else
         {
@@ -328,9 +336,8 @@ public class PlayerController : MonoBehaviour
 
         if (gameObject.layer == LayerMask.NameToLayer("Counter"))
         {
-            Shadow = GameObject.Find("ShadowOnCounter");
-            Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "OnCounter";
-            FloorShadow.SetActive(false);
+            counterShadowSprite.sortingLayerName = "OnCounter";
+            floorShadowSprite.enabled = false;
         }
 
         UpdateSound();
@@ -384,7 +391,7 @@ public class PlayerController : MonoBehaviour
 
             if (!ladderClimb.isClimbing && Shadow != null)
             {
-                Shadow.SetActive(true);
+                counterShadowSprite.enabled = true;
             }
         }
     }
@@ -492,10 +499,9 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator Fall()
     {
-        FloorShadow.SetActive(true);
+        floorShadowSprite.enabled = true;
         fallEnded = false;
-        Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Non-visible";
-        Shadow = GameObject.Find("ShadowOnFloor");
+        counterShadowSprite.sortingLayerName = "Non-visible";
         Shadow.transform.localScale = floorMinShadowScale;
         Vector3 floorShadowPosition = Shadow.transform.position;
         floorShadowPosition.y = transform.position.y - (4 + (shadowPlayerOffset * 0.75f));

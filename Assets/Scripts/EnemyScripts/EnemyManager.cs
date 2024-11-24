@@ -129,6 +129,8 @@ public class EnemyManager : MonoBehaviour
 
     }
 
+
+
     private void Death()
     {
 
@@ -147,8 +149,4 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    internal void ConstantAttack(int v)
-    {
-        throw new System.NotImplementedException();
-    }
 }

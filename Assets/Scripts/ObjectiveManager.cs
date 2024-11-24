@@ -148,26 +148,7 @@ public class ObjectiveManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public IEnumerator ConstantAttack(int damagetime)
-    {
-        for (int i = 0; i < damagetime; i++)
-        {
-            TakeDamage(50);
-            yield return new WaitForSeconds(2f);
-        }
-    }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            // TakeDamage(50);
-            StartCoroutine(ConstantAttack(10));
-           // collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
-
-        }
-    }
 
     private void SetUpWaveCanvas()
     {
@@ -248,11 +229,4 @@ public class ObjectiveManager : MonoBehaviour
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            TakeDamage(0);
-        }
-    }
 }

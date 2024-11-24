@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     private GameManager GM;
     [SerializeField] private float agentSpeed = 3.5f;
     [SerializeField] private bool isflyEnemy = false;
+    private bool isAttacking;
 
     public Vector3 moveDirection;
 
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _minSpeed;
     private Animator anim;
-
+    [SerializeField] private int _attackDmg;
     // Start is called before the first frame update
     void Start()
     {
@@ -101,9 +102,13 @@ public class Enemy : MonoBehaviour
         {
             agent.speed /= collision.GetComponent<SodaSlowController>().slowSpeed;
         }
-        if (collision.CompareTag("OOB") && gameObject.layer != LayerMask.NameToLayer("Floor"))
+        if (collision.CompareTag("Objective"))
         {
-
+            if (!isAttacking)
+            {
+                StartCoroutine(ConstantAttack());
+                isAttacking = true;
+            }
         }
     }
 
@@ -112,6 +117,14 @@ public class Enemy : MonoBehaviour
         if (collision.transform.tag == "Soda" && !isflyEnemy)
         {
             agent.speed = agentSpeed;
+        }
+        if (collision.CompareTag("Objective"))
+        {
+            if (isAttacking)
+            {
+                StopCoroutine(ConstantAttack());
+                isAttacking = false;
+            }
         }
     }
 
@@ -147,4 +160,12 @@ public class Enemy : MonoBehaviour
     //    agent.speed = 3.5f;
     //}
 
+    private IEnumerator ConstantAttack()
+    {
+        while (true)
+        {
+            target.GetComponent<ObjectiveManager>().TakeDamage(_attackDmg);
+            yield return new WaitForSeconds(2f);
+        }
+    }
 }

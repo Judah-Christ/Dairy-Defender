@@ -18,6 +18,8 @@ public class FlyEnemy : MonoBehaviour
     private float _maxSpeed;
     private Animator anim;
     private int knockBackX;
+    [SerializeField] private int _attackDmg;
+    private bool isAttacking;
 
     void Start()
     {
@@ -49,7 +51,7 @@ public class FlyEnemy : MonoBehaviour
     }
     private void CheckDist()
     {
-        if (GM.activeObject.Count == 1)
+        if (GM.activeObject.Count == 1 && GM.activeObject[0] != null)
         {
             target = GM.activeObject[0];
             return;
@@ -105,4 +107,36 @@ public class FlyEnemy : MonoBehaviour
         anim.SetTrigger("KnockbackAnim");
     }
 
+    private IEnumerator ConstantAttack()
+    {
+        while (true)
+        {
+            target.GetComponent<ObjectiveManager>().TakeDamage(_attackDmg);
+            yield return new WaitForSeconds(2f);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Objective"))
+        {
+            if (!isAttacking)
+            {
+                StartCoroutine(ConstantAttack());
+                isAttacking = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Objective"))
+        {
+            if (isAttacking)
+            {
+                StopCoroutine(ConstantAttack());
+                isAttacking = false;
+            }
+        }
+    }
 }

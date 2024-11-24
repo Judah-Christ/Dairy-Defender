@@ -25,6 +25,7 @@ TagManager:
   - Bullet
   - CoinAOE
   - OOB
+  - BridgeJump
   layers:
   - Default
   - TransparentFX

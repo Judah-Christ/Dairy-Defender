@@ -82,6 +82,7 @@ public class WaveSpawner : MonoBehaviour
 
    public void WaveCompleted()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.roundWin, this.transform.position);
         state = SpawnState.counting;
         waveCountdown = timeBetweenWaves;
         StartCoroutine(CountdownFrom30());

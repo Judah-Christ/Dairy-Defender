@@ -11,7 +11,7 @@ public class LadderClimb : MonoBehaviour
     public float ladderCenter;
     private float centerPullSpeed = 2f;
     private PlayerController PlayerController;
-    public GameObject counterShadow;
+    //public GameObject counterShadow;
 
     void Start()
     {
@@ -55,14 +55,14 @@ public class LadderClimb : MonoBehaviour
                 GameObject.Find("Player").layer = LayerMask.NameToLayer("Counter");
                 sr.sortingLayerName = "OnCounter";
                 sr.sortingOrder = 1000;
-                PlayerController.Shadow = counterShadow;
+                PlayerController.Shadow = PlayerController.CounterShadow;
             }
             else if (transform.position.y < ladderCollider.bounds.min.y)
             {
                 GameObject.Find("Player").layer = LayerMask.NameToLayer("Floor");
                 sr.sortingLayerName = "OnFloor";
                 sr.sortingOrder = 1000;
-                PlayerController.FloorShadow.SetActive(true);
+                PlayerController.floorShadowSprite.enabled = true;
                 PlayerController.Shadow = PlayerController.FloorShadow;
             }
 

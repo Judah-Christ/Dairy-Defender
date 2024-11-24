@@ -77,9 +77,10 @@ public class PlayerController : MonoBehaviour
     public GameObject HammerAndWrench;
     public GameObject EToInteract;
     public GameObject Shadow;
+    public GameObject CounterShadow;
     private SpriteRenderer counterShadowSprite;
     public GameObject FloorShadow;
-    private SpriteRenderer floorShadowSprite;
+    public SpriteRenderer floorShadowSprite;
 
     [SerializeField] private Vector3 floorOrigShadowScale;
     [SerializeField] private Vector3 floorMinShadowScale;
@@ -89,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject fullyUpgraded;
     [SerializeField] private GameObject notEnoughCoins;
+
+    private bool noFall = false;
 
 
     // Start is called before the first frame update
@@ -129,8 +132,10 @@ public class PlayerController : MonoBehaviour
 
         zoomIcon = GameObject.Find("ZoomButton").GetComponent<ZoomIconChange>();
 
+        Shadow = CounterShadow;
+
         shadowPlayerOffset = Vector3.Distance(transform.position, Shadow.transform.position);
-        counterShadowSprite = Shadow.GetComponent<SpriteRenderer>();
+        counterShadowSprite = CounterShadow.GetComponent<SpriteRenderer>();
         floorShadowSprite = FloorShadow.GetComponent<SpriteRenderer>();
 
         playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
@@ -297,7 +302,6 @@ public class PlayerController : MonoBehaviour
             isInAir = false;
             rb.velocity = new Vector2(rb.velocity.x, vert * climbSpeed);
             rb.gravityScale = 0f;
-            counterShadowSprite.enabled = false;
             floorShadowSprite.enabled = false;
         }
         else
@@ -438,7 +442,16 @@ public class PlayerController : MonoBehaviour
 
         if (!isOnSurface && gameObject.layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
-            StartCoroutine(Fall());
+            if (!noFall)
+            {
+                StartCoroutine(Fall());
+            }
+            else
+            {
+                isInAir = false;
+                isOnSurface = true;
+                soundPlayed = false;
+            }
         }
         else
         {
@@ -501,7 +514,8 @@ public class PlayerController : MonoBehaviour
     {
         floorShadowSprite.enabled = true;
         fallEnded = false;
-        counterShadowSprite.sortingLayerName = "Non-visible";
+        Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Non-visible";
+        Shadow = FloorShadow;
         Shadow.transform.localScale = floorMinShadowScale;
         Vector3 floorShadowPosition = Shadow.transform.position;
         floorShadowPosition.y = transform.position.y - (4 + (shadowPlayerOffset * 0.75f));
@@ -617,6 +631,11 @@ public class PlayerController : MonoBehaviour
         {
             EToInteract.SetActive(true);
         }
+
+        if (collision.CompareTag("BridgeJump"))
+        {
+            noFall = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -636,6 +655,11 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Interactable") && EToInteract != null)
         {
             EToInteract.SetActive(false);
+        }
+
+        if (collision.CompareTag("BridgeJump"))
+        {
+            noFall = false;
         }
     }
 

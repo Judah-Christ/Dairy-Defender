@@ -40,6 +40,9 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference roundWin { get; private set; }
     [field: SerializeField] public EventReference buttonDrop { get; private set; }
     [field: SerializeField] public EventReference buttonPickUp { get; private set; }
+    [field: SerializeField] public EventReference Fail { get; private set; }
+    [field: SerializeField] public EventReference Win { get; private set; }
+
 
 
     private void Awake()

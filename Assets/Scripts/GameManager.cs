@@ -89,13 +89,14 @@ public class GameManager : MonoBehaviour
     {
         EndWaves();
         WinMenu.SetActive(true);
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.roundWin, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.Win, this.transform.position);
     }
 
     public void ObjectiveFailed()
     {
         EndWaves();
         LoseMenu.SetActive(true);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.Fail, this.transform.position);
     }
     private void HandleWaveUpdated(int waveU)
     {

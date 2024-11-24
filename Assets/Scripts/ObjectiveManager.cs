@@ -24,8 +24,6 @@ public class ObjectiveManager : MonoBehaviour
     private GameObject wave3Canvas;
     private GameObject wave4Canvas;
     private GameObject wave5Canvas;
-    
-
 
 
     [SerializeField]

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{0a897818-cc91-40d7-b723-9ae76b36a63c}">
+		<property name="assetPath">
+			<value>Sound Effects/medieval-fanfare-6826.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>7.7759999999999998</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9c648642-935a-461b-ae8d-eb18d4585072}</destination>
+		</relationship>
+	</object>
+</objects>

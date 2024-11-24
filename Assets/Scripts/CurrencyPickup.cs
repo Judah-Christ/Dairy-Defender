@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD.Studio;
 
 public class CurrencyPickup : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class CurrencyPickup : MonoBehaviour
             if(currentObject == PickupObject.COIN)
             {
                 GM.AddCoin(pickupQuanity);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonPickUp, this.transform.position);
                 Destroy(gameObject);
                 return;
             }

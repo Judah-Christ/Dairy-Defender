@@ -39,6 +39,7 @@ public class EnemyManager : MonoBehaviour
     private Enemy enemy;
 
     private StudioEventEmitter emitter;
+    private WaveSpawner ws;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +69,8 @@ public class EnemyManager : MonoBehaviour
             emitter = AudioManager.instance.InitializeEventEmitter(FMODEvents.instance.flyBuzzing, this.gameObject);
         }
         emitter.Play();
+
+        ws = GameObject.Find("GameManager").GetComponent<WaveSpawner>();
     }
 
     // Update is called once per frame
@@ -126,6 +129,7 @@ public class EnemyManager : MonoBehaviour
             }
             enemySlider.value = 0;
             Death();
+            return;
         }
 
     }
@@ -143,10 +147,14 @@ public class EnemyManager : MonoBehaviour
         if(isflyEnemy == true)
         {
             flyEnemy.StopMovement();
+            ws.fliesRemaining -= 1;
+            return;
         }
         if (isflyEnemy == false)
         {
             enemy.StopEnemy();
+            ws.ratsRemaining -= 1;
+            return;
         }
     }
 

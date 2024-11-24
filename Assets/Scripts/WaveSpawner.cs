@@ -19,6 +19,8 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private GameObject fliesLeft;
     private PlayerController playerController;
     private int countdownTime = 30;
+    public int ratsRemaining;
+    public int fliesRemaining;
 
     [System.Serializable]
     public class Wave
@@ -102,6 +104,9 @@ public class WaveSpawner : MonoBehaviour
             fliesLeft.SetActive(true);
             waveInfo.enabled = true;
         }
+
+        numRatsLeft.text = "" + ratsRemaining;
+        numFliesLeft.text = "" + fliesRemaining;
     }
 
    public void WaveCompleted()
@@ -133,10 +138,12 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave(Wave wave)
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.waveStart, this.transform.position);
+        ratsRemaining = waves[nextWave].count;
+        fliesRemaining = waves[nextWave].count;
         ratsLeft.SetActive(true);
         fliesLeft.SetActive(true);
-        numRatsLeft.text = waves[nextWave].count + "/" + waves[nextWave].count;
-        numFliesLeft.text = waves[nextWave].count + "/" + waves[nextWave].count;
+        numRatsLeft.text = "" + ratsRemaining;
+        numFliesLeft.text = "" + fliesRemaining;
         StartCoroutine(ShowPreWaveText());
         waveInfo.text = "Wave: " + (nextWave + 1) + " of 5";
 

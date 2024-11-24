@@ -7,11 +7,13 @@ public class ObjectiveManager : MonoBehaviour
 {
     public int currentHealth;
     [SerializeField] int maxHealth = 1000;
+    private int currentWave;
     private GameManager GM;
     private Slider objectiveHealthSlider;
     private Slider objectiveHealthSlider2;
     private Slider objectiveHealthSlider3;
     private Slider objectiveHealthSlider4;
+    private Slider objectiveHealthSlider5;
     private Slider currentHealthSlider;
     private Image objSliderFill;
     public UnityEngine.Color highHealthColor;
@@ -40,69 +42,29 @@ public class ObjectiveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objectiveHealthSlider = GM.WaveCanvas[0].GetComponentInChildren<Slider>();
-        objectiveHealthSlider2 = GM.WaveCanvas[1].GetComponentInChildren<Slider>();
-        objectiveHealthSlider3 = GM.WaveCanvas[2].GetComponentInChildren<Slider>();
-        objectiveHealthSlider4 = GM.WaveCanvas[3].GetComponentInChildren<Slider>();
         objSliderFill = GameObject.Find("ObjectiveSliderFill").GetComponent<Image>();
         objectmoving = GameObject.Find("GameManager").GetComponent<Objectmoving>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         //objectiveHealthSlider = objectmoving.objectiveHealthSlider;
         //objSliderFill = objectmoving.objSliderFill;             
         currentHealth = maxHealth;
-        objectiveHealthSlider.maxValue = maxHealth;
-        objectiveHealthSlider.value = maxHealth;
-        objSliderFill.GetComponent<Image>().color = highHealthColor;
 
-        waveSpawner = GameObject.Find("GameManager").GetComponent<WaveSpawner>();
-        wave2Canvas.SetActive(false);
-        wave3Canvas.SetActive(false);
-        wave4Canvas.SetActive(false);
-        wave5Canvas.SetActive(false);
-
-        GetCurrentObjective();
+        waveSpawner = GM.GetComponent<WaveSpawner>();
+        SetUpWaveCanvas();
 
     }
     private void FixedUpdate()
     {
         if (waveSpawner != null)
         {
-            switch(waveSpawner.nextWave)
+            if(currentWave != waveSpawner.nextWave)
             {
-                case 1:
-                    wave1Canvas.SetActive(false);
-                    wave2Canvas.SetActive(true);
-                    objectiveHealthSlider = GameObject.Find("W2ObjectiveSlider").GetComponent<Slider>();
-                    return;
-                case 2:
-                    wave2Canvas.SetActive(false);
-                    wave3Canvas.SetActive(true);
-                    objectiveHealthSlider = GameObject.Find("W3ObjectiveSlider").GetComponent<Slider>();
-                    objectiveHealthSlider2 = GameObject.Find("W3ObjectiveSlider2").GetComponent<Slider>();
-                    return;
-                case 3:
-                    wave3Canvas.SetActive(false);
-                    wave4Canvas.SetActive(true);
-                    objectiveHealthSlider = GameObject.Find("W4ObjectiveSlider").GetComponent<Slider>();
-                    objectiveHealthSlider2 = GameObject.Find("W4ObjectiveSlider2").GetComponent<Slider>();
-                    objectiveHealthSlider3 = GameObject.Find("W4ObjectiveSlider3").GetComponent<Slider>();
-                    return;
-                case 4:
-                    wave4Canvas.SetActive(false);
-                    wave5Canvas.SetActive(true);
-                    objectiveHealthSlider = GameObject.Find("W5ObjectiveSlider").GetComponent<Slider>();
-                    objectiveHealthSlider2 = GameObject.Find("W5ObjectiveSlider2").GetComponent<Slider>();
-                    objectiveHealthSlider3 = GameObject.Find("W5ObjectiveSlider3").GetComponent<Slider>();
-                    objectiveHealthSlider4 = GameObject.Find("W5ObjectiveSlider4").GetComponent<Slider>();
-                    return;
-                default:
-                    break;
-
+                SwitchWave();
             }
+
         }
 
         HealthSliderUpdate();
-
     }
 
     public void HealthSliderUpdate()
@@ -147,6 +109,9 @@ public class ObjectiveManager : MonoBehaviour
                     case 3:
                         currentHealthSlider = objectiveHealthSlider4;
                         return;
+                    case 4:
+                        currentHealthSlider = objectiveHealthSlider5;
+                        return;
                     default:
                         break;
                 }
@@ -189,6 +154,85 @@ public class ObjectiveManager : MonoBehaviour
             //collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
 
         }
+    }
+
+    private void SetUpWaveCanvas()
+    {
+        wave1Canvas = GM.WaveCanvas[0];
+        wave1Canvas.SetActive(false);
+        wave2Canvas = GM.WaveCanvas[1];
+        wave2Canvas.SetActive(false);
+        wave3Canvas = GM.WaveCanvas[2];
+        wave3Canvas.SetActive(false);
+        wave4Canvas = GM.WaveCanvas[3];
+        wave4Canvas.SetActive(false);
+        wave5Canvas = GM.WaveCanvas[4];
+        wave5Canvas.SetActive(false);  
+        
+        if (waveSpawner.nextWave == 0)
+        {
+            SwitchWave();
+        }
+    }
+
+
+    public void SwitchWave()
+    {
+
+        switch (waveSpawner.nextWave)
+        {
+            case 0:
+                wave1Canvas.SetActive(true);
+                objectiveHealthSlider = GM.WaveCanvas[0].GetComponent<WaveCanvasController>().ObjSliders[0].GetComponent<Slider>();
+                objectiveHealthSlider.maxValue = maxHealth;
+                objectiveHealthSlider.value = maxHealth;
+                objSliderFill.GetComponent<Image>().color = highHealthColor;
+                GetCurrentObjective();
+                currentWave = 0;
+                break;
+            case 1:
+                wave1Canvas.SetActive(false);
+                wave2Canvas.SetActive(true);
+                objectiveHealthSlider = GM.WaveCanvas[1].GetComponent<WaveCanvasController>().ObjSliders[0].GetComponent<Slider>();
+                objectiveHealthSlider2 = GM.WaveCanvas[1].GetComponent<WaveCanvasController>().ObjSliders[1].GetComponent<Slider>();
+                GetCurrentObjective();
+                currentWave = 1;
+                return;
+            case 2:
+                wave2Canvas.SetActive(false);
+                wave3Canvas.SetActive(true);
+                objectiveHealthSlider = GM.WaveCanvas[2].GetComponent<WaveCanvasController>().ObjSliders[0].GetComponent<Slider>();
+                objectiveHealthSlider2 = GM.WaveCanvas[2].GetComponent<WaveCanvasController>().ObjSliders[1].GetComponent<Slider>();
+                objectiveHealthSlider3 = GM.WaveCanvas[2].GetComponent<WaveCanvasController>().ObjSliders[2].GetComponent<Slider>();
+                GetCurrentObjective();
+                currentWave = 2;
+                return;
+            case 3:
+                wave3Canvas.SetActive(false);
+                wave4Canvas.SetActive(true);
+                objectiveHealthSlider = GM.WaveCanvas[3].GetComponent<WaveCanvasController>().ObjSliders[0].GetComponent<Slider>();
+                objectiveHealthSlider2 = GM.WaveCanvas[3].GetComponent<WaveCanvasController>().ObjSliders[1].GetComponent<Slider>();
+                objectiveHealthSlider3 = GM.WaveCanvas[3].GetComponent<WaveCanvasController>().ObjSliders[2].GetComponent<Slider>();
+                objectiveHealthSlider4 = GM.WaveCanvas[3].GetComponent<WaveCanvasController>().ObjSliders[3].GetComponent<Slider>();
+                GetCurrentObjective();
+                currentWave = 3;
+                return;
+            case 4:
+                wave4Canvas.SetActive(false);
+                wave5Canvas.SetActive(true);
+                objectiveHealthSlider = GM.WaveCanvas[4].GetComponent<WaveCanvasController>().ObjSliders[0].GetComponent<Slider>();
+                objectiveHealthSlider2 = GM.WaveCanvas[4].GetComponent<WaveCanvasController>().ObjSliders[1].GetComponent<Slider>();
+                objectiveHealthSlider3 = GM.WaveCanvas[4].GetComponent<WaveCanvasController>().ObjSliders[2].GetComponent<Slider>();
+                objectiveHealthSlider4 = GM.WaveCanvas[4].GetComponent<WaveCanvasController>().ObjSliders[3].GetComponent<Slider>();
+                objectiveHealthSlider5 = GM.WaveCanvas[4].GetComponent<WaveCanvasController>().ObjSliders[4].GetComponent<Slider>();
+                GetCurrentObjective();
+                currentWave = 4;
+                return;
+            default:
+                break;
+
+         }
+
     }
 
 }

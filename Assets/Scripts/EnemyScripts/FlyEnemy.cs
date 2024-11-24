@@ -59,12 +59,15 @@ public class FlyEnemy : MonoBehaviour
         for (int i = 0; i < GM.activeObject.Count; i++)
         {
             Transform t = GM.activeObject[i];
-            float dist = Vector2.Distance(transform.position, t.position);
-            if (dist < maxDistance)
+            if (t != null)
             {
-                j = i;
-                maxDistance = dist;
-                target = t;
+                float dist = Vector2.Distance(transform.position, t.position);
+                if (dist < maxDistance)
+                {
+                    j = i;
+                    maxDistance = dist;
+                    target = t;
+                }
             }
         }
     }
@@ -90,8 +93,6 @@ public class FlyEnemy : MonoBehaviour
         anim.SetTrigger("Death");
         speed = 0f;
         target = gameObject.transform;
-        BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
-        collider.enabled = false;
     }
 
     public void CollisionDirection(Vector2 direction)

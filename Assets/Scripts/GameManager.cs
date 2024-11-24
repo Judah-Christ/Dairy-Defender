@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public List<GameItem> Towers;
     public List<GameItem> Ammo;
 
-    public List<Slider> HealthSliders;
     public List<GameObject> WaveCanvas;
 
     public static GameManager gameManager;

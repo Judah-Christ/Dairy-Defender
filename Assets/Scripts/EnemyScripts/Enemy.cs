@@ -73,14 +73,17 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < GM.activeObject.Count; i++)
         {
             Transform t = GM.activeObject[i];
-            float dist = Vector2.Distance(agent.transform.position, t.position);
-            if (dist < maxDistance)
+            if (t != null)
             {
-                j = i;
-                maxDistance = dist;
-                target = t;
+                float dist = Vector2.Distance(transform.position, t.position);
+                if (dist < maxDistance)
+                {
+                    j = i;
+                    maxDistance = dist;
+                    target = t;
+                }
             }
-            
+
         }
     }
 
@@ -124,7 +127,7 @@ public class Enemy : MonoBehaviour
 
     public void StopEnemy()
     {
-        agent.SetDestination(target.position);
+        agent.SetDestination(transform.position);
         agent.velocity = new Vector3(0, 0, 0);
         agent.speed = 0;
         anim.SetTrigger("DeathAnim");

@@ -102,6 +102,7 @@ public class EnemyManager : MonoBehaviour
             if (isflyEnemy == true)
             {
                 flyEnemy.CollisionDirection(direction);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.flyDie, this.transform.position);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
 
             }

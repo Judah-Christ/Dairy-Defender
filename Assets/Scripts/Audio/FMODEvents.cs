@@ -17,6 +17,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference flyBuzzing { get; private set; }
     [field: SerializeField] public EventReference ratDeathScreams { get; private set; }
     [field: SerializeField] public EventReference enemyHit { get; private set; }
+    [field: SerializeField] public EventReference flyDie { get; private set; }
 
 
 
@@ -42,6 +43,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference buttonPickUp { get; private set; }
     [field: SerializeField] public EventReference Fail { get; private set; }
     [field: SerializeField] public EventReference Win { get; private set; }
+    [field: SerializeField] public EventReference waveStart { get; private set; }
 
 
 

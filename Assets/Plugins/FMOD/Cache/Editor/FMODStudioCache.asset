@@ -342,6 +342,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
+--- !u!114 &-4775406887437023267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FlyDie
+  m_EditorClassIdentifier: 
+  Path: event:/FlyDie
+  Guid:
+    Data1: 88673913
+    Data2: 1341871965
+    Data3: -179711863
+    Data4: 637423273
+  Banks:
+  - {fileID: 8615552446770985201}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4077406378225795922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,12 +749,14 @@ MonoBehaviour:
   - {fileID: 8228703558654279663}
   - {fileID: -1272257620689373895}
   - {fileID: -7760651931981904686}
+  - {fileID: 4340601802653631114}
+  - {fileID: -4775406887437023267}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1274724161888321168}
   StringsBanks:
   - {fileID: 7303162589191659237}
-  cacheTime: 638679901300632457
+  cacheTime: 638680097461176928
   cacheVersion: 131621
 --- !u!114 &191400536418578491
 MonoBehaviour:
@@ -852,7 +881,7 @@ MonoBehaviour:
   Path: Assets/DairyDefenderFMOD/DairyDefenderFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638679773094087143
+  lastModified: 638680042575656266
   FileSizes: []
   Exists: 1
 --- !u!114 &1385751054924655926
@@ -1080,6 +1109,33 @@ MonoBehaviour:
   lastModified: 638679086696189391
   FileSizes: []
   Exists: 1
+--- !u!114 &4340601802653631114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WaveStart
+  m_EditorClassIdentifier: 
+  Path: event:/WaveStart
+  Guid:
+    Data1: 1262285411
+    Data2: 1094659886
+    Data3: 986426242
+    Data4: 2110640600
+  Banks:
+  - {fileID: 8615552446770985201}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &4599790010891899990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,7 +1151,7 @@ MonoBehaviour:
   Path: Assets/DairyDefenderFMOD/DairyDefenderFMOD/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638679667646866438
+  lastModified: 638680036955836871
   FileSizes: []
   Exists: 1
 --- !u!114 &5262925180241393674
@@ -1167,7 +1223,7 @@ MonoBehaviour:
   Path: Assets/DairyDefenderFMOD/DairyDefenderFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638679901300467406
+  lastModified: 638680042575672427
   FileSizes: []
   Exists: 1
 --- !u!114 &7374177244344853191
@@ -1251,7 +1307,7 @@ MonoBehaviour:
   - {fileID: 1641739875133189557}
   MinDistance: 1
   MaxDistance: 20
-  Length: 350968
+  Length: 0
 --- !u!114 &8615552446770985201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,7 +1323,7 @@ MonoBehaviour:
   Path: Assets/DairyDefenderFMOD/DairyDefenderFMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638679901300632457
+  lastModified: 638680097461176928
   FileSizes: []
   Exists: 1
 --- !u!114 &9110313014853436683

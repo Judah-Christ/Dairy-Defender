@@ -356,7 +356,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Jump());
         }
 
-        if (SceneManager.GetActiveScene().name == "KitchenBeta")
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -526,7 +526,7 @@ public class PlayerController : MonoBehaviour
 
         if (!soundPlayed)
         {
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.Fall, this.transform.position);
+            //AudioManager.instance.PlayOneShot(FMODEvents.instance.Fall, this.transform.position);
         }
         float startY = transform.position.y;
 

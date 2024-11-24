@@ -11,6 +11,13 @@ public class WaveSpawner : MonoBehaviour
     public enum SpawnState { spawning, waiting, counting };
     [SerializeField] CinemachineVirtualCamera Mapcam;
     [SerializeField] private TextMeshProUGUI waveInfo;
+    [SerializeField] private TextMeshProUGUI numRatsLeft;
+    [SerializeField] private TextMeshProUGUI numFliesLeft;
+    [SerializeField] private GameObject waveStarting;
+    [SerializeField] private GameObject waveComplete;
+    [SerializeField] private GameObject ratsLeft;
+    [SerializeField] private GameObject fliesLeft;
+    private PlayerController playerController;
     private int countdownTime = 30;
 
     [System.Serializable]
@@ -47,7 +54,11 @@ public class WaveSpawner : MonoBehaviour
 
         waveCountdown = timeBetweenWaves;
 
-
+        waveStarting.SetActive(false);
+        waveComplete.SetActive(false);
+        ratsLeft.SetActive(false);
+        fliesLeft.SetActive(false);
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -78,24 +89,30 @@ public class WaveSpawner : MonoBehaviour
         {
             waveCountdown -= Time.deltaTime;
         }
+
+        if (playerController.upgradeMenuIsOpen)
+        {
+            ratsLeft.SetActive(false);
+            fliesLeft.SetActive(false);
+            waveInfo.enabled = false;
+        }
+        else if (!playerController.upgradeMenuIsOpen)
+        {
+            ratsLeft.SetActive(true);
+            fliesLeft.SetActive(true);
+            waveInfo.enabled = true;
+        }
     }
 
    public void WaveCompleted()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.roundWin, this.transform.position);
+        ratsLeft.SetActive(false);
+        fliesLeft.SetActive(false);
+        StartCoroutine(ShowPostWaveText());
         state = SpawnState.counting;
         waveCountdown = timeBetweenWaves;
         StartCoroutine(CountdownFrom30());
-
-        if (nextWave + 1 > waves.Length + 1)
-        {
-            nextWave = 0;
-        }
-        else
-        {
-            nextWave++;
-            waveUpdated?.Invoke(nextWave);
-        }
     }
 
     bool enemyisAlive()
@@ -115,6 +132,12 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave wave)
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.waveStart, this.transform.position);
+        ratsLeft.SetActive(true);
+        fliesLeft.SetActive(true);
+        numRatsLeft.text = waves[nextWave].count + "/" + waves[nextWave].count;
+        numFliesLeft.text = waves[nextWave].count + "/" + waves[nextWave].count;
+        StartCoroutine(ShowPreWaveText());
         waveInfo.text = "Wave: " + (nextWave + 1) + " of 5";
 
         state = SpawnState.spawning;
@@ -206,7 +229,30 @@ public class WaveSpawner : MonoBehaviour
             waveInfo.text = i.ToString();
             yield return new WaitForSeconds(1f);
         }
+
+        if (nextWave + 1 > waves.Length + 1)
+        {
+            nextWave = 0;
+        }
+        else
+        {
+            nextWave++;
+            waveUpdated?.Invoke(nextWave);
+        }
     }
 
+    IEnumerator ShowPreWaveText()
+    {
+        waveStarting.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        waveStarting.SetActive(false);
+    }
+
+    IEnumerator ShowPostWaveText()
+    {
+        waveComplete.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        waveComplete.SetActive(false);
+    }
 }
 

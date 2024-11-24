@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 using FMODUnity;
+using static WaveSpawner;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -145,7 +146,9 @@ public class EnemyManager : MonoBehaviour
             enemy.StopEnemy();
         }
     }
-   
-   
 
+    internal void ConstantAttack(int v)
+    {
+        throw new System.NotImplementedException();
+    }
 }

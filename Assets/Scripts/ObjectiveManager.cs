@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Drawing;
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +29,8 @@ public class ObjectiveManager : MonoBehaviour
     private GameObject wave4Canvas;
     private GameObject wave5Canvas;
     
+    public EnemyManager enemyManager;
+
 
 
 
@@ -144,14 +148,23 @@ public class ObjectiveManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-   
+    public IEnumerator ConstantAttack(int damagetime)
+    {
+        for (int i = 0; i < damagetime; i++)
+        {
+            TakeDamage(50);
+            yield return new WaitForSeconds(2f);
+        }
+    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            TakeDamage(50);
-            //collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
+            // TakeDamage(50);
+            StartCoroutine(ConstantAttack(10));
+           // collision.gameObject.GetComponent<EnemyManager>().TakeDamage(100);
 
         }
     }
@@ -235,4 +248,11 @@ public class ObjectiveManager : MonoBehaviour
 
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            TakeDamage(0);
+        }
+    }
 }

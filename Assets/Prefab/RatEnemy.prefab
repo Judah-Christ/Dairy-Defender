@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 4302175137077854189}
   - component: {fileID: 2195618615894588408}
   - component: {fileID: 8341283440749168789}
-  m_Layer: 8
+  m_Layer: 17
   m_Name: RatEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

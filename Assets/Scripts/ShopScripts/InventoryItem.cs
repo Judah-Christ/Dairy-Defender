@@ -119,6 +119,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             slotController.isFull = false;
             Time.timeScale = 0;
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.towerPlace, this.transform.position);
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
             image.sprite = null;
@@ -127,9 +128,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         else if (!obstruction && isOverSodaZone && spawnLocationController.canPlace == true && slotController.isFull == true)
         {
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyHit, this.transform.position);
             slotController.isFull = false;
             Time.timeScale = 0;
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.towerPlace, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.sodaTower, this.transform.position);
             var createImage = Instantiate(towerObject, spawnLocationController.spawnPointLocation.transform.position,
                 Quaternion.identity) as GameObject;
             SpriteRenderer sr = createImage.GetComponent<SpriteRenderer>();

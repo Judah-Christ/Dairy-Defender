@@ -11,6 +11,7 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 using FMOD.Studio;
+using FMODUnity;
 
 public class PlayerController : MonoBehaviour
 {
@@ -67,7 +68,6 @@ public class PlayerController : MonoBehaviour
     private Collider2D counterCollision;
     bool soundPlayed = false;
     public bool isPaused = false;
-    private bool fallEnded = true;
     public GameObject pauseMenu;
     public bool upgradeMenuIsOpen = false;
     public GameObject upgradeMenu;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 floorMinShadowScale;
 
     private EventInstance playerFootsteps;
-    private EventInstance fallSound;
+    //private EventInstance fallSound;
 
     [SerializeField] private GameObject fullyUpgraded;
     [SerializeField] private GameObject notEnoughCoins;
@@ -94,6 +94,9 @@ public class PlayerController : MonoBehaviour
     private bool noFall = false;
 
     [SerializeField] private GameObject fallBoundaries;
+
+    private Bus pauseBus;
+    private Bus allBus;
 
 
     // Start is called before the first frame update
@@ -121,7 +124,7 @@ public class PlayerController : MonoBehaviour
         isPlayerMovingSide = false;
         isShootOnCD = false;
         isPlayerTouching = false;
-        isPlayerInteract = false;   
+        isPlayerInteract = false;
         isTurretMounted = false;
 
         fireTimerOrig = _fireTimer;
@@ -141,9 +144,11 @@ public class PlayerController : MonoBehaviour
         floorShadowSprite = FloorShadow.GetComponent<SpriteRenderer>();
 
         playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
-        fallSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.Fall);
+        //fallSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.Fall);
 
         fallBoundaries.SetActive(false);
+        pauseBus = RuntimeManager.GetBus("bus:/Pause Bus");
+        allBus = RuntimeManager.GetBus("bus:/All Bus");
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -176,12 +181,12 @@ public class PlayerController : MonoBehaviour
         isPlayerMoving = true;
         if (isOnSurface && !isPaused)
         {
-        //AudioManager.instance.PlayPausableSFX("FootstepsF");
+            //AudioManager.instance.PlayPausableSFX("FootstepsF");
         }
     }
     private void RightLeft_canceled(InputAction.CallbackContext context)
     {
-        isPlayerMovingSide= false;
+        isPlayerMovingSide = false;
     }
 
     private void RightLeft_started(InputAction.CallbackContext context)
@@ -189,38 +194,38 @@ public class PlayerController : MonoBehaviour
         isPlayerMovingSide = true;
         if (isOnSurface && !isPaused)
         {
-        //AudioManager.instance.PlayPausableSFX("FootstepsF");
+            //AudioManager.instance.PlayPausableSFX("FootstepsF");
         }
     }
     private void Interact_canceled(InputAction.CallbackContext context)
     {
-       // if (timeStart <= 1000.0f)
-      //  {
-            isPlayerInteract = false;
+        // if (timeStart <= 1000.0f)
+        //  {
+        isPlayerInteract = false;
 
-       // }
-        
+        // }
+
     }
 
     private void Interact_started(InputAction.CallbackContext context)
     {
 
-      // TimerStart();
-       // if (timeStart >= 3.0f)
-      // {
-            isPlayerInteract = true;
-            
-       // }
-       if (isPlayerTouching && !isTurretMounted)
-       {
-           MountTurret();
-           return;
-       }
-       if(isTurretMounted)
-       {
-           TurretNotMounted();
-           return;
-       }
+        // TimerStart();
+        // if (timeStart >= 3.0f)
+        // {
+        isPlayerInteract = true;
+
+        // }
+        if (isPlayerTouching && !isTurretMounted)
+        {
+            MountTurret();
+            return;
+        }
+        if (isTurretMounted)
+        {
+            TurretNotMounted();
+            return;
+        }
     }
     public void TurretMounted()
 
@@ -247,11 +252,11 @@ public class PlayerController : MonoBehaviour
 
     private void TurretNotMounted()
     {
-       
+
         isTurretMounted = false;
         _physCol.enabled = true;
         PT.IsTurretActive = false;
-        gameObject.transform.eulerAngles = new Vector3(0,0,0);
+        gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
         currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(false);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
         counterShadowSprite.enabled = true;
@@ -261,11 +266,11 @@ public class PlayerController : MonoBehaviour
 
     private void RotateBasedOnMouse()
     {
-       Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-       Vector2 direction = mousePosition - transform.position;
-       float angle = Vector2.SignedAngle(Vector2.right, direction);
-       transform.eulerAngles = new Vector3(0, 0, angle - 90); 
+        Vector2 direction = mousePosition - transform.position;
+        float angle = Vector2.SignedAngle(Vector2.right, direction);
+        transform.eulerAngles = new Vector3(0, 0, angle - 90);
     }
 
     private void Shooting()
@@ -289,7 +294,7 @@ public class PlayerController : MonoBehaviour
             _fireTimer -= Time.deltaTime;
         }
     }
-       
+
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -312,7 +317,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(horz * speed, rb.velocity.y);
             rb.gravityScale = 0f;
-            
+
             if (isPlayerMoving)
             {
                 moveDirection = upDown.ReadValue<float>();
@@ -323,7 +328,7 @@ public class PlayerController : MonoBehaviour
             {
                 moveDirection = rightLeft.ReadValue<float>();
                 player.GetComponent<Rigidbody2D>().velocity = new Vector2(-speedX * moveDirection, 0);
-           
+
             }
             else
             {
@@ -405,7 +410,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator Jump()
-    {   
+    {
         jumpStartY = transform.position.y;
         shadowJumpStartY = Shadow.transform.position.y;
         rb.velocity = Vector2.up * jumpForce;
@@ -446,7 +451,6 @@ public class PlayerController : MonoBehaviour
 
         if (!isOnSurface && gameObject.layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
-            Debug.Log(noFall);
             if (!noFall)
             {
                 StartCoroutine(Fall());
@@ -519,7 +523,6 @@ public class PlayerController : MonoBehaviour
     {
         fallBoundaries.SetActive(true);
         floorShadowSprite.enabled = true;
-        fallEnded = false;
         Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Non-visible";
         Shadow = FloorShadow;
         Shadow.transform.localScale = floorMinShadowScale;
@@ -551,7 +554,6 @@ public class PlayerController : MonoBehaviour
         }
 
         GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
-        fallEnded = true;
         AudioManager.instance.PlayOneShot(FMODEvents.instance.fallThud, this.transform.position);
         //AudioManager.instance.PauseSFX();
         //AudioManager.instance.PlaySFX("FallLandingThudF");
@@ -620,7 +622,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.transform.tag == ("Turret"))
         {
             isPlayerTouching = true;
@@ -672,6 +674,7 @@ public class PlayerController : MonoBehaviour
 
     public void Pause()
     {
+        allBus.setPaused(true);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.pauseMenuOpen, this.transform.position);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -681,6 +684,7 @@ public class PlayerController : MonoBehaviour
 
     public void Resume()
     {
+        allBus.setPaused(false);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         //AudioManager.instance.music.UnPause();
@@ -719,22 +723,22 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+            playerFootsteps.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
-        if (!fallEnded)
-        {
-            PLAYBACK_STATE fallPlaybackState;
-            fallSound.getPlaybackState(out fallPlaybackState);
-            if (fallPlaybackState.Equals(PLAYBACK_STATE.STOPPED))
-            {
-                fallSound.start();
-            }
-        }
-        else
-        {
-            fallSound.stop(STOP_MODE.IMMEDIATE);
-        }
+        //if (!fallEnded)
+        //{
+        //    PLAYBACK_STATE fallPlaybackState;
+        //    fallSound.getPlaybackState(out fallPlaybackState);
+        //    if (fallPlaybackState.Equals(PLAYBACK_STATE.STOPPED))
+        //    {
+        //        fallSound.start();
+        //    }
+        //}
+        //else
+        //{
+        //    fallSound.stop(STOP_MODE.IMMEDIATE);
+        //}
     }
 
 }

@@ -92,27 +92,27 @@ public class UpgradeController : MonoBehaviour
             switch (sodaSlowController.SodaLevel)
             {
                 case UpgradeLevel.LVL_ONE:
-                     PickUpTower(_sodaTower, towerType);
-                     break;
+                    PickUpTower(_sodaTower, towerType);
+                    break;
                 case UpgradeLevel.LVL_TWO:
-                     PickUpTower(_lemonade, towerType);
-                     break;
+                    PickUpTower(_lemonade, towerType);
+                    break;
                 case UpgradeLevel.LVL_THREE:
-                     PickUpTower(_tea, towerType);
-                     break;
+                    PickUpTower(_tea, towerType);
+                    break;
                 case UpgradeLevel.NONE:
-                     break;
+                    break;
                 default:
-                     return;
+                    return;
 
             }
         }
-        
+
     }
 
     public void UpgradeButtonPress()
     {
-        if(towerType == 1)
+        if (towerType == 1)
         {
             switch (playerTurret.TowerLevel)
             {
@@ -121,13 +121,13 @@ public class UpgradeController : MonoBehaviour
                     {
                         //textController.UpdateCoins();
                         gameManager.RemoveCoin(playerTurret.UpgradeCost);
-                        if(US.CurrentTower != null)
+                        if (US.CurrentTower != null)
                         {
                             DestroyTower(US.CurrentTower);
                             Instantiate(_rustTower, US.CurrentTower.transform.position, Quaternion.identity);
                             AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
-                        
+
                     }
                     else
                     {
@@ -139,13 +139,13 @@ public class UpgradeController : MonoBehaviour
                     {
                         //textController.UpdateCoins();
                         gameManager.RemoveCoin(playerTurret.UpgradeCost);
-                        if(US.CurrentTower != null)
+                        if (US.CurrentTower != null)
                         {
                             DestroyTower(US.CurrentTower);
                             Instantiate(_metalTower, US.CurrentTower.transform.position, Quaternion.identity);
                             AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
-                        
+
                     }
                     else
                     {
@@ -171,7 +171,7 @@ public class UpgradeController : MonoBehaviour
                     {
                         //textController.UpdateCoins();
                         gameManager.RemoveCoin(sodaSlowController.UpgradeCost);
-                        if(US.CurrentTower != null)
+                        if (US.CurrentTower != null)
                         {
                             Destroy(US.CurrentTower);
                             Instantiate(_lemonade, US.CurrentTower.transform.position, Quaternion.identity);
@@ -188,7 +188,7 @@ public class UpgradeController : MonoBehaviour
                     {
                         //textController.UpdateCoins();
                         gameManager.RemoveCoin(sodaSlowController.UpgradeCost);
-                        if(US.CurrentTower != null)
+                        if (US.CurrentTower != null)
                         {
                             Destroy(US.CurrentTower);
                             Instantiate(_tea, US.CurrentTower.transform.position, Quaternion.identity);
@@ -273,12 +273,12 @@ public class UpgradeController : MonoBehaviour
             {
                 Destroy(towerParent.gameObject);
             }
-        }        
+        }
     }
 
     public void RotateTowerLeft()
     {
-        if(US.CurrentTower != null && US.CurrentTower.CompareTag("Turret"))
+        if (US.CurrentTower != null && US.CurrentTower.CompareTag("Turret"))
         {
             playerTurret.CurrentRotation += 90;
             US.CurrentTower.transform.parent.Rotate(0, 0, playerTurret.CurrentRotation);
@@ -296,20 +296,20 @@ public class UpgradeController : MonoBehaviour
 
     public void DismantleTower()
     {
-        if(US.CurrentTower != null)
+        if (US.CurrentTower != null)
         {
-            int returnPTCost = playerTurret.UpgradeCost - 1;
-            int returnSCost = sodaSlowController.UpgradeCost - 1;
             GetUpgradeLevel(US.CurrentTower);
-            if(towerType == 1)
+            if (towerType == 1)
             {
+                int returnPTCost = playerTurret.UpgradeCost - 1;
                 gameManager.AddCoin(returnPTCost);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
                 DestroyTower(US.CurrentTower);
                 return;
             }
-            if(towerType == 2)
+            if (towerType == 2)
             {
+                int returnSCost = sodaSlowController.UpgradeCost - 1;
                 gameManager.AddCoin(returnSCost);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
                 DestroyTower(US.CurrentTower);
@@ -334,7 +334,7 @@ public class UpgradeController : MonoBehaviour
             upgradeButton.interactable = true;
             dismantleButton.interactable = true;
             pickUpButton.interactable = true;
-            if(towerType == 1)
+            if (towerType == 1)
             {
                 rotateLeftButton.interactable = true;
                 rotateRightButton.interactable = true;

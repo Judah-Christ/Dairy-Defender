@@ -2725,13 +2725,6 @@ MonoBehaviour:
       Data3: -1180980576
       Data4: -1008632072
     Path: event:/Jump
-  <Fall>k__BackingField:
-    Guid:
-      Data1: 2142925175
-      Data2: 1264660036
-      Data3: -191588955
-      Data4: -1997065995
-    Path: event:/Fall
   <fallThud>k__BackingField:
     Guid:
       Data1: -1363766551
@@ -2767,12 +2760,19 @@ MonoBehaviour:
       Data3: 450281121
       Data4: -713263524
     Path: event:/EnemyHit
+  <flyDie>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <sodaTower>k__BackingField:
     Guid:
-      Data1: -755244764
-      Data2: 1325781175
-      Data3: -527879237
-      Data4: 1075214509
+      Data1: -14071805
+      Data2: 1241931121
+      Data3: -728537169
+      Data4: 101301716
     Path: event:/SodaTower
   <towerPlace>k__BackingField:
     Guid:
@@ -2838,6 +2838,27 @@ MonoBehaviour:
       Data4: -1603780487
     Path: event:/ButtonDrop
   <buttonPickUp>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <Fail>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <Win>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <waveStart>k__BackingField:
     Guid:
       Data1: 0
       Data2: 0

@@ -106,14 +106,14 @@ public class EnemyManager : MonoBehaviour
             if (isflyEnemy == true)
             {
                 flyEnemy.CollisionDirection(direction);
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.flyDie, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyHit, this.transform.position);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
 
             }
             if (isflyEnemy == false)
             {
                 enemy.CollisionDirection(direction);
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.ratDeathScreams, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyHit, this.transform.position);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
             }
         }
@@ -152,12 +152,14 @@ public class EnemyManager : MonoBehaviour
             {
                 flyEnemy.StopMovement();
                 ws.fliesRemaining -= 1;
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.flyDie, this.transform.position);
                 return;
             }
             if (isflyEnemy == false)
             {
                 enemy.StopEnemy();
                 ws.ratsRemaining -= 1;
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.ratDeathScreams, this.transform.position);
                 return;
             }
         }

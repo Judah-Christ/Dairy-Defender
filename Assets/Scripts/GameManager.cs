@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
         WinMenu.SetActive(true);
         WinMenu.GetComponentInChildren<EndAnimController>().WinScreen();
         AudioManager.instance.PlayOneShot(FMODEvents.instance.Win, this.transform.position);
+        //:)
     }
 
     public void ObjectiveFailed()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EndAnimController : MonoBehaviour
 {
-    private Animator anim;
+    [SerializeField] private Animator anim;
     [SerializeField] private bool isWinScreen;
 
     private void Start()
@@ -16,7 +16,7 @@ public class EndAnimController : MonoBehaviour
     {
         if (isWinScreen && anim != null)
         {
-            anim.SetTrigger("End");
+            anim.SetTrigger("WinScreen");
         }
     }
 

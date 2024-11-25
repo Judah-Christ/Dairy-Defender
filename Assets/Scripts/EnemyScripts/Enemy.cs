@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _minSpeed;
     private Animator anim;
-    [SerializeField] private int _attackDmg;
+    private EnemyAttack enemyAttack;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +39,8 @@ public class Enemy : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         anim = GetComponent<Animator>();
+        enemyAttack = gameObject.GetComponentInChildren<EnemyAttack>();
+
 
     }
 
@@ -60,7 +62,11 @@ public class Enemy : MonoBehaviour
 
         moveDirection = transform.InverseTransformDirection(agent.velocity);
 
-
+        if(target == null)
+        {
+            CheckDist();
+            return;
+        }
     }
     private void CheckDist()
     {
@@ -89,7 +95,6 @@ public class Enemy : MonoBehaviour
     }
 
 
-
     private void AnimationUpdate()
     {
         anim.SetFloat("MoveX", moveDirection.x);
@@ -106,7 +111,7 @@ public class Enemy : MonoBehaviour
         {
             if (!isAttacking)
             {
-                StartCoroutine(ConstantAttack());
+                enemyAttack.StartAttacking(target);
                 isAttacking = true;
             }
         }
@@ -122,7 +127,7 @@ public class Enemy : MonoBehaviour
         {
             if (isAttacking)
             {
-                StopCoroutine(ConstantAttack());
+                enemyAttack.StopAttacking(target);
                 isAttacking = false;
             }
         }
@@ -160,12 +165,4 @@ public class Enemy : MonoBehaviour
     //    agent.speed = 3.5f;
     //}
 
-    private IEnumerator ConstantAttack()
-    {
-        while (true && target != null)
-        {
-            target.GetComponent<ObjectiveManager>().TakeDamage(_attackDmg);
-            yield return new WaitForSeconds(2f);
-        }
-    }
 }

@@ -37,7 +37,7 @@ public class EnemyLevelChange : MonoBehaviour
 
     private IEnumerator LayerSwitch()
     {
-        bool movingToCounter = gameObject.layer == LayerMask.NameToLayer("EnemyFloor");
+        bool movingToCounter = gameObject.layer == LayerMask.NameToLayer("Floor");
 
         if (movingToCounter)
         {
@@ -61,7 +61,7 @@ public class EnemyLevelChange : MonoBehaviour
         }
         else
         {
-            gameObject.layer = LayerMask.NameToLayer("EnemyFloor");
+            gameObject.layer = LayerMask.NameToLayer("Floor");
             sr.sortingLayerName = "OnFloor";
             sr.sortingOrder = 0;
         }

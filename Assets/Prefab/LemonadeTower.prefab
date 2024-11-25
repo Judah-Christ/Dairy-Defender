@@ -383,7 +383,6 @@ GameObject:
   - component: {fileID: 6014198085192167611}
   - component: {fileID: 8531434827392210218}
   - component: {fileID: 812005412616744954}
-  - component: {fileID: 8508564889602651115}
   m_Layer: 14
   m_Name: LemonadeTower
   m_TagString: Soda
@@ -568,18 +567,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8508564889602651115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6773195374952635329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8f35fc9052fd8d44b5571444da0cbbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9080599208983357831
 GameObject:
   m_ObjectHideFlags: 0

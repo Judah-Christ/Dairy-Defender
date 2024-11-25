@@ -11,7 +11,6 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 using FMOD.Studio;
-using FMODUnity;
 
 public class PlayerController : MonoBehaviour
 {
@@ -68,6 +67,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D counterCollision;
     bool soundPlayed = false;
     public bool isPaused = false;
+    private bool fallEnded = true;
     public GameObject pauseMenu;
     public bool upgradeMenuIsOpen = false;
     public GameObject upgradeMenu;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 floorMinShadowScale;
 
     private EventInstance playerFootsteps;
-    //private EventInstance fallSound;
+    private EventInstance fallSound;
 
     [SerializeField] private GameObject fullyUpgraded;
     [SerializeField] private GameObject notEnoughCoins;
@@ -94,9 +94,6 @@ public class PlayerController : MonoBehaviour
     private bool noFall = false;
 
     [SerializeField] private GameObject fallBoundaries;
-
-    private Bus pauseBus;
-    private Bus allBus;
 
 
     // Start is called before the first frame update
@@ -144,11 +141,9 @@ public class PlayerController : MonoBehaviour
         floorShadowSprite = FloorShadow.GetComponent<SpriteRenderer>();
 
         playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
-        //fallSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.Fall);
+        fallSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.Fall);
 
         fallBoundaries.SetActive(false);
-        pauseBus = RuntimeManager.GetBus("bus:/Pause Bus");
-        allBus = RuntimeManager.GetBus("bus:/All Bus");
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -451,6 +446,7 @@ public class PlayerController : MonoBehaviour
 
         if (!isOnSurface && gameObject.layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
+            Debug.Log(noFall);
             if (!noFall)
             {
                 StartCoroutine(Fall());
@@ -523,6 +519,7 @@ public class PlayerController : MonoBehaviour
     {
         fallBoundaries.SetActive(true);
         floorShadowSprite.enabled = true;
+        fallEnded = false;
         Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Non-visible";
         Shadow = FloorShadow;
         Shadow.transform.localScale = floorMinShadowScale;
@@ -554,6 +551,7 @@ public class PlayerController : MonoBehaviour
         }
 
         GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("Floor");
+        fallEnded = true;
         AudioManager.instance.PlayOneShot(FMODEvents.instance.fallThud, this.transform.position);
         //AudioManager.instance.PauseSFX();
         //AudioManager.instance.PlaySFX("FallLandingThudF");
@@ -674,7 +672,6 @@ public class PlayerController : MonoBehaviour
 
     public void Pause()
     {
-        allBus.setPaused(true);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.pauseMenuOpen, this.transform.position);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -684,7 +681,6 @@ public class PlayerController : MonoBehaviour
 
     public void Resume()
     {
-        allBus.setPaused(false);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         //AudioManager.instance.music.UnPause();
@@ -723,22 +719,22 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            playerFootsteps.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            playerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
         }
 
-        //if (!fallEnded)
-        //{
-        //    PLAYBACK_STATE fallPlaybackState;
-        //    fallSound.getPlaybackState(out fallPlaybackState);
-        //    if (fallPlaybackState.Equals(PLAYBACK_STATE.STOPPED))
-        //    {
-        //        fallSound.start();
-        //    }
-        //}
-        //else
-        //{
-        //    fallSound.stop(STOP_MODE.IMMEDIATE);
-        //}
+        if (!fallEnded)
+        {
+            PLAYBACK_STATE fallPlaybackState;
+            fallSound.getPlaybackState(out fallPlaybackState);
+            if (fallPlaybackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                fallSound.start();
+            }
+        }
+        else
+        {
+            fallSound.stop(STOP_MODE.IMMEDIATE);
+        }
     }
 
 }

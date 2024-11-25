@@ -51,7 +51,7 @@ public class TurretController : MonoBehaviour
         if (hit.collider != null && hit.collider.gameObject.tag == "Enemy")
         {
             Instantiate(bullet, firingPoint.position, firingPoint.rotation);
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.towerShoot, this.transform.position);
+            //AudioManager.instance.PlayOneShot(FMODEvents.instance.towerShoot, this.transform.position);
         }
     }
 }

@@ -26,6 +26,7 @@ TagManager:
   - CoinAOE
   - OOB
   - BridgeJump
+  - FallBoundaries
   layers:
   - Default
   - TransparentFX
@@ -46,7 +47,7 @@ TagManager:
   - EnemyCounter
   - EnemyFloor
   - ATKLayer
-  - 
+  - BridgeJump
   - 
   - 
   - 

@@ -93,6 +93,8 @@ public class PlayerController : MonoBehaviour
 
     private bool noFall = false;
 
+    [SerializeField] private GameObject fallBoundaries;
+
 
     // Start is called before the first frame update
     void Start()
@@ -140,6 +142,8 @@ public class PlayerController : MonoBehaviour
 
         playerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerFootsteps);
         fallSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.Fall);
+
+        fallBoundaries.SetActive(false);
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -442,6 +446,7 @@ public class PlayerController : MonoBehaviour
 
         if (!isOnSurface && gameObject.layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
+            Debug.Log(noFall);
             if (!noFall)
             {
                 StartCoroutine(Fall());
@@ -512,6 +517,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator Fall()
     {
+        fallBoundaries.SetActive(true);
         floorShadowSprite.enabled = true;
         fallEnded = false;
         Shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Non-visible";
@@ -555,6 +561,7 @@ public class PlayerController : MonoBehaviour
         floorShadowPosition = transform.position;
         floorShadowPosition.y = transform.position.y - (shadowPlayerOffset * 0.75f);
         Shadow.transform.position = floorShadowPosition;
+        fallBoundaries.SetActive(false);
     }
 
     public IEnumerator IgnoreFloorBoundariesCollision()

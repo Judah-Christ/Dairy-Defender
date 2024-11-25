@@ -164,27 +164,27 @@ public class WaveSpawner : MonoBehaviour
 
         if (nextWave == 0)
         {
-            Transform sp = spawnPoints[Random.Range(0, 8)];
+            Transform sp = spawnPoints[Random.Range(3, 5)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 1)
         {
-            Transform sp = spawnPoints[Random.Range(9, 16)];
+            Transform sp = spawnPoints[Random.Range(9, 12)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 2)
         {
-            Transform sp = spawnPoints[Random.Range(17, 25)];
+            Transform sp = spawnPoints[Random.Range(17, 21)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 3)
         {
-            Transform sp = spawnPoints[Random.Range(26, 34)];
+            Transform sp = spawnPoints[Random.Range(27, 32)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 4)
         {
-            Transform sp = spawnPoints[Random.Range(34, 41)];
+            Transform sp = spawnPoints[Random.Range(39, 45)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
 
@@ -195,22 +195,22 @@ public class WaveSpawner : MonoBehaviour
 
         if (nextWave == 0)
         {
-            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Transform sp = spawnPoints[Random.Range(0, 2)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 1)
         {
-            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Transform sp = spawnPoints[Random.Range(6, 8)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 2)
         {
-            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Transform sp = spawnPoints[Random.Range(13, 16)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 3)
         {
-            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Transform sp = spawnPoints[Random.Range(33, 38)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 4)

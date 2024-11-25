@@ -37,6 +37,7 @@ public class EnemyManager : MonoBehaviour
     private Rigidbody2D rb2d;
     private FlyEnemy flyEnemy;
     private Enemy enemy;
+    private bool isDead;
 
     private StudioEventEmitter emitter;
     private WaveSpawner ws;
@@ -139,22 +140,26 @@ public class EnemyManager : MonoBehaviour
     private void Death()
     {
 
-         GameObject coin = Instantiate(lootDrop, transform.position, Quaternion.identity);
-         //coin.layer = gameObject.layer;
-         SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
-         sr.sortingLayerName = gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
+        if (isDead == false)
+        {
+            isDead = true;
+            GameObject coin = Instantiate(lootDrop, transform.position, Quaternion.identity);
+            //coin.layer = gameObject.layer;
+            SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
+            sr.sortingLayerName = gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
 
-        if(isflyEnemy == true)
-        {
-            flyEnemy.StopMovement();
-            ws.fliesRemaining -= 1;
-            return;
-        }
-        if (isflyEnemy == false)
-        {
-            enemy.StopEnemy();
-            ws.ratsRemaining -= 1;
-            return;
+            if (isflyEnemy == true)
+            {
+                flyEnemy.StopMovement();
+                ws.fliesRemaining -= 1;
+                return;
+            }
+            if (isflyEnemy == false)
+            {
+                enemy.StopEnemy();
+                ws.ratsRemaining -= 1;
+                return;
+            }
         }
     }
 

@@ -26,8 +26,8 @@ public class FlyEnemy : MonoBehaviour
         target = FindAnyObjectByType<ObjectiveManager>().transform;
         rb = GetComponent<Rigidbody2D>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        speed =0.03f;
-        speed =0.05f;
+        //speed =0.03f;
+        speed =0.009f;
         anim = gameObject.GetComponent<Animator>();
     }
 

@@ -162,7 +162,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator ConstantAttack()
     {
-        while (true)
+        while (true && target != null)
         {
             target.GetComponent<ObjectiveManager>().TakeDamage(_attackDmg);
             yield return new WaitForSeconds(2f);

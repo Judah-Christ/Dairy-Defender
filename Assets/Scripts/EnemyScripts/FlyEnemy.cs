@@ -75,7 +75,7 @@ public class FlyEnemy : MonoBehaviour
     }
 
 
-        private void AnimationUpdate()
+    private void AnimationUpdate()
     {
         anim.SetFloat("MoveX" , moveDirection.x);
         anim.SetFloat("MoveY", moveDirection.y);
@@ -109,7 +109,7 @@ public class FlyEnemy : MonoBehaviour
 
     private IEnumerator ConstantAttack()
     {
-        while (true)
+        while (true && target != null)
         {
             target.GetComponent<ObjectiveManager>().TakeDamage(_attackDmg);
             yield return new WaitForSeconds(2f);

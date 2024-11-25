@@ -12,13 +12,12 @@ public class FlyEnemy : MonoBehaviour
     private float speed;
     private GameManager GM;
     private Vector3 moveDirection;
-   
+    private EnemyAttack enemyAttack;
 
     [SerializeField]
     private float _maxSpeed;
     private Animator anim;
     private int knockBackX;
-    [SerializeField] private int _attackDmg;
     private bool isAttacking;
 
     void Start()
@@ -29,6 +28,7 @@ public class FlyEnemy : MonoBehaviour
         //speed =0.03f;
         speed =0.009f;
         anim = gameObject.GetComponent<Animator>();
+        enemyAttack = gameObject.GetComponentInChildren<EnemyAttack>();
     }
 
     void Update()
@@ -46,8 +46,14 @@ public class FlyEnemy : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
-        
-        
+
+        if (target == null)
+        {
+            CheckDist();
+            return;
+        }
+
+
     }
     private void CheckDist()
     {
@@ -81,14 +87,6 @@ public class FlyEnemy : MonoBehaviour
         anim.SetFloat("MoveY", moveDirection.y);
     }
 
-    private void GetDistance()
-    {
-        if (target.transform.position != transform.position)
-        {
-            moveDirection = (target.transform.position - transform.position).normalized;
-           
-        }
-    }
 
     public void StopMovement()
     {
@@ -107,22 +105,13 @@ public class FlyEnemy : MonoBehaviour
         anim.SetTrigger("KnockbackAnim");
     }
 
-    private IEnumerator ConstantAttack()
-    {
-        while (true && target != null)
-        {
-            target.GetComponent<ObjectiveManager>().TakeDamage(_attackDmg);
-            yield return new WaitForSeconds(2f);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Objective"))
         {
             if (!isAttacking)
             {
-                StartCoroutine(ConstantAttack());
+                enemyAttack.StartAttacking(target);
                 isAttacking = true;
             }
         }
@@ -134,7 +123,7 @@ public class FlyEnemy : MonoBehaviour
         {
             if (isAttacking)
             {
-                StopCoroutine(ConstantAttack());
+                enemyAttack.StopAttacking(target);
                 isAttacking = false;
             }
         }

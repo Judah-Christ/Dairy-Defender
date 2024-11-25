@@ -91,6 +91,7 @@ public class ObjectiveManager : MonoBehaviour
             }
         }
 
+
     }
 
     private void GetCurrentObjective()
@@ -191,6 +192,7 @@ public class ObjectiveManager : MonoBehaviour
                 objectiveHealthSlider2 = GM.WaveCanvas[1].GetComponent<WaveCanvasController>().ObjSliders[1].GetComponent<Slider>();
                 GetCurrentObjective();
                 currentWave = 1;
+                DeadObjHealthbar(currentWave);
                 return;
             case 2:
                 wave2Canvas.SetActive(false);
@@ -200,6 +202,7 @@ public class ObjectiveManager : MonoBehaviour
                 objectiveHealthSlider3 = GM.WaveCanvas[2].GetComponent<WaveCanvasController>().ObjSliders[2].GetComponent<Slider>();
                 GetCurrentObjective();
                 currentWave = 2;
+                DeadObjHealthbar(currentWave);
                 return;
             case 3:
                 wave3Canvas.SetActive(false);
@@ -210,6 +213,7 @@ public class ObjectiveManager : MonoBehaviour
                 objectiveHealthSlider4 = GM.WaveCanvas[3].GetComponent<WaveCanvasController>().ObjSliders[3].GetComponent<Slider>();
                 GetCurrentObjective();
                 currentWave = 3;
+                DeadObjHealthbar(currentWave);
                 return;
             case 4:
                 wave4Canvas.SetActive(false);
@@ -221,12 +225,25 @@ public class ObjectiveManager : MonoBehaviour
                 objectiveHealthSlider5 = GM.WaveCanvas[4].GetComponent<WaveCanvasController>().ObjSliders[4].GetComponent<Slider>();
                 GetCurrentObjective();
                 currentWave = 4;
+                DeadObjHealthbar(currentWave);
                 return;
             default:
                 break;
 
          }
 
+    }
+
+    private void DeadObjHealthbar(int waveNum)
+    {
+        for (int i = 0; i < GM.activeObject.Count; i++)
+        {
+            if (GM.activeObject[i] == null)
+            {
+                objectiveHealthSlider = GM.WaveCanvas[waveNum].GetComponent<WaveCanvasController>().ObjSliders[i].GetComponent<Slider>();
+                objectiveHealthSlider.value = 0;
+            }
+        }
     }
 
 }

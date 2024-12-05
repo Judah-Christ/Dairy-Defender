@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] int maxHealth = 100;
 
     ObjectiveManager objectmanager;
-    
+
 
     public GameObject lootDrop;
     public AudioClip deathScream;
@@ -46,20 +46,20 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         currenthealth = maxHealth;
-        deathScreams = new AudioClip[] {deathScream, deathScream1, deathScream2, deathScream3};
+        deathScreams = new AudioClip[] { deathScream, deathScream1, deathScream2, deathScream3 };
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         enemySliderFill.color = highHealth;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
 
-        if(isflyEnemy == true)
+        if (isflyEnemy == true)
         {
             flyEnemy = gameObject.GetComponent<FlyEnemy>();
         }
-        if(isflyEnemy == false)
+        if (isflyEnemy == false)
         {
             enemy = gameObject.GetComponent<Enemy>();
         }
-    
+
 
         if (gameObject.name == "RatEnemy(Clone)")
         {
@@ -95,8 +95,8 @@ public class EnemyManager : MonoBehaviour
 
     public void TakeDamage(int damageAmount, Vector2 direction)
     {
-        
-        if(currenthealth > 0)
+
+        if (currenthealth > 0)
         {
             currenthealth -= damageAmount;
             rb2d.AddForce(direction * _knockbackAmount * Time.deltaTime, ForceMode2D.Impulse);
@@ -116,7 +116,7 @@ public class EnemyManager : MonoBehaviour
             }
         }
 
-        if (currenthealth <= 0) 
+        if (currenthealth <= 0)
         {
             if (isflyEnemy == true)
             {

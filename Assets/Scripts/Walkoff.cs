@@ -9,6 +9,7 @@ public class Walkoff : MonoBehaviour
     private float moveInput;
     private LadderClimb ladderClimb;
     private bool backEdgeSwitch = false;
+    private bool onBridge = false;
 
     void Start()
     {
@@ -21,17 +22,20 @@ public class Walkoff : MonoBehaviour
     {
         if (collision.CompareTag("FloorMask") && GameObject.Find("Player").layer == LayerMask.NameToLayer("Counter") && !ladderClimb.isClimbing)
         {
-            playerController.isOnSurface = false;
-            
-            if(!playerController.isInAir)
+            if (!onBridge)
             {
-                playerController.isInAir = true;
-                moveInput = Input.GetAxis("Horizontal");
-                rb.velocity = new Vector2(moveInput * playerController.speed, rb.velocity.y);
-                //AudioManager.instance.PauseSFX();
-                GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("TempIgnore");
-                StartCoroutine(playerController.Fall());
+                playerController.isOnSurface = false;
 
+                if (!playerController.isInAir)
+                {
+                    playerController.isInAir = true;
+                    moveInput = Input.GetAxis("Horizontal");
+                    rb.velocity = new Vector2(moveInput * playerController.speed, rb.velocity.y);
+                    //AudioManager.instance.PauseSFX();
+                    GameObject.Find("FloorBoundaries").layer = LayerMask.NameToLayer("TempIgnore");
+                    Debug.Log("test");
+                    StartCoroutine(playerController.Fall());
+                }
             }
         }
 
@@ -60,6 +64,11 @@ public class Walkoff : MonoBehaviour
                 StartCoroutine(playerController.Fall());
             }
         }
+
+        if (collision.CompareTag("BridgeJump"))
+        {
+            onBridge = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -67,6 +76,11 @@ public class Walkoff : MonoBehaviour
         if (collision.CompareTag("BackEdge"))
         {
             backEdgeSwitch = false;
+        }
+
+        if (collision.CompareTag("BridgeJump"))
+        {
+            onBridge = false;
         }
     }
 }

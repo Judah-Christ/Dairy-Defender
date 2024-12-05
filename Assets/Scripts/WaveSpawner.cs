@@ -196,7 +196,7 @@ public class WaveSpawner : MonoBehaviour
         }
         if (nextWave == 4)
         {
-            Transform sp = spawnPoints[Random.Range(39, 45)];
+            Transform sp = spawnPoints[Random.Range(39, spawnPoints.Length)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
 
@@ -222,12 +222,12 @@ public class WaveSpawner : MonoBehaviour
         }
         if (nextWave == 3)
         {
-            Transform sp = spawnPoints[Random.Range(33, 38)];
+            Transform sp = spawnPoints[Random.Range(22, 26)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
         if (nextWave == 4)
         {
-            Transform sp = spawnPoints[Random.Range(6, spawnPoints.Length)];
+            Transform sp = spawnPoints[Random.Range(33, 38)];
             Instantiate(enemy, sp.position, sp.rotation);
         }
 
@@ -263,8 +263,62 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator ShowPreWaveText()
     {
         waveStarting.SetActive(true);
-        yield return new WaitForSeconds(5f);
-        waveStarting.SetActive(false);
+
+        if (nextWave == 0)
+        {
+            EnableSPI(0, 5);
+            yield return new WaitForSeconds(5f);
+            waveStarting.SetActive(false);
+            DisableSPI(0, 5);
+        }
+        if (nextWave == 1)
+        {
+            EnableSPI(6, 12);
+            yield return new WaitForSeconds(5f);
+            waveStarting.SetActive(false);
+            DisableSPI(6, 12);
+        }
+        if (nextWave == 2)
+        {
+            EnableSPI(13, 21);
+            yield return new WaitForSeconds(5f);
+            waveStarting.SetActive(false);
+            DisableSPI(13, 21);
+        }
+        if (nextWave == 3)
+        {
+            EnableSPI(22, 32);
+            yield return new WaitForSeconds(5f);
+            waveStarting.SetActive(false);
+            DisableSPI(22, 32);
+        }
+        if (nextWave == 4)
+        {
+            EnableSPI(33, spawnPoints.Length);
+            yield return new WaitForSeconds(5f);
+            waveStarting.SetActive(false);
+            DisableSPI(33, spawnPoints.Length);
+        }
+    }
+
+    private void EnableSPI(int startIndex, int endIndex)
+    {
+        for (int i = startIndex; i <= endIndex; i++)
+        {
+            Transform sp = spawnPoints[i];
+            SpriteRenderer spriteRenderer = sp.GetChild(0).GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = true;
+        }
+    }
+
+    private void DisableSPI(int startIndex, int endIndex)
+    {
+        for (int i = startIndex; i <= endIndex; i++)
+        {
+            Transform sp = spawnPoints[i];
+            SpriteRenderer spriteRenderer = sp.GetChild(0).GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = false;
+        }
     }
 
     IEnumerator ShowPostWaveText()

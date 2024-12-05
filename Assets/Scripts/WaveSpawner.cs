@@ -18,7 +18,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private GameObject ratsLeft;
     [SerializeField] private GameObject fliesLeft;
     private PlayerController playerController;
-    private int countdownTime = 30;
+    public int countdownTime;
     public int ratsRemaining;
     public int fliesRemaining;
 
@@ -38,7 +38,7 @@ public class WaveSpawner : MonoBehaviour
 
     public Transform[] spawnPoints;
 
-    public float timeBetweenWaves = 30f;
+    public float timeBetweenWaves;
     private float waveCountdown;
 
     private float searchCountdown = 1f;

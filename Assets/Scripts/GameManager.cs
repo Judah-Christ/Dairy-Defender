@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     private ObjectiveManager objectiveM;
     private Objectmoving objectmoving;
-    private WaveSpawner waveSpawner;
+    public WaveSpawner waveSpawner;
     public int Coins;
     public int Tower;
     public bool isGamePaused;
@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
         if (waveU == 1)
         {
             objectivesLeft++;
+            waveSpawner.timeBetweenWaves = 30;
+            waveSpawner.countdownTime = 30;
         }
         if (waveU == 2)
         {

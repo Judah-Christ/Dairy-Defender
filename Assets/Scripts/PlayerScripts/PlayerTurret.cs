@@ -23,8 +23,8 @@ public class PlayerTurret : MonoBehaviour
     private PlayerController PC;
     private bool isShootOnCD;
     private bool isPlayerNear;
-    private float _maxRange;
-    public bool IsTurretActive;
+    [SerializeField] private float _maxRange;
+    private bool IsTurretActive;
     public Animator playerTurretAnim;
 
     public UpgradeLevel TowerLevel;
@@ -140,6 +140,20 @@ public class PlayerTurret : MonoBehaviour
         }
     }
 
-    
+    public void changeIsMounted()
+    {
+        if (IsTurretActive)
+        {
+            IsTurretActive = false;
+            return;
+        }
+        else
+        {
+            IsTurretActive = true;
+            return;
+        }
+    }
+
+
 
 }

@@ -44,20 +44,20 @@ public class InventorySlide : MonoBehaviour
             }
         }
 
-        if (playerController.upgradeMenuIsOpen)
-        {
-            move.y = Mathf.Lerp(move.y, outPosition, Time.deltaTime * invSlideSpeed);
-        }
-        else if (isInventoryOpen)
-        {
-            move.y = Mathf.Lerp(move.y, outPosition, Time.deltaTime * invSlideSpeed);
-        }
-        else
-        {
-            move.y = Mathf.Lerp(move.y, inPosition, Time.deltaTime * invSlideSpeed);
-        }
+        //if (playerController.upgradeMenuIsOpen)
+        //{
+        //    move.y = Mathf.Lerp(move.y, outPosition, Time.deltaTime * invSlideSpeed);
+        //}
+        //else if (isInventoryOpen)
+        //{
+        //    move.y = Mathf.Lerp(move.y, outPosition, Time.deltaTime * invSlideSpeed);
+        //}
+        //else
+        //{
+        //    move.y = Mathf.Lerp(move.y, inPosition, Time.deltaTime * invSlideSpeed);
+        //}
 
-        rectTransform.anchoredPosition = move;
+        //rectTransform.anchoredPosition = move;
     }
 
     private bool IsPointerOverInventory()

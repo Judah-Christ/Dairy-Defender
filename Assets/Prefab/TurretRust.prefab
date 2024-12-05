@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea3b919bda760043a55983d78583782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 4116811335257806855, guid: bcc4ab2f755009d428b758185464d90b, type: 3}
   firingSpeed: 0.5
   raycastMask:
     serializedVersion: 2
@@ -839,6 +839,10 @@ PrefabInstance:
       propertyPath: Selection
       value: 
       objectReference: {fileID: 2446919493940669404}
+    - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
+      propertyPath: _maxRange
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1006599276522017944, guid: 98753277b1eded7429d1d9055c4f99cd, type: 3}
       propertyPath: TowerLevel
       value: 1

@@ -263,7 +263,7 @@ public class PlayerController : MonoBehaviour
         {
             isTurretMounted = true;
             _physCol.enabled = false;
-            PT.IsTurretActive = true;
+            PT.changeIsMounted();
             counterShadowSprite.enabled = false;
             floorShadowSprite.enabled = false;
         }
@@ -274,7 +274,7 @@ public class PlayerController : MonoBehaviour
 
         isTurretMounted = false;
         _physCol.enabled = true;
-        PT.IsTurretActive = false;
+        PT.changeIsMounted();
         gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
         currentCrossbow.GetComponent<PlayerTurret>().PlayerSprite.SetActive(false);
         this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;

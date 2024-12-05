@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer counterShadowSprite;
     public GameObject FloorShadow;
     public SpriteRenderer floorShadowSprite;
-    private bool ismap = true;
+    //private bool ismap = true;
 
     [SerializeField] private Vector3 floorOrigShadowScale;
     [SerializeField] private Vector3 floorMinShadowScale;

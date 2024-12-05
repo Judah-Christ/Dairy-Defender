@@ -151,6 +151,7 @@ public class EnemyManager : MonoBehaviour
                 ws.fliesRemaining -= 1;
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.flyDie, this.transform.position);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
+                emitter.Stop();
                 Destroy(gameObject.GetComponent<StudioEventEmitter>());
                 return;
             }
@@ -160,6 +161,7 @@ public class EnemyManager : MonoBehaviour
                 ws.ratsRemaining -= 1;
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.ratDeathScreams, this.transform.position);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonDrop, this.transform.position);
+                emitter.Stop();
                 Destroy(gameObject.GetComponent<StudioEventEmitter>());
                 return;
             }

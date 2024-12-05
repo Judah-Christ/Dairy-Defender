@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
     private bool noFall = false;
 
     [SerializeField] private GameObject fallBoundaries;
+    private GameObject bridgeColliders;
 
     private Bus pauseBus;
     private Bus allBus;
@@ -149,6 +150,9 @@ public class PlayerController : MonoBehaviour
         fallBoundaries.SetActive(false);
         pauseBus = RuntimeManager.GetBus("bus:/Pause Bus");
         allBus = RuntimeManager.GetBus("bus:/All Bus");
+
+        bridgeColliders = GameObject.Find("BridgeColliders");
+        bridgeColliders.SetActive(false);
     }
 
     private void Shooting_started(InputAction.CallbackContext context)
@@ -347,10 +351,19 @@ public class PlayerController : MonoBehaviour
             ShootCD();
         }
 
-        if (gameObject.layer == LayerMask.NameToLayer("Counter"))
+        if (gameObject.layer == LayerMask.NameToLayer("Counter") && bridgeColliders != null)
         {
             counterShadowSprite.sortingLayerName = "OnCounter";
             floorShadowSprite.enabled = false;
+
+            bridgeColliders.SetActive(true);
+        }
+        else
+        {
+            if (bridgeColliders != null)
+            {
+                bridgeColliders.SetActive(false);
+            }
         }
 
         UpdateSound();

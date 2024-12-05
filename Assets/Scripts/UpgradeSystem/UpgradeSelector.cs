@@ -10,11 +10,13 @@ public class UpgradeSelector : MonoBehaviour
     private InputAction mouseAction;
     private InputAction mousePosition;
     [SerializeField] private LayerMask collisionMask;
+    [SerializeField] private LayerMask UIMask;
     private PlayerController PC;
-    public GameObject CurrentTower;
+    private GameObject currentTower;
     private GameObject selection;
     private UpgradeController UC;
-    [SerializeField] private GameObject leftClickToSelect;
+    private UpgradeMenuSlide UM;
+    //[SerializeField] private GameObject leftClickToSelect;
 
 
     // Start is called before the first frame update
@@ -25,75 +27,99 @@ public class UpgradeSelector : MonoBehaviour
         mouseAction.started += MouseAction_started;
         mousePosition = playerInput.currentActionMap.FindAction("MousePosition");
         PC = GameObject.Find("Player").GetComponent<PlayerController>();
-        UC = GameObject.Find("UpgradeMenu").GetComponent<UpgradeController>();
+        UC = gameObject.GetComponent<UpgradeController>();
     }
 
     private void MouseAction_started(InputAction.CallbackContext context)
     {
-        if (PC.upgradeMenuIsOpen == true)
-        {
+        //if (PC.upgradeMenuIsOpen == true)
+        //{
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition.ReadValue<Vector2>()), Vector2.zero, Mathf.Infinity, collisionMask);
-            if (hit && CurrentTower == null)
-            {
-                CurrentTower = hit.transform.gameObject;
-                UC.GetUpgradeLevel(CurrentTower);
-                leftClickToSelect.SetActive(false);
+            RaycastHit2D UIhit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePosition.ReadValue<Vector2>()), Vector2.zero, Mathf.Infinity, collisionMask);
 
-                if (CurrentTower.CompareTag("Turret"))
+            if (hit && currentTower == null)
+            {
+                currentTower = hit.transform.gameObject;
+                UC.SetCurrentTower(currentTower);
+                UC.GetUpgradeLevel(currentTower);
+                //leftClickToSelect.SetActive(false);
+
+                if (currentTower.CompareTag("Turret"))
                 {
-                    DeselectTower();              
-                    Transform parent = CurrentTower.transform.parent;
+                    //DeselectTower(currentTower);              
+                    Transform parent = currentTower.transform.parent;
                     selection = parent.Find("Selection").gameObject;
                     selection.SetActive(true);
+                    //gameObject.SetActive(true);
                     return;
                 }
-                if (CurrentTower.CompareTag("Soda"))
+                if (currentTower.CompareTag("Soda"))
                 {
-                    DeselectTower();
-                    selection = CurrentTower.transform.Find("Selection").gameObject;
+                    //DeselectTower(currentTower);
+                    selection = currentTower.transform.Find("Selection").gameObject;
                     selection.SetActive(true);
+                    //gameObject.SetActive(false);
                     return;
                 }
+                return;
 
             }
-            else if (hit && CurrentTower != null)
+            else if (hit && currentTower != null)
             {
-                DeselectTower(true);
-                leftClickToSelect.SetActive(true);
+                //DeselectTower(true, currentTower);
+                //currentTower = null;
+                //leftClickToSelect.SetActive(true);
                 return;
             }
             else if (hit == false)
             {
+                //DeselectTower(true, currentTower);
+                //currentTower = null;
                 //leftClickToSelect.SetActive(true);
+                return;
             }
-        }
-        if (PC.upgradeMenuIsOpen == false)
-        {
-            DeselectTower();
-            CurrentTower = null;
-            return;
-        }
+            //}
+            //if (PC.upgradeMenuIsOpen == false)
+            //{
+            // DeselectTower();
+                //CurrentTower = null;
+            // return;
+            //}
     }
 
-    private void DeselectTower()
+    private void DeselectTower(GameObject tower)
     {
         if(selection != null) 
         {
             selection.SetActive(false);
+            //gameObject.SetActive(false);
             selection = null;
-            leftClickToSelect.SetActive(true);
+            //leftClickToSelect.SetActive(true);
+        }
+
+        if (tower != null)
+        {
+            UC.UnsetCurrentTower();
+            //currentTower = null;
         }
     }
 
-    public void DeselectTower(bool removeTower)
+    public void DeselectTower(bool removeTower, GameObject tower)
     {
         if (selection != null && removeTower == true)
         {
             selection.SetActive(false);
+            //gameObject.SetActive(false);
             selection = null;
-            CurrentTower = null;
+            //currentTower = null;
             return;
+        }
+
+        if (tower != null)
+        {
+            UC.UnsetCurrentTower();
+            //currentTower = null;
         }
     }
 

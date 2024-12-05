@@ -18,10 +18,10 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -44,14 +44,14 @@ public class AudioManager : MonoBehaviour
         {
             currentSceneIndex = 0;
             AudioManager.instance.SetMusicParameter("SceneName", 0);
-            Debug.Log("AudioManager set music parameter to 0");
+            //Debug.Log("AudioManager set music parameter to 0");
         }
 
         if (SceneManager.GetActiveScene().buildIndex == 2 && currentSceneIndex != 2)
         {
             currentSceneIndex = 2;
             AudioManager.instance.SetMusicParameter("SceneName", 1);
-            Debug.Log("AudioManager set music parameter to 1");
+            //Debug.Log("AudioManager set music parameter to 1");
         }
     }
 

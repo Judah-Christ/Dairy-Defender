@@ -27,6 +27,7 @@ TagManager:
   - OOB
   - BridgeJump
   - FallBoundaries
+  - BridgeCollider
   layers:
   - Default
   - TransparentFX

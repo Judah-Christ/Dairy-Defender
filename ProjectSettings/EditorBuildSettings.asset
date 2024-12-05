@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/HowToPlay.unity
     guid: 664ae1bdde394c7499a269162695a1f6
   - enabled: 1
-    path: Assets/Scenes/KitchenBeta.unity
-    guid: 59107e1d911f3834ab0ec316e31efd2c
+    path: Assets/Scenes/GoldFixesT.unity
+    guid: ace6a2ac67d994647a1f63896aadb933
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 112a117b3b051484d9a0ad3ef004fca2
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: 3ee2f7829fde0d641b741057e0700e90
+  - enabled: 1
+    path: Assets/Scenes/KitchenBeta.unity
+    guid: 59107e1d911f3834ab0ec316e31efd2c
   m_configObjects: {}

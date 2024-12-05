@@ -13,12 +13,6 @@ public class UpgradeController : MonoBehaviour
 {
     private UpgradeSelector US;
 
-    private UnityEngine.UI.Button upgradeButton;
-    private UnityEngine.UI.Button dismantleButton;
-    private UnityEngine.UI.Button pickUpButton;
-    private UnityEngine.UI.Button rotateLeftButton;
-    private UnityEngine.UI.Button rotateRightButton;
-
     public GameObject[] inventory = new GameObject[8];
 
     public bool isUpgraded = false;
@@ -34,6 +28,7 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] private GameObject _rustTower;
     [SerializeField] private GameObject _metalTower;
     private int towerType;
+    private GameObject currentTower;
 
     [SerializeField] private GameObject towerFullyUpgradedError;
     [SerializeField] private GameObject notEnoughCoinsError;
@@ -42,13 +37,7 @@ public class UpgradeController : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        US = GameObject.Find("UpgradeMenu").GetComponent<UpgradeSelector>();
-
-        upgradeButton = gameObject.transform.Find("UpgradeButton").GetComponent<UnityEngine.UI.Button>();
-        pickUpButton = gameObject.transform.Find("PickUpButton").GetComponent<UnityEngine.UI.Button>();
-        dismantleButton = gameObject.transform.Find("DismantleButton").GetComponent<UnityEngine.UI.Button>();
-        rotateLeftButton = gameObject.transform.Find("RotateLeftButton").GetComponent<UnityEngine.UI.Button>();
-        rotateRightButton = gameObject.transform.Find("RotateRightButton").GetComponent<UnityEngine.UI.Button>();
+        US = gameObject.GetComponent<UpgradeSelector>();
 
         playerTurret = _playerTower.GetComponent<PlayerTurret>();
         sodaSlowController = _sodaTower.GetComponent<SodaSlowController>();
@@ -66,7 +55,7 @@ public class UpgradeController : MonoBehaviour
 
     public void ButtonPress()
     {
-        GetUpgradeLevel(US.CurrentTower);
+        GetUpgradeLevel(currentTower);
         if (towerType == 1)
         {
             switch (playerTurret.TowerLevel)
@@ -121,10 +110,10 @@ public class UpgradeController : MonoBehaviour
                     {
                         //textController.UpdateCoins();
                         gameManager.RemoveCoin(playerTurret.UpgradeCost);
-                        if (US.CurrentTower != null)
+                        if (currentTower != null)
                         {
-                            DestroyTower(US.CurrentTower);
-                            Instantiate(_rustTower, US.CurrentTower.transform.position, Quaternion.identity);
+                            DestroyTower(currentTower);
+                            Instantiate(_rustTower, currentTower.transform.position, Quaternion.identity);
                             AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
 
@@ -139,10 +128,10 @@ public class UpgradeController : MonoBehaviour
                     {
                         //textController.UpdateCoins();
                         gameManager.RemoveCoin(playerTurret.UpgradeCost);
-                        if (US.CurrentTower != null)
+                        if (currentTower != null)
                         {
-                            DestroyTower(US.CurrentTower);
-                            Instantiate(_metalTower, US.CurrentTower.transform.position, Quaternion.identity);
+                            DestroyTower(currentTower);
+                            Instantiate(_metalTower, currentTower.transform.position, Quaternion.identity);
                             AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
 
@@ -171,10 +160,10 @@ public class UpgradeController : MonoBehaviour
                     {
                         //textController.UpdateCoins();
                         gameManager.RemoveCoin(sodaSlowController.UpgradeCost);
-                        if (US.CurrentTower != null)
+                        if (currentTower != null)
                         {
-                            Destroy(US.CurrentTower);
-                            Instantiate(_lemonade, US.CurrentTower.transform.position, Quaternion.identity);
+                            Destroy(currentTower);
+                            Instantiate(_lemonade, currentTower.transform.position, Quaternion.identity);
                             AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
                     }
@@ -188,10 +177,10 @@ public class UpgradeController : MonoBehaviour
                     {
                         //textController.UpdateCoins();
                         gameManager.RemoveCoin(sodaSlowController.UpgradeCost);
-                        if (US.CurrentTower != null)
+                        if (currentTower != null)
                         {
-                            Destroy(US.CurrentTower);
-                            Instantiate(_tea, US.CurrentTower.transform.position, Quaternion.identity);
+                            Destroy(currentTower);
+                            Instantiate(_tea, currentTower.transform.position, Quaternion.identity);
                             AudioManager.instance.PlayOneShot(FMODEvents.instance.upgrade, this.transform.position);
                         }
                     }
@@ -214,14 +203,14 @@ public class UpgradeController : MonoBehaviour
 
     public void GetUpgradeLevel(GameObject currentTower)
     {
-        if (currentTower != null && US.CurrentTower.CompareTag("Turret"))
+        if (currentTower != null && currentTower.CompareTag("Turret"))
         {
-            playerTurret = US.CurrentTower.GetComponent<PlayerTurret>();
+            playerTurret = currentTower.GetComponent<PlayerTurret>();
             towerType = 1;
         }
-        if (currentTower != null && US.CurrentTower.CompareTag("Soda"))
+        if (currentTower != null && currentTower.CompareTag("Soda"))
         {
-            sodaSlowController = US.CurrentTower.GetComponentInChildren<SodaSlowController>();
+            sodaSlowController = currentTower.GetComponentInChildren<SodaSlowController>();
             towerType = 2;
         }
     }
@@ -237,7 +226,7 @@ public class UpgradeController : MonoBehaviour
                     inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = playerTurret.toolbarImage;
                     inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = tower;
                     inventory[i].GetComponent<SlotController>().isFull = true;
-                    DestroyTower(US.CurrentTower);
+                    DestroyTower(currentTower);
                     break;
                 }
                 if (towerType == 2) //Soda Tower
@@ -245,7 +234,7 @@ public class UpgradeController : MonoBehaviour
                     inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = sodaSlowController.toolbarImage;
                     inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = tower;
                     inventory[i].GetComponent<SlotController>().isFull = true;
-                    DestroyTower(US.CurrentTower);
+                    DestroyTower(currentTower);
                     break;
                 }
                 if (towerType == 3) //Trap Tower [NOT IMPLEMENTED YET]
@@ -253,7 +242,7 @@ public class UpgradeController : MonoBehaviour
                     inventory[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = sodaSlowController.toolbarImage;  //CHANGE WHEN TRAP IS ADDED
                     inventory[i].transform.GetChild(0).GetComponent<InventoryItem>().towerObject = tower;
                     inventory[i].GetComponent<SlotController>().isFull = true;
-                    DestroyTower(US.CurrentTower);
+                    DestroyTower(currentTower);
                     break;
                 }
             }
@@ -278,33 +267,33 @@ public class UpgradeController : MonoBehaviour
 
     public void RotateTowerLeft()
     {
-        if (US.CurrentTower != null && US.CurrentTower.CompareTag("Turret"))
+        if (currentTower != null && currentTower.CompareTag("Turret"))
         {
             playerTurret.CurrentRotation += 90;
-            US.CurrentTower.transform.parent.Rotate(0, 0, playerTurret.CurrentRotation);
+            currentTower.transform.parent.Rotate(0, 0, playerTurret.CurrentRotation);
         }
     }
 
     public void RotateTowerRight()
     {
-        if (US.CurrentTower != null && US.CurrentTower.CompareTag("Turret"))
+        if (currentTower != null && currentTower.CompareTag("Turret"))
         {
             playerTurret.CurrentRotation -= 90;
-            US.CurrentTower.transform.parent.Rotate(0, 0, playerTurret.CurrentRotation);
+            currentTower.transform.parent.Rotate(0, 0, playerTurret.CurrentRotation);
         }
     }
 
     public void DismantleTower()
     {
-        if (US.CurrentTower != null)
+        if (currentTower != null)
         {
-            GetUpgradeLevel(US.CurrentTower);
+            GetUpgradeLevel(currentTower);
             if (towerType == 1)
             {
                 int returnPTCost = playerTurret.UpgradeCost - 1;
                 gameManager.AddCoin(returnPTCost);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
-                DestroyTower(US.CurrentTower);
+                DestroyTower(currentTower);
                 return;
             }
             if (towerType == 2)
@@ -312,34 +301,24 @@ public class UpgradeController : MonoBehaviour
                 int returnSCost = sodaSlowController.UpgradeCost - 1;
                 gameManager.AddCoin(returnSCost);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.dismantle, this.transform.position);
-                DestroyTower(US.CurrentTower);
+                DestroyTower(currentTower);
                 return;
             }
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public void SetCurrentTower(GameObject tower)
     {
-        if (US.CurrentTower == null)
+        //Debug.Log(tower);
+        if (tower != null)
         {
-            upgradeButton.interactable = false;
-            dismantleButton.interactable = false;
-            pickUpButton.interactable = false;
-            rotateLeftButton.interactable = false;
-            rotateRightButton.interactable = false;
+            currentTower = tower;
         }
-        if (US.CurrentTower != null)
-        {
-            upgradeButton.interactable = true;
-            dismantleButton.interactable = true;
-            pickUpButton.interactable = true;
-            if (towerType == 1)
-            {
-                rotateLeftButton.interactable = true;
-                rotateRightButton.interactable = true;
-            }
-        }
+    }
+
+    public void UnsetCurrentTower()
+    {
+        currentTower = null;
     }
 
     IEnumerator CoinErrorMessage()

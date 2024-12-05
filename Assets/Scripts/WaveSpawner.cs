@@ -35,6 +35,7 @@ public class WaveSpawner : MonoBehaviour
 
     public Wave[] waves;
     public int nextWave = 0;
+    private int WaveCount = 1;
 
     public Transform[] spawnPoints;
 
@@ -55,6 +56,8 @@ public class WaveSpawner : MonoBehaviour
         }
 
         waveCountdown = timeBetweenWaves;
+       
+
 
         waveStarting.SetActive(false);
         waveComplete.SetActive(false);
@@ -70,6 +73,8 @@ public class WaveSpawner : MonoBehaviour
             if (!enemyisAlive())
             {
                 WaveCompleted();
+                WaveCount++;
+               
 
             }
             else
@@ -84,7 +89,8 @@ public class WaveSpawner : MonoBehaviour
             if (state != SpawnState.spawning)
             {
                 StartCoroutine(SpawnWave(waves[nextWave]));
-               StartCoroutine(MapcamCall());
+                waveInfo.text = "Wave: " + (WaveCount) + " of 5";
+                StartCoroutine(MapcamCall());
             }
         }
         else
@@ -145,7 +151,8 @@ public class WaveSpawner : MonoBehaviour
         numRatsLeft.text = "" + ratsRemaining;
         numFliesLeft.text = "" + fliesRemaining;
         StartCoroutine(ShowPreWaveText());
-        waveInfo.text = "Wave: " + (nextWave + 1) + " of 5";
+       
+
 
         state = SpawnState.spawning;
         for (int i = 0; i < wave.count; i++)

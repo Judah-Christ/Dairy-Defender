@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer counterShadowSprite;
     public GameObject FloorShadow;
     public SpriteRenderer floorShadowSprite;
+    private bool ismap = true;
 
     [SerializeField] private Vector3 floorOrigShadowScale;
     [SerializeField] private Vector3 floorMinShadowScale;
@@ -163,12 +164,26 @@ public class PlayerController : MonoBehaviour
 
     private void Map_started(InputAction.CallbackContext context)
     {
-        Mapcam.enabled = true;
+        zoomIcon.zoomClicked();
+       // if (ismap)
+       // {
+        //    Mapcam.enabled = true;
+            
+      //  }
+      //  ismap = false;
+        
     }
 
     private void Map_canceled(InputAction.CallbackContext context)
     {
-        Mapcam.enabled = false;
+        
+       // if (!ismap)
+      //  {
+       //     Mapcam.enabled = false;
+       //    
+      //  }
+       // ismap = true;
+       
     }
 
     private void UpDown_canceled(InputAction.CallbackContext context)
@@ -694,6 +709,11 @@ public class PlayerController : MonoBehaviour
     public void Quit()
     {
         SceneManager.LoadScene(0);
+        allBus.setPaused(false);
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        //AudioManager.instance.music.UnPause();
+        isPaused = false;
     }
 
     public void OpenUpgradeMenu()

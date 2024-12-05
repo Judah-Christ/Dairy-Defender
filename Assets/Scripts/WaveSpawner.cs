@@ -35,7 +35,7 @@ public class WaveSpawner : MonoBehaviour
 
     public Wave[] waves;
     public int nextWave = 0;
-    private int WaveCount = 1;
+    public int WaveCount = 1;
 
     public Transform[] spawnPoints;
 
@@ -83,6 +83,11 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
+        if(WaveCount == 1 && state == SpawnState.counting)
+        {
+            timeBetweenWaves = 30;
+            countdownTime = 30;
+        }
 
         if (waveCountdown <= 0)
         {

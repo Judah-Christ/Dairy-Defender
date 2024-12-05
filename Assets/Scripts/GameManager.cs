@@ -105,8 +105,6 @@ public class GameManager : MonoBehaviour
         if (waveU == 1)
         {
             objectivesLeft++;
-            waveSpawner.timeBetweenWaves = 30;
-            waveSpawner.countdownTime = 30;
         }
         if (waveU == 2)
         {

@@ -409,21 +409,21 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-           // if (Input.GetKeyDown(KeyCode.R))
-           // {
-              //  if (upgradeMenuIsOpen)
-              //  {
-                //    CloseUpgradeMenu();
-                //    UpgButtonBG.GetComponent<UpgMenuBGChange>().upgradeMenuCloseButtonHandler();
-                 //   HammerAndWrench.GetComponent<UpgradeMenuSlide>().CloseButtonHandler();
-              //  }
-              //  else
-               // {
-                //    OpenUpgradeMenu();
-                 //   UpgButtonBG.GetComponent<UpgMenuBGChange>().upgradeIconClicked();
-               //     HammerAndWrench.GetComponent<UpgradeMenuSlide>().UpgradeButtonClick();
-               // }
-          //  }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (upgradeMenuIsOpen)
+                {
+                    CloseUpgradeMenu();
+                    UpgButtonBG.GetComponent<UpgMenuBGChange>().upgradeMenuCloseButtonHandler();
+                    HammerAndWrench.GetComponent<UpgradeMenuSlide>().CloseButtonHandler();
+                }
+                else
+                {
+                    OpenUpgradeMenu();
+                    UpgButtonBG.GetComponent<UpgMenuBGChange>().upgradeIconClicked();
+                    HammerAndWrench.GetComponent<UpgradeMenuSlide>().UpgradeButtonClick();
+                }
+            }
 
             if (Input.GetKeyDown(KeyCode.F))
             {
